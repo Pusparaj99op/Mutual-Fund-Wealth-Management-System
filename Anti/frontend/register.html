@@ -168,8 +168,10 @@
                     <div class="form-group terms-group">
                         <label class="checkbox-label">
                             <input type="checkbox" id="acceptTerms" required>
-                            <span>I agree to the <a href="#" class="terms-link">Terms of Service</a> and
-                                <a href="#" class="terms-link">Privacy Policy</a> of FIMFP Portal</span>
+                            <span>I agree to the <a href="/terms" class="terms-link" target="_blank">Terms of
+                                    Service</a> and
+                                <a href="/privacy" class="terms-link" target="_blank">Privacy Policy</a> of FIMFP
+                                Portal</span>
                         </label>
                     </div>
 
@@ -354,8 +356,8 @@
                 const data = await response.json();
 
                 if (data.success) {
-                    showAlert('Registration successful! Redirecting to login...', 'success');
-                    setTimeout(() => window.location.href = 'login.html', 2000);
+                    showAlert('Registration successful! Setting up your profile...', 'success');
+                    setTimeout(() => window.location.href = 'onboarding.html', 1500);
                 } else {
                     showAlert(data.error || 'Registration failed. Please try again.');
                 }

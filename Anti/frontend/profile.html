@@ -1,0 +1,719 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="User Profile - FIMFP Federal Indian Mutual Fund Portal">
+    <title>My Profile | FIMFP - Federal Indian Mutual Fund Portal</title>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml"
+        href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🇮🇳</text></svg>">
+
+    <!-- Google Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;600;700&family=Noto+Sans+Devanagari:wght@400;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="css/gov-style.css">
+    <link rel="stylesheet" href="css/auth.css">
+    <link rel="stylesheet" href="css/onboarding.css">
+    <style>
+        /* Profile Page Specific Styles */
+        .profile-container {
+            flex: 1;
+            padding: 30px 20px;
+            max-width: 900px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        .profile-header {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .profile-avatar {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--saffron), var(--green));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: var(--white);
+            font-weight: 700;
+        }
+
+        .profile-info h1 {
+            font-size: 1.6rem;
+            color: var(--gov-navy);
+            margin: 0 0 5px;
+        }
+
+        .profile-info p {
+            color: var(--gray-600);
+            margin: 0;
+            font-size: 0.9rem;
+        }
+
+        .profile-tabs {
+            display: flex;
+            border-bottom: 2px solid var(--gray-200);
+            margin-bottom: 25px;
+            overflow-x: auto;
+        }
+
+        .profile-tab {
+            padding: 12px 24px;
+            background: none;
+            border: none;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--gray-600);
+            cursor: pointer;
+            border-bottom: 3px solid transparent;
+            margin-bottom: -2px;
+            transition: all 0.2s;
+            white-space: nowrap;
+        }
+
+        .profile-tab:hover {
+            color: var(--gov-navy);
+        }
+
+        .profile-tab.active {
+            color: var(--gov-navy);
+            border-bottom-color: var(--saffron);
+        }
+
+        .profile-section {
+            display: none;
+            background: var(--white);
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        .profile-section.active {
+            display: block;
+        }
+
+        .profile-section h2 {
+            font-size: 1.2rem;
+            color: var(--gov-navy);
+            margin: 0 0 20px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid var(--gray-200);
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        @media (max-width: 600px) {
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .info-item {
+            padding: 15px;
+            background: var(--gray-50);
+            border-radius: 8px;
+            border: 1px solid var(--gray-200);
+        }
+
+        .info-item label {
+            display: block;
+            font-size: 0.75rem;
+            color: var(--gray-500);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 5px;
+        }
+
+        .info-item .value {
+            font-size: 1rem;
+            color: var(--gov-navy);
+            font-weight: 600;
+        }
+
+        .info-item .value.editable {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .edit-btn {
+            padding: 4px 10px;
+            font-size: 0.75rem;
+            background: var(--gov-navy);
+            color: var(--white);
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .broker-display {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 20px;
+            background: var(--gray-50);
+            border-radius: 10px;
+            border: 1px solid var(--gray-200);
+        }
+
+        .broker-display .broker-logo {
+            width: 50px;
+            height: 50px;
+            font-size: 1.4rem;
+        }
+
+        .broker-display .broker-details h4 {
+            margin: 0 0 4px;
+            font-size: 1.1rem;
+            color: var(--gov-navy);
+        }
+
+        .broker-display .broker-details p {
+            margin: 0;
+            font-size: 0.85rem;
+            color: var(--gray-600);
+        }
+
+        .preference-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .preference-tag {
+            padding: 8px 16px;
+            background: linear-gradient(135deg, var(--saffron), var(--saffron-dark));
+            color: var(--white);
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
+        .preference-tag.secondary {
+            background: var(--gray-200);
+            color: var(--gray-700);
+        }
+
+        .save-btn-container {
+            margin-top: 25px;
+            padding-top: 20px;
+            border-top: 1px solid var(--gray-200);
+            display: flex;
+            justify-content: flex-end;
+            gap: 10px;
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--gov-navy);
+            font-size: 0.9rem;
+            margin-bottom: 20px;
+        }
+
+        .back-link:hover {
+            color: var(--nic-blue);
+        }
+
+        .edit-form {
+            display: none;
+        }
+
+        .edit-form.active {
+            display: block;
+        }
+
+        .view-mode.hidden {
+            display: none;
+        }
+    </style>
+</head>
+
+<body class="auth-page">
+    <!-- Tricolor Strip Banner -->
+    <div class="top-banner"></div>
+
+    <!-- Government Secondary Banner -->
+    <div class="gov-secondary-banner">
+        <div class="container">
+            <div class="gov-links">
+                <a href="https://india.gov.in" target="_blank" rel="noopener">india.gov.in</a>
+                <span class="separator">|</span>
+                <a href="https://sebi.gov.in" target="_blank" rel="noopener">SEBI</a>
+                <span class="separator">|</span>
+                <a href="https://amfiindia.com" target="_blank" rel="noopener">AMFI</a>
+            </div>
+            <div class="language-switch">
+                <button class="lang-btn active" data-lang="en">English</button>
+                <button class="lang-btn" data-lang="hi">हिंदी</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Container -->
+    <div class="profile-container">
+        <a href="/" class="back-link">← Back to Dashboard</a>
+
+        <!-- Alert Container -->
+        <div id="alertContainer"></div>
+
+        <!-- Profile Header -->
+        <div class="profile-header">
+            <div class="profile-avatar" id="avatar">U</div>
+            <div class="profile-info">
+                <h1 id="fullName">Loading...</h1>
+                <p id="email">Loading...</p>
+            </div>
+        </div>
+
+        <!-- Profile Tabs -->
+        <div class="profile-tabs">
+            <button class="profile-tab active" data-tab="personal" onclick="switchTab('personal')">👤 Personal
+                Info</button>
+            <button class="profile-tab" data-tab="investment" onclick="switchTab('investment')">📊 Investment
+                Profile</button>
+            <button class="profile-tab" data-tab="broker" onclick="switchTab('broker')">🏦 Broker</button>
+            <button class="profile-tab" data-tab="preferences" onclick="switchTab('preferences')">⚙️ MF
+                Preferences</button>
+        </div>
+
+        <!-- Personal Info Section -->
+        <div class="profile-section active" id="section-personal">
+            <h2>Personal Information / व्यक्तिगत जानकारी</h2>
+
+            <div class="view-mode" id="personalView">
+                <div class="info-grid">
+                    <div class="info-item">
+                        <label>First Name / प्रथम नाम</label>
+                        <div class="value" id="firstName">-</div>
+                    </div>
+                    <div class="info-item">
+                        <label>Last Name / उपनाम</label>
+                        <div class="value" id="lastName">-</div>
+                    </div>
+                    <div class="info-item">
+                        <label>Email / ईमेल</label>
+                        <div class="value" id="emailDisplay">-</div>
+                    </div>
+                    <div class="info-item">
+                        <label>Mobile / मोबाइल</label>
+                        <div class="value" id="mobile">-</div>
+                    </div>
+                    <div class="info-item">
+                        <label>PAN Card / पैन कार्ड</label>
+                        <div class="value" id="panCard">Not Provided</div>
+                    </div>
+                    <div class="info-item">
+                        <label>Member Since</label>
+                        <div class="value" id="memberSince">-</div>
+                    </div>
+                </div>
+                <div class="save-btn-container">
+                    <button class="btn btn-primary" onclick="toggleEdit('personal')">✏️ Edit Personal Info</button>
+                </div>
+            </div>
+
+            <div class="edit-form" id="personalEdit">
+                <div class="info-grid">
+                    <div class="form-group">
+                        <label for="editFirstName">First Name <span class="required">*</span></label>
+                        <input type="text" id="editFirstName" class="form-input" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="editLastName">Last Name <span class="required">*</span></label>
+                        <input type="text" id="editLastName" class="form-input" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="editMobile">Mobile Number <span class="required">*</span></label>
+                        <input type="tel" id="editMobile" class="form-input" pattern="[0-9]{10}" maxlength="10">
+                    </div>
+                    <div class="form-group">
+                        <label for="editPanCard">PAN Card</label>
+                        <input type="text" id="editPanCard" class="form-input" pattern="[A-Z]{5}[0-9]{4}[A-Z]{1}"
+                            maxlength="10" style="text-transform: uppercase;">
+                    </div>
+                </div>
+                <div class="save-btn-container">
+                    <button class="btn btn-outline" onclick="toggleEdit('personal')">Cancel</button>
+                    <button class="btn btn-primary" onclick="savePersonal()">💾 Save Changes</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Investment Profile Section -->
+        <div class="profile-section" id="section-investment">
+            <h2>Investment Profile / निवेश प्रोफाइल</h2>
+
+            <div class="view-mode" id="investmentView">
+                <div class="info-grid">
+                    <div class="info-item">
+                        <label>Age / उम्र</label>
+                        <div class="value" id="age">Not Set</div>
+                    </div>
+                    <div class="info-item">
+                        <label>Annual Income / वार्षिक आय</label>
+                        <div class="value" id="annualIncome">Not Set</div>
+                    </div>
+                    <div class="info-item">
+                        <label>Investment Experience</label>
+                        <div class="value" id="experience">Not Set</div>
+                    </div>
+                    <div class="info-item">
+                        <label>Risk Tolerance</label>
+                        <div class="value" id="riskTolerance">Not Set</div>
+                    </div>
+                </div>
+                <div class="save-btn-container">
+                    <button class="btn btn-primary" onclick="toggleEdit('investment')">✏️ Edit Investment
+                        Profile</button>
+                </div>
+            </div>
+
+            <div class="edit-form" id="investmentEdit">
+                <div class="info-grid">
+                    <div class="form-group">
+                        <label for="editAge">Age</label>
+                        <input type="number" id="editAge" class="form-input" min="18" max="100">
+                    </div>
+                    <div class="form-group">
+                        <label for="editIncome">Annual Income</label>
+                        <select id="editIncome" class="form-select">
+                            <option value="">Select income range</option>
+                            <option value="300000">Below ₹3 Lakh</option>
+                            <option value="500000">₹3 - 5 Lakh</option>
+                            <option value="1000000">₹5 - 10 Lakh</option>
+                            <option value="2000000">₹10 - 20 Lakh</option>
+                            <option value="5000000">₹20 - 50 Lakh</option>
+                            <option value="10000000">Above ₹50 Lakh</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="editExperience">Investment Experience</label>
+                        <select id="editExperience" class="form-select">
+                            <option value="beginner">Beginner (0-2 years)</option>
+                            <option value="intermediate">Intermediate (2-5 years)</option>
+                            <option value="expert">Expert (5+ years)</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Risk Tolerance</label>
+                        <div class="risk-slider-container">
+                            <input type="range" id="editRisk" class="risk-slider" min="1" max="5" value="3">
+                            <div class="risk-labels">
+                                <span>Conservative</span>
+                                <span>Moderate</span>
+                                <span>Aggressive</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="save-btn-container">
+                    <button class="btn btn-outline" onclick="toggleEdit('investment')">Cancel</button>
+                    <button class="btn btn-primary" onclick="saveInvestment()">💾 Save Changes</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Broker Section -->
+        <div class="profile-section" id="section-broker">
+            <h2>Broker Information / ब्रोकर जानकारी</h2>
+
+            <div id="brokerContent">
+                <div class="broker-display" id="brokerDisplay" style="display: none;">
+                    <div class="broker-logo" id="brokerLogo">Z</div>
+                    <div class="broker-details">
+                        <h4 id="brokerName">Zerodha</h4>
+                        <p id="brokerDemat">Demat: Not linked</p>
+                    </div>
+                </div>
+                <p id="noBroker" style="color: var(--gray-500);">No broker selected. <a href="/onboarding">Complete your
+                        profile</a></p>
+            </div>
+
+            <div class="save-btn-container">
+                <a href="/onboarding" class="btn btn-outline">🔄 Change Broker</a>
+            </div>
+        </div>
+
+        <!-- MF Preferences Section -->
+        <div class="profile-section" id="section-preferences">
+            <h2>Mutual Fund Preferences / म्यूचुअल फंड प्राथमिकताएं</h2>
+
+            <div class="info-grid">
+                <div class="info-item">
+                    <label>Investment Goal</label>
+                    <div class="value" id="investmentGoal">Not Set</div>
+                </div>
+                <div class="info-item">
+                    <label>Investment Horizon</label>
+                    <div class="value" id="investmentHorizon">Not Set</div>
+                </div>
+                <div class="info-item">
+                    <label>Monthly SIP</label>
+                    <div class="value" id="monthlySIP">Not Set</div>
+                </div>
+            </div>
+
+            <div style="margin-top: 20px;">
+                <label
+                    style="font-size: 0.85rem; color: var(--gray-600); margin-bottom: 10px; display: block;">Preferred
+                    Categories</label>
+                <div class="preference-tags" id="preferredCategories">
+                    <span class="preference-tag secondary">No categories selected</span>
+                </div>
+            </div>
+
+            <div class="save-btn-container">
+                <a href="/onboarding" class="btn btn-outline">✏️ Update Preferences</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="auth-footer">
+        <div class="container">
+            <p>© 2024 FIMFP - Federal Indian Mutual Fund Portal | Government of India</p>
+            <p>Designed & Developed under Digital India Programme</p>
+        </div>
+    </footer>
+
+    <script>
+        // User profile data
+        let profileData = null;
+
+        // Show alert
+        function showAlert(message, type = 'error') {
+            const container = document.getElementById('alertContainer');
+            const alertClass = type === 'success' ? 'alert-success' : 'alert-error';
+            container.innerHTML = `<div class="alert ${alertClass}">${message}</div>`;
+            if (type !== 'success') {
+                setTimeout(() => container.innerHTML = '', 5000);
+            }
+        }
+
+        // Switch tabs
+        function switchTab(tabName) {
+            document.querySelectorAll('.profile-tab').forEach(tab => {
+                tab.classList.remove('active');
+                if (tab.dataset.tab === tabName) {
+                    tab.classList.add('active');
+                }
+            });
+
+            document.querySelectorAll('.profile-section').forEach(section => {
+                section.classList.remove('active');
+            });
+            document.getElementById('section-' + tabName).classList.add('active');
+        }
+
+        // Toggle edit mode
+        function toggleEdit(section) {
+            const viewEl = document.getElementById(section + 'View');
+            const editEl = document.getElementById(section + 'Edit');
+
+            if (viewEl && editEl) {
+                viewEl.classList.toggle('hidden');
+                editEl.classList.toggle('active');
+            }
+        }
+
+        // Load profile data
+        async function loadProfile() {
+            try {
+                const response = await fetch('/api/user/profile');
+                const data = await response.json();
+
+                if (data.success) {
+                    profileData = data.data;
+                    updateUI(profileData);
+                } else {
+                    showAlert(data.error || 'Failed to load profile');
+                }
+            } catch (error) {
+                console.error('Load profile error:', error);
+                showAlert('Failed to load profile. Please try again.');
+            }
+        }
+
+        // Update UI with profile data
+        function updateUI(data) {
+            // Basic info
+            document.getElementById('fullName').textContent = `${data.firstName || ''} ${data.lastName || ''}`.trim() || 'User';
+            document.getElementById('avatar').textContent = (data.firstName || 'U').charAt(0).toUpperCase();
+            document.getElementById('email').textContent = data.email || '-';
+
+            // Personal info
+            document.getElementById('firstName').textContent = data.firstName || '-';
+            document.getElementById('lastName').textContent = data.lastName || '-';
+            document.getElementById('emailDisplay').textContent = data.email || '-';
+            document.getElementById('mobile').textContent = data.mobile ? '+91 ' + data.mobile : '-';
+            document.getElementById('panCard').textContent = data.panCard || 'Not Provided';
+
+            if (data.createdAt) {
+                const date = new Date(data.createdAt);
+                document.getElementById('memberSince').textContent = date.toLocaleDateString('en-IN', {
+                    year: 'numeric', month: 'long'
+                });
+            }
+
+            // Edit form values
+            document.getElementById('editFirstName').value = data.firstName || '';
+            document.getElementById('editLastName').value = data.lastName || '';
+            document.getElementById('editMobile').value = data.mobile || '';
+            document.getElementById('editPanCard').value = data.panCard || '';
+
+            // Investment profile
+            const invProfile = data.investmentProfile || {};
+            document.getElementById('age').textContent = invProfile.age ? `${invProfile.age} years` : 'Not Set';
+
+            const incomeLabels = {
+                '300000': 'Below ₹3 Lakh',
+                '500000': '₹3 - 5 Lakh',
+                '1000000': '₹5 - 10 Lakh',
+                '2000000': '₹10 - 20 Lakh',
+                '5000000': '₹20 - 50 Lakh',
+                '10000000': 'Above ₹50 Lakh'
+            };
+            document.getElementById('annualIncome').textContent = incomeLabels[invProfile.annualIncome] || 'Not Set';
+
+            const expLabels = { 'beginner': 'Beginner', 'intermediate': 'Intermediate', 'expert': 'Expert' };
+            document.getElementById('experience').textContent = expLabels[invProfile.investmentExperience] || 'Not Set';
+
+            const riskLabels = ['', 'Very Conservative', 'Conservative', 'Moderate', 'Aggressive', 'Very Aggressive'];
+            document.getElementById('riskTolerance').textContent = riskLabels[invProfile.riskTolerance] || 'Not Set';
+
+            // Investment edit form
+            document.getElementById('editAge').value = invProfile.age || '';
+            document.getElementById('editIncome').value = invProfile.annualIncome || '';
+            document.getElementById('editExperience').value = invProfile.investmentExperience || 'beginner';
+            document.getElementById('editRisk').value = invProfile.riskTolerance || 3;
+
+            // Broker
+            const broker = data.broker || {};
+            if (broker.name && broker.name !== 'other') {
+                document.getElementById('brokerDisplay').style.display = 'flex';
+                document.getElementById('noBroker').style.display = 'none';
+                document.getElementById('brokerName').textContent = broker.name.charAt(0).toUpperCase() + broker.name.slice(1);
+                document.getElementById('brokerDemat').textContent = broker.demat ? `Demat: ${broker.demat}` : 'Demat: Not linked';
+
+                const logoEl = document.getElementById('brokerLogo');
+                logoEl.textContent = broker.name.charAt(0).toUpperCase();
+                logoEl.className = 'broker-logo ' + broker.name + '-logo';
+            } else {
+                document.getElementById('brokerDisplay').style.display = 'none';
+                document.getElementById('noBroker').style.display = 'block';
+            }
+
+            // MF Preferences
+            const mfPrefs = data.mfPreferences || {};
+            const goalLabels = {
+                'wealth_creation': 'Wealth Creation',
+                'tax_saving': 'Tax Saving (ELSS)',
+                'retirement': 'Retirement Planning',
+                'child_education': 'Child Education',
+                'regular_income': 'Regular Income'
+            };
+            document.getElementById('investmentGoal').textContent = goalLabels[mfPrefs.investmentGoal] || 'Not Set';
+            document.getElementById('investmentHorizon').textContent = mfPrefs.investmentHorizon ? `${mfPrefs.investmentHorizon} Years` : 'Not Set';
+            document.getElementById('monthlySIP').textContent = mfPrefs.monthlySIPAmount ? `₹${mfPrefs.monthlySIPAmount.toLocaleString('en-IN')}` : 'Not Set';
+
+            // Categories
+            const categoriesEl = document.getElementById('preferredCategories');
+            if (mfPrefs.preferredCategories && mfPrefs.preferredCategories.length > 0) {
+                categoriesEl.innerHTML = mfPrefs.preferredCategories.map(cat =>
+                    `<span class="preference-tag">${cat}</span>`
+                ).join('');
+            } else {
+                categoriesEl.innerHTML = '<span class="preference-tag secondary">No categories selected</span>';
+            }
+        }
+
+        // Save personal info
+        async function savePersonal() {
+            const data = {
+                firstName: document.getElementById('editFirstName').value,
+                lastName: document.getElementById('editLastName').value,
+                mobile: document.getElementById('editMobile').value,
+                panCard: document.getElementById('editPanCard').value.toUpperCase()
+            };
+
+            try {
+                const response = await fetch('/api/user/profile', {
+                    method: 'PUT',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(data)
+                });
+
+                const result = await response.json();
+
+                if (result.success) {
+                    showAlert('Personal info updated successfully!', 'success');
+                    await loadProfile();
+                    toggleEdit('personal');
+                } else {
+                    showAlert(result.error || 'Failed to update profile');
+                }
+            } catch (error) {
+                console.error('Save error:', error);
+                showAlert('Failed to save changes');
+            }
+        }
+
+        // Save investment profile
+        async function saveInvestment() {
+            const data = {
+                investmentProfile: {
+                    age: parseInt(document.getElementById('editAge').value) || null,
+                    annualIncome: document.getElementById('editIncome').value || null,
+                    investmentExperience: document.getElementById('editExperience').value,
+                    riskTolerance: parseInt(document.getElementById('editRisk').value)
+                }
+            };
+
+            try {
+                const response = await fetch('/api/user/profile', {
+                    method: 'PUT',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(data)
+                });
+
+                const result = await response.json();
+
+                if (result.success) {
+                    showAlert('Investment profile updated successfully!', 'success');
+                    await loadProfile();
+                    toggleEdit('investment');
+                } else {
+                    showAlert(result.error || 'Failed to update profile');
+                }
+            } catch (error) {
+                console.error('Save error:', error);
+                showAlert('Failed to save changes');
+            }
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function () {
+            loadProfile();
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Complete your investment profile - FIMFP Federal Indian Mutual Fund Portal">
+    <title>Setup Your Profile | FIMFP - Federal Indian Mutual Fund Portal</title>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml"
+        href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🇮🇳</text></svg>">
+
+    <!-- Google Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;600;700&family=Noto+Sans+Devanagari:wght@400;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="css/gov-style.css">
+    <link rel="stylesheet" href="css/auth.css">
+    <link rel="stylesheet" href="css/onboarding.css">
+</head>
+
+<body class="auth-page">
+    <!-- Tricolor Strip Banner -->
+    <div class="top-banner"></div>
+
+    <!-- Government Secondary Banner -->
+    <div class="gov-secondary-banner">
+        <div class="container">
+            <div class="gov-links">
+                <a href="https://india.gov.in" target="_blank" rel="noopener">india.gov.in</a>
+                <span class="separator">|</span>
+                <a href="https://sebi.gov.in" target="_blank" rel="noopener">SEBI</a>
+                <span class="separator">|</span>
+                <a href="https://amfiindia.com" target="_blank" rel="noopener">AMFI</a>
+            </div>
+            <div class="language-switch">
+                <button class="lang-btn active" data-lang="en">English</button>
+                <button class="lang-btn" data-lang="hi">हिंदी</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Container -->
+    <div class="onboarding-container">
+        <div class="onboarding-card">
+            <!-- Header -->
+            <div class="onboarding-header">
+                <div class="auth-emblem">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/5/55/Emblem_of_India.svg"
+                        alt="Emblem of India - सत्यमेव जयते" width="50" height="58">
+                </div>
+                <div class="auth-title-group">
+                    <h1 class="auth-portal-title">FIMFP</h1>
+                    <p class="auth-portal-subtitle">Complete Your Investment Profile</p>
+                </div>
+            </div>
+
+            <!-- Progress Bar -->
+            <div class="progress-container">
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progressFill"></div>
+                </div>
+                <div class="progress-steps">
+                    <div class="progress-step active" data-step="1">
+                        <span class="step-number">1</span>
+                        <span class="step-label">Profile</span>
+                    </div>
+                    <div class="progress-step" data-step="2">
+                        <span class="step-number">2</span>
+                        <span class="step-label">Broker</span>
+                    </div>
+                    <div class="progress-step" data-step="3">
+                        <span class="step-number">3</span>
+                        <span class="step-label">Preferences</span>
+                    </div>
+                    <div class="progress-step" data-step="4">
+                        <span class="step-number">4</span>
+                        <span class="step-label">Recommendations</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Alert Container -->
+            <div id="alertContainer"></div>
+
+            <!-- Step 1: Investment Profile -->
+            <div class="wizard-step active" id="step1">
+                <div class="step-content">
+                    <h2 class="step-title">📊 Tell us about yourself</h2>
+                    <p class="step-subtitle">Help us understand your investment profile for personalized recommendations
+                    </p>
+
+                    <div class="form-section">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="age">Age / उम्र <span class="required">*</span></label>
+                                <input type="number" id="age" name="age" class="form-input" placeholder="Enter your age"
+                                    min="18" max="100" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="annualIncome">Annual Income / वार्षिक आय <span
+                                        class="required">*</span></label>
+                                <select id="annualIncome" name="annualIncome" class="form-select" required>
+                                    <option value="">Select income range</option>
+                                    <option value="300000">Below ₹3 Lakh</option>
+                                    <option value="500000">₹3 - 5 Lakh</option>
+                                    <option value="1000000">₹5 - 10 Lakh</option>
+                                    <option value="2000000">₹10 - 20 Lakh</option>
+                                    <option value="5000000">₹20 - 50 Lakh</option>
+                                    <option value="10000000">Above ₹50 Lakh</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="experience">Investment Experience / निवेश अनुभव</label>
+                                <select id="experience" name="experience" class="form-select">
+                                    <option value="beginner">Beginner (0-2 years)</option>
+                                    <option value="intermediate">Intermediate (2-5 years)</option>
+                                    <option value="expert">Expert (5+ years)</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Risk Tolerance / जोखिम सहनशीलता</label>
+                                <div class="risk-slider-container">
+                                    <input type="range" id="riskTolerance" name="riskTolerance" min="1" max="5"
+                                        value="3" class="risk-slider">
+                                    <div class="risk-labels">
+                                        <span>Conservative</span>
+                                        <span>Moderate</span>
+                                        <span>Aggressive</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="step-actions">
+                    <button type="button" class="btn btn-skip" onclick="skipStep()">Skip for now →</button>
+                    <button type="button" class="btn btn-primary" onclick="nextStep()">Continue</button>
+                </div>
+            </div>
+
+            <!-- Step 2: Broker Selection -->
+            <div class="wizard-step" id="step2">
+                <div class="step-content">
+                    <h2 class="step-title">🏦 Select Your Broker(s)</h2>
+                    <p class="step-subtitle">Choose the brokers you use for mutual fund investments (select multiple if
+                        applicable)</p>
+
+                    <div class="broker-grid">
+                        <div class="broker-card" data-broker="zerodha" onclick="toggleBroker(this)">
+                            <div class="broker-logo-img">
+                                <img src="images/broker/ZERODHA.jpeg" alt="Zerodha" loading="lazy">
+                            </div>
+                            <div class="broker-info">
+                                <span class="broker-name">Zerodha</span>
+                                <span class="broker-tagline">India's largest broker</span>
+                            </div>
+                            <div class="broker-check">✓</div>
+                        </div>
+                        <div class="broker-card" data-broker="groww" onclick="toggleBroker(this)">
+                            <div class="broker-logo-img">
+                                <img src="images/broker/GROWW.png" alt="Groww" loading="lazy">
+                            </div>
+                            <div class="broker-info">
+                                <span class="broker-name">Groww</span>
+                                <span class="broker-tagline">Simple & Fast</span>
+                            </div>
+                            <div class="broker-check">✓</div>
+                        </div>
+                        <div class="broker-card" data-broker="angelone" onclick="toggleBroker(this)">
+                            <div class="broker-logo-img">
+                                <img src="images/broker/angleone.png" alt="Angel One" loading="lazy">
+                            </div>
+                            <div class="broker-info">
+                                <span class="broker-name">Angel One</span>
+                                <span class="broker-tagline">Smart investing</span>
+                            </div>
+                            <div class="broker-check">✓</div>
+                        </div>
+                        <div class="broker-card" data-broker="sharekhan" onclick="toggleBroker(this)">
+                            <div class="broker-logo-img">
+                                <img src="images/broker/SHAREKHAN.webp" alt="Sharekhan" loading="lazy">
+                            </div>
+                            <div class="broker-info">
+                                <span class="broker-name">Sharekhan</span>
+                                <span class="broker-tagline">Since 2000</span>
+                            </div>
+                            <div class="broker-check">✓</div>
+                        </div>
+                        <div class="broker-card" data-broker="dhan" onclick="toggleBroker(this)">
+                            <div class="broker-logo-img">
+                                <img src="images/broker/dhan.jpeg" alt="Dhan" loading="lazy">
+                            </div>
+                            <div class="broker-info">
+                                <span class="broker-name">Dhan</span>
+                                <span class="broker-tagline">Made for traders</span>
+                            </div>
+                            <div class="broker-check">✓</div>
+                        </div>
+                        <div class="broker-card" data-broker="other" onclick="toggleBroker(this)">
+                            <div class="broker-logo-img other-broker">
+                                <span>+</span>
+                            </div>
+                            <div class="broker-info">
+                                <span class="broker-name">Other / None</span>
+                                <span class="broker-tagline">I'll add later</span>
+                            </div>
+                            <div class="broker-check">✓</div>
+                        </div>
+                    </div>
+
+                    <p class="selection-hint" id="brokerHint">💡 Tip: Select all brokers where you have accounts</p>
+
+                    <div class="demat-input" id="dematInput" style="display: none;">
+                        <div class="form-group">
+                            <label for="dematNumber">Demat Account Number (Optional)</label>
+                            <input type="text" id="dematNumber" name="dematNumber" class="form-input"
+                                placeholder="Enter your primary demat account number">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="step-actions">
+                    <button type="button" class="btn btn-outline" onclick="prevStep()">← Back</button>
+                    <button type="button" class="btn btn-skip" onclick="skipStep()">Skip for now →</button>
+                    <button type="button" class="btn btn-primary" onclick="nextStep()">Continue</button>
+                </div>
+            </div>
+
+            <!-- Step 3: MF Preferences -->
+            <div class="wizard-step" id="step3">
+                <div class="step-content">
+                    <h2 class="step-title">📈 Investment Preferences</h2>
+                    <p class="step-subtitle">What kind of mutual funds are you looking for?</p>
+
+                    <div class="form-section">
+                        <div class="form-group">
+                            <label>Investment Goal / निवेश लक्ष्य</label>
+                            <div class="goal-chips">
+                                <label class="chip-option">
+                                    <input type="radio" name="investmentGoal" value="wealth_creation" checked>
+                                    <span class="chip">💰 Wealth Creation</span>
+                                </label>
+                                <label class="chip-option">
+                                    <input type="radio" name="investmentGoal" value="tax_saving">
+                                    <span class="chip">📋 Tax Saving (ELSS)</span>
+                                </label>
+                                <label class="chip-option">
+                                    <input type="radio" name="investmentGoal" value="retirement">
+                                    <span class="chip">🏖️ Retirement Planning</span>
+                                </label>
+                                <label class="chip-option">
+                                    <input type="radio" name="investmentGoal" value="child_education">
+                                    <span class="chip">🎓 Child Education</span>
+                                </label>
+                                <label class="chip-option">
+                                    <input type="radio" name="investmentGoal" value="regular_income">
+                                    <span class="chip">💵 Regular Income</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Preferred Categories / पसंदीदा श्रेणियाँ</label>
+                            <div class="category-chips">
+                                <label class="chip-option">
+                                    <input type="checkbox" name="categories" value="Equity" checked>
+                                    <span class="chip">📊 Equity</span>
+                                </label>
+                                <label class="chip-option">
+                                    <input type="checkbox" name="categories" value="Debt">
+                                    <span class="chip">🏛️ Debt</span>
+                                </label>
+                                <label class="chip-option">
+                                    <input type="checkbox" name="categories" value="Hybrid">
+                                    <span class="chip">⚖️ Hybrid</span>
+                                </label>
+                                <label class="chip-option">
+                                    <input type="checkbox" name="categories" value="Index">
+                                    <span class="chip">📈 Index Funds</span>
+                                </label>
+                                <label class="chip-option">
+                                    <input type="checkbox" name="categories" value="International">
+                                    <span class="chip">🌍 International</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="investmentHorizon">Investment Horizon / निवेश अवधि</label>
+                                <select id="investmentHorizon" name="investmentHorizon" class="form-select">
+                                    <option value="1">1 Year (Short Term)</option>
+                                    <option value="3">3 Years</option>
+                                    <option value="5" selected>5 Years (Medium Term)</option>
+                                    <option value="7">7 Years</option>
+                                    <option value="10">10+ Years (Long Term)</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="monthlySIP">Monthly SIP Amount / मासिक SIP राशि</label>
+                                <div class="input-with-prefix">
+                                    <span class="input-prefix">₹</span>
+                                    <input type="number" id="monthlySIP" name="monthlySIP" class="form-input"
+                                        placeholder="5000" min="500" value="5000">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="step-actions">
+                    <button type="button" class="btn btn-outline" onclick="prevStep()">← Back</button>
+                    <button type="button" class="btn btn-skip" onclick="skipStep()">Skip for now →</button>
+                    <button type="button" class="btn btn-primary" onclick="nextStep()">Continue</button>
+                </div>
+            </div>
+
+            <!-- Step 4: AI Recommendations Preview -->
+            <div class="wizard-step" id="step4">
+                <div class="step-content">
+                    <h2 class="step-title">🤖 Your Personalized Recommendations</h2>
+                    <p class="step-subtitle">Based on your profile, here's what we recommend</p>
+
+                    <div class="recommendations-summary" id="recommendationsSummary">
+                        <div class="summary-card">
+                            <div class="summary-icon">👤</div>
+                            <div class="summary-content">
+                                <h4>Risk Profile</h4>
+                                <p id="summaryRisk">Moderate</p>
+                            </div>
+                        </div>
+                        <div class="summary-card">
+                            <div class="summary-icon">🎯</div>
+                            <div class="summary-content">
+                                <h4>Investment Goal</h4>
+                                <p id="summaryGoal">Wealth Creation</p>
+                            </div>
+                        </div>
+                        <div class="summary-card">
+                            <div class="summary-icon">⏳</div>
+                            <div class="summary-content">
+                                <h4>Investment Horizon</h4>
+                                <p id="summaryHorizon">5 Years</p>
+                            </div>
+                        </div>
+                        <div class="summary-card">
+                            <div class="summary-icon">💰</div>
+                            <div class="summary-content">
+                                <h4>Monthly SIP</h4>
+                                <p id="summarySIP">₹5,000</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="ai-recommendation-box">
+                        <div class="ai-badge">🤖 AI Powered</div>
+                        <h4>Recommended Allocation</h4>
+                        <div class="allocation-bar" id="allocationBar">
+                            <div class="allocation-segment equity" style="width: 60%;">Equity 60%</div>
+                            <div class="allocation-segment debt" style="width: 30%;">Debt 30%</div>
+                            <div class="allocation-segment hybrid" style="width: 10%;">Hybrid 10%</div>
+                        </div>
+                        <p class="ai-note">
+                            💡 Based on your profile, we recommend a balanced portfolio.
+                            You'll see personalized fund suggestions on your dashboard.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="step-actions">
+                    <button type="button" class="btn btn-outline" onclick="prevStep()">← Back</button>
+                    <button type="button" class="btn btn-primary btn-large" onclick="completeOnboarding()">
+                        🚀 Go to Dashboard
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="auth-footer">
+        <div class="container">
+            <p>© 2024 FIMFP - Federal Indian Mutual Fund Portal | Government of India</p>
+            <p>Designed & Developed under Digital India Programme</p>
+        </div>
+    </footer>
+
+    <script>
+        // Onboarding state
+        let currentStep = 1;
+        const totalSteps = 4;
+        let selectedBrokers = []; // Changed to array for multi-select
+
+        // Onboarding data
+        const onboardingData = {
+            investmentProfile: {},
+            broker: {},
+            mfPreferences: {}
+        };
+
+        // Show alert
+        function showAlert(message, type = 'error') {
+            const container = document.getElementById('alertContainer');
+            const alertClass = type === 'success' ? 'alert-success' : 'alert-error';
+            container.innerHTML = `<div class="alert ${alertClass}">${message}</div>`;
+            if (type !== 'success') {
+                setTimeout(() => container.innerHTML = '', 5000);
+            }
+        }
+
+        // Update progress bar
+        function updateProgress() {
+            const fill = document.getElementById('progressFill');
+            const percentage = ((currentStep - 1) / (totalSteps - 1)) * 100;
+            fill.style.width = percentage + '%';
+
+            // Update step indicators
+            document.querySelectorAll('.progress-step').forEach((step, index) => {
+                step.classList.remove('active', 'completed');
+                if (index + 1 < currentStep) {
+                    step.classList.add('completed');
+                } else if (index + 1 === currentStep) {
+                    step.classList.add('active');
+                }
+            });
+        }
+
+        // Show step
+        function showStep(stepNum) {
+            document.querySelectorAll('.wizard-step').forEach((step, index) => {
+                step.classList.remove('active');
+                if (index + 1 === stepNum) {
+                    step.classList.add('active');
+                }
+            });
+            currentStep = stepNum;
+            updateProgress();
+
+            // Update summary on step 4
+            if (stepNum === 4) {
+                updateSummary();
+            }
+        }
+
+        // Collect step data
+        function collectStepData(stepNum) {
+            if (stepNum === 1) {
+                onboardingData.investmentProfile = {
+                    age: document.getElementById('age').value || null,
+                    annualIncome: document.getElementById('annualIncome').value || null,
+                    investmentExperience: document.getElementById('experience').value,
+                    riskTolerance: parseInt(document.getElementById('riskTolerance').value)
+                };
+            } else if (stepNum === 2) {
+                onboardingData.broker = {
+                    names: selectedBrokers, // Array of selected brokers
+                    demat: document.getElementById('dematNumber').value || null
+                };
+            } else if (stepNum === 3) {
+                const selectedGoal = document.querySelector('input[name="investmentGoal"]:checked');
+                const selectedCategories = Array.from(document.querySelectorAll('input[name="categories"]:checked')).map(c => c.value);
+
+                onboardingData.mfPreferences = {
+                    investmentGoal: selectedGoal ? selectedGoal.value : 'wealth_creation',
+                    preferredCategories: selectedCategories,
+                    investmentHorizon: parseInt(document.getElementById('investmentHorizon').value),
+                    monthlySIPAmount: parseInt(document.getElementById('monthlySIP').value) || 5000
+                };
+            }
+        }
+
+        // Next step
+        function nextStep() {
+            collectStepData(currentStep);
+
+            if (currentStep < totalSteps) {
+                showStep(currentStep + 1);
+            }
+        }
+
+        // Previous step
+        function prevStep() {
+            if (currentStep > 1) {
+                showStep(currentStep - 1);
+            }
+        }
+
+        // Skip step
+        function skipStep() {
+            if (currentStep < totalSteps) {
+                showStep(currentStep + 1);
+            }
+        }
+
+        // Toggle broker (multi-select)
+        function toggleBroker(element) {
+            const broker = element.dataset.broker;
+
+            if (element.classList.contains('selected')) {
+                // Deselect
+                element.classList.remove('selected');
+                selectedBrokers = selectedBrokers.filter(b => b !== broker);
+            } else {
+                // Select
+                element.classList.add('selected');
+                selectedBrokers.push(broker);
+            }
+
+            // Update hint text
+            const hint = document.getElementById('brokerHint');
+            if (selectedBrokers.length > 0) {
+                hint.textContent = `✅ ${selectedBrokers.length} broker${selectedBrokers.length > 1 ? 's' : ''} selected`;
+                hint.style.color = 'var(--green)';
+            } else {
+                hint.textContent = '💡 Tip: Select all brokers where you have accounts';
+                hint.style.color = 'var(--gray-600)';
+            }
+
+            // Show demat input for valid brokers
+            const dematInput = document.getElementById('dematInput');
+            const hasValidBroker = selectedBrokers.some(b => b !== 'other');
+            dematInput.style.display = hasValidBroker ? 'block' : 'none';
+        }
+
+        // Update summary on step 4
+        function updateSummary() {
+            const riskLabels = ['', 'Very Conservative', 'Conservative', 'Moderate', 'Aggressive', 'Very Aggressive'];
+            const riskLevel = onboardingData.investmentProfile.riskTolerance || 3;
+            document.getElementById('summaryRisk').textContent = riskLabels[riskLevel];
+
+            const goalLabels = {
+                'wealth_creation': 'Wealth Creation',
+                'tax_saving': 'Tax Saving (ELSS)',
+                'retirement': 'Retirement Planning',
+                'child_education': 'Child Education',
+                'regular_income': 'Regular Income'
+            };
+            const goal = onboardingData.mfPreferences.investmentGoal || 'wealth_creation';
+            document.getElementById('summaryGoal').textContent = goalLabels[goal] || 'Wealth Creation';
+
+            const horizon = onboardingData.mfPreferences.investmentHorizon || 5;
+            document.getElementById('summaryHorizon').textContent = `${horizon} Year${horizon > 1 ? 's' : ''}`;
+
+            const sip = onboardingData.mfPreferences.monthlySIPAmount || 5000;
+            document.getElementById('summarySIP').textContent = `₹${sip.toLocaleString('en-IN')}`;
+
+            // Update allocation based on risk
+            updateAllocation(riskLevel);
+        }
+
+        // Update allocation display
+        function updateAllocation(riskLevel) {
+            const allocations = {
+                1: { equity: 20, debt: 70, hybrid: 10 },
+                2: { equity: 40, debt: 50, hybrid: 10 },
+                3: { equity: 60, debt: 30, hybrid: 10 },
+                4: { equity: 75, debt: 15, hybrid: 10 },
+                5: { equity: 85, debt: 5, hybrid: 10 }
+            };
+
+            const alloc = allocations[riskLevel] || allocations[3];
+            const bar = document.getElementById('allocationBar');
+            bar.innerHTML = `
+                <div class="allocation-segment equity" style="width: ${alloc.equity}%;">Equity ${alloc.equity}%</div>
+                <div class="allocation-segment debt" style="width: ${alloc.debt}%;">Debt ${alloc.debt}%</div>
+                <div class="allocation-segment hybrid" style="width: ${alloc.hybrid}%;">Hybrid ${alloc.hybrid}%</div>
+            `;
+        }
+
+        // Complete onboarding
+        async function completeOnboarding() {
+            collectStepData(currentStep);
+
+            try {
+                const response = await fetch('/api/user/onboarding', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        investmentProfile: onboardingData.investmentProfile,
+                        broker: onboardingData.broker,
+                        mfPreferences: onboardingData.mfPreferences,
+                        onboardingCompleted: true
+                    })
+                });
+
+                const data = await response.json();
+
+                if (data.success) {
+                    showAlert('Profile setup complete! Redirecting to dashboard...', 'success');
+                    setTimeout(() => {
+                        window.location.href = '/';
+                    }, 1500);
+                } else {
+                    showAlert(data.error || 'Failed to save profile. Please try again.');
+                }
+            } catch (error) {
+                console.error('Onboarding error:', error);
+                // Still redirect even if save fails - user can update later
+                showAlert('Redirecting to dashboard...', 'success');
+                setTimeout(() => {
+                    window.location.href = '/';
+                }, 1500);
+            }
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function () {
+            updateProgress();
+        });
+    </script>
+</body>
+
+</html>

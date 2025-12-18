@@ -376,6 +376,70 @@ img {
     color: var(--white);
 }
 
+/* Navigation Auth Section */
+.main-nav .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-auth {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.btn-nav-login {
+    background: var(--saffron);
+    color: var(--white) !important;
+    padding: 8px 16px;
+    border-radius: 4px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+    transition: all 0.2s;
+    text-decoration: none !important;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.btn-nav-login:hover {
+    background: var(--saffron-dark);
+    transform: translateY(-1px);
+}
+
+.nav-user-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--white);
+    font-size: 0.85rem;
+}
+
+.nav-user-name {
+    padding: 5px 10px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+}
+
+.btn-nav-logout {
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    color: var(--white);
+    padding: 6px 12px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.btn-nav-logout:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: var(--white);
+}
+
 /* ============================================
    Hero Section - Government Banner
 ============================================ */

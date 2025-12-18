@@ -16,12 +16,69 @@ let currentSection = 'home';
 let fundsData = [];
 let currentPage = 1;
 const pageSize = 20;
+let currentUser = null;
+
+// ============================================
+// Authentication
+// ============================================
+
+async function checkAuthState() {
+    try {
+        const response = await fetch(`${API_BASE}/api/auth/me`, {
+            credentials: 'include'
+        });
+        const data = await response.json();
+
+        if (data.success && data.user) {
+            currentUser = data.user;
+            updateNavForLoggedInUser(data.user);
+            return true;
+        }
+    } catch (error) {
+        console.log('Auth check failed:', error);
+    }
+    return false;
+}
+
+function updateNavForLoggedInUser(user) {
+    const navAuth = document.getElementById('navAuth');
+    if (!navAuth) return;
+
+    navAuth.innerHTML = `
+        <div class="nav-user-info">
+            <a href="/profile" class="nav-user-name" style="text-decoration: none; cursor: pointer;">👤 ${user.fullName || user.firstName}</a>
+            <button class="btn-nav-logout" onclick="logout()">Logout</button>
+        </div>
+    `;
+}
+
+async function logout() {
+    try {
+        await fetch(`${API_BASE}/api/auth/logout`, {
+            method: 'POST',
+            credentials: 'include'
+        });
+    } catch (error) {
+        console.log('Logout error:', error);
+    }
+
+    // Clear local storage
+    localStorage.removeItem('user');
+    localStorage.removeItem('token');
+    currentUser = null;
+
+    // Redirect to login
+    window.location.href = '/login';
+}
 
 // ============================================
 // Initialization
 // ============================================
 
-document.addEventListener('DOMContentLoaded', function () {
+document.addEventListener('DOMContentLoaded', async function () {
+    // Check authentication state first
+    await checkAuthState();
+
     // Initialize hero image - random on each page refresh
     const heroImages = [
         'images/Gemini_Generated_Image_defdaqdefdaqdefd.png',
@@ -101,7 +158,16 @@ function showSection(sectionId) {
 
 async function apiGet(endpoint) {
     try {
-        const response = await fetch(`${API_BASE}${endpoint}`);
+        const response = await fetch(`${API_BASE}${endpoint}`, {
+            credentials: 'include'
+        });
+
+        // Handle 401 - redirect to login
+        if (response.status === 401) {
+            window.location.href = '/login';
+            return { success: false, error: 'Authentication required' };
+        }
+
         const data = await response.json();
         return data;
     } catch (error) {
@@ -117,8 +183,16 @@ async function apiPost(endpoint, body) {
             headers: {
                 'Content-Type': 'application/json'
             },
+            credentials: 'include',
             body: JSON.stringify(body)
         });
+
+        // Handle 401 - redirect to login
+        if (response.status === 401) {
+            window.location.href = '/login';
+            return { success: false, error: 'Authentication required' };
+        }
+
         const data = await response.json();
         return data;
     } catch (error) {
