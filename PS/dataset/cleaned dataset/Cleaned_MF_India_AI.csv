@@ -1,0 +1,790 @@
+alpha,amc_name,beta,category,expense_ratio,fund_age_yr,fund_manager,fund_size_cr,log_fund_size,min_lumpsum,min_sip,rating,returns_1yr,returns_3yr,returns_5yr,risk_level,scheme_name,sd,sharpe,sortino,sub_category
+2.24,Aditya Birla Sun Life Mutual Fund,0.01,Other,0.27,10,Kaustubh Gupta,10,2.3978952727983707,100,100,3,4,6.5,6.9,3,Aditya Birla SL Active Debt Multi-Mgr FoF-Dir Growth,9.39,0.24,0.32,FoFs Domestic
+1.53,Aditya Birla Sun Life Mutual Fund,0.56,Hybrid,0.36,10,Lovelish Solanki,4288,8.36380888451688,1000,1000,3,5.6,4.8,5.5,1,Aditya Birla SL Arbitrage Fund,0.72,1.1,1.33,Arbitrage Mutual Funds
+2.67,Aditya Birla Sun Life Mutual Fund,0.67,Other,0.53,10,Vinod Narayan Bhat,157,5.062595033026967,1000,1000,3,2,18.9,9.7,5,Aditya Birla SL Asset Allocator FoF-Dir Growth,10.58,1.42,3.44,FoFs Domestic
+-6.37,Aditya Birla Sun Life Mutual Fund,0.85,Solution Oriented,0.76,4,Atul Penkar,637,6.45833828334479,1000,500,2,-0.7,17.1,8.8,6,Aditya Birla SL Bal Bhavishya Yojna – Dir Growth,14.99,0.9,2.18,Childrens Funds
+1.99,Aditya Birla Sun Life Mutual Fund,0.68,Hybrid,0.61,10,Mohit Sharma,6386,8.76201995356159,100,100,4,4.5,18.6,9.7,6,Aditya Birla SL Balanced Advantage Fund,10.38,1.39,3.69,Dynamic Asset Allocation or Balanced Advantage
+1.24,Aditya Birla Sun Life Mutual Fund,0.96,Equity,1.17,9,Dhaval Gala,2384,7.776954403322442,1000,1000,2,5.3,24.6,9.2,6,Aditya Birla SL Banking&Financial Services-DirGrowth,25.53,0.97,2.07,Sectoral / Thematic Mutual Funds
+4.46,Aditya Birla Sun Life Mutual Fund,1.78,Debt,0.37,10,Kaustubh Gupta,7994,8.986571625268054,1000,1000,4,4.5,6.8,7.3,3,Aditya Birla SL Banking&PSU Debt Fund,1.91,1.09,1.92,Banking and PSU Mutual Funds
+1.82,Aditya Birla Sun Life Mutual Fund,0.86,Equity,1.29,10,Vinod Narayan Bhat,15,2.772588722239781,1000,1000,3,-10.3,29.4,9.3,6,Aditya Birla SL CEF – Global Agri Plan-Direct Growth,20.18,1.06,1.42,Sectoral / Thematic Mutual Funds
+2.38,Aditya Birla Sun Life Mutual Fund,0.78,Debt,0.31,10,Kaustubh Gupta,12120,9.402694764470512,100,100,4,4.9,7.1,7.4,2,Aditya Birla SL Corporate Bond Fund,1.93,1.35,2.28,Corporate Bond Mutual Funds
+3.01,Aditya Birla Sun Life Mutual Fund,-0.95,Debt,0.69,8,Sunaina da Cunha,1032,6.940222469119639,100,100,4,8.7,9,7.2,4,Aditya Birla SL Credit Risk Fund,2.9,1.47,1.82,Credit Risk Funds
+9.37,Aditya Birla Sun Life Mutual Fund,0.83,Equity,0.88,10,Kunal Sangoi,3338,8.113426639943654,1000,100,3,-14.6,39.8,21.1,6,Aditya Birla SL Digital India Fund,21.12,1.53,2.42,Sectoral / Thematic Mutual Funds
+5.04,Aditya Birla Sun Life Mutual Fund,0.85,Equity,1.73,10,Dhaval Gala,850,6.7464121285733745,1000,1000,3,6.2,30.5,10,6,Aditya Birla SL Dividend Yield Fund,15.77,1.58,3.78,Dividend Yield Funds
+3.02,Aditya Birla Sun Life Mutual Fund,0.91,Debt,0.64,10,Mohit Sharma,1795,7.493317248862145,1000,1000,5,7.5,8,6,3,Aditya Birla SL Dynamic Bond Fund,3.22,1.02,1.78,Dynamic Bond
+-2.06,Aditya Birla Sun Life Mutual Fund,0.98,Equity,1.14,10,Atul Penkar,4836,8.484049972822984,1000,1000,1,-9.9,22.3,7.9,6,Aditya Birla SL Equity Advantage Fund,17.61,1.16,2.21,Large & Mid Cap Funds
+1.43,Aditya Birla Sun Life Mutual Fund,0.85,Hybrid,1.01,10,Mahesh Patil,7046,8.860357273327022,100,100,2,-5.7,20.4,7.7,6,Aditya Birla SL Equity Hybrid ’95 Fund,12.84,1.33,2.54,Aggressive Hybrid Mutual Funds
+1.11,Aditya Birla Sun Life Mutual Fund,0.99,Hybrid,1.21,8,Dhaval Shah,451,6.113682179832232,1000,1000,2,0.8,11.7,6.9,4,Aditya Birla SL Equity Savings Fund,6.83,1.2,2.55,Equity Savings Mutual Funds
+-1.46,Aditya Birla Sun Life Mutual Fund,0.96,Equity,0.86,10,Anil Shah,15449,9.645364282325891,100,100,3,-2.1,25,10.4,6,Aditya Birla SL Flexi Cap Fund,16.6,1.27,3.4,Flexi Cap Funds
+3.73,Aditya Birla Sun Life Mutual Fund,1.37,Debt,0.23,10,Kaustubh Gupta,12364,9.422625179955517,1000,1000,5,5.8,6.4,6.8,2,Aditya Birla SL Floating Rate Fund,1.14,1.66,2.81,Floater Mutual Funds
+-1.14,Aditya Birla Sun Life Mutual Fund,0.95,Equity,1.06,10,Mahesh Patil,5633,8.636574948436317,1000,1000,3,-0.7,24,10.7,6,Aditya Birla SL Focused Equity Fund,16.09,1.26,3.24,Focused Funds
+1.65,Aditya Birla Sun Life Mutual Fund,0.8,Other,0.22,10,Vinod Narayan Bhat,159,5.075173815233827,100,100,3,2.5,21.7,10.7,6,Aditya Birla SL FP FoF – Aggressive – Direct Growth,11.73,1.4,3.13,FoFs Domestic
+1.94,Aditya Birla Sun Life Mutual Fund,0.36,Other,0.34,10,Vinod Narayan Bhat,14,2.70805020110221,100,100,4,4.7,13.3,8.2,4,Aditya Birla SL FP FoF – Conservative – Direct Growth,5.49,1.57,3.82,FoFs Domestic
+1.69,Aditya Birla Sun Life Mutual Fund,0.58,Other,0.36,10,Vinod Narayan Bhat,28,3.367295829986474,100,100,3,3.7,17.3,9.4,5,Aditya Birla SL FP FoF – Moderate – Direct Growth,8.56,1.44,3.09,FoFs Domestic
+0.76,Aditya Birla Sun Life Mutual Fund,0.95,Equity,1.03,10,Mahesh Patil,21131,9.958543758284206,100,100,3,1.6,26.3,10.6,6,Aditya Birla SL Frontline Equity Fund,16.02,1.39,3.36,Large Cap Mutual Funds
+1.82,Aditya Birla Sun Life Mutual Fund,0.86,Other,0.7,10,Vinod Narayan Bhat,261,5.568344503761097,100,100,3,-5.7,18.8,8.3,6,Aditya Birla SL Global Emerging Oppt Fund,16.64,0.7,0.98,FoFs Overseas
+-0.57,Aditya Birla Sun Life Mutual Fund,0.97,Other,0.15,10,Lovelish Solanki,278,5.631211781821365,100,100,2,11.8,12.1,13.2,5,Aditya Birla SL Gold Fund,13.89,0.45,1.07,FoFs Domestic
+1.09,Aditya Birla Sun Life Mutual Fund,0.73,Debt,0.29,10,Bhupesh Bameta,1351,7.20934025660291,1000,1000,3,3.6,6,8,3,Aditya Birla SL Govt Securities Fund,3.35,0.57,0.71,Gilt Mutual Funds
+1.69,Aditya Birla Sun Life Mutual Fund,1.51,Debt,0.49,10,Bhupesh Bameta,1496,7.311218384419629,5000,1000,4,3.5,7.1,7.7,3,Aditya Birla SL Income Fund,3.29,0.64,0.88,Medium to Long Duration Funds
+3.33,Aditya Birla Sun Life Mutual Fund,0.79,Equity,0.82,10,Chanchal Khandelwal,3217,8.076515327552329,1000,1000,3,4.6,25,13.3,6,Aditya Birla SL India GenNext Fund,14.93,1.43,3.73,Sectoral / Thematic Mutual Funds
+4.38,Aditya Birla Sun Life Mutual Fund,0.85,Equity,1.7,10,Mahesh Patil,562,6.333279628139691,1000,1000,2,13.5,35.6,9.2,6,Aditya Birla SL Infrastructure Fund,22.52,1.4,3.3,Sectoral / Thematic Mutual Funds
+1.82,Aditya Birla Sun Life Mutual Fund,0.86,Equity,1.75,10,Vinod Narayan Bhat,108,4.6913478822291435,1000,1000,3,0.9,17.7,10.4,6,Aditya Birla SL Inter Equity – Plan A-Direct Growth,13.99,0.81,1.28,Sectoral / Thematic Mutual Funds
+-1.93,Aditya Birla Sun Life Mutual Fund,0.87,Equity,2.15,10,Vinod Narayan Bhat,90,4.51085950651685,1000,1000,3,-4.1,22.7,7.6,6,Aditya Birla SL Inter Equity – Plan B-Direct Growth,16.3,1.14,2.45,Sectoral / Thematic Mutual Funds
+1.49,Aditya Birla Sun Life Mutual Fund,0.8,Debt,0.21,10,Kaustubh Gupta,28071,10.24252791726305,500,500,4,5.7,4.4,5.4,3,Aditya Birla SL Liquid Fund,0.39,1.06,5.28,Liquid Mutual Funds
+3.33,Aditya Birla Sun Life Mutual Fund,1,Debt,0.39,10,Mohit Sharma,10035,9.213933907486313,100,100,4,5.7,6.5,7,3,Aditya Birla SL Low Duration Fund,0.97,2.05,4.76,Low Duration Funds
+-1.7,Aditya Birla Sun Life Mutual Fund,0.83,Equity,1.56,8,Anil Shah,613,6.419994928147142,1000,1000,3,-2.9,21.7,6.8,6,Aditya Birla SL Manufacturing Equity Fund,15.05,1.18,2.43,Sectoral / Thematic Mutual Funds
+9.65,Aditya Birla Sun Life Mutual Fund,1.12,Debt,0.86,10,Sunaina da Cunha,1652,7.410347097821024,1000,1000,5,22.1,14.5,8.6,4,Aditya Birla SL Medium Term Plan – Direct Growth,10.73,0.93,2.29,Medium Duration Funds
+-0.81,Aditya Birla Sun Life Mutual Fund,0.89,Equity,1.2,10,Anil Shah,3436,8.142354276849835,1000,1000,1,-3.6,28,8.3,6,Aditya Birla SL Midcap Fund,16.52,1.54,3.11,Mid Cap Mutual Funds
+3.06,Aditya Birla Sun Life Mutual Fund,1.31,Debt,0.21,10,Mohit Sharma,13095,9.48006211905097,1000,1000,4,5.6,5.6,6.4,3,Aditya Birla SL Money Manager Fund,0.68,1.94,4.58,Money Market Funds
+-0.87,Aditya Birla Sun Life Mutual Fund,0.99,Other,0.32,10,Lovelish Solanki,494,6.20455776256869,100,1000,3,0.7,25.5,11.6,6,Aditya Birla SL Nifty 50 Index Fund,16.65,1.29,3.42,Index Funds
+0.58,Aditya Birla Sun Life Mutual Fund,0.43,Debt,0.07,4,Kaustubh Gupta,13399,9.503009985939002,5000,0,3,5.4,3.9,8.8,1,Aditya Birla SL Overnight Fund,0.35,0.02,0.11,Overnight Mutual Funds
+3.41,Aditya Birla Sun Life Mutual Fund,0.99,Equity,1.12,10,Kunal Sangoi,3798,8.242493153187626,1000,1000,1,3,29.8,4.3,6,Aditya Birla SL Pure Value Fund,18.83,1.36,2.31,Value Funds
+5.71,Aditya Birla Sun Life Mutual Fund,0.6,Hybrid,0.92,10,Dhaval Shah,1585,7.368970402194793,500,500,3,3.6,13.9,7.6,4,Aditya Birla SL Regular Savings Fund,4.8,2.08,3.88,Conservative Hybrid Mutual Funds
+-5.61,Aditya Birla Sun Life Mutual Fund,0.84,Solution Oriented,1.06,4,Dhaval Shah,258,5.556828061699537,1000,500,2,0,17.9,8.8,6,Aditya Birla SL Retirement-The 30s Plan-Dir Growth,14.94,0.94,2.41,Retirement Funds
+-3.14,Aditya Birla Sun Life Mutual Fund,0.77,Solution Oriented,1.07,4,Dhaval Shah,91,4.5217885770490405,1000,500,2,-0.1,15,8.8,6,Aditya Birla SL Retirement-The 40s Plan-Dir Growth,11.86,0.93,2.34,Retirement Funds
+-2.04,Aditya Birla Sun Life Mutual Fund,0.34,Solution Oriented,0.63,4,Dhaval Shah,27,3.332204510175204,1000,500,2,3,4.6,8.8,4,Aditya Birla SL Retirement-The 50s Plan-Dir Growth,2.99,0.13,0.29,Retirement Funds
+0.09,Aditya Birla Sun Life Mutual Fund,1.09,Solution Oriented,0.85,4,Dhaval Shah,26,3.295836866004329,1000,500,1,2.9,4.6,8.8,3,Aditya Birla SL Retirement-The 50sPlus-Debt-DirGrowth,2.19,0.18,0.22,Retirement Funds
+2.64,Aditya Birla Sun Life Mutual Fund,0.86,Debt,0.34,10,Kaustubh Gupta,14457,9.579003173560242,1000,1000,4,5.5,5.8,6.5,3,Aditya Birla SL Savings Fund,0.76,1.96,4.23,Ultra Short Duration Funds
+4.91,Aditya Birla Sun Life Mutual Fund,1.27,Debt,0.38,10,Kaustubh Gupta,5045,8.526351129201004,1000,1000,4,5.5,7.8,7.6,3,Aditya Birla SL Short Term Fund,2.05,1.57,3.7,Short Duration Funds
+-0.73,Aditya Birla Sun Life Mutual Fund,0.89,Equity,1.04,10,Vishal Gajwani,2901,7.973155433444133,1000,1000,1,-2.3,31.6,5.4,6,Aditya Birla SL Small Cap Fund,19.36,1.51,3.11,Small Cap Mutual Funds
+-7.68,Aditya Birla Sun Life Mutual Fund,0.87,Equity,0.93,10,Atul Penkar,12755,9.453757028129948,500,500,1,-3,16.1,5.8,6,Aditya Birla SL Tax Relief ’96 – Direct Growth,15.31,0.83,1.94,ELSS Mutual Funds
+1.88,Axis Mutual Fund,0.8,Other,0.22,3,R Sivakumar,161,5.087596335232384,5000,1000,4,4.7,6.2,8.8,4,AXIS All Seasons Debt Fund,2.06,1.02,1.77,FoFs Domestic
+1.41,Axis Mutual Fund,0.44,Hybrid,0.31,9,Ashish Naik,3085,8.034631032923107,500,1000,4,5.6,4.9,5.6,1,AXIS Arbitrage Fund,0.68,1.21,1.47,Arbitrage Mutual Funds
+-1.23,Axis Mutual Fund,0.53,Hybrid,0.7,6,Anupam Tiwari,2077,7.639161171659173,500,1000,2,1.2,12.4,8,6,AXIS Balanced Advantage Fund,8.09,1.05,2.26,Dynamic Asset Allocation or Balanced Advantage
+3.83,Axis Mutual Fund,1.62,Debt,0.33,10,Aditya Pagaria,13953,9.543521484499182,5000,1000,4,4.5,6.4,7.2,3,AXIS Banking & PSU Debt Fund,1.5,1.11,2.78,Banking and PSU Mutual Funds
+-5.97,Axis Mutual Fund,0.89,Equity,0.63,10,Shreyash Devalkar,33049,10.405776845279833,500,500,4,-6.1,17.3,12.1,6,AXIS Bluechip Fund,15.76,0.9,1.81,Large Cap Mutual Funds
+-1.6,Axis Mutual Fund,0.86,Solution Oriented,1.06,7,Ashish Naik,685,6.530877627725885,5000,1000,3,-6.5,17.8,10.1,6,AXIS Children’s Gift Fund,12.97,1.1,2.34,Childrens Funds
+2.46,Axis Mutual Fund,0.67,Debt,0.22,6,Devang Shah,3783,8.238536930171769,5000,1000,5,4.9,7.5,7.3,3,AXIS Corporate Debt Fund,2.06,1.28,2.88,Corporate Bond Mutual Funds
+3.22,Axis Mutual Fund,0.26,Debt,0.81,9,Devang Shah,620,6.431331081933479,5000,1000,4,5.4,7.4,6.8,4,AXIS Credit Risk Fund,1.62,1.77,1.97,Credit Risk Funds
+1.2,Axis Mutual Fund,1.84,Debt,0.26,10,R Sivakumar,1733,7.458186157340487,5000,1000,2,3.4,6.5,7.7,3,AXIS Dynamic Bond Fund,3.83,0.45,0.61,Dynamic Bond
+-1.88,Axis Mutual Fund,0.87,Hybrid,0.89,5,Ashish Naik,1699,7.438383530044307,500,1000,2,-4.9,17.4,8.8,6,AXIS Equity Hybrid Fund,13,1.09,2.37,Aggressive Hybrid Mutual Funds
+0.66,Axis Mutual Fund,1.16,Hybrid,0.88,8,R Sivakumar,978,6.88653164253051,500,1000,3,1.4,12.7,8.8,4,AXIS Equity Saver Fund,7.52,1.19,2.39,Equity Savings Mutual Funds
+-5.98,Axis Mutual Fund,0.89,Equity,0.7,5,Shreyash Devalkar,10077,9.218110109240543,500,500,4,-8.3,17.9,12.3,6,AXIS Flexi Cap Fund,16.19,0.92,1.77,Flexi Cap Funds
+1.82,Axis Mutual Fund,0.86,Debt,0.16,2,Aditya Pagaria,416,6.0330862217988015,5000,1000,2,5.8,18.15,8.8,2,AXIS Floater Fund,12.1,1.29,2.86,Floater Mutual Funds
+-10.67,Axis Mutual Fund,1.04,Equity,0.74,10,Jinesh Gopani,15139,9.62509552699144,500,500,2,-14.7,14.8,8.9,6,AXIS Focused 25 Fund,18.84,0.74,1.44,Focused Funds
+5.29,Axis Mutual Fund,2.36,Debt,0.13,4,Devang Shah,110,4.709530201312334,0,0,3,11.2,14.5,14,2,AXIS FTP – Series 104 – 1112Days,12.1,2.19,7.27,Fixed Maturity Plans
+1.82,Axis Mutual Fund,0.86,Debt,0,1,Devang Shah,565,6.338594078203183,0,0,3,11.2,14.5,14,3,AXIS FTP – Series 109 – 111Days,12.1,1.29,2.86,Fixed Maturity Plans
+1.09,Axis Mutual Fund,0.56,Debt,0.39,10,Devang Shah,133,4.897839799950911,5000,1000,4,4,5.9,7.9,3,AXIS Gilt Fund,2.87,0.6,1.15,Gilt Mutual Funds
+-0.04,Axis Mutual Fund,0.97,Other,0.17,10,Aditya Pagaria,290,5.673323267171493,5000,1000,4,14.5,12,13.7,5,AXIS Gold Fund,13.9,0.49,1.07,FoFs Domestic
+1.19,Axis Mutual Fund,0.91,Equity,0.59,4,Jinesh Gopani,8053,8.9939241414114,500,1000,3,-6.4,26.5,8.8,6,AXIS Growth Opportunities Fund,17.3,1.28,2.64,Large & Mid Cap Funds
+1.41,Axis Mutual Fund,0.78,Debt,0.15,10,Devang Shah,27226,10.211964406994612,500,0,4,5.7,4.3,5.4,2,AXIS Liquid Fund,0.38,0.96,4.54,Liquid Mutual Funds
+-9.98,Axis Mutual Fund,1.02,Equity,0.85,10,Jinesh Gopani,28754,10.266566944147854,500,500,2,-11.1,15.7,9.4,6,AXIS Long Term Equity Fund,18.65,0.75,1.45,ELSS Mutual Funds
+-2.25,Axis Mutual Fund,0.81,Equity,0.57,10,Shreyash Devalkar,18920,9.84802769533176,500,500,5,-2.5,25.2,15.8,6,AXIS Midcap Fund,15.37,1.4,2.98,Mid Cap Mutual Funds
+2.81,Axis Mutual Fund,1.22,Debt,0.21,4,Devang Shah,4002,8.294799358992574,5000,1000,4,5.6,5.4,8.8,2,AXIS Money Market Fund,0.62,1.91,4.81,Money Market Funds
+-1.76,Axis Mutual Fund,0.99,Other,0.15,3,Ashish Naik,953,6.860663671448287,500,1000,3,-1.7,25.1,8.8,6,AXIS Nifty 100 Index Fund,16.66,1.24,2.93,Index Funds
+0.62,Axis Mutual Fund,0.44,Debt,0.05,4,Aditya Pagaria,12566,9.438829609615144,500,0,4,5.4,3.9,8.8,1,AXIS Overnight Fund,0.35,0.09,0.49,Overnight Mutual Funds
+1.34,Axis Mutual Fund,0.71,Hybrid,0.86,10,Devang Shah,407,6.0112671744041615,500,1000,3,1.8,10.9,7,4,AXIS Regular Saver Fund,4.69,1.37,2.42,Conservative Hybrid Mutual Funds
+-4.49,Axis Mutual Fund,0.78,Solution Oriented,0.65,3,Jinesh Gopani,633,6.452048954437226,5000,1000,1,-4.1,14,8.8,6,AXIS Retirement Savings Fund,13.03,0.76,1.56,Retirement Funds
+4.6,Axis Mutual Fund,1.78,Debt,0.3,10,Devang Shah,7096,8.867427438524983,5000,1000,4,4.9,6.9,7.4,3,AXIS Short Term Fund,1.61,1.38,2.78,Short Duration Funds
+8.34,Axis Mutual Fund,0.66,Equity,0.54,9,Anupam Tiwari,11462,9.34687973611501,500,500,5,3.4,34.5,19.4,6,AXIS Small Cap Fund,14.71,2.06,3.9,Small Cap Mutual Funds
+2.56,Axis Mutual Fund,0.7,Debt,0.39,10,Devang Shah,1644,7.405495663199472,5000,1000,4,5.2,7.4,7.4,4,AXIS Strategic Bond Fund,1.89,1.46,2.27,Medium Duration Funds
+3.09,Axis Mutual Fund,1.17,Debt,0.29,10,Devang Shah,4614,8.437067146936952,5000,1000,4,5.3,5.9,6.6,2,AXIS Treasury Advantage Fund,0.87,1.75,3.73,Low Duration Funds
+-2.21,Axis Mutual Fund,0.91,Hybrid,0.72,10,R Sivakumar,1478,7.2991214627108,500,1000,2,-5.1,18.1,10.4,6,AXIS Triple Advantage Fund,13.44,1.08,2.35,Multi Asset Allocation Mutual Funds
+2.29,Axis Mutual Fund,0.81,Debt,0.31,5,Aditya Pagaria,4491,8.410053315858335,5000,1000,4,5.7,5.4,8.8,3,AXIS Ultra Short Term Fund,0.53,2.25,4.47,Ultra Short Duration Funds
+0.73,Bandhan Mutual Fund,0.43,Other,0.42,10,Sachin Relekar,16,2.833213344056216,1000,100,3,1.3,12.7,6.9,5,Bandhan Asset Allocation FoF – Moderate – Direct Growth,6.59,1.31,2.27,FoFs Domestic
+9.78,Bandhan Mutual Fund,5.4,Debt,0.05,4,Harshal Joshi,286,5.659482215759621,5000,0,3,4.4,6.2,8.8,3,Bandhan FTP – Sr.179,3.98,0.64,0.9,Fixed Maturity Plans
+0.24,Bank of India Mutual Fund,0.52,Hybrid,0.98,5,Alok Singh,12,2.5649493574615367,5000,1000,1,4.2,3.4,8.8,1,Bank of India Arbitrage Fund,0.6,-0.78,-1.14,Arbitrage Mutual Funds
+-1.05,Bank of India Mutual Fund,0.54,Hybrid,2.07,9,Alok Singh,90,4.51085950651685,5000,1000,2,13.6,12.1,5.1,6,Bank of India Balanced Advantage Fund,11.04,0.81,1.81,Dynamic Asset Allocation or Balanced Advantage
+6.44,Bank of India Mutual Fund,0.64,Hybrid,2.2,10,Alok Singh,63,4.1588830833596715,10000,1000,4,22.3,15.5,6.4,3,Bank of India Conservative Hybrid Fund,11.85,0.93,4.71,Conservative Hybrid Mutual Funds
+-13.36,Bank of India Mutual Fund,-31.86,Debt,1.54,8,Alok Singh,161,5.087596335232384,5000,0,5,130.8,12.8,-4.1,4,Bank of India Credit Risk Fund,77.72,0.38,0.91,Credit Risk Funds
+1.7,Bank of India Mutual Fund,0.88,Equity,1.89,10,Nitin Gosar,204,5.3230099791384085,5000,1000,2,2.7,25.6,9.5,6,Bank of India Large & Mid Cap Equity Fund,15.55,1.4,2.66,Large & Mid Cap Funds
+1.38,Bank of India Mutual Fund,0.76,Debt,0.18,10,Mithraem Bharucha,403,6.0014148779611505,5000,0,4,5.7,4.3,5.3,2,Bank of India Liquid Fund,0.38,0.92,4.06,Liquid Mutual Funds
+12.2,Bank of India Mutual Fund,0.54,Equity,1.55,10,Nitin Gosar,87,4.477336814478207,5000,1000,4,7.6,35.4,11.5,6,Bank of India Manufacturing & Infrastr Fund,16.3,1.8,3.23,Sectoral / Thematic Mutual Funds
+10.87,Bank of India Mutual Fund,0.75,Hybrid,1.92,7,Alok Singh,380,5.942799375126701,5000,1000,4,-0.3,29.3,10.4,6,Bank of India Mid & Small Cap Equity & Debt Fund,15.51,1.59,2.56,Aggressive Hybrid Mutual Funds
+3.13,Bank of India Mutual Fund,0.87,Equity,0.95,5,Dhruv Bhatia,51,3.9512437185814275,500,0,3,-4.1,27.1,10.6,6,Bank of India Midcap Tax Fund,17.03,1.38,2.64,ELSS Mutual Funds
+0.76,Bank of India Mutual Fund,0.47,Debt,0.17,3,Mithraem Bharucha,82,4.418840607796598,5000,0,5,5.5,4,8.8,1,Bank of India Overnight Fund,0.34,0.39,1.92,Overnight Mutual Funds
+3.58,Bank of India Mutual Fund,-0.99,Debt,0.98,10,Mithraem Bharucha,72,4.290459441148391,5000,1000,5,28.3,8.8,4,2,Bank of India Short Term Income – Direct Growth,11.44,0.43,0.76,Short Duration Funds
+8.58,Bank of India Mutual Fund,0.81,Equity,1.52,4,Dhruv Bhatia,414,6.028278520230698,5000,1000,4,-1,47.7,8.8,6,Bank of India Small Cap Fund,18.44,1.93,4.16,Small Cap Mutual Funds
+3.48,Bank of India Mutual Fund,0.89,Equity,1.31,10,Alok Singh,676,6.517671272912275,500,500,4,0.9,29,13.2,6,Bank of India Tax Advantage Fund,16.3,1.5,2.88,ELSS Mutual Funds
+2.06,Bank of India Mutual Fund,1.12,Debt,0.36,10,Mithraem Bharucha,118,4.77912349311153,5000,1000,2,5.2,4.7,5.7,3,Bank of India Ultra Short Duration Fund,0.52,1.07,2.16,Ultra Short Duration Funds
+1.88,Baroda BNP Paribas Mutual Fund,0.79,Hybrid,0.61,6,Jitendra Sriram,772,6.650279048587422,5000,300,5,3.5,20.6,13.3,6,Baroda BNP Paribas Aggressive Hybrid Fund,11.77,1.39,2.79,Aggressive Hybrid Mutual Funds
+1.39,Baroda BNP Paribas Mutual Fund,0.59,Hybrid,0.49,6,Neeraj Saxena,354,5.872117789475416,5000,300,3,5.2,4.6,5.6,1,Baroda BNP Paribas Arbitrage Fund,0.71,0.85,0.99,Arbitrage Mutual Funds
+2.61,Baroda BNP Paribas Mutual Fund,0.7,Hybrid,0.64,4,Sanjay Chawla,3123,8.046869510959576,5000,500,4,3.7,19.8,8.8,6,Baroda BNP Paribas Balanced Advantage Fund,10.57,1.46,3.41,Dynamic Asset Allocation or Balanced Advantage
+1.82,Baroda BNP Paribas Mutual Fund,0.86,Debt,0.39,2,Prashant Pimple,40,3.713572066704308,5000,500,2,2.5,18.15,8.8,2,Baroda BNP Paribas Banking & PSU Bond Fund,12.1,1.29,2.86,Banking and PSU Mutual Funds
+-2.87,Baroda BNP Paribas Mutual Fund,0.89,Equity,1.63,10,Miten Vora,69,4.248495242049359,5000,500,2,6.6,19.2,9.1,6,Baroda BNP Paribas Banking&Fin Serv Fund,22.87,0.82,1.77,Sectoral / Thematic Mutual Funds
+0.64,Baroda BNP Paribas Mutual Fund,0.58,Hybrid,0.78,10,Pratish Krishnan,501,6.218600119691729,1000,300,4,3.7,9.2,7.7,4,Baroda BNP Paribas Conservative Hybrid Fund,3.7,1.29,2.74,Conservative Hybrid Mutual Funds
+0.69,Baroda BNP Paribas Mutual Fund,0.9,Debt,0.32,10,Mayank Prakash,17,2.8903717578961645,5000,300,2,2.8,5.6,4.4,2,Baroda BNP Paribas Corporate Bond Fund,2.22,0.43,0.63,Corporate Bond Mutual Funds
+1.72,Baroda BNP Paribas Mutual Fund,-3.29,Debt,0.78,8,Prashant Pimple,179,5.19295685089021,5000,500,5,5.7,10.9,7.6,4,Baroda BNP Paribas Credit Risk Fund,5.8,1.06,1.9,Credit Risk Funds
+0.91,Baroda BNP Paribas Mutual Fund,1.36,Debt,0.71,10,Mayank Prakash,115,4.7535901911063645,1000,300,2,5.2,5.7,6.6,3,Baroda BNP Paribas Dynamic Bond Fund,2.65,0.49,0.56,Dynamic Bond
+-0.94,Baroda BNP Paribas Mutual Fund,0.83,Equity,1.12,10,Sanjay Chawla,651,6.480044561926653,500,500,3,-2.4,20.4,10.5,6,Baroda BNP Paribas ELSS Fund,14.42,1.29,2.92,ELSS Mutual Funds
+0.25,Baroda BNP Paribas Mutual Fund,0.73,Hybrid,1.45,4,Pratish Krishnan,250,5.5254529391317835,5000,500,3,3.7,9.8,8.8,4,Baroda BNP Paribas Equity Savings Fund,4.91,1.12,2.42,Equity Savings Mutual Funds
+-1.21,Baroda BNP Paribas Mutual Fund,0.85,Equity,0.67,5,Sanjay Chawla,299,5.703782474656201,5000,300,3,0.5,23.1,9.9,6,Baroda BNP Paribas Focused Fund,14.73,1.27,2.96,Focused Funds
+0.07,Baroda BNP Paribas Mutual Fund,0.66,Debt,0.14,10,Mayank Prakash,138,4.9344739331306915,5000,500,2,3.7,4.9,6.8,3,Baroda BNP Paribas Gilt Fund,2.89,0.28,0.34,Gilt Mutual Funds
+2.41,Baroda BNP Paribas Mutual Fund,0.71,Equity,0.81,5,Shiv Chanani,880,6.78105762593618,5000,300,3,5.2,23.3,8.8,6,Baroda BNP Paribas India Consumption Fund,13.62,1.38,3.08,Sectoral / Thematic Mutual Funds
+-0.18,Baroda BNP Paribas Mutual Fund,0.86,Equity,0.94,10,Jitendra Sriram,1347,7.206377291472252,5000,300,4,3,23.5,12.8,6,Baroda BNP Paribas Large Cap Fund,14.57,1.32,2.71,Large Cap Mutual Funds
+1.32,Baroda BNP Paribas Mutual Fund,0.72,Debt,0.19,10,Vikram Pamnani,6686,8.80792062205398,5000,500,5,5.7,4.4,5.4,2,Baroda BNP Paribas Liquid Fund,0.38,0.93,4.11,Liquid Mutual Funds
+3.17,Baroda BNP Paribas Mutual Fund,1.28,Debt,0.39,10,Mayank Prakash,175,5.170483995038151,5000,300,3,5,6,6.5,3,Baroda BNP Paribas Low Duration Fund,0.96,1.51,2.55,Low Duration Funds
+0.42,Baroda BNP Paribas Mutual Fund,1.16,Debt,0.69,9,Mayank Prakash,37,3.6375861597263857,5000,300,2,3.9,5,3.5,3,Baroda BNP Paribas Medium Duration Fund,2.34,0.32,0.42,Medium Duration Funds
+1.31,Baroda BNP Paribas Mutual Fund,0.86,Equity,0.59,10,Shiv Chanani,1192,7.084226422097916,5000,300,3,2.4,30.6,13.6,6,Baroda BNP Paribas Mid Cap Fund,15.92,1.67,3.35,Mid Cap Mutual Funds
+1.72,Baroda BNP Paribas Mutual Fund,1.15,Debt,0.2,4,Vikram Pamnani,111,4.718498871295094,5000,500,2,5,4.1,8.8,2,Baroda BNP Paribas Money Market Fund,0.46,0.38,0.91,Money Market Funds
+2.11,Baroda BNP Paribas Mutual Fund,0.9,Equity,1.1,10,Sanjay Chawla,1628,7.395721608602045,5000,500,2,-1.7,28.8,12.3,6,Baroda BNP Paribas Multi Cap Fund,16.27,1.44,3.05,Multi Cap Funds
+0.62,Baroda BNP Paribas Mutual Fund,0.45,Debt,0.08,4,Vikram Pamnani,423,6.049733455231958,5000,500,3,5.4,3.9,8.8,1,Baroda BNP Paribas Overnight Fund,0.34,0.05,0.32,Overnight Mutual Funds
+3.6,Baroda BNP Paribas Mutual Fund,1.55,Debt,0.37,10,Prashant Pimple,235,5.4638318050256105,5000,500,3,4.2,5.7,6.7,3,Baroda BNP Paribas Short Duration Fund,1.75,0.88,1.23,Short Duration Funds
+2.59,Baroda BNP Paribas Mutual Fund,1.24,Debt,0.22,5,Vikram Pamnani,560,6.329720905522696,5000,500,3,5.7,5.1,8.8,2,Baroda BNP Paribas Ultra Short Duration Fund,0.53,1.77,3.14,Ultra Short Duration Funds
+1.82,Edelweiss Mutual Fund,0.86,Other,0.06,3,Dhawal Dalal,3912,8.272059622210412,1000,500,2,2.6,18.15,8.8,2,BHARAT Bond FOF – April 2025 – Direct Growth,12.1,1.29,2.86,FoFs Domestic
+0.16,Canara Robeco Mutual Fund,0.89,Equity,0.48,10,Shridatta Bhandwaldar,8672,9.067970030684457,5000,1000,5,1.7,24.3,14.4,6,Canara Robeco Bluechip Equity Fund,14.97,1.35,3.07,Large Cap Mutual Funds
+2.59,Canara Robeco Mutual Fund,0.6,Hybrid,0.57,10,Avnish Jain,1069,6.975413927455952,5000,1000,5,3.8,11.4,9.4,4,Canara Robeco Conservative Hybrid Fund,3.98,1.74,3.41,Conservative Hybrid Mutual Funds
+4.63,Canara Robeco Mutual Fund,0.74,Equity,1,10,Shridatta Bhandwaldar,935,6.8416154764775925,5000,1000,4,7.1,26.7,15.1,6,Canara Robeco Consumer Trends Fund,14.66,1.48,3.47,Sectoral / Thematic Mutual Funds
+1.33,Canara Robeco Mutual Fund,0.77,Debt,0.39,9,Avnish Jain,191,5.2574953720277815,5000,1000,3,4,6,6.7,2,Canara Robeco Corporate Bond Fund,1.81,0.85,1.35,Corporate Bond Mutual Funds
+0.74,Canara Robeco Mutual Fund,1.02,Debt,0.66,10,Kunal Jain,116,4.762173934797756,5000,1000,3,4.7,5.3,6.6,3,Canara Robeco Dynamic Bond Fund,2.17,0.47,0.64,Dynamic Bond
+2.48,Canara Robeco Mutual Fund,0.89,Equity,0.6,10,Shridatta Bhandwaldar,15261,9.633121357849578,5000,1000,3,-0.2,27,12.6,6,Canara Robeco Emerging Equities – Direct Growth,15.69,1.47,3.36,Large & Mid Cap Funds
+1.49,Canara Robeco Mutual Fund,0.78,Hybrid,0.63,10,Shridatta Bhandwaldar,8235,9.01627006814768,5000,1000,4,1.8,20.1,12.2,6,Canara Robeco Equity Hybrid Fund,11.27,1.4,3.25,Aggressive Hybrid Mutual Funds
+2.7,Canara Robeco Mutual Fund,0.87,Equity,0.64,10,Vishal Mishra,4685,8.452334619067742,500,500,5,1.2,27.7,15.5,6,Canara Robeco Equity Tax Saver Fund,15.37,1.51,3.08,ELSS Mutual Funds
+0.32,Canara Robeco Mutual Fund,0.87,Equity,0.55,10,Shridatta Bhandwaldar,8630,9.063115652219658,5000,1000,4,-0.9,24.8,13.8,6,Canara Robeco Flexi Cap Fund,14.9,1.39,2.84,Flexi Cap Funds
+0.47,Canara Robeco Mutual Fund,0.55,Debt,0.54,10,Kunal Jain,80,4.394449154672439,5000,1000,3,4.3,5.1,7,3,Canara Robeco Gilt Fund,2.52,0.43,0.55,Gilt Mutual Funds
+0.87,Canara Robeco Mutual Fund,1.32,Debt,0.75,10,Avnish Jain,125,4.836281906951478,5000,1000,3,3.9,5.8,7,3,Canara Robeco Income Fund,2.74,0.45,0.69,Medium to Long Duration Funds
+10.9,Canara Robeco Mutual Fund,0.59,Equity,1.32,10,Shridatta Bhandwaldar,247,5.5134287461649825,5000,1000,3,13.7,34.9,12.2,6,Canara Robeco Infrastructure – Direct Growth,16.53,1.8,3.99,Sectoral / Thematic Mutual Funds
+1.07,Canara Robeco Mutual Fund,0.66,Debt,0.11,10,Kunal Jain,2548,7.8434564043761155,5000,1000,2,5.6,4.1,5.1,2,Canara Robeco Liquid Fund,0.39,0.47,3.04,Liquid Mutual Funds
+0.61,Canara Robeco Mutual Fund,0.45,Debt,0.1,4,Suman Prasad,216,5.37989735354046,5000,0,2,5.3,3.9,8.8,1,Canara Robeco Overnight Fund,0.34,0,0.03,Overnight Mutual Funds
+2.64,Canara Robeco Mutual Fund,1.33,Debt,0.31,10,Kunal Jain,1003,6.911747300251674,5000,1000,2,5,5.2,5.9,2,Canara Robeco Savings Fund,0.77,1.12,2.24,Low Duration Funds
+3.98,Canara Robeco Mutual Fund,1.95,Debt,0.47,10,Suman Prasad,520,6.255750041753367,5000,1000,3,4.1,5.9,6.5,2,Canara Robeco Short Duration Fund,1.59,0.87,1.68,Short Duration Funds
+12.23,Canara Robeco Mutual Fund,0.79,Equity,0.47,4,Shridatta Bhandwaldar,4831,8.48301573961465,5000,1000,5,-0.6,51.8,8.8,6,Canara Robeco Small Cap Fund,17.75,2.17,4.62,Small Cap Mutual Funds
+1.82,Canara Robeco Mutual Fund,1.04,Debt,0.4,10,Suman Prasad,565,6.338594078203183,500,500,2,5.2,4.5,5.3,2,Canara Robeco Ultra Short Term Fund,0.51,0.84,2.11,Ultra Short Duration Funds
+1.45,DSP Mutual Fund,0.64,Hybrid,0.35,5,Kedar Karnik,1238,7.122059881629142,500,500,3,5.6,4.6,5.4,1,DSP Arbitrage Fund,0.72,0.82,1.08,Arbitrage Mutual Funds
+4.78,DSP Mutual Fund,2.4,Debt,0.33,10,Vikram Chopra,2463,7.80954132465341,500,500,3,4,6.4,6.9,2,DSP Banking & Psu Debt Fund,1.87,0.84,1.59,Banking and PSU Mutual Funds
+1.17,DSP Mutual Fund,1.02,Debt,0.39,10,Vivek Ramakrishnan,333,5.8111409929767,500,500,3,3.8,6.1,4.9,3,DSP Bond Fund,2.36,0.62,0.98,Medium Duration Funds
+0.76,DSP Mutual Fund,0.73,Debt,0.25,5,Vivek Ramakrishnan,2065,7.633369649679584,500,500,2,2.6,5.6,8.8,3,DSP Corporate Bond Fund,2.16,0.45,0.59,Corporate Bond Mutual Funds
+2.84,DSP Mutual Fund,0.26,Debt,0.38,10,Laukik Bagwe,210,5.351858133476067,500,500,3,10.8,6.6,4.5,4,DSP Credit Risk Fund,4.32,0.58,1.23,Credit Risk Funds
+-0.92,DSP Mutual Fund,0.53,Hybrid,0.71,9,Atul Bhole,3770,8.235095497258357,500,500,3,1.7,12.2,8.3,5,DSP Dynamic Asset Allocation Fund,8.62,1.03,2.7,Dynamic Asset Allocation or Balanced Advantage
+0.51,DSP Mutual Fund,0.83,Hybrid,0.78,10,Atul Bhole,7358,8.903679332926599,500,500,3,0.6,18.7,10.7,6,DSP Equity & Bond Fund,12.7,1.25,2.7,Aggressive Hybrid Mutual Funds
+1.89,DSP Mutual Fund,0.93,Equity,0.91,10,Rohit Singhania,7110,8.869398159883518,500,500,3,3.2,31.6,11.7,6,DSP Equity Opportunities Fund,16.6,1.4,2.87,Large & Mid Cap Funds
+4.83,DSP Mutual Fund,0.88,Hybrid,0.4,7,Kedar Karnik,535,6.284134161070802,500,500,2,4,14.6,7.8,4,DSP Equity Savings Fund,6.37,1.75,3.55,Equity Savings Mutual Funds
+-1.47,DSP Mutual Fund,0.93,Equity,0.76,10,Atul Bhole,7725,8.952346543226227,500,500,3,-0.1,22.8,12,6,DSP Flexi Cap Fund,16.67,1.23,2.56,Flexi Cap Funds
+1.82,DSP Mutual Fund,0.86,Debt,0.24,2,Kedar Karnik,983,6.891625897052253,500,500,1,4.4,18.15,8.8,2,DSP Floater Fund,12.1,1.29,2.86,Floater Mutual Funds
+-2.77,DSP Mutual Fund,0.9,Equity,1.08,10,Vinit Sambre,1784,7.487173694213739,500,500,2,-1.7,20.4,8.9,6,DSP Focus Fund,16.44,1.11,2.4,Focused Funds
+1.82,DSP Mutual Fund,0.86,Other,1.43,9,Jay Kothari,70,4.2626798770413155,500,500,3,0.6,12.6,7.9,6,DSP Global Allocation Fund,10.88,0.67,1.15,FoFs Overseas
+1.15,DSP Mutual Fund,0.62,Debt,0.54,10,Vikram Chopra,430,6.066108090103747,500,500,4,4.4,5.9,8.6,3,DSP G-Sec Fund,2.85,0.64,0.93,Gilt Mutual Funds
+6.84,DSP Mutual Fund,0.78,Equity,1.04,4,Vinit Sambre,1197,7.088408778675395,500,500,3,-3.6,26.9,8.8,6,DSP Healthcare Fund,17.83,1.19,2.42,Sectoral / Thematic Mutual Funds
+10.78,DSP Mutual Fund,0.64,Equity,1.34,10,Rohit Singhania,1797,7.494430215031565,500,500,3,15.8,36.4,11.9,6,DSP India T.I.G.E.R. Fund,17.58,1.78,3.58,Sectoral / Thematic Mutual Funds
+1.29,DSP Mutual Fund,0.73,Debt,0.15,10,Kedar Karnik,13582,9.51657428982249,500,500,3,5.6,4.3,5.3,3,DSP Liquidity Fund,0.37,0.83,4.19,Liquid Mutual Funds
+2.97,DSP Mutual Fund,1.35,Debt,0.3,8,Karan Mundhara,3340,8.114025442356757,500,500,2,5.1,5.5,6.3,2,DSP Low Duration Fund,0.83,1.4,3.06,Low Duration Funds
+-6.18,DSP Mutual Fund,0.85,Equity,0.77,10,Vinit Sambre,13213,9.48903215258983,500,500,2,-3.9,21.1,9.5,6,DSP Midcap Fund,15.81,1.2,2.26,Mid Cap Mutual Funds
+21.48,DSP Mutual Fund,0.43,Equity,1.21,10,Rohit Singhania,673,6.513230110912307,500,500,3,-0.7,44.3,12,6,DSP Natural Resources & New Energy – Direct Growth,23.46,1.39,2.31,Sectoral / Thematic Mutual Funds
+3.52,DSP Mutual Fund,1.01,Other,0.4,5,Anil Ghelani,498,6.212606095751519,500,500,3,2.2,30.9,10.7,6,DSP Nifty 50 Equal Weight Index Fund,17.4,1.51,3.22,Index Funds
+-0.76,DSP Mutual Fund,0.99,Other,0.24,4,Anil Ghelani,271,5.605802066295998,500,500,3,0.9,25.8,8.8,6,DSP Nifty 50 Index Fund,16.67,1.3,3.43,Index Funds
+-4.59,DSP Mutual Fund,0.97,Other,0.32,4,Anil Ghelani,227,5.429345628954441,500,500,2,-6.3,21.8,8.8,6,DSP Nifty Next 50 Index Fund,17.93,0.97,1.68,Index Funds
+0.67,DSP Mutual Fund,0.47,Debt,0.06,4,Kedar Karnik,2754,7.9211727215870145,500,500,4,5.4,3.9,8.8,1,DSP Overnight Fund,0.34,0.12,0.73,Overnight Mutual Funds
+2.26,DSP Mutual Fund,0.61,Hybrid,0.51,10,Vikram Chopra,199,5.298317366548036,500,500,2,3,10.8,6,3,DSP Regular Savings Fund,4.28,1.55,2.68,Conservative Hybrid Mutual Funds
+3.15,DSP Mutual Fund,1.65,Debt,0.25,10,Kedar Karnik,3903,8.269756947532983,500,500,2,5,5.3,5.9,3,DSP Savings Fund,0.81,1.15,1.82,Money Market Funds
+4.96,DSP Mutual Fund,2.51,Debt,0.3,10,Laukik Bagwe,2821,7.945201132412759,500,500,2,4.1,6.1,6.7,2,DSP Short Term Fund,1.67,0.96,1.75,Short Duration Funds
+4.28,DSP Mutual Fund,0.86,Equity,0.9,10,Vinit Sambre,8953,9.09985563880091,500,500,2,0.7,38.9,12.5,6,DSP Small Cap Fund,18.67,1.78,3.38,Small Cap Mutual Funds
+0.84,DSP Mutual Fund,1.36,Debt,0.47,10,Vikram Chopra,481,6.1779441140506,500,500,3,3,5.4,7.3,2,DSP Strategic Bond Fund,3,0.41,0.48,Dynamic Bond
+2.57,DSP Mutual Fund,0.94,Equity,0.81,10,Rohit Singhania,10129,9.22325659724273,500,500,4,1.8,28.8,13.3,6,DSP Tax Saver Fund,16.3,1.51,3.19,ELSS Mutual Funds
+-1.79,DSP Mutual Fund,0.91,Equity,1.27,10,Abhishek Singh,2605,7.8655717576847906,500,500,1,3.6,21.8,8.9,6,DSP Top 100 Equity Fund,15.88,1.18,2.98,Large Cap Mutual Funds
+2.39,DSP Mutual Fund,1.19,Debt,0.3,10,Kedar Karnik,2736,7.914617709040679,500,500,3,5.5,4.9,5.5,2,DSP Ultra Short Fund,0.52,1.54,3.54,Ultra Short Duration Funds
+1.82,DSP Mutual Fund,0.86,Other,1.52,10,Jay Kothari,770,6.647688373563329,500,500,3,2.2,23.8,13.6,6,DSP US Flexible Equity Fund,16.4,1.1,1.95,FoFs Overseas
+1.82,DSP Mutual Fund,0.86,Other,1.81,10,Jay Kothari,777,6.656726524178391,500,500,3,-9,14.8,10.2,6,DSP World Gold Fund,36.51,0.4,1.11,FoFs Overseas
+1.82,DSP Mutual Fund,0.86,Other,1.5,10,Jay Kothari,188,5.241747015059643,500,500,3,-5.4,37.1,15,6,DSP World Mining Fund,28.33,1.08,1.68,FoFs Overseas
+5.57,Edelweiss Mutual Fund,0.79,Hybrid,0.36,10,Bharat Lahoti,469,6.152732694704104,5000,500,4,6.5,24.6,13,6,Edelweiss Aggressive Hybrid Fund,11.66,1.72,3.83,Aggressive Hybrid Mutual Funds
+1.78,Edelweiss Mutual Fund,0.63,Hybrid,0.37,9,Bhavesh Jain,5393,8.593042503699674,5000,500,5,5.8,5,5.7,1,Edelweiss Arbitrage Fund,0.72,1.31,1.61,Arbitrage Mutual Funds
+2.1,Edelweiss Mutual Fund,0.67,Hybrid,0.51,10,Bhavesh Jain,8780,9.080345575359996,5000,500,4,2.9,18.5,12,6,Edelweiss Balanced Advantage Fund,9.71,1.48,3.31,Dynamic Asset Allocation or Balanced Advantage
+6.29,Edelweiss Mutual Fund,3.18,Debt,0.26,10,Dhawal Dalal,355,5.87493073085203,5000,500,2,3.5,6.9,7.9,3,Edelweiss Banking & Psu Debt Fund,3.68,0.55,0.78,Banking and PSU Mutual Funds
+2.41,Edelweiss Mutual Fund,0.79,Hybrid,0.7,8,Bharat Lahoti,258,5.556828061699537,5000,500,5,4.4,12.1,9,4,Edelweiss Equity Savings Fund,5.29,1.53,3.22,Equity Savings Mutual Funds
+1.82,Edelweiss Mutual Fund,0.86,Other,1.5,9,Bhavesh Jain,83,4.430816798843313,5000,500,3,9.2,25.2,7.6,6,Edelweiss Europe Dynamic Equity Offshore – Dir Growth,19.12,0.93,1.64,FoFs Overseas
+1.91,Edelweiss Mutual Fund,0.92,Equity,0.56,8,Trideep Bhattacharya,1056,6.963189985870238,5000,500,3,1.9,27.5,12.1,6,Edelweiss Flexi Cap Fund,16.02,1.46,3.41,Flexi Cap Funds
+1.77,Edelweiss Mutual Fund,0.61,Debt,0.66,9,Dhawal Dalal,119,4.787491742782046,5000,500,5,4.3,6.8,8.2,3,Edelweiss Govt Securities Fund,2.77,0.88,1.63,Gilt Mutual Funds
+1.82,Edelweiss Mutual Fund,0.86,Other,1.44,10,Bhavesh Jain,1897,7.5485559791698735,5000,500,3,-4.1,9,6.1,6,Edelweiss Greater China Equity Off-Shore Fund,25.75,0.3,0.6,FoFs Overseas
+2.77,Edelweiss Mutual Fund,0.9,Equity,0.6,10,Abhishek Gupta,1711,7.445417556701687,5000,500,4,1.2,27.8,13.2,6,Edelweiss Large & Mid Cap Fund,15.87,1.47,3.56,Large & Mid Cap Funds
+0.95,Edelweiss Mutual Fund,0.93,Equity,0.93,10,Bharat Lahoti,399,5.991464547107982,5000,500,4,4.9,26,12.8,6,Edelweiss Large Cap Fund,15.71,1.4,3.25,Large Cap Mutual Funds
+1.47,Edelweiss Mutual Fund,0.8,Debt,0.15,10,Rahul Dedhia,1543,7.342131730584722,5000,500,4,5.6,4.4,5.4,3,Edelweiss Liquid Fund,0.38,1.08,6.74,Liquid Mutual Funds
+0.61,Edelweiss Mutual Fund,0.9,Equity,0.69,10,Trideep Bhattacharya,209,5.3471075307174685,500,500,3,0.9,25.6,10.2,6,Edelweiss Long Term Equity Fund,15.73,1.39,3.18,ELSS Mutual Funds
+2.21,Edelweiss Mutual Fund,0.96,Equity,0.57,10,Trideep Bhattacharya,2530,7.836369760545124,5000,500,4,4.9,35.5,14,6,Edelweiss Mid Cap Fund,17.63,1.73,3.85,Mid Cap Mutual Funds
+2.56,Edelweiss Mutual Fund,1.45,Debt,0.26,10,Dhawal Dalal,346,5.849324779946859,5000,500,1,4.9,4.7,7.3,2,Edelweiss Money Market Fund,0.6,1.03,2.05,Money Market Funds
+0.63,Edelweiss Mutual Fund,0.47,Debt,0.1,4,Rahul Dedhia,480,6.175867270105761,5000,500,2,5.3,3.9,8.8,1,Edelweiss Overnight Fund,0.33,0.01,0.08,Overnight Mutual Funds
+0.04,Edelweiss Mutual Fund,0.83,Equity,0.61,5,Bhavesh Jain,859,6.756932389247553,5000,500,3,-13.8,24.3,10.9,6,Edelweiss Recently Listed IPO Fund,17.77,1.09,1.63,Sectoral / Thematic Mutual Funds
+8.58,Edelweiss Mutual Fund,0.81,Equity,0.6,4,Sahil Shah,1458,7.285506548522786,5000,500,4,3,42.5,8.8,6,Edelweiss Small Cap Fund,17.99,1.98,4.17,Small Cap Mutual Funds
+1.82,Edelweiss Mutual Fund,0.86,Other,1.43,10,Bhavesh Jain,90,4.51085950651685,5000,500,3,2,23.8,11.5,6,Edelweiss US Value Equity Offshore Fund,16.38,1.03,2.17,FoFs Overseas
+8.05,Franklin Templeton Mutual Fund,0.71,Equity,1.3,10,Ajay Argal,1184,7.077498053569231,5000,500,3,16,36.1,13.3,6,Franklin Build India Fund,19.06,1.6,3.18,Sectoral / Thematic Mutual Funds
+3.72,Franklin Templeton Mutual Fund,1.87,Debt,0.16,9,Umesh Sharma,712,6.569481420414296,5000,500,2,4.2,6.1,7.2,2,Franklin India Banking & PSU Debt Fund,1.74,0.7,1.06,Banking and PSU Mutual Funds
+0.71,Franklin Templeton Mutual Fund,0.92,Equity,1.01,10,Anand Radhakrishnan,6205,8.733271845008325,5000,500,2,-1,25.1,9.7,6,Franklin India Bluechip Fund,16.83,1.28,2.72,Large Cap Mutual Funds
+1.68,Franklin Templeton Mutual Fund,0.56,Debt,0.21,10,Santosh Kamath,748,6.618738983517219,10000,500,3,4.4,6.3,7,2,Franklin India Corporate Debt Fund,1.8,1.02,1.65,Corporate Bond Mutual Funds
+1.26,Franklin Templeton Mutual Fund,0.59,Hybrid,0.57,10,Rajasa Kakulavarapu,246,5.5093883366279774,10000,500,3,5.1,9.8,7,4,Franklin India Debt Hybrid Fund,3.89,1.42,2.98,Conservative Hybrid Mutual Funds
+8.57,Franklin Templeton Mutual Fund,0.3,Other,0.46,10,Rajasa Kakulavarapu,1103,7.00669522683704,5000,500,3,5.9,18.2,9.2,4,Franklin India Dynamic Asset Allocation FoFs-Dir-G,10.19,1.39,1.87,FoFs Domestic
+2.99,Franklin Templeton Mutual Fund,0.96,Equity,1.37,10,R Janakiraman,2556,7.846589975291186,5000,500,2,-0.9,27.7,9.2,6,Franklin India Equity Advantage Fund,17.49,1.43,3.41,Large & Mid Cap Funds
+3.49,Franklin Templeton Mutual Fund,0.8,Hybrid,1.2,10,Rajasa Kakulavarapu,1347,7.206377291472252,5000,500,3,5.3,22.5,11,6,Franklin India Equity Hybrid Fund,12.1,1.51,3.24,Aggressive Hybrid Mutual Funds
+3.39,Franklin Templeton Mutual Fund,0.94,Hybrid,0.71,5,Rajasa Kakulavarapu,153,5.0369526024136295,5000,500,3,4.8,14,8.8,3,Franklin India Equity Savings Fund,6.61,1.53,3.01,Equity Savings Mutual Funds
+1.82,Franklin Templeton Mutual Fund,0.86,Other,0.72,10,Sandeep Manam,2880,7.9658927350845286,5000,500,3,-12.1,17.4,11.6,6,Franklin India Feeder – Franklin U.S. Opp.-Dir Growth,23.08,0.5,0.95,FoFs Overseas
+4.83,Franklin Templeton Mutual Fund,0.93,Equity,1.1,10,Anand Radhakrishnan,9989,9.2093398716426,5000,500,4,3.8,31.1,12,6,Franklin India Flexi Cap Fund,16.63,1.6,3.27,Flexi Cap Funds
+2.33,Franklin Templeton Mutual Fund,0.75,Debt,0.21,10,Pallab Roy,311,5.7430031878094825,1000,500,4,5.8,5.6,6.2,2,Franklin India Floating Rate Fund,0.84,1.58,2.6,Floater Mutual Funds
+3.6,Franklin Templeton Mutual Fund,0.98,Equity,1.16,10,Ajay Argal,8022,8.990067695753655,5000,500,4,5.1,30.9,12.9,6,Franklin India Focused Equity Fund,18.62,1.43,3.17,Focused Funds
+-0.49,Franklin Templeton Mutual Fund,0.52,Debt,0.57,10,Sachin Padwal Desai,121,4.804021044733257,10000,500,2,3.5,4.1,6.3,3,Franklin India G-Sec Fund,2.35,0.04,0.04,Gilt Mutual Funds
+1.34,Franklin Templeton Mutual Fund,0.74,Debt,0.13,10,Pallab Roy,1511,7.321188556739479,10000,500,3,5.6,4.3,5.4,2,Franklin India Liquid Fund,0.38,0.9,4.44,Liquid Mutual Funds
+5.14,Franklin Templeton Mutual Fund,-0.01,Other,0.44,8,Rajasa Kakulavarapu,45,3.828641396489095,5000,500,1,4.1,8.7,5.3,4,Franklin India Multi-Asset Solution Fund,12.82,0.39,0.34,FoFs Domestic
+-0.79,Franklin Templeton Mutual Fund,0.99,Other,0.24,10,Varun Sharma,482,6.180016653652572,5000,500,3,0.9,25.6,11.6,6,Franklin India NSE Nifty 50 Index Fund,16.58,1.3,3.44,Index Funds
+4.7,Franklin Templeton Mutual Fund,0.92,Equity,1.79,10,R Janakiraman,657,6.489204931325317,5000,500,3,7.9,31,11.5,6,Franklin India Opportunities Fund,16.65,1.58,3.45,Sectoral / Thematic Mutual Funds
+0.49,Franklin Templeton Mutual Fund,0.41,Debt,0.1,4,Pallab Roy,152,5.030437921392435,5000,500,2,5.3,3.8,8.8,1,Franklin India Overnight Fund,0.35,-0.18,-0.89,Overnight Mutual Funds
+-4.41,Franklin Templeton Mutual Fund,0.96,Equity,1.06,10,R Janakiraman,7359,8.903815211722922,5000,500,2,4.5,26.6,10,6,Franklin India Prima Fund,17.67,1.36,3.06,Mid Cap Mutual Funds
+2.67,Franklin Templeton Mutual Fund,1.29,Debt,0.1,10,Umesh Sharma,1084,6.98933526597456,10000,500,3,5.3,5.2,6.1,2,Franklin India Savings Fund,0.63,1.5,3.34,Money Market Funds
+7.03,Franklin Templeton Mutual Fund,0.81,Equity,1.03,10,R Janakiraman,7308,8.896861744480391,5000,500,2,10.5,38.8,11.2,6,Franklin India Smaller Companies Fund,17.83,1.91,3.36,Small Cap Mutual Funds
+2.88,Franklin Templeton Mutual Fund,0.95,Equity,1.12,10,R Janakiraman,4584,8.430545384690566,500,500,3,4.9,29.3,11.4,6,Franklin India Taxshield – Direct Growth,16.91,1.49,3.21,ELSS Mutual Funds
+3.66,Franklin Templeton Mutual Fund,0.73,Equity,1.22,10,Anand Radhakrishnan,712,6.569481420414296,5000,500,3,-11.9,29.9,15.9,6,Franklin India Technology Fund,19.22,1.24,1.91,Sectoral / Thematic Mutual Funds
+1.24,HDFC Mutual Fund,0.5,Hybrid,0.43,9,Arun Agarwal,5886,8.68050180902826,100,100,2,5.6,4.5,5.2,1,HDFC Arbitrage Fund,0.7,0.82,0.99,Arbitrage Mutual Funds
+7.38,HDFC Mutual Fund,0.88,Hybrid,0.88,10,Gopal Agrawal,51042,10.840423693720814,100,100,4,14.4,29.3,12.9,6,HDFC Balanced Advantage Fund,14.82,1.6,3.38,Dynamic Asset Allocation or Balanced Advantage
+3.4,HDFC Mutual Fund,1.06,Debt,0.39,9,Anil Bamboli,4805,8.477620416296414,100,100,4,4.3,6.8,7.2,2,HDFC Banking and PSU Debt Fund,2.02,0.98,1.74,Banking and PSU Mutual Funds
+3.69,HDFC Mutual Fund,0.95,Equity,1.04,10,Gopal Agrawal,5227,8.561784074744113,100,100,2,-0.7,33.7,11.3,6,HDFC Capital Builder Value Fund,16.41,1.53,3.26,Value Funds
+7.62,HDFC Mutual Fund,0.76,Solution Oriented,0.96,10,Chirag Setalvad,6157,8.725507328484445,100,100,3,10.5,26.8,12.9,6,HDFC Children’s Gift Fund,11.58,1.87,4.11,Childrens Funds
+1.91,HDFC Mutual Fund,0.94,Debt,0.32,10,Anupam Joshi,23486,10.064202355576024,100,100,3,4.1,6.9,7.3,3,HDFC Corporate Bond Fund,2.19,0.99,1.59,Corporate Bond Mutual Funds
+2.63,HDFC Mutual Fund,-0.52,Debt,0.95,9,Shobhit Mehrotra,8437,9.040500592684284,100,100,3,4.6,8,7.7,4,HDFC Credit Risk Debt Fund,2.56,1.3,1.5,Credit Risk Funds
+2.71,HDFC Mutual Fund,0.55,Debt,0.49,10,Anil Bamboli,527,6.269096283706261,100,100,4,4.6,7.3,6.1,3,HDFC Dynamic Debt Fund,3.62,0.79,2.3,Dynamic Bond
+6.38,HDFC Mutual Fund,0.6,Other,0.22,10,Srinivasan Ramamurthy,30,3.4339872044851463,100,100,4,8.6,21.9,11.1,5,HDFC Dynamic PE Ratio Fund,9.63,1.8,4.11,FoFs Domestic
+4.42,HDFC Mutual Fund,0.98,Hybrid,1.1,10,Anil Bamboli,2524,7.83399634170946,100,100,4,5.1,16,8.8,4,HDFC Equity Savings Fund,7.09,1.61,3.67,Equity Savings Mutual Funds
+5.15,HDFC Mutual Fund,1,Equity,1,10,Roshi Jain,31672,10.363219861917235,100,100,4,12.4,34.5,14,6,HDFC Flexi Cap Fund,18.4,1.56,3.4,Flexi Cap Funds
+3.39,HDFC Mutual Fund,0.9,Debt,0.26,10,Shobhit Mehrotra,14785,9.601436066117046,100,100,4,5.6,6.5,6.9,3,HDFC Floating Rate Debt Fund,1.24,1.76,3.33,Floater Mutual Funds
+7.78,HDFC Mutual Fund,0.92,Equity,0.54,10,Roshi Jain,3609,8.191463051326927,100,100,3,16,35.8,11.9,6,HDFC Focused 30 Fund,17.19,1.71,3.93,Focused Funds
+0.23,HDFC Mutual Fund,0.64,Debt,0.46,10,Anil Bamboli,1739,7.461640392208575,100,100,2,3.6,4.9,6.4,3,HDFC Gilt Fund,2.78,0.34,0.43,Gilt Mutual Funds
+-0.5,HDFC Mutual Fund,1.01,Other,0.18,10,Nirman Morakhia,1402,7.246368080102461,100,100,5,14.2,12.3,13.4,5,HDFC Gold Fund,14.19,0.47,1.03,FoFs Domestic
+0.23,HDFC Mutual Fund,1,Equity,1.28,5,Rakesh Vyas,1081,6.9865664594064265,100,100,3,9.8,27.1,7.9,6,HDFC Housing Opportunities Fund,19.34,1.23,2.5,Sectoral / Thematic Mutual Funds
+3.73,HDFC Mutual Fund,0.69,Hybrid,1.33,10,Shobhit Mehrotra,2695,7.899524472032198,100,100,3,6,13.3,8.4,4,HDFC Hybrid Debt Fund,4.97,1.74,3.46,Conservative Hybrid Mutual Funds
+4.86,HDFC Mutual Fund,0.87,Hybrid,1.09,10,Chirag Setalvad,18729,9.837881795438134,100,100,3,7.7,25.6,11.3,6,HDFC Hybrid Equity Fund,13.03,1.6,3.42,Aggressive Hybrid Mutual Funds
+0.51,HDFC Mutual Fund,1.28,Debt,0.51,10,Shobhit Mehrotra,528,6.270988431858299,100,100,3,3.8,5.2,6.1,3,HDFC Income Fund,2.53,0.34,0.43,Medium to Long Duration Funds
+-1.01,HDFC Mutual Fund,1.01,Other,0.2,10,Nirman Morakhia,7457,8.917042560738766,100,100,3,0.9,26,12,6,HDFC Index Fund,17.02,1.28,3.24,Index Funds
+2.65,HDFC Mutual Fund,0.88,Equity,1.75,10,Rakesh Vyas,593,6.386879319362645,100,100,1,16.5,34.3,5.3,6,HDFC Infrastructure Fund,23.69,1.3,3.12,Sectoral / Thematic Mutual Funds
+4.97,HDFC Mutual Fund,0.98,Equity,1.03,10,Gopal Agrawal,7897,8.974364841846596,100,100,3,6.3,33.3,12.8,6,HDFC Large and Mid Cap Fund,17.78,1.55,3.56,Large & Mid Cap Funds
+1.34,HDFC Mutual Fund,0.78,Debt,0.2,10,Anupam Joshi,49008,10.799759233696244,5000,300,2,5.6,4.3,5.3,2,HDFC Liquid Fund,0.38,0.79,3.68,Liquid Mutual Funds
+2.82,HDFC Mutual Fund,0.67,Debt,0.43,10,Anupam Joshi,14779,9.601030194502194,100,100,4,5.4,6.2,6.7,2,HDFC Low Duration Fund,1.11,1.73,3.31,Low Duration Funds
+2.14,HDFC Mutual Fund,0.78,Debt,0.58,10,Shobhit Mehrotra,3538,8.171599480345463,100,100,3,4.1,6.9,7.4,4,HDFC Medium Term Debt Fund,2.33,1.01,1.34,Medium Duration Funds
+2.45,HDFC Mutual Fund,0.93,Equity,0.95,10,Chirag Setalvad,35009,10.463389013948712,100,100,3,11.9,34.2,13.1,6,HDFC Mid-Cap Opportunities Fund,16.86,1.77,3.64,Mid Cap Mutual Funds
+3.08,HDFC Mutual Fund,1.33,Debt,0.21,10,Vikas Agrawal,15176,9.627536402960045,100,100,3,5.6,5.6,6.3,3,HDFC Money Market Fund,0.69,1.89,4.85,Money Market Funds
+5.06,HDFC Mutual Fund,0.72,Hybrid,0.88,10,Srinivasan Ramamurthy,1643,7.404887575616125,100,100,4,6.9,23,10.9,6,HDFC Multi-Asset Fund,11.41,1.6,4.21,Multi Asset Allocation Mutual Funds
+0.53,HDFC Mutual Fund,0.42,Debt,0.1,10,Anil Bamboli,20146,9.91081067291591,100,300,2,5.3,3.8,4.6,1,HDFC Overnight Fund,0.35,-0.09,-0.53,Overnight Mutual Funds
+9.26,HDFC Mutual Fund,0.85,Solution Oriented,0.78,7,Srinivasan Ramamurthy,2696,7.89989532313973,100,100,5,11.6,34.9,14.8,6,HDFC Retirement Savings Fund,15.16,1.92,4.32,Retirement Funds
+4.24,HDFC Mutual Fund,1.45,Debt,0.29,10,Anil Bamboli,11028,9.308283446306147,100,100,3,4.7,7,7.3,3,HDFC Short Term Debt Fund,1.87,1.23,2.33,Short Duration Funds
+6.54,HDFC Mutual Fund,0.91,Equity,0.8,10,Chirag Setalvad,14648,9.59212735272977,100,100,3,12.5,43.5,13.5,6,HDFC Small Cap Fund,19.61,1.88,3.75,Small Cap Mutual Funds
+4.47,HDFC Mutual Fund,0.88,Equity,1.15,10,Roshi Jain,9723,9.182352335436015,500,500,2,10,31,10.3,6,HDFC Tax Saver Fund,15.3,1.64,3.71,ELSS Mutual Funds
+1.75,HDFC Mutual Fund,0.97,Equity,1.11,10,Rahul Baijal,22139,10.005141206262628,100,100,2,6.6,28.6,11.9,6,HDFC Top 100 Fund,17.08,1.39,3.3,Large Cap Mutual Funds
+2.7,HDFC Mutual Fund,1.1,Debt,0.34,5,Anil Bamboli,13303,9.495820020872763,100,100,4,5.4,5.5,8.8,3,HDFC Ultra Short Term Fund,0.64,1.93,4.46,Ultra Short Duration Funds
+0.57,HSBC Mutual Fund,0.81,Hybrid,0.87,10,Shriram Ramanathan,4636,8.441822884391462,5000,500,2,-1.2,19.5,8.1,6,HSBC Aggressive Hybrid Fund,12.27,1.26,2.41,Aggressive Hybrid Mutual Funds
+1.63,HSBC Mutual Fund,0.63,Hybrid,0.29,9,Ritesh Jain,2344,7.76004068088038,5000,500,4,5.4,4.7,5.5,1,HSBC Arbitrage Fund,0.7,1.12,1.54,Arbitrage Mutual Funds
+1.82,HSBC Mutual Fund,0.86,Other,1.29,9,Sonal Gupta,8.4,2.2407096892759584,5000,500,3,-4.2,13.6,5.7,6,HSBC Asia Pacific (Ex Japan) DYF – Direct Growth,17.08,0.48,0.87,FoFs Overseas
+0.89,HSBC Mutual Fund,0.45,Hybrid,0.78,10,Ritesh Jain,1511,7.321188556739479,5000,500,3,3.5,13.4,8,4,HSBC Balanced Advantage Fund,7.21,1.27,2.95,Dynamic Asset Allocation or Balanced Advantage
+5.62,HSBC Mutual Fund,3.36,Debt,0.23,10,Jalpan Shah,3779,8.237479288613633,5000,500,1,2.2,6,6.5,3,HSBC Banking and PSU Debt Fund,2.39,0.47,0.64,Banking and PSU Mutual Funds
+2.69,HSBC Mutual Fund,0.97,Equity,1.42,9,Venugopal Manghat,535,6.284134161070802,5000,500,3,7,28,8.7,6,HSBC Business Cycles Fund,17.41,1.46,3.13,Sectoral / Thematic Mutual Funds
+0.76,HSBC Mutual Fund,0.74,Hybrid,1.34,10,Ritesh Jain,122,4.812184355372417,5000,500,3,2.3,10.3,7.5,4,HSBC Conservative Hybrid Fund,4.75,1.28,2.3,Conservative Hybrid Mutual Funds
+1.19,HSBC Mutual Fund,1.68,Debt,0.29,10,Shriram Ramanathan,6772,8.820699399214904,5000,500,1,3.3,6.6,7.6,3,HSBC Corporate Bond Fund,3.55,0.47,0.67,Corporate Bond Mutual Funds
+-1.87,HSBC Mutual Fund,-2.39,Debt,0.85,10,Shriram Ramanathan,130,4.875197323201151,5000,500,3,4.8,5.7,5.1,4,HSBC Credit Risk Fund,3.73,0.35,0.33,Credit Risk Funds
+0.67,HSBC Mutual Fund,1.09,Debt,0.29,10,Shriram Ramanathan,200,5.303304908059076,5000,500,3,4.7,5.4,6.8,3,HSBC Dynamic Bond Fund,2.47,0.39,0.44,Dynamic Bond
+-0.03,HSBC Mutual Fund,0.91,Equity,1.16,10,Cheenu Gupta,3007,8.00903068506973,500,500,1,-1.2,24.1,8,6,HSBC ELSS Fund,16.03,1.33,2.8,ELSS Mutual Funds
+0.57,HSBC Mutual Fund,0.81,Hybrid,1,4,Neelotpal Sahai,474,6.163314804034641,5000,500,3,1.7,32.4,13.3,6,HSBC Equity Hybrid Fund,12.27,1.26,2.41,Aggressive Hybrid Mutual Funds
+5.57,HSBC Mutual Fund,0.85,Hybrid,0.62,10,Ritesh Jain,150,5.017279836814924,5000,500,2,2.9,15.5,7.5,3,HSBC Equity Savings Fund,6.24,1.86,4.47,Equity Savings Mutual Funds
+0.36,HSBC Mutual Fund,0.94,Equity,1.23,10,Vihang Naik,3097,8.038512020976814,5000,500,2,-1.2,26.4,9.2,6,HSBC Flexi Cap Fund,16.25,1.38,2.92,Flexi Cap Funds
+0.67,HSBC Mutual Fund,1.09,Debt,0.94,10,Ritesh Jain,54,4.007333185232471,5000,500,2,1.7,32.4,13.3,3,HSBC Flexi Debt Fund,2.47,0.39,0.44,Dynamic Bond
+0.51,HSBC Mutual Fund,0.64,Debt,0.48,10,Jalpan Shah,231,5.44673737166631,5000,500,3,5,5.4,7.1,3,HSBC Gilt Fund,2.94,0.41,0.49,Gilt Mutual Funds
+10.03,HSBC Mutual Fund,0.6,Equity,1.14,10,Venugopal Manghat,1476,7.29776828253138,5000,500,2,11.3,33.6,9.3,6,HSBC Infrastructure Fund,16.32,1.78,3.69,Sectoral / Thematic Mutual Funds
+1.39,HSBC Mutual Fund,0.91,Equity,1.08,4,Neelotpal Sahai,1992,7.597396320212795,5000,500,2,-0.6,25.6,8.8,6,HSBC Large & Mid Cap Fund,15.85,1.4,3.02,Large & Mid Cap Funds
+-2.34,HSBC Mutual Fund,0.97,Equity,1.26,10,Neelotpal Sahai,1405,7.2485040723706105,5000,500,2,0,23.3,10.6,6,HSBC Large Cap Fund,16.62,1.18,2.6,Large Cap Mutual Funds
+1.38,HSBC Mutual Fund,0.77,Debt,0.12,10,Kapil Punjabi,12043,9.396321889601625,5000,500,3,5.7,4.3,5.3,2,HSBC Liquid Fund,0.38,0.91,4.42,Liquid Mutual Funds
+0.3,HSBC Mutual Fund,-0.78,Debt,0.25,10,Shriram Ramanathan,467,6.148468295917647,5000,500,3,5.2,5.6,5.8,2,HSBC Low Duration Fund,2.32,0.58,0.63,Low Duration Funds
+-1.07,HSBC Mutual Fund,0.49,Other,0.54,9,Gautam Bhupal,34,3.5553480614894135,5000,500,2,3.2,6.7,5.9,3,HSBC Managed Solutions Conservative Fund,4.45,0.55,0.86,FoFs Domestic
+1.87,HSBC Mutual Fund,0.9,Other,1.06,9,Gautam Bhupal,34,3.5553480614894135,5000,500,2,0.6,22.2,9.2,6,HSBC Managed Solutions Growth Fund,13.16,1.4,3.05,FoFs Domestic
+0.67,HSBC Mutual Fund,0.74,Other,0.76,9,Gautam Bhupal,58,4.07753744390572,5000,500,2,1.2,19,8.7,5,HSBC Managed Solutions Moderate Fund,10.91,1.31,2.81,FoFs Domestic
+1.93,HSBC Mutual Fund,0.67,Debt,0.4,8,Shriram Ramanathan,643,6.467698726104354,5000,500,3,4.2,7,6.7,3,HSBC Medium Duration Fund,2.78,0.76,0.84,Medium Duration Funds
+-0.16,HSBC Mutual Fund,1.54,Debt,0.68,10,Jalpan Shah,41,3.7376696182833684,5000,500,1,2.7,4.5,6.5,3,HSBC Medium to Long Duration Fund,3.1,0.09,0.11,Medium to Long Duration Funds
+-1.16,HSBC Mutual Fund,0.8,Equity,0.74,10,Vihang Naik,6980,8.850947451970402,5000,500,2,2.3,26.1,8.8,6,HSBC Midcap Fund,14.76,1.53,3.33,Mid Cap Mutual Funds
+2.43,HSBC Mutual Fund,1.31,Debt,0.25,10,Shriram Ramanathan,716,6.57507584059962,5000,500,1,5.2,4.9,6,2,HSBC Money Market Fund,0.61,1.12,2.45,Money Market Funds
+0.65,HSBC Mutual Fund,0.44,Debt,0.1,4,Kapil Punjabi,2759,7.9229859587111955,5000,500,5,5.4,3.9,8.8,1,HSBC Overnight Fund,0.34,0.16,0.92,Overnight Mutual Funds
+4.85,HSBC Mutual Fund,2.63,Debt,0.27,10,Shriram Ramanathan,3592,8.186742787113518,5000,500,2,3.8,6,6.7,2,HSBC Short Duration Fund,1.72,0.78,1.18,Short Duration Funds
+9.87,HSBC Mutual Fund,0.82,Equity,0.77,9,Venugopal Manghat,8625,9.062536177207788,5000,500,3,5.1,44.7,12.7,6,HSBC Small Cap Fund,17.95,2.08,4.16,Small Cap Mutual Funds
+-1.65,HSBC Mutual Fund,0.96,Equity,1.3,10,Gautam Bhupal,175,5.170483995038151,5000,500,2,-2.2,24.7,8.9,6,HSBC Tax Saver Equity Fund,16.52,1.26,3.05,ELSS Mutual Funds
+2.48,HSBC Mutual Fund,1.17,Debt,0.22,3,Mahesh A Chhabria,2279,7.731930721948486,5000,500,3,5.5,5.1,8.8,2,HSBC Ultra Short Duration Fund,0.54,1.69,3.5,Ultra Short Duration Funds
+6.92,HSBC Mutual Fund,0.96,Equity,0.84,10,Venugopal Manghat,7781,8.9595686535445,5000,500,3,6.8,33,11.6,6,HSBC Value Fund,17.01,1.69,3.18,Value Funds
+2.84,ICICI Prudential Mutual Fund,0.98,Debt,0.62,10,Manish Banthia,6754,8.818038250394299,5000,100,5,6.5,7.5,8.2,3,ICICI Pru All Seasons Bond Fund,2.25,1.38,2.39,Dynamic Bond
+7.45,ICICI Prudential Mutual Fund,0.53,Other,0.18,10,Dharmesh Kakkad,18393,9.819779803462643,5000,1000,4,8.8,21.6,12.8,4,ICICI Pru Asset Allocator Fund,8.68,1.99,5.89,FoFs Domestic
+5.34,ICICI Prudential Mutual Fund,0.54,Hybrid,0.91,10,Sankaran Naren,44515,10.703603954093316,500,100,4,6.7,19.7,10.4,5,ICICI Pru Balanced Advantage Fund,8.33,1.84,5.59,Dynamic Asset Allocation or Balanced Advantage
+3.74,ICICI Prudential Mutual Fund,0.87,Equity,1.1,10,Roshan Chutkey,5871,8.677950570294351,5000,100,3,7,24.9,9.7,6,ICICI Pru Banking & Financial Services – DirectGrowth,23.41,1.06,2.23,Sectoral / Thematic Mutual Funds
+4.03,ICICI Prudential Mutual Fund,1.21,Debt,0.38,10,Rahul Goswami,7265,8.890961212781146,500,100,5,5.8,6.9,7.2,2,ICICI Pru Banking & PSU Debt Fund,1.75,1.37,2.64,Banking and PSU Mutual Funds
+9.68,ICICI Prudential Mutual Fund,0.88,Other,0.08,5,Kayzad Eghlim,89,4.499809670330265,5000,1000,5,22.1,35,8.8,6,ICICI Pru BHARAT 22 FOF  – Direct Growth,20.2,1.47,2.76,FoFs Domestic
+4.95,ICICI Prudential Mutual Fund,0.6,Equity,1.54,4,Sankaran Naren,1866,7.532088143541722,5000,100,3,10.2,22.7,8.8,6,ICICI Pru Bharat Consumption Fund,11.73,1.6,3.37,Sectoral / Thematic Mutual Funds
+3.05,ICICI Prudential Mutual Fund,0.9,Equity,1.06,10,Anish Tawakley,34198,10.439951682857124,100,100,4,4.4,28.2,12.3,6,ICICI Pru Bluechip Fund,15.23,1.53,3.59,Large Cap Mutual Funds
+1.58,ICICI Prudential Mutual Fund,1.26,Debt,0.6,10,Manish Banthia,2223,7.707062655370473,5000,100,3,5.2,6.9,7.3,3,ICICI Pru Bond Fund,2.69,0.72,1.2,Medium to Long Duration Funds
+2.18,ICICI Prudential Mutual Fund,0.74,Solution Oriented,1.69,10,Manish Banthia,844,6.739336627357174,5000,100,3,1,19.8,8.8,6,ICICI Pru Child Care Fund,11.15,1.42,2.86,Childrens Funds
+2.35,ICICI Prudential Mutual Fund,0.68,Debt,0.3,10,Rahul Goswami,16998,9.74090979777877,100,100,5,5.8,7,7.3,2,ICICI Pru Corporate Bond Fund,1.67,1.52,3.07,Corporate Bond Mutual Funds
+3.97,ICICI Prudential Mutual Fund,0.42,Debt,0.86,10,Manish Banthia,7584,8.933927891782632,100,100,4,5.8,8,8.1,4,ICICI Pru Credit Risk Fund,1.59,2.15,3.18,Credit Risk Funds
+2.07,ICICI Prudential Mutual Fund,0.53,Other,0.41,10,Manish Banthia,141,4.955827057601261,100,100,4,5.8,6.7,7,3,ICICI Pru Debt Management Fund,1.61,1.38,3.01,FoFs Domestic
+10.39,ICICI Prudential Mutual Fund,0.83,Equity,0.66,9,Mittul Kalawadia,1258,7.138073034044347,5000,100,3,8.5,37.6,12.1,6,ICICI Pru Dividend Yield Equity Fund,15.42,1.94,5.06,Dividend Yield Funds
+9.56,ICICI Prudential Mutual Fund,0.84,Hybrid,1.2,10,Sankaran Naren,21232,9.963311854181793,5000,100,5,6.8,30.6,14.3,6,ICICI Pru Equity & Debt Fund,14.26,1.75,4.15,Aggressive Hybrid Mutual Funds
+1.59,ICICI Prudential Mutual Fund,0.63,Hybrid,0.39,10,Kayzad Eghlim,11272,9.330165765044532,5000,1000,3,5.6,4.8,5.5,1,ICICI Pru Equity – Arbitrage Fund,0.75,0.99,1.27,Arbitrage Mutual Funds
+4.82,ICICI Prudential Mutual Fund,0.57,Hybrid,0.54,8,Kayzad Eghlim,4936,8.504513138258863,5000,100,3,6.2,12.7,7.9,2,ICICI Pru Equity Savings Fund,4.82,1.84,5.26,Equity Savings Mutual Funds
+6.7,ICICI Prudential Mutual Fund,0.78,Equity,1.76,10,Sankaran Naren,1040,6.947937068614969,5000,1000,3,5.7,30.7,11.4,6,ICICI Pru Exports and Services Fund,14.06,1.78,4.35,Sectoral / Thematic Mutual Funds
+3.22,ICICI Prudential Mutual Fund,0.47,Debt,0.62,10,Rahul Goswami,11650,9.36314729221994,500,100,2,6.3,7,7.2,2,ICICI Pru Floating Interest Fund,1.77,1.46,2.75,Floater Mutual Funds
+7.44,ICICI Prudential Mutual Fund,0.47,Equity,1.44,10,Priyanka Khandelwal,1156,7.053585727193677,5000,100,3,21.1,24.5,13.5,6,ICICI Pru FMCG Fund,11.56,1.61,3.73,Sectoral / Thematic Mutual Funds
+4.86,ICICI Prudential Mutual Fund,0.89,Equity,0.59,10,Sankaran Naren,3920,8.27410200229233,5000,100,4,6.1,31.2,13.4,6,ICICI Pru Focused Equity Fund,15.84,1.62,3.27,Focused Funds
+1.87,ICICI Prudential Mutual Fund,0.69,Debt,0.56,10,Rahul Goswami,2692,7.898411092811599,5000,1000,5,6.3,6.7,8.4,3,ICICI Pru Gilt Fund,3.2,0.82,1.22,Gilt Mutual Funds
+1.82,ICICI Prudential Mutual Fund,0.86,Other,1.26,10,Rohan Maru,111,4.718498871295094,5000,1000,3,3.4,18,10.3,6,ICICI Pru Global Stable Equity Fund,13.7,0.9,1.69,FoFs Overseas
+5.75,ICICI Prudential Mutual Fund,0.47,Other,0.26,10,Dharmesh Kakkad,272,5.60947179518496,5000,1000,5,7.8,13.3,8.8,3,ICICI Pru Income Optimizer Fund,3.85,2.37,5.43,FoFs Domestic
+6.83,ICICI Prudential Mutual Fund,0.84,Other,0.88,3,Dharmesh Kakkad,62,4.143134726391533,500,100,5,4.9,32.2,8.8,6,ICICI Pru India Equity FOF – Direct Growth,15.57,1.71,3.95,FoFs Domestic
+9.93,ICICI Prudential Mutual Fund,0.99,Equity,0.73,4,Sankaran Naren,7644,8.941807118363164,5000,100,3,11.7,44.7,8.8,6,ICICI Pru India Opportunities Fund,19.93,1.67,3.51,Sectoral / Thematic Mutual Funds
+11.76,ICICI Prudential Mutual Fund,0.78,Equity,1.64,10,Ihab Dalwai,2269,7.727535110475448,5000,100,5,24.3,44,15.1,6,ICICI Pru Infrastructure Fund,20.09,1.83,4.04,Sectoral / Thematic Mutual Funds
+7.49,ICICI Prudential Mutual Fund,0.92,Equity,1.09,10,Ihab Dalwai,7044,8.86007342433278,5000,100,4,9.5,33.2,13.7,6,ICICI Pru Large & Mid Cap Fund,17.05,1.68,3.99,Large & Mid Cap Funds
+1.39,ICICI Prudential Mutual Fund,0.78,Debt,0.2,10,Rahul Goswami,47245,10.763123273253704,99,99,2,5.6,4.3,5.3,3,ICICI Pru Liquid Fund,0.38,0.94,4.39,Liquid Mutual Funds
+6.9,ICICI Prudential Mutual Fund,5.04,Equity,1.23,10,Harish Bihani,9819,9.192176401348512,500,500,3,-0.2,27.1,11.5,6,ICICI Pru Long Term Equity Fund,4.06,0.04,0.06,ELSS Mutual Funds
+0.78,ICICI Prudential Mutual Fund,0.95,Equity,0.97,5,Rajat Chandak,32,3.4965075614664802,500,0,3,-0.7,33.7,11.3,6,ICICI Pru Long Term Wealth Enhancement Fund,16.64,1.39,3.33,ELSS Mutual Funds
+7.67,ICICI Prudential Mutual Fund,0.94,Equity,1.7,4,Anish Tawakley,645,6.470799503782602,5000,100,3,8.6,35.6,8.8,6,ICICI Pru Manufacturing Fund,17.45,1.71,3.44,Sectoral / Thematic Mutual Funds
+2.74,ICICI Prudential Mutual Fund,0.69,Debt,0.77,10,Manish Banthia,6305,8.749256840105007,5000,1000,4,5.6,7.7,7.6,4,ICICI Pru Medium Term Bond Fund,2.28,1.29,1.69,Medium Duration Funds
+0.33,ICICI Prudential Mutual Fund,0.96,Equity,1.16,10,Lalit Kumar,3492,8.158516244806831,5000,100,3,3.9,32.9,11.1,6,ICICI Pru MidCap Fund,17.76,1.62,3.32,Mid Cap Mutual Funds
+2.82,ICICI Prudential Mutual Fund,1.25,Debt,0.21,10,Rahul Goswami,11475,9.348013177101256,500,100,3,5.5,5.4,6.1,3,ICICI Pru Money Market Fund,0.67,1.72,4.38,Money Market Funds
+10.44,ICICI Prudential Mutual Fund,0.81,Hybrid,1.15,10,Sankaran Naren,16449,9.708080756193517,5000,100,4,11.3,31.3,14.2,6,ICICI Pru Multi-Asset Fund,13.67,1.85,3.99,Multi Asset Allocation Mutual Funds
+3.09,ICICI Prudential Mutual Fund,0.94,Equity,1.02,10,Sankaran Naren,6929,8.84361509218395,5000,100,3,5.7,29.1,11.8,6,ICICI Pru Multicap Fund,16.79,1.49,3.31,Multi Cap Funds
+-0.72,ICICI Prudential Mutual Fund,1,Other,0.17,10,Kayzad Eghlim,3977,8.288534459413917,100,100,3,0.9,26.1,11.9,6,ICICI Pru Nifty 50 Index Fund,16.8,1.3,3.46,Index Funds
+-4.7,ICICI Prudential Mutual Fund,0.98,Other,0.3,10,Kayzad Eghlim,2415,7.789868559054706,100,100,1,-6.4,22,6.1,6,ICICI Pru Nifty Next 50 Index Fund,18.11,0.97,1.7,Index Funds
+0.54,ICICI Prudential Mutual Fund,0.42,Debt,0.1,4,Rahul Goswami,12837,9.460164801871723,100,500,3,5.4,3.9,8.8,1,ICICI Pru Overnight Fund,0.35,-0.05,-0.25,Overnight Mutual Funds
+3.7,ICICI Prudential Mutual Fund,0.96,Equity,1.22,5,Dharmesh Kakkad,2538,7.839525581704678,5000,100,3,-6,25,8.8,6,ICICI Pru P.H.D Fund,21.09,1.03,2.68,Sectoral / Thematic Mutual Funds
+1.99,ICICI Prudential Mutual Fund,0.84,Other,0.06,10,Dharmesh Kakkad,93,4.543294782270004,5000,1000,3,4.9,26.3,10.9,6,ICICI Pru Passive Strategy Fund,14.83,1.46,3.11,FoFs Domestic
+-0.21,ICICI Prudential Mutual Fund,0.99,Other,0.09,10,Manish Banthia,671,6.51025834052315,100,100,3,14.3,11.7,13.1,5,ICICI Pru Regular Gold Savings Fund,14,0.49,1.1,FoFs Domestic
+3.21,ICICI Prudential Mutual Fund,0.5,Hybrid,0.99,10,Manish Banthia,3212,8.074960359115858,5000,100,5,5.5,11.3,9,4,ICICI Pru Regular Savings Fund,3.41,2,3.57,Conservative Hybrid Mutual Funds
+1.02,ICICI Prudential Mutual Fund,0.64,Solution Oriented,1.12,4,Lalit Kumar,152,5.030437921392435,5000,100,3,1.7,32.4,13.3,6,ICICI Pru Retirement Fund,4.45,1.26,2.43,Retirement Funds
+-1.12,ICICI Prudential Mutual Fund,1,Other,0.16,6,Kayzad Eghlim,694,6.543911845564792,100,100,4,1.4,25.8,12.9,6,ICICI Pru S&P BSE Sensex Index Fund,16.97,1.27,3.24,Index Funds
+3,ICICI Prudential Mutual Fund,0.87,Debt,0.4,10,Rahul Goswami,21144,9.959158749906589,100,100,2,5.7,6.2,6.7,2,ICICI Pru Savings Fund,1.3,1.41,2.65,Low Duration Funds
+4.86,ICICI Prudential Mutual Fund,1.42,Debt,0.39,10,Manish Banthia,14561,9.586170674954657,5000,1000,4,6.4,7.5,7.7,3,ICICI Pru Short Term Fund,1.7,1.75,3.78,Short Duration Funds
+8.49,ICICI Prudential Mutual Fund,0.82,Equity,0.81,10,Harish Bihani,4618,8.437933510430605,5000,100,3,7.7,41.8,14.9,6,ICICI Pru Smallcap Fund,18.41,1.94,4.72,Small Cap Mutual Funds
+9.3,ICICI Prudential Mutual Fund,0.92,Equity,0.99,10,Vaibhav Dusad,8993,9.104312967330653,5000,100,3,-19.7,45.3,21.6,6,ICICI Pru Technology Fund,23.4,1.48,2.41,Sectoral / Thematic Mutual Funds
+6.63,ICICI Prudential Mutual Fund,0.98,Other,0.25,10,Dharmesh Kakkad,958,6.8658910748834385,5000,1000,3,5.4,35.4,14.6,6,ICICI Pru Thematic Advantage Fund,18.22,1.63,4.13,FoFs Domestic
+2.36,ICICI Prudential Mutual Fund,0.54,Debt,0.39,10,Manish Banthia,12447,9.429315246418174,5000,1000,4,5.7,5.9,6.7,3,ICICI Pru Ultra Short Term Fund,0.68,2.4,4.76,Ultra Short Duration Funds
+1.82,ICICI Prudential Mutual Fund,0.86,Equity,1.22,10,Rohan Maru,2365,7.768956044538332,5000,100,3,4.8,23.4,15.9,6,ICICI Pru US Bluechip Equity Fund,19.18,0.88,1.69,Sectoral / Thematic Mutual Funds
+11.82,ICICI Prudential Mutual Fund,0.8,Equity,1.22,10,Sankaran Naren,27449,10.220121446937677,1000,100,4,8.9,36.9,14.9,6,ICICI Pru Value Discovery Fund,14.61,2.04,4.4,Value Funds
+-1.2,IDBI Mutual Fund,0.86,Equity,1.5,5,Alok Ranjan,81,4.406719247264253,5000,500,2,4.8,20.3,8.8,6,IDBI Banking & Financial Services Fund,22.62,0.88,1.99,Sectoral / Thematic Mutual Funds
+3.08,IDBI Mutual Fund,-2.49,Debt,0.61,9,Raju Sharma,22,3.1354942159291497,5000,500,3,4.3,11.3,3.7,4,IDBI Credit Risk Fund,6.23,1.03,3.09,Credit Risk Funds
+1.29,IDBI Mutual Fund,0.81,Equity,1.5,4,Alok Ranjan,85,4.454347296253507,5000,500,3,0.1,25.2,8.8,6,IDBI Dividend Yield Fund,14.28,1.43,2.79,Dividend Yield Funds
+-1.93,IDBI Mutual Fund,0.8,Equity,1.21,10,Alok Ranjan,455,6.1224928095143865,500,500,2,-0.7,33.7,11.3,6,IDBI Equity Advantage Fund,14.59,1.15,2.4,ELSS Mutual Funds
+0.39,IDBI Mutual Fund,1.05,Hybrid,1.15,10,Alok Ranjan,9.77,2.3767644911682972,5000,500,2,2.5,11.8,7.2,4,IDBI Equity Savings Fund,7.12,1.11,2.48,Equity Savings Mutual Funds
+-0.57,IDBI Mutual Fund,0.94,Equity,1.61,5,Alok Ranjan,125,4.836281906951478,5000,500,3,0.1,25.2,10.2,6,IDBI Focused 30 Equity Fund,16.02,1.29,3.11,Focused Funds
+-0.02,IDBI Mutual Fund,1,Other,0.26,10,Nitin Dattaram Dalvi,42,3.7612001156935624,5000,500,3,15,12.1,12.9,5,IDBI Gold Fund,16.54,0.42,0.82,FoFs Domestic
+-3.1,IDBI Mutual Fund,0.95,Equity,1.24,4,Alok Ranjan,49,3.912023005428146,5000,500,3,-13,17.1,8.8,6,IDBI Healthcare Fund,20.52,0.71,1.57,Sectoral / Thematic Mutual Funds
+-0.86,IDBI Mutual Fund,0.78,Hybrid,1.67,6,Alok Ranjan,171,5.147494476813453,5000,500,2,-1.8,17.5,7,6,IDBI Hybrid Equity Fund,11.4,1.18,2.66,Aggressive Hybrid Mutual Funds
+0.51,IDBI Mutual Fund,0.93,Equity,1.26,10,Alok Ranjan,599,6.396929655216146,5000,500,4,0.5,26,12.4,6,IDBI India Top 100 Equity Fund,15.82,1.36,2.94,Large Cap Mutual Funds
+1.43,IDBI Mutual Fund,0.75,Debt,0.13,10,Raju Sharma,763,6.638567789166521,5000,500,4,5.6,4.4,5.4,2,IDBI Liquid Fund,0.36,1.19,5.73,Liquid Mutual Funds
+1.21,IDBI Mutual Fund,0.94,Equity,1.67,5,Alok Ranjan,92,4.532599493153256,5000,500,2,-0.1,25.4,8.8,6,IDBI Long Term Value Fund,16.51,1.36,2.89,Value Funds
+-5.96,IDBI Mutual Fund,0.97,Equity,1.62,6,Alok Ranjan,176,5.176149732573829,5000,500,1,-2.9,25.1,7.7,6,IDBI Midcap Fund,17.76,1.27,2.57,Mid Cap Mutual Funds
+-0.9,IDBI Mutual Fund,1,Other,0.32,10,Nisha Sharma,188,5.241747015059643,5000,500,3,0.8,25.8,11.8,6,IDBI Nifty 50 Index Fund,16.78,1.29,3.47,Index Funds
+-4.78,IDBI Mutual Fund,0.98,Other,0.32,10,Nisha Sharma,49,3.912023005428146,5000,500,1,-6.1,21.8,6.2,6,IDBI Nifty Next 50 Index Fund,18.03,0.96,1.71,Index Funds
+3.82,IDBI Mutual Fund,-0.57,Debt,0.28,10,Raju Sharma,29,3.4011973816621555,5000,500,4,4.1,9.4,6.9,2,IDBI Short Term Bond Fund,5,0.92,3.22,Short Duration Funds
+8.16,IDBI Mutual Fund,0.71,Equity,1.54,6,Alok Ranjan,143,4.969813299576001,5000,500,3,2.1,38.5,12.6,6,IDBI Small Cap Fund,16.34,1.95,4.09,Small Cap Mutual Funds
+1.14,IDBI Mutual Fund,0.15,Debt,0.25,10,Raju Sharma,198,5.293304824724492,5000,500,3,5.4,5.1,5.9,2,IDBI Ultra Short Term Fund,0.72,1.29,1.68,Ultra Short Duration Funds
+1.61,IIFL Mutual Fund,0.6,Debt,0.27,10,Milan Mody,494,6.20455776256869,10000,1000,4,3.3,6,6.5,3,IIFL Dynamic Bond Fund,1.86,0.96,1.63,Dynamic Bond
+3.78,IIFL Mutual Fund,0.91,Equity,0.9,8,Mayur Patel,3416,8.136518252115291,1000,1000,5,4.7,29.2,18.1,6,IIFL Focused Equity Fund,16.2,1.56,3.39,Focused Funds
+0.87,IIFL Mutual Fund,0.64,Debt,0.2,9,Milan Mody,601,6.400257445308821,5000,1000,2,5.5,3.9,4.8,3,IIFL Liquid Fund,0.39,0.04,0.19,Liquid Mutual Funds
+0.18,Indiabulls Mutual Fund,0.54,Hybrid,0.58,8,Sumit Bhatnagar,14,2.70805020110221,500,1000,2,4.3,3.3,4.5,1,Indiabulls Arbitrage Fund,0.67,-0.82,-1.04,Arbitrage Mutual Funds
+-3.4,Indiabulls Mutual Fund,0.94,Equity,1.27,10,Sumit Bhatnagar,91,4.5217885770490405,500,500,2,2,21.3,9.5,6,Indiabulls Bluechip Fund,16.22,1.1,2.23,Large Cap Mutual Funds
+0.95,Indiabulls Mutual Fund,0.84,Debt,0.36,4,Karan Singh,25,3.258096538021482,500,500,3,4.2,5.2,8.8,3,Indiabulls Dynamic Bond Fund,2.04,0.58,0.99,Dynamic Bond
+0.47,Indiabulls Mutual Fund,0.87,Hybrid,1.55,4,Sumit Bhatnagar,32,3.4965075614664802,500,500,3,3.2,20.5,8.8,5,Indiabulls Equity Hybrid Fund,12.71,1.29,2.77,Aggressive Hybrid Mutual Funds
+0.95,Indiabulls Mutual Fund,0.63,Debt,0.22,10,Karan Singh,212,5.3612921657094255,500,500,1,5.4,4,5.2,2,Indiabulls Liquid Fund,0.36,0.28,1.28,Liquid Mutual Funds
+0.4,Indiabulls Mutual Fund,0.39,Debt,0.18,4,Karan Singh,42,3.7612001156935624,500,500,1,5.2,3.8,8.8,1,Indiabulls Overnight Fund,0.33,-0.36,-1.77,Overnight Mutual Funds
+4.88,Indiabulls Mutual Fund,2.83,Debt,0.38,10,Karan Singh,25,3.258096538021482,500,500,2,4.4,5.1,5.9,3,Indiabulls Short Term Fund,1.55,0.7,1.15,Short Duration Funds
+-2.36,Indiabulls Mutual Fund,0.88,Equity,0.5,5,Sumit Bhatnagar,36,3.6109179126442243,500,500,2,1,22.3,7.8,6,Indiabulls Tax Savings Fund,15.09,1.21,2.52,ELSS Mutual Funds
+-0.23,Indiabulls Mutual Fund,0.92,Equity,0.5,8,Sumit Bhatnagar,9.71,2.3711778844596574,500,500,2,-0.2,25.6,6.3,6,Indiabulls Value Fund,16.23,1.27,2.9,Value Funds
+1.82,Invesco Mutual Fund,0.86,Other,0.73,9,Amit Nigam,12,2.5649493574615367,1000,500,3,9.5,24.4,9.5,6,Invesco India – Invesco GEI Fund,17.74,1.01,1.58,FoFs Overseas
+1.77,Invesco Mutual Fund,0.53,Hybrid,0.38,10,Deepak Gupta,3184,8.066207568006263,1000,500,5,6.4,5,5.6,1,Invesco India Arbitrage Fund,0.71,1.5,2.16,Arbitrage Mutual Funds
+4.59,Invesco Mutual Fund,2.79,Debt,0.28,10,Vikas Garg,131,4.882801922586371,1000,1000,1,2.3,5.8,6.4,3,Invesco India Banking & PSU Debt Fund,3.47,0.25,0.33,Banking and PSU Mutual Funds
+2.27,Invesco Mutual Fund,0.94,Equity,0.62,10,Taher Badshah,9347,9.142917695658749,1000,500,4,2.8,27.6,12.3,6,Invesco India Contra Fund,16.24,1.45,3.5,Contra Funds
+1.51,Invesco Mutual Fund,0.67,Debt,0.28,10,Vikas Garg,2065,7.633369649679584,1000,100,3,3.7,6.4,6.9,2,Invesco India Corporate Bond Fund,1.86,0.91,1.56,Corporate Bond Mutual Funds
+9.17,Invesco Mutual Fund,4.76,Debt,0.28,9,Vikas Garg,129,4.867534450455582,1000,1000,2,4.4,6,3.5,2,Invesco India Credit Risk Fund,2.89,0.97,2.95,Credit Risk Funds
+0.76,Invesco Mutual Fund,0.59,Hybrid,0.95,10,Amit Ganatra,612,6.418364935936212,1000,500,2,3.9,15.4,7.4,6,Invesco India Dynamic Equity Fund,9.2,1.27,2.84,Dynamic Asset Allocation or Balanced Advantage
+1.1,Invesco Mutual Fund,0.71,Hybrid,0.76,5,Dhimant Kothari,378,5.937536205082426,1000,500,2,1.5,17.4,8.8,6,Invesco India Equity & Bond Fund,10.94,1.29,2.71,Aggressive Hybrid Mutual Funds
+0.17,Invesco Mutual Fund,0.82,Hybrid,0.73,4,Dhimant Kothari,132,4.890349128221754,1000,500,2,1.2,9.6,8.8,4,Invesco India Equity Savings Fund,5.58,1.08,1.9,Equity Savings Mutual Funds
+1.74,Invesco Mutual Fund,0.8,Equity,1.08,10,Hiten Jain,472,6.159095388491933,1000,100,3,5.9,22.6,10.9,6,Invesco India Financial Services Fund,21.36,1,2.16,Sectoral / Thematic Mutual Funds
+-0.44,Invesco Mutual Fund,0.54,Debt,0.48,10,Vikas Garg,22,3.1354942159291497,1000,100,1,4.9,4.2,6.7,2,Invesco India Gilt Fund,2.51,0.06,0.08,Gilt Mutual Funds
+0.29,Invesco Mutual Fund,1.03,Other,0.16,10,Krishna Cheemalapati,59,4.0943445622221,1000,500,4,13.2,11.5,13.2,5,Invesco India Gold Fund,14.79,0.51,1.22,FoFs Domestic
+0.23,Invesco Mutual Fund,0.84,Equity,0.66,10,Amit Ganatra,3665,8.20685642839965,1000,100,3,0.8,22.8,11,6,Invesco India Growth Opportunities Fund,15.03,1.3,2.85,Large & Mid Cap Funds
+8.67,Invesco Mutual Fund,0.61,Equity,1.08,10,Amit Nigam,445,6.100318952020064,1000,500,5,8.9,33.2,14.6,6,Invesco India Infrastructure Fund,17.74,1.59,3.6,Sectoral / Thematic Mutual Funds
+-0.23,Invesco Mutual Fund,0.92,Equity,0.81,10,Amit Nigam,724,6.586171654854675,1000,100,4,-1.8,24,11.1,6,Invesco India Largecap Fund,16.09,1.28,2.62,Large Cap Mutual Funds
+1.31,Invesco Mutual Fund,0.75,Debt,0.15,10,Krishna Cheemalapati,6434,8.769507120030227,1000,500,3,5.6,4.3,5.3,2,Invesco India Liquid Fund,0.37,0.83,4.13,Liquid Mutual Funds
+1.82,Invesco Mutual Fund,0.86,Debt,0.4,2,Vikas Garg,306,5.726847747587197,1000,1000,2,3.5,18.15,8.8,3,Invesco India Medium Duration Fund,12.1,1.29,2.86,Medium Duration Funds
+-0.38,Invesco Mutual Fund,0.86,Equity,0.72,10,Pranav Gokhale,2618,7.870547844507712,1000,500,3,0.2,33.5,14.6,6,Invesco India Midcap Fund,15.97,1.56,3.31,Mid Cap Mutual Funds
+3.07,Invesco Mutual Fund,1.61,Debt,0.22,10,Krishna Cheemalapati,2294,7.738488122494646,1000,1000,2,5,5.1,5.8,2,Invesco India Money Market Fund,0.8,1.14,1.82,Money Market Funds
+2.38,Invesco Mutual Fund,0.91,Equity,0.65,10,Pranav Gokhale,2347,7.761319180947987,1000,500,3,1.4,27,11,6,Invesco India Multicap Fund,16.67,1.43,2.86,Multi Cap Funds
+0.55,Invesco Mutual Fund,0.42,Debt,0.09,3,Krishna Cheemalapati,337,5.823045895483019,1000,100,3,5.3,3.8,8.8,1,Invesco India Overnight Fund,0.35,-0.06,-0.3,Overnight Mutual Funds
+3.08,Invesco Mutual Fund,0.66,Equity,0.96,10,Dhimant Kothari,394,5.978885764901122,1000,500,3,16.2,26.5,12.6,6,Invesco India PSU Equity Fund,18.45,1.19,2.73,Sectoral / Thematic Mutual Funds
+4.41,Invesco Mutual Fund,2.19,Debt,0.35,10,Vikas Garg,350,5.860786223465865,1000,1000,2,3.9,6.2,6.8,2,Invesco India Short Term Fund,1.93,0.76,1.31,Short Duration Funds
+3.51,Invesco Mutual Fund,0.82,Equity,0.78,4,Taher Badshah,1400,7.244941546337007,1000,500,3,3.5,34.6,8.8,6,Invesco India Smallcap Fund,18.25,1.7,3.38,Small Cap Mutual Funds
+-2.63,Invesco Mutual Fund,0.94,Equity,0.92,10,Amit Nigam,1833,7.51425465281641,500,500,3,-5.2,22.4,10.8,6,Invesco India Tax Plan – Direct Growth,16.3,1.19,2.21,ELSS Mutual Funds
+2.95,Invesco Mutual Fund,1.27,Debt,0.32,10,Krishna Cheemalapati,1230,7.115582126184454,1000,100,2,4.9,5.6,6.4,2,Invesco India Treasury Advantage Fund,0.93,1.34,2.9,Low Duration Funds
+2.51,Invesco Mutual Fund,1.2,Debt,0.24,10,Krishna Cheemalapati,818,6.70808408385307,1000,1000,3,5.4,5.1,6,2,Invesco India Ultra Short Term Fund,0.57,1.59,3.4,Ultra Short Duration Funds
+-0.04,ITI Mutual Fund,0.31,Hybrid,0.22,4,Vikrant Mehta,7.04,2.084429083190875,5000,500,1,3.9,3.3,8.8,1,ITI Arbitrage Fund,0.65,-0.71,-1.02,Arbitrage Mutual Funds
+-0.95,ITI Mutual Fund,0.59,Hybrid,0.35,3,Dhimant Shah,452,6.115892125483034,5000,500,1,-0.2,12.3,8.8,6,ITI Balanced Advantage Fund,11.13,0.88,2.56,Dynamic Asset Allocation or Balanced Advantage
+1.82,ITI Mutual Fund,0.86,Debt,0.15,2,Vikrant Mehta,27,3.332204510175204,5000,500,5,5.4,18.15,8.8,2,ITI Banking & PSU Debt Fund,12.1,1.29,2.86,Banking and PSU Mutual Funds
+1.82,ITI Mutual Fund,0.86,Debt,0.14,2,Vikrant Mehta,57,4.060443010546419,5000,500,5,5.7,18.15,8.8,2,ITI Dynamic Bond Fund,12.1,1.29,2.86,Dynamic Bond
+0.63,ITI Mutual Fund,0.47,Debt,0.09,4,Vikrant Mehta,31,3.4657359027997265,5000,500,2,5.5,3.9,8.8,1,ITI Liquid Fund,0.37,0,-0.02,Liquid Mutual Funds
+0.26,ITI Mutual Fund,0.86,Equity,0.44,3,Dhimant Shah,156,5.056245805348308,500,500,2,5.6,23.7,8.8,6,ITI Long Term Equity Fund,15.59,1.31,3.29,ELSS Mutual Funds
+0.48,ITI Mutual Fund,0.42,Debt,0.08,3,Vikrant Mehta,26,3.295836866004329,5000,500,1,5.2,3.8,8.8,1,ITI Overnight Fund,0.34,-0.22,-1.11,Overnight Mutual Funds
+-4.78,ITI Mutual Fund,0.95,Equity,0.44,3,Dhimant Shah,1015,6.923628628138427,5000,500,1,6.5,29.4,8.8,6,ITI Small Cap Fund,21.23,1.27,2.41,Small Cap Mutual Funds
+1.82,ITI Mutual Fund,0.86,Debt,0.1,2,Vikrant Mehta,119,4.787491742782046,5000,500,2,5.3,18.15,8.8,2,ITI Ultra Short Duration Fund,12.1,1.29,2.86,Ultra Short Duration Funds
+0.56,JM Financial Mutual Fund,0.55,Hybrid,0.36,10,Asit Bhandarkar,60,4.110873864173311,5000,500,1,5.4,3.7,4.5,1,JM Arbitrage Fund,0.72,-0.23,-0.31,Arbitrage Mutual Funds
+1.34,JM Financial Mutual Fund,0.65,Debt,0.63,10,Gurvinder Singh Wasan,43,3.784189633918261,5000,1000,4,4.8,6,6.1,2,JM Dynamic Bond Fund,1.61,0.95,1.64,Dynamic Bond
+5.95,JM Financial Mutual Fund,1,Hybrid,1.37,10,Asit Bhandarkar,11,2.4849066497880004,5000,500,4,8,29.5,11.2,6,JM Equity Hybrid Fund,17.44,1.4,3.79,Aggressive Hybrid Mutual Funds
+1.75,JM Financial Mutual Fund,0.9,Equity,1.62,10,Gurvinder Singh Wasan,255,5.545177444479562,5000,500,4,5.2,30.7,13.8,6,JM Flexicap Fund,16.28,1.4,3.67,Flexi Cap Funds
+-2.98,JM Financial Mutual Fund,0.93,Equity,1.58,10,Gurvinder Singh Wasan,42,3.7612001156935624,5000,500,1,3.1,19.4,8.6,6,JM Focused Fund,16.71,1.08,2.5,Focused Funds
+-0.69,JM Financial Mutual Fund,0.67,Equity,1.8,10,Gurvinder Singh Wasan,44,3.8066624897703196,5000,500,5,1.8,18.3,10.4,6,JM Large Cap Fund,12.03,1.2,2.94,Large Cap Mutual Funds
+1.22,JM Financial Mutual Fund,0.68,Debt,0.15,10,Shalini Tibrewala,1426,7.2633296174768365,5000,1000,4,5.6,4.2,5.3,2,JM Liquid Fund,0.36,0.86,3.82,Liquid Mutual Funds
+9.03,JM Financial Mutual Fund,1.19,Debt,0.34,10,Shalini Tibrewala,151,5.0238805208462765,5000,1000,4,5.1,11.5,5.3,2,JM Low Duration Fund,11.61,0.64,12.57,Low Duration Funds
+0.23,JM Financial Mutual Fund,1.39,Debt,0.48,10,Gurvinder Singh Wasan,19,2.995732273553991,5000,1000,2,2.5,4.8,3.1,3,JM Medium to Long Duration Fund,3.03,0.2,0.28,Medium to Long Duration Funds
+0.39,JM Financial Mutual Fund,0.93,Equity,1.45,10,Gurvinder Singh Wasan,70,4.2626798770413155,500,500,3,0.9,26.2,12.8,6,JM Tax Gain Fund,16.56,1.35,2.94,ELSS Mutual Funds
+4.56,JM Financial Mutual Fund,0.89,Equity,1.87,10,Gurvinder Singh Wasan,163,5.099866427824199,5000,500,2,7.7,28.9,12.4,6,JM Value Fund,16.13,1.53,3.94,Value Funds
+3.56,Kotak Mahindra Mutual Fund,0.56,Hybrid,0.48,5,Harish Krishnan,14279,9.566615235893575,1000,1000,3,5.5,18.1,8.8,6,Kotak Balanced Advantage Fund,8.76,1.59,4.01,Dynamic Asset Allocation or Balanced Advantage
+4.03,Kotak Mahindra Mutual Fund,1.45,Debt,0.37,10,Deepak Agrawal,5256,8.567315800819449,5000,1000,3,4.7,6.7,7.5,3,Kotak Banking and PSU Debt Fund,2.03,1.03,1.87,Banking and PSU Mutual Funds
+1.75,Kotak Mahindra Mutual Fund,0.91,Equity,0.64,10,Harish Krishnan,5259,8.567886305731756,1000,100,5,3.3,26.8,12.6,6,Kotak Bluechip Fund,15.3,1.45,3.48,Large Cap Mutual Funds
+4.73,Kotak Mahindra Mutual Fund,2.06,Debt,0.36,10,Deepak Agrawal,12203,9.40951904583656,5000,1000,3,4.4,6.5,7.2,3,Kotak Bond – Short Term Fund,1.76,1.12,1.89,Short Duration Funds
+1.47,Kotak Mahindra Mutual Fund,1.57,Debt,0.63,10,Abhishek Bisen,1584,7.368339686311381,5000,1000,3,4.1,6.4,7.7,2,Kotak Bond Fund,3.19,0.6,0.72,Medium to Long Duration Funds
+1.73,Kotak Mahindra Mutual Fund,0.59,Debt,0.32,10,Deepak Agrawal,8880,9.091669442258505,5000,1000,3,4.5,6.4,7.1,2,Kotak Corporate Bond Fund,1.54,1.23,2.25,Corporate Bond Mutual Funds
+0.82,Kotak Mahindra Mutual Fund,-0.4,Debt,0.74,10,Deepak Agrawal,1204,7.094234845924755,5000,1000,2,1.6,5.9,6.4,5,Kotak Credit Risk Fund,2.92,0.47,0.42,Credit Risk Funds
+4.79,Kotak Mahindra Mutual Fund,0.7,Hybrid,0.44,10,Devender Singhal,1650,7.409136443920128,5000,1000,5,6.1,14.3,10,4,Kotak Debt Hybrid Fund,4.73,2.06,3.44,Conservative Hybrid Mutual Funds
+1.66,Kotak Mahindra Mutual Fund,1.32,Debt,0.4,10,Deepak Agrawal,1992,7.597396320212795,5000,1000,4,3.9,6.6,7.8,3,Kotak Dynamic Bond Fund,2.95,0.69,1,Dynamic Bond
+3.18,Kotak Mahindra Mutual Fund,0.9,Equity,0.49,10,Pankaj Tibrewal,23962,10.084266253072569,100,100,4,6.6,34,15.2,6,Kotak Emerging Equity Fund,16.42,1.82,3.73,Mid Cap Mutual Funds
+1.66,Kotak Mahindra Mutual Fund,0.54,Hybrid,0.43,10,Hiten Shah,21917,9.995063496023338,5000,1000,4,5.8,4.9,5.6,1,Kotak Equity Arbitrage Fund,0.75,1.26,1.46,Arbitrage Mutual Funds
+7.32,Kotak Mahindra Mutual Fund,0.79,Hybrid,0.58,8,Pankaj Tibrewal,3269,8.0925452638913,5000,1000,3,5,26.9,12.8,6,Kotak Equity Hybrid Fund,11.76,1.86,3.89,Aggressive Hybrid Mutual Funds
+4.72,Kotak Mahindra Mutual Fund,0.84,Equity,0.6,10,Harsha Upadhyaya,11608,9.359535938338036,500,500,4,6.2,28.8,13.9,6,Kotak Equity Opportunities – Direct Growth,14.62,1.64,3.43,Large & Mid Cap Funds
+4.5,Kotak Mahindra Mutual Fund,0.79,Hybrid,1.02,8,Devender Singhal,2097,7.6487397889562425,5000,1000,4,6.6,14.4,9.2,4,Kotak Equity Savings Fund,5.64,1.8,4.22,Equity Savings Mutual Funds
+0.11,Kotak Mahindra Mutual Fund,0.88,Equity,0.68,10,Harsha Upadhyaya,35775,10.48503255651477,5000,500,3,3.8,25,11.7,6,Kotak Flexi Cap Fund,15.22,1.37,2.7,Flexi Cap Funds
+3.79,Kotak Mahindra Mutual Fund,1.03,Debt,0.22,4,Deepak Agrawal,4796,8.475746001502063,5000,1000,2,4.6,7,8.8,2,Kotak Floating Rate Fund,2.35,1.02,1.86,Floater Mutual Funds
+1.39,Kotak Mahindra Mutual Fund,0.9,Equity,0.51,4,Shibani Kurian,2447,7.803026643632217,5000,1000,3,0.5,26.6,8.8,6,Kotak Focused Equity Fund,15.69,1.44,2.85,Focused Funds
+1.3,Kotak Mahindra Mutual Fund,0.7,Debt,0.41,10,Abhishek Bisen,1699,7.438383530044307,5000,1000,4,5.2,6.3,8.4,2,Kotak Gilt – Invest Plan – Direct Growth,3.24,0.64,0.81,Gilt Mutual Funds
+1.3,Kotak Mahindra Mutual Fund,0.7,Debt,0.41,10,Abhishek Bisen,1699,7.438383530044307,5000,1000,4,5.2,6.3,8.4,2,Kotak Gilt Invest – PF & Trust Plan – Direct Growth,3.23,0.64,0.81,Gilt Mutual Funds
+-0.32,Kotak Mahindra Mutual Fund,0.97,Other,0.18,10,Abhishek Bisen,1406,7.249215057114389,5000,1000,3,14.2,12.2,13.7,5,Kotak Gold Fund,13.51,0.48,1.08,FoFs Domestic
+4.24,Kotak Mahindra Mutual Fund,0.92,Equity,0.81,10,Shibani Kurian,1440,7.273092595999522,5000,1000,4,7.3,29.7,14.2,6,Kotak India EQ Contra Fund,15.95,1.57,3.35,Contra Funds
+7.67,Kotak Mahindra Mutual Fund,0.95,Equity,0.34,5,Devender Singhal,90,4.51085950651685,5000,0,3,4.8,35.5,15.6,6,Kotak India Growth Fund,17.23,1.75,3.71,Multi Cap Funds
+14.15,Kotak Mahindra Mutual Fund,0.6,Equity,1,10,Harish Krishnan,727,6.590301048196686,5000,1000,4,23.2,39.7,13.9,6,Kotak Infrastructure & Ecoc. Reform-SP-DirGrowth,16.65,2,4.55,Sectoral / Thematic Mutual Funds
+1.33,Kotak Mahindra Mutual Fund,0.76,Debt,0.15,10,Deepak Agrawal,33220,10.410937485062203,100,1000,2,5.6,4.3,5.3,3,Kotak Liquid Fund,0.38,0.85,3.68,Liquid Mutual Funds
+2.9,Kotak Mahindra Mutual Fund,0.78,Debt,0.43,10,Deepak Agrawal,7420,8.912069097970134,5000,1000,3,5.4,6.2,6.9,3,Kotak Low Duration Fund,1.3,1.43,2.67,Low Duration Funds
+2.04,Kotak Mahindra Mutual Fund,0.79,Debt,0.58,9,Deepak Agrawal,1934,7.5678626054638825,5000,1000,4,4,7,6.6,3,Kotak Medium Term Fund,3.41,0.66,0.71,Medium Duration Funds
+2.59,Kotak Mahindra Mutual Fund,1.2,Debt,0.26,10,Deepak Agrawal,14248,9.564442007795789,5000,0,3,5.6,5.1,6.1,3,Kotak Money Market Fund,0.51,1.92,4.43,Money Market Funds
+8.04,Kotak Mahindra Mutual Fund,0.7,Other,0.13,10,Devender Singhal,783,6.664409020350408,5000,1000,3,11.2,25,15.3,5,Kotak Multi Asset Allocator FoF – Dynamic – Direct Growth,10.99,1.91,4.33,FoFs Domestic
+0.56,Kotak Mahindra Mutual Fund,0.42,Debt,0.07,4,Deepak Agrawal,8999,9.104979856318357,5000,0,3,5.4,3.9,8.8,1,Kotak Overnight Fund,0.35,-0.02,-0.1,Overnight Mutual Funds
+2.57,Kotak Mahindra Mutual Fund,1.12,Debt,0.37,10,Deepak Agrawal,12325,9.419466131522189,5000,1000,3,5.5,5.2,6.2,3,Kotak Savings Fund,0.58,1.85,4.14,Ultra Short Duration Funds
+8.99,Kotak Mahindra Mutual Fund,0.81,Equity,0.59,10,Pankaj Tibrewal,8617,9.061608318175784,500,500,4,-0.7,43.1,17,6,Kotak Small Cap Fund,18.26,1.98,4.06,Small Cap Mutual Funds
+4.69,Kotak Mahindra Mutual Fund,0.83,Equity,0.69,10,Harsha Upadhyaya,3167,8.060855752934316,500,500,4,5,28.9,14.4,6,Kotak Tax Saver Fund,14.44,1.68,3.36,ELSS Mutual Funds
+1.82,L&T Mutual Fund,0.86,Equity,1.09,4,Venugopal Manghat,946,6.853299093186078,5000,500,3,-0.7,33.7,11.3,6,L&T Focused Equity Fund,12.1,1.29,2.86,Focused Funds
+-2.34,L&T Mutual Fund,0.97,Equity,1.49,10,Venugopal Manghat,757,6.630683385642372,5000,500,2,0.8,33,12.1,6,L&T India Large Cap Fund,16.62,1.18,2.6,Large Cap Mutual Funds
+1.23,LIC Mutual Fund,0.6,Hybrid,0.31,4,Jaiprakash Toshniwal,27,3.332204510175204,5000,1000,2,5.5,4.4,8.8,1,LIC MF Arbitrage Fund,0.78,0.55,0.67,Arbitrage Mutual Funds
+0.9,LIC Mutual Fund,0.85,Equity,1.54,8,Jaiprakash Toshniwal,121,4.804021044733257,5000,1000,2,13.9,22.7,8.5,6,LIC MF Banking & Fina Serv Fund,22.14,0.97,2.19,Sectoral / Thematic Mutual Funds
+3.94,LIC Mutual Fund,2.05,Debt,0.28,10,Marzban Irani,1190,7.0825485693553,5000,1000,3,4.2,5.7,6.8,2,LIC MF Banking & PSU Debt Fund,1.53,0.78,1.49,Banking and PSU Mutual Funds
+0.23,LIC Mutual Fund,1.24,Debt,0.21,10,Marzban Irani,111,4.718498871295094,5000,1000,2,4.4,4.7,6.2,3,LIC MF Bond Fund,2.6,0.22,0.32,Medium to Long Duration Funds
+-3.65,LIC Mutual Fund,0.9,Solution Oriented,1.86,10,Karan Desai,12,2.5649493574615367,5000,1000,1,-1.9,17.1,7.6,6,LIC MF Children’s Gift Fund,13.05,0.99,2.54,Childrens Funds
+-0.54,LIC Mutual Fund,0.61,Hybrid,1.34,10,Karan Desai,61,4.127134385045092,5000,1000,3,2.5,8.1,6.7,4,LIC MF Debt Hybrid Fund,4.14,0.92,2.11,Conservative Hybrid Mutual Funds
+-2.85,LIC Mutual Fund,0.77,Hybrid,1.43,10,Karan Desai,378,5.937536205082426,5000,1000,1,-0.5,15.1,8.3,6,LIC MF Equity Hybrid Fund,11.49,0.99,2.26,Aggressive Hybrid Mutual Funds
+-4.31,LIC Mutual Fund,0.8,Equity,1.74,10,Amit Nadekar,383,5.950642552587727,5000,1000,2,-0.9,18.3,8.8,6,LIC MF Flexi Cap Fund,14.27,1.02,2.15,Flexi Cap Funds
+0.27,LIC Mutual Fund,0.45,Debt,0.76,10,Marzban Irani,46,3.8501476017100584,10000,1000,3,3.3,4.9,7.7,2,LIC MF G-Sec Fund,2.23,0.35,0.51,Gilt Mutual Funds
+7.11,LIC Mutual Fund,0.57,Equity,1.47,10,Yogesh Patil,90,4.51085950651685,5000,1000,3,6.7,29.8,11.2,6,LIC MF Infrastructure Fund,16.12,1.56,3.89,Sectoral / Thematic Mutual Funds
+0.78,LIC Mutual Fund,0.84,Equity,0.84,8,Yogesh Patil,1888,7.543802867501509,5000,1000,3,-4.3,22.8,10.9,6,LIC MF Large & Mid Cap Fund,14.89,1.34,2.59,Large & Mid Cap Funds
+-3.35,LIC Mutual Fund,0.88,Equity,1.39,10,Yogesh Patil,648,6.47543271670409,5000,1000,2,-3.2,19.7,10.9,6,LIC MF Large Cap Fund,15.42,1.08,2.37,Large Cap Mutual Funds
+1.33,LIC Mutual Fund,0.73,Debt,0.16,10,Rahul Singh,5996,8.69901462316851,5000,1000,3,5.6,4.4,5.3,3,LIC MF Liquid Fund,0.37,0.97,4.72,Liquid Mutual Funds
+-0.85,LIC Mutual Fund,1,Other,0.2,10,Jaiprakash Toshniwal,53,3.9889840465642745,5000,1000,3,1,25.8,11.7,6,LIC MF Nifty 50 Index Fund,16.75,1.3,3.44,Index Funds
+0.57,LIC Mutual Fund,0.42,Debt,0.07,4,Rahul Singh,951,6.858565034791365,5000,1000,4,5.4,3.9,8.8,1,LIC MF Overnight Fund,0.35,0.02,0.11,Overnight Mutual Funds
+-1.81,LIC Mutual Fund,1,Other,0.38,10,Jaiprakash Toshniwal,68,4.23410650459726,5000,1000,3,2.2,25.4,12.6,6,LIC MF S&P BSE Sensex Index Fund,16.89,1.23,3.4,Index Funds
+2.95,LIC Mutual Fund,1.01,Debt,0.27,10,Rahul Singh,707,6.56244409369372,5000,1000,3,5,5.9,5.6,2,LIC MF Savings Fund,1.02,1.57,4.54,Low Duration Funds
+4.66,LIC Mutual Fund,2.57,Debt,0.37,4,Marzban Irani,110,4.709530201312334,5000,1000,2,3.7,5.7,8.8,3,LIC MF Short Term Debt Fund,1.61,0.76,1.26,Short Duration Funds
+-0.72,LIC Mutual Fund,0.81,Equity,1.47,10,Amit Nadekar,401,5.996452088619021,500,500,2,-1.9,20.5,9.9,6,LIC MF Tax Plan – Direct Growth,14.61,1.25,2.55,ELSS Mutual Funds
+1.33,LIC Mutual Fund,0.75,Debt,0.3,3,Rahul Singh,40,3.713572066704308,5000,1000,1,5,4.5,8.8,1,LIC MF Ultra Short Term Fund,0.39,0.85,1.98,Ultra Short Duration Funds
+4.52,Mahindra Manulife Mutual Fund,0.85,Hybrid,0.65,4,Fatema Pacha,615,6.423246963533519,1000,500,4,2.7,24.6,8.8,6,Mahindra Manulife Aggressive Hybrid Fund,12.44,1.62,3.57,Aggressive Hybrid Mutual Funds
+0.66,Mahindra Manulife Mutual Fund,0.77,Equity,0.82,4,Abhinav Khandelwal,54,4.007333185232471,1000,500,3,5.7,21.3,8.8,6,Mahindra Manulife Consumption Fund,14.14,1.33,2.76,Sectoral / Thematic Mutual Funds
+-0.19,Mahindra Manulife Mutual Fund,0.65,Debt,0.51,5,Rahul Pal,66,4.204692619390966,1000,500,2,3.4,4.4,8.8,3,Mahindra Manulife Dynamic Bond Fund,1.7,-0.01,-0.01,Dynamic Bond
+2.66,Mahindra Manulife Mutual Fund,0.94,Equity,0.73,6,Fatema Pacha,525,6.26530121273771,500,500,3,2.3,29.3,12,6,Mahindra Manulife ELSS Fund,16.21,1.53,3.64,ELSS Mutual Funds
+3.84,Mahindra Manulife Mutual Fund,1.24,Hybrid,0.7,6,Fatema Pacha,418,6.037870919922137,1000,500,4,1.7,32.4,13.3,4,Mahindra Manulife Equity Savings Fund,8.16,1.56,3.1,Equity Savings Mutual Funds
+4.98,Mahindra Manulife Mutual Fund,0.88,Equity,0.51,3,Manish Lodha,1056,6.963189985870238,1000,500,5,-1.1,30.4,8.8,6,Mahindra Manulife Large & Mid Cap Fund,15.69,1.61,3.07,Large & Mid Cap Funds
+-1.04,Mahindra Manulife Mutual Fund,0.9,Equity,0.67,4,Abhinav Khandelwal,215,5.375278407684165,1000,500,4,0.3,25.7,8.8,6,Mahindra Manulife Large Cap Fund,15.36,1.25,2.71,Large Cap Mutual Funds
+1.41,Mahindra Manulife Mutual Fund,0.74,Debt,0.15,7,Rahul Pal,514,6.244166900663736,1000,0,5,5.7,4.5,5.4,3,Mahindra Manulife Liquid Fund,0.37,1.15,5.26,Liquid Mutual Funds
+2.67,Mahindra Manulife Mutual Fund,1.07,Debt,0.37,6,Rahul Pal,395,5.981414211254481,1000,500,3,5.2,5.5,6.4,3,Mahindra Manulife Low Duration Fund,0.76,1.63,3.11,Low Duration Funds
+-0.01,Mahindra Manulife Mutual Fund,0.89,Equity,0.66,5,Abhinav Khandelwal,1060,6.966967138613983,1000,500,3,3.7,31,14.7,6,Mahindra Manulife Mid Cap Fund,16.69,1.57,2.99,Mid Cap Mutual Funds
+4.41,Mahindra Manulife Mutual Fund,0.98,Equity,0.49,6,Fatema Pacha,1515,7.323830566202317,1000,500,3,1.2,32.6,15.8,6,Mahindra Manulife Multi Cap Fund,17.39,1.58,2.87,Multi Cap Funds
+0.61,Mahindra Manulife Mutual Fund,0.43,Debt,0.12,4,Rahul Pal,345,5.846438775057724,1000,0,4,5.4,3.9,8.8,1,Mahindra Manulife Overnight Fund,0.34,0.1,0.52,Overnight Mutual Funds
+1.82,Mahindra Manulife Mutual Fund,0.86,Debt,0.29,2,Rahul Pal,43,3.784189633918261,1000,500,3,4.4,18.15,8.8,3,Mahindra Manulife Short Duration Fund,12.1,1.29,2.86,Short Duration Funds
+2.38,Mahindra Manulife Mutual Fund,1.05,Debt,0.35,3,Rahul Pal,170,5.14166355650266,1000,500,4,5.5,5.1,8.8,2,Mahindra Manulife Ultra Short Duration Fund,0.56,1.74,3.72,Ultra Short Duration Funds
+1.82,Mirae Asset Mutual Fund,0.86,Debt,0.34,3,Basant Bafna,89,4.499809670330265,5000,1000,3,3.7,18.15,8.8,2,Mirae Asset Banking and PSU Debt Fund,12.1,1.29,2.86,Banking and PSU Mutual Funds
+1.3,Mirae Asset Mutual Fund,0.7,Debt,0.17,10,Abhishek Iyer,5983,8.696844519654313,5000,1000,3,5.6,4.3,5.3,2,Mirae Asset Cash Management Fund,0.37,1,6.12,Liquid Mutual Funds
+1.82,Mirae Asset Mutual Fund,0.86,Debt,0.46,2,Mahendra Jajoo,57,4.060443010546419,5000,1000,3,3.7,18.15,8.8,2,Mirae Asset Corporate Bond Fund,12.1,1.29,2.86,Corporate Bond Mutual Funds
+0.15,Mirae Asset Mutual Fund,1.14,Debt,0.18,6,Amit Modani,213,5.365976015021851,5000,1000,2,2.8,4.5,7.2,3,Mirae Asset Dynamic Bond Fund,2.49,0.19,0.22,Dynamic Bond
+3.14,Mirae Asset Mutual Fund,0.95,Equity,0.68,10,Neelesh Surana,23394,10.060277603300317,5000,1000,5,-1.2,29.4,15.1,6,Mirae Asset Emerging Bluechip Fund,16.51,1.51,3.42,Large & Mid Cap Funds
+4.3,Mirae Asset Mutual Fund,1.06,Hybrid,0.43,4,Harshad Borawake,573,6.352629396319567,5000,1000,5,3.7,16.1,8.8,4,Mirae Asset Equity Savings Fund,7.17,1.66,4.03,Equity Savings Mutual Funds
+2.4,Mirae Asset Mutual Fund,0.92,Equity,0.59,4,Gaurav Misra,8615,9.061376218836225,5000,1000,4,-4.9,28.4,8.8,6,Mirae Asset Focused Fund,16.34,1.47,3.4,Focused Funds
+6.38,Mirae Asset Mutual Fund,0.7,Equity,0.5,10,Ankit Jain,1989,7.595889917718538,5000,1000,3,8.1,27.2,14,6,Mirae Asset Great Consumer Fund,13.39,1.68,3.41,Sectoral / Thematic Mutual Funds
+2.95,Mirae Asset Mutual Fund,0.99,Equity,0.52,5,Vrijesh Kasera,1505,7.317212408359839,5000,1000,3,-10.7,25,8.8,6,Mirae Asset Healthcare Fund,21.5,1,2.23,Sectoral / Thematic Mutual Funds
+1.95,Mirae Asset Mutual Fund,0.84,Hybrid,0.36,8,Harshad Borawake,6952,8.846928500099018,5000,1000,4,1.7,21.9,12.2,6,Mirae Asset Hybrid – Equity Fund,12.26,1.42,3.27,Aggressive Hybrid Mutual Funds
+0.41,Mirae Asset Mutual Fund,0.92,Equity,0.53,10,Gaurav Misra,32910,10.401562227376685,5000,1000,3,0.6,25.3,12.1,6,Mirae Asset Large Cap Fund,15.64,1.36,3.55,Large Cap Mutual Funds
+2.67,Mirae Asset Mutual Fund,0.92,Equity,0.58,4,Ankit Jain,8753,9.07726601775084,5000,1000,4,1.2,35,8.8,6,Mirae Asset Midcap Fund,16.86,1.76,3.44,Mid Cap Mutual Funds
+1.82,Mirae Asset Mutual Fund,0.86,Debt,0.25,2,Basant Bafna,59,4.0943445622221,5000,1000,3,5.3,18.15,8.8,2,Mirae Asset Money Market Fund,12.1,1.29,2.86,Money Market Funds
+0.67,Mirae Asset Mutual Fund,0.45,Debt,0.11,3,Abhishek Iyer,632,6.450470422144176,5000,1000,5,5.4,3.9,8.8,1,Mirae Asset Overnight Fund,0.34,0.2,1.26,Overnight Mutual Funds
+2.65,Mirae Asset Mutual Fund,1.03,Debt,0.37,10,Kruti Chheta,606,6.408528791059498,5000,1000,3,5.2,5.6,5.9,2,Mirae Asset Savings Fund,0.86,1.47,3.29,Low Duration Funds
+4.26,Mirae Asset Mutual Fund,2.04,Debt,0.31,5,Basant Bafna,406,6.008813185442595,5000,1000,3,4.5,6.1,6.7,2,Mirae Asset Short Term Fund,1.46,1.05,1.74,Short Duration Funds
+2.58,Mirae Asset Mutual Fund,0.98,Equity,0.54,7,Neelesh Surana,14043,9.549950537288323,500,500,5,0.6,30.3,15.3,6,Mirae Asset Tax Saver Fund,16.81,1.52,3.73,ELSS Mutual Funds
+1.82,Mirae Asset Mutual Fund,0.86,Debt,0.29,2,Basant Bafna,284,5.652489180268651,5000,1000,3,5.5,18.15,8.8,2,Mirae Asset Ultra Short Duration Fund,12.1,1.29,2.86,Ultra Short Duration Funds
+-4.94,Motilal Oswal Mutual Fund,0.62,Hybrid,1.19,6,Santosh Singh,667,6.504288173536645,500,500,1,0.3,9.9,5.6,6,Motilal Oswal Balance Advantage Fund,10.32,0.62,1.13,Dynamic Asset Allocation or Balanced Advantage
+-1.13,Motilal Oswal Mutual Fund,0.82,Hybrid,0.94,5,Siddharth Bothra,385,5.955837369464831,500,500,3,1.7,32.4,13.3,6,Motilal Oswal Equity Hybrid Fund,11.94,1.16,2.63,Aggressive Hybrid Mutual Funds
+-6.29,Motilal Oswal Mutual Fund,0.86,Equity,0.97,9,Siddharth Bothra,8332,9.027978814382207,500,500,1,-1.6,16.4,4.9,6,Motilal Oswal Flexi Cap Fund,15.5,0.9,1.98,Flexi Cap Funds
+-4.81,Motilal Oswal Mutual Fund,0.94,Equity,1,10,Siddharth Bothra,1643,7.404887575616125,500,500,2,2.6,20.4,10.6,6,Motilal Oswal Focused Fund,16.36,1.01,2.1,Focused Funds
+5.27,Motilal Oswal Mutual Fund,0.85,Equity,0.73,3,Aditya Khemani,1415,7.255591274253665,500,500,3,10.7,28.9,8.8,6,Motilal Oswal Large and Midcap Fund,15.94,1.55,3.17,Large & Mid Cap Funds
+0.88,Motilal Oswal Mutual Fund,0.68,Debt,0.21,4,Rakesh Shetty,484,6.184148890937483,500,500,1,5.2,3.8,8.8,2,Motilal Oswal Liquid Fund,0.35,-0.08,-0.39,Liquid Mutual Funds
+1.02,Motilal Oswal Mutual Fund,0.88,Equity,0.8,8,Aditya Khemani,2187,7.690743163541872,500,500,3,8.5,25,10,6,Motilal Oswal Long Term Equity Fund,15.9,1.36,3.01,ELSS Mutual Funds
+7.69,Motilal Oswal Mutual Fund,0.77,Equity,0.87,9,Niket Shah,3769,8.234830280442056,500,500,5,14.6,34,16.4,6,Motilal Oswal Midcap Fund,15.34,1.98,3.72,Mid Cap Mutual Funds
+1.82,Motilal Oswal Mutual Fund,0.86,Other,0.1,4,Swapnil Mayekar,3378,8.12533508671429,500,500,3,-6.2,21.4,8.8,6,Motilal Oswal Nasdaq 100 FOF – Direct Growth,22.3,0.77,1.18,FoFs Overseas
+-0.6,Motilal Oswal Mutual Fund,0.99,Other,0.14,3,Swapnil Mayekar,234,5.459585514144159,500,500,4,0.1,26,8.8,6,Motilal Oswal Nifty 50 Index Fund,16.66,1.31,3.48,Index Funds
+-0.81,Motilal Oswal Mutual Fund,0.99,Other,0.4,4,Swapnil Mayekar,372,5.921578419643816,500,500,3,-1.2,26.7,8.8,6,Motilal Oswal Nifty 500 Index Fund,16.62,1.34,3.05,Index Funds
+0,Motilal Oswal Mutual Fund,1,Other,0.21,4,Swapnil Mayekar,332,5.808142489980444,500,500,2,10.8,25,8.8,6,Motilal Oswal Nifty Bank Index Fund,25.4,0.95,2.02,Index Funds
+-1.33,Motilal Oswal Mutual Fund,1.03,Other,0.22,4,Swapnil Mayekar,644,6.4692503167957724,500,500,3,4.8,33.7,8.8,6,Motilal Oswal Nifty Midcap 150 Index Fund,18.42,1.58,3.32,Index Funds
+-4.95,Motilal Oswal Mutual Fund,0.98,Other,0.33,3,Swapnil Mayekar,118,4.77912349311153,500,500,2,-5.9,21.8,8.8,6,Motilal Oswal Nifty Next 50 Index Fund,18,0.95,1.67,Index Funds
+-1.24,Motilal Oswal Mutual Fund,0.99,Other,0.31,4,Swapnil Mayekar,312,5.746203190540153,500,500,2,-4.8,37.1,8.8,6,Motilal Oswal Nifty Smallcap 250 Index Fund,21.03,1.52,2.88,Index Funds
+1.32,Motilal Oswal Mutual Fund,1.01,Debt,0.58,10,Rakesh Shetty,101,4.624972813284271,500,500,1,4.7,3.9,1.8,1,Motilal Oswal Ultra Short Term Fund,0.39,-0.09,-0.2,Ultra Short Duration Funds
+0.91,Navi Mutual Fund,0.89,Hybrid,0.34,10,Aditya Mulki,15,2.772588722239781,1000,500,2,0.2,32.6,12.4,6,Navi 3 In 1 Fund,15.51,1.41,3.29,Multi Asset Allocation Mutual Funds
+1.82,Navi Mutual Fund,0.86,Equity,0.4,7,Aditya Mulki,56,4.04305126783455,500,500,2,1.3,23.4,10.5,6,Navi ELSS Tax Saver Fund,12.1,1.29,2.86,ELSS Mutual Funds
+1.73,Navi Mutual Fund,0.77,Hybrid,0.42,5,Aditya Mulki,82,4.418840607796598,10,500,3,3.2,19.7,8.8,6,Navi Equity Hybrid Fund,11.25,1.41,2.72,Aggressive Hybrid Mutual Funds
+0.91,Navi Mutual Fund,0.89,Equity,0.43,5,Aditya Mulki,202,5.313205979041787,10,500,3,2.1,25.9,8.8,6,Navi Flexi Cap Fund,15.51,1.41,3.29,Flexi Cap Funds
+5.26,Navi Mutual Fund,0.85,Equity,0.35,7,Aditya Mulki,234,5.459585514144159,10,500,3,1.6,28.7,12.7,6,Navi Large & Midcap Fund,15.37,1.61,3.12,Large & Mid Cap Funds
+5.26,Navi Mutual Fund,0.85,Equity,0.31,10,Aditya Mulki,91,4.5217885770490405,1000,500,2,0.2,32.6,12.4,6,Navi Large Cap Equity Fund,15.37,1.61,3.12,Large Cap Mutual Funds
+1.01,Navi Mutual Fund,0.5,Hybrid,0.39,10,Surbhi Sharma,26,3.295836866004329,10,500,3,4.4,8.4,6.5,4,Navi Regular Savings Fund,3.3,1.38,2.69,Conservative Hybrid Mutual Funds
+1.07,Navi Mutual Fund,0.59,Debt,0.73,10,Surbhi Sharma,11,2.4849066497880004,1000,500,1,1.7,32.4,13.3,2,Navi Ultra Short Term Fund,0.36,0.79,2.45,Ultra Short Duration Funds
+1.74,Nippon India Mutual Fund,0.61,Hybrid,0.21,10,Anand Devendra Gupta,9234,9.13075589263334,5000,100,4,5.6,4.9,5.7,1,Nippon India Arbitrage Fund,0.7,1.31,1.67,Arbitrage Mutual Funds
+3.1,Nippon India Mutual Fund,0.56,Hybrid,0.65,10,Amar Kalkundrikar,6593,8.793915423631676,100,100,3,5.3,17.1,10.1,5,Nippon India Balanced Advantage Fund,8.53,1.58,3.76,Dynamic Asset Allocation or Balanced Advantage
+5.1,Nippon India Mutual Fund,2.27,Debt,0.33,8,Pranay Sinha,4008,8.296297112642508,5000,100,4,4.2,6.9,7.4,3,Nippon India Banking & PSU Debt Fund,1.92,1.08,1.84,Banking and PSU Mutual Funds
+6.01,Nippon India Mutual Fund,0.93,Equity,1.32,10,Vinay Sharma,3826,8.249836485425702,5000,100,3,8.8,28.3,9.5,6,Nippon India Banking&Financial Services-DirGrowth,24.98,1.15,2.22,Sectoral / Thematic Mutual Funds
+8.77,Nippon India Mutual Fund,0.76,Equity,1.76,10,Amar Kalkundrikar,312,5.746203190540153,5000,100,5,12.1,30.6,14.6,6,Nippon India Consumption Fund,14.85,1.76,4.22,Sectoral / Thematic Mutual Funds
+2.14,Nippon India Mutual Fund,0.47,Debt,0.32,10,Vivek Sharma,1701,7.43955930913332,5000,100,5,5.1,6.8,7,3,Nippon India Corporate Bond Fund,1.41,1.61,2.64,Corporate Bond Mutual Funds
+6.08,Nippon India Mutual Fund,0.9,Debt,1,10,Sushil Budhia,927,6.833031732786201,500,100,2,4.8,9.5,4.4,5,Nippon India Credit Risk Fund,3.87,1.26,3.84,Credit Risk Funds
+0.97,Nippon India Mutual Fund,2,Debt,0.28,10,Pranay Sinha,3340,8.114025442356757,5000,100,1,3.6,5.6,6.7,3,Nippon India Dynamic Bond Fund,4.28,0.36,0.46,Dynamic Bond
+4.96,Nippon India Mutual Fund,0.83,Hybrid,1.31,10,Meenakshi Dawar,2764,7.9247959139564355,500,100,1,4.2,24.3,5.9,5,Nippon India Equity Hybrid Fund,12.52,1.62,3.57,Aggressive Hybrid Mutual Funds
+2.71,Nippon India Mutual Fund,0.89,Hybrid,0.69,8,Sushil Budhia,178,5.187385805840755,5000,100,1,3.9,12.2,1.3,2,Nippon India Equity Savings Fund,6.41,1.41,3.22,Equity Savings Mutual Funds
+4.77,Nippon India Mutual Fund,1.84,Debt,0.27,10,Anju Chhajer,7288,8.894121641382213,5000,100,3,4.5,6.9,7.1,3,Nippon India Floating Rate Fund,1.72,1.34,2.66,Floater Mutual Funds
+2.01,Nippon India Mutual Fund,1.12,Equity,1.2,10,Vinay Sharma,5929,8.68777949199177,5000,100,3,3.2,33,11.9,6,Nippon India Focused Equity Fund,20.2,1.4,3.5,Focused Funds
+-0.52,Nippon India Mutual Fund,1.04,Other,0.19,10,Mehul Dama,1447,7.277938572945661,100,100,2,14.2,11.7,13.1,5,Nippon India Gold Savings Fund,14.76,0.46,1.03,FoFs Domestic
+2.25,Nippon India Mutual Fund,0.91,Equity,1.09,10,Rupesh Patel,13409,9.503755976275723,100,100,4,5.6,32.4,14.5,6,Nippon India Growth Fund,16.8,1.74,3.62,Mid Cap Mutual Funds
+0.57,Nippon India Mutual Fund,0.69,Debt,0.63,10,Pranay Sinha,1158,7.055312843339752,5000,100,3,4.4,5.5,8.3,2,Nippon India GSF – Direct Growth,2.98,0.45,0.57,Gilt Mutual Funds
+3.09,Nippon India Mutual Fund,0.33,Hybrid,1.26,10,Sushil Budhia,716,6.57507584059962,5000,100,1,5.1,9.6,3.4,6,Nippon India Hybrid Bond Fund,2.5,2.17,4.19,Conservative Hybrid Mutual Funds
+1.14,Nippon India Mutual Fund,1.43,Debt,0.58,10,Vivek Sharma,238,5.476463551931511,5000,100,3,6,5.8,7.9,2,Nippon India Income Fund,3.05,0.5,0.6,Medium to Long Duration Funds
+-1.48,Nippon India Mutual Fund,0.99,Other,0.2,10,Mehul Dama,638,6.459904454377535,100,100,3,0.9,26,11.9,6,Nippon India Index Fund,16.64,1.26,3.33,Index Funds
+2.97,Nippon India Mutual Fund,1,Equity,1.01,10,Sailesh Raj Bhan,12524,9.435481925953066,100,100,3,8.4,29.5,12.6,6,Nippon India Large Cap Fund,17.74,1.44,3.01,Large Cap Mutual Funds
+1.5,Nippon India Mutual Fund,0.83,Debt,0.2,10,Anju Chhajer,25358,10.140888975597038,1000,100,3,5.6,4.4,5.4,2,Nippon India Liquid Fund,0.39,1.01,4.53,Liquid Mutual Funds
+2.56,Nippon India Mutual Fund,0.58,Debt,0.37,10,Anju Chhajer,6232,8.73761303680885,500,100,4,5.3,6.2,6.5,2,Nippon India Low Duration Fund,0.98,1.82,2.8,Low Duration Funds
+2.79,Nippon India Mutual Fund,1.21,Debt,0.21,10,Anju Chhajer,10718,9.27977314669152,500,100,5,5.7,5.3,6.3,3,Nippon India Money Market Fund,0.56,2.11,5.44,Money Market Funds
+6.54,Nippon India Mutual Fund,0.99,Equity,1.12,10,Sailesh Raj Bhan,14091,9.553362539461128,100,100,3,10.7,33.7,13.2,6,Nippon India Multi Cap Fund,19.22,1.55,3.33,Multi Cap Funds
+-4.27,Nippon India Mutual Fund,0.99,Other,0.02,4,Mehul Dama,148,5.003946305945459,100,100,2,-5.8,21.8,8.8,6,Nippon India Nifty Next 50 Junior BeES FoF-Dir Growth,18.26,0.99,1.75,FoFs Domestic
+0.63,Nippon India Mutual Fund,0.46,Debt,0.08,4,Anju Chhajer,8861,9.089527751759436,100,100,4,5.4,3.9,8.8,1,Nippon India Overnight Fund,0.35,0.07,0.4,Overnight Mutual Funds
+2.71,Nippon India Mutual Fund,0.95,Equity,1.17,10,Sailesh Raj Bhan,4267,8.358900612421644,5000,100,3,-7,24.7,15.6,6,Nippon India Pharma Fund,20.6,0.99,2.09,Sectoral / Thematic Mutual Funds
+9.72,Nippon India Mutual Fund,0.7,Equity,1.58,10,Sanjay Doshi,1871,7.534762657037537,5000,100,3,20.4,37.2,10.1,6,Nippon India Power & Infra Fund,19.09,1.67,3.52,Sectoral / Thematic Mutual Funds
+2.11,Nippon India Mutual Fund,0.84,Equity,0.54,10,Ashutosh Bhargava,34,3.5553480614894135,5000,100,3,5,26.9,11.9,6,Nippon India Quant Fund,14.96,1.47,2.91,Sectoral / Thematic Mutual Funds
+-0.56,Nippon India Mutual Fund,0.95,Solution Oriented,1.03,8,Pranay Sinha,2233,7.711548979629146,500,500,1,1.3,25.3,6.7,6,Nippon India Retirement Fund,16.26,1.34,3.35,Retirement Funds
+4.95,Nippon India Mutual Fund,1.94,Debt,0.34,10,Sushil Budhia,5147,8.546363568716018,100,100,4,4.3,6.7,7.2,3,Nippon India Short Term Fund,1.6,1.47,2.42,Short Duration Funds
+10.01,Nippon India Mutual Fund,0.89,Equity,0.86,10,Samir Rachh,23910,10.082093883082601,5000,100,4,8.7,47.6,16.8,6,Nippon India Small Cap Fund,19.31,2.06,4.2,Small Cap Mutual Funds
+4.14,Nippon India Mutual Fund,0.16,Debt,1.4,9,Sushil Budhia,151,5.0238805208462765,5000,100,2,2.7,8.3,-0.9,6,Nippon India Strategic Debt Fund,8.43,0.5,2.12,Medium Duration Funds
+0.53,Nippon India Mutual Fund,0.98,Equity,1.18,10,Rupesh Patel,11210,9.324650718153594,500,500,1,1.8,27.3,6.5,6,Nippon India Tax Saver (ELSS) Fund,17.25,1.37,2.75,ELSS Mutual Funds
+1.82,Nippon India Mutual Fund,0.86,Equity,1.22,8,Kinjal Desai,534,6.282266746896006,100,100,3,1.7,32.4,13.3,6,Nippon India US Equity Opportunities Fund,19.57,0.67,1.33,Sectoral / Thematic Mutual Funds
+3.47,Nippon India Mutual Fund,0.53,Debt,0.38,10,Vivek Sharma,5114,8.539932678385727,100,100,5,5.9,7,5.9,3,Nippon India USD Fund,1.79,1.54,3.13,Ultra Short Duration Funds
+4.25,Nippon India Mutual Fund,0.97,Equity,1.21,10,Meenakshi Dawar,4641,8.442900586834382,500,100,3,0,30.3,12.2,6,Nippon India Value Fund,16.97,1.54,3.34,Value Funds
+2.62,Nippon India Mutual Fund,0.91,Equity,1.55,10,Amar Kalkundrikar,3024,8.014666370464942,5000,100,1,2.1,27.4,9.3,6,Nippon India Vision Fund,15.86,1.48,3.41,Large & Mid Cap Funds
+10.65,PPFAS Mutual Fund,0.7,Equity,0.75,10,Rajeev Thakkar,29953,10.30741815055234,1000,1000,5,2.3,33.6,17.6,6,Parag Parikh Flexi Cap Fund,14.53,1.86,3.06,Flexi Cap Funds
+0.87,PPFAS Mutual Fund,0.62,Debt,0.17,5,Raj Mehta,1456,7.284134806195205,5000,1000,1,5.3,4,8.8,2,Parag Parikh Liquid Fund,0.34,0.13,0.59,Liquid Mutual Funds
+12.64,PPFAS Mutual Fund,0.62,Equity,0.8,4,Rajeev Thakkar,1147,7.045776576879511,500,1000,5,8,33,8.8,6,Parag Parikh Tax Saver Fund,12.88,2.11,4.17,ELSS Mutual Funds
+1.06,PGIM India Mutual Fund,0.41,Hybrid,0.33,9,Utkarsh Katkoria,168,5.1298987149230735,5000,1000,2,5.3,4.5,5.2,1,PGIM India Arbitrage Fund,0.7,0.73,0.85,Arbitrage Mutual Funds
+3.87,PGIM India Mutual Fund,1.62,Debt,0.25,10,Puneet Pal,53,3.9889840465642745,5000,1000,3,4.1,6.4,7.1,2,PGIM India Banking&PSU Debt Fund,1.73,0.99,2.06,Banking and PSU Mutual Funds
+1.95,PGIM India Mutual Fund,0.58,Debt,0.29,10,Puneet Pal,49,3.912023005428146,5000,1000,4,4.3,6.8,6.9,2,PGIM India Corporate Bond Fund,1.74,1.21,2.99,Corporate Bond Mutual Funds
+1.08,PGIM India Mutual Fund,0.85,Debt,0.36,10,Puneet Pal,135,4.912654885736052,5000,1000,3,4.6,5.7,7.4,2,PGIM India Dynamic Bond Fund,1.93,0.68,0.89,Dynamic Bond
+4.67,PGIM India Mutual Fund,0.92,Equity,1,7,Srinivas Rao Ravuri,451,6.113682179832232,500,500,4,2.9,31.8,13.7,6,PGIM India Elss Tax Saver Fund,16.01,1.64,3.32,ELSS Mutual Funds
+4.09,PGIM India Mutual Fund,0.6,Hybrid,0.42,10,Anandha Padmanabhan Anjen,143,4.969813299576001,5000,1000,3,4.3,12.6,8,2,PGIM India Equity Savings Fund,4.51,1.86,4.61,Equity Savings Mutual Funds
+5.27,PGIM India Mutual Fund,0.99,Equity,0.4,8,Aniruddha Naha,5199,8.556413904569519,100,1000,5,-2.3,34,15.7,6,PGIM India Flexi Cap Fund,17.81,1.6,3.13,Flexi Cap Funds
+1.82,PGIM India Mutual Fund,0.86,Other,1.44,10,Rahul Jagwani,1336,7.198183577101943,5000,1000,3,-7.9,18.9,14.1,6,PGIM India GEO Fund,25.79,0.55,1.01,FoFs Overseas
+0.65,PGIM India Mutual Fund,0.47,Debt,0.39,10,Puneet Pal,135,4.912654885736052,5000,1000,3,4.2,5.3,7,3,PGIM India Gilt Fund,2.16,0.54,0.74,Gilt Mutual Funds
+2.02,PGIM India Mutual Fund,0.78,Hybrid,0.68,10,Vivek Sharma,217,5.384495062789089,5000,1000,2,4,20.6,9,6,PGIM India Hybrid Equity Fund,12.12,1.35,2.6,Aggressive Hybrid Mutual Funds
+-0.62,PGIM India Mutual Fund,0.89,Equity,0.98,10,Srinivas Rao Ravuri,427,6.059123195581797,5000,1000,2,4.7,24.1,10.9,6,PGIM India Large Cap Fund,15.14,1.28,2.87,Large Cap Mutual Funds
+1.42,PGIM India Mutual Fund,0.76,Debt,0.17,10,Puneet Pal,809,6.697034247666484,100,1000,3,5.6,4.4,5.4,2,PGIM India Liquid Fund,0.38,1.07,4.88,Liquid Mutual Funds
+0.46,PGIM India Mutual Fund,0.27,Debt,0.35,10,Puneet Pal,97,4.584967478670572,5000,1000,1,5.5,4.3,2,2,PGIM India Low Duration Fund,1.43,0.07,0.05,Low Duration Funds
+6.9,PGIM India Mutual Fund,0.97,Equity,0.46,9,Aniruddha Naha,7707,8.950014029534257,5000,1000,5,2,42.9,19,6,PGIM India Midcap Opportunities Fund,18.52,1.92,4.61,Mid Cap Mutual Funds
+2.48,PGIM India Mutual Fund,1.14,Debt,0.15,3,Puneet Pal,235,5.4638318050256105,5000,1000,4,5.7,5.1,8.8,2,PGIM India Money Market Fund,0.5,1.92,5.23,Money Market Funds
+0.67,PGIM India Mutual Fund,0.46,Debt,0.12,4,Puneet Pal,75,4.330733340286331,100,1000,4,5.4,3.9,8.8,1,PGIM India Overnight Fund,0.33,0.16,0.95,Overnight Mutual Funds
+3.73,PGIM India Mutual Fund,1.62,Debt,0.5,10,Puneet Pal,29,3.4011973816621555,5000,1000,3,4.5,6.3,4.6,2,PGIM India Short Duration Fund,1.49,1.04,2.05,Short Duration Funds
+2.45,PGIM India Mutual Fund,1.08,Debt,0.25,10,Puneet Pal,405,6.0063531596017325,25000,1000,3,5.5,5.2,7.3,2,PGIM India Ultra Short Duration Fund,0.53,1.9,4.43,Ultra Short Duration Funds
+16.98,Quant Mutual Fund,0.73,Hybrid,0.56,10,Sanjeev Sharma,1013,6.921658184151129,5000,1000,5,7.3,38.2,19.1,6,Quant Absolute Fund,14.41,2.12,3.75,Aggressive Hybrid Mutual Funds
+13.82,Quant Mutual Fund,0.97,Equity,0.58,10,Sanjeev Sharma,3531,8.16961956172385,5000,1000,3,1,45.5,19.9,6,Quant Active Fund,19.65,1.87,3.33,Multi Cap Funds
+15.93,Quant Mutual Fund,0.91,Equity,0.58,10,Vasav Sahgal,1044,6.951772164398911,5000,1000,5,6.8,47.7,18.2,6,Quant Flexi Cap Fund,19.16,1.94,3.65,Flexi Cap Funds
+8.6,Quant Mutual Fund,0.85,Equity,0.57,10,Sanjeev Sharma,219,5.393627546352361,5000,1000,5,5.2,33.7,13.1,6,Quant Focused Fund,17.34,1.61,3.14,Focused Funds
+27.24,Quant Mutual Fund,0.53,Equity,0.64,10,Vasav Sahgal,822,6.71295620067707,5000,1000,5,5.6,61.5,21.1,6,Quant Infrastructure Fund,19.24,2.3,3.44,Sectoral / Thematic Mutual Funds
+6.57,Quant Mutual Fund,0.88,Equity,0.56,10,Sanjeev Sharma,652,6.481577129276431,5000,1000,5,6.9,33,14.2,6,Quant Large and Mid Cap Fund,17.72,1.51,3.12,Large & Mid Cap Funds
+1.58,Quant Mutual Fund,0.47,Debt,0.29,10,Sanjeev Sharma,1561,7.3537223303996315,5000,1000,5,5.6,4.9,5.9,2,Quant Liquid Plan – Direct Growth,0.27,3.52,8.6,Liquid Mutual Funds
+11.21,Quant Mutual Fund,0.86,Equity,0.63,10,Sanjeev Sharma,1550,7.346655163176539,5000,1000,5,8.8,45.1,19.8,6,Quant Mid Cap Fund,18.73,1.95,3.58,Mid Cap Mutual Funds
+19.52,Quant Mutual Fund,0.75,Hybrid,0.56,10,Vasav Sahgal,634,6.453624998892692,5000,1000,5,10.6,42.6,20.5,6,Quant Multi Asset Fund,18.63,1.79,3.23,Multi Asset Allocation Mutual Funds
+19.16,Quant Mutual Fund,0.99,Equity,0.64,10,Sanjeev Sharma,3301,8.102283624480073,5000,1000,5,5.4,71.4,23.2,6,Quant Small Cap Fund,24.75,2.11,3.71,Small Cap Mutual Funds
+17.63,Quant Mutual Fund,0.96,Equity,0.57,10,Vasav Sahgal,2779,7.930206206684683,500,500,5,0.9,54.9,22.2,6,Quant Tax Plan- Direct Growth,19.74,2.03,3.5,ELSS Mutual Funds
+0.93,Quantum Mutual Fund,0.83,Debt,0.61,8,Pankaj Pathak,85,4.454347296253507,500,500,3,5.4,5.9,6.9,3,Quantum Dynamic Bond Fund,1.77,0.66,1.05,Dynamic Bond
+-0.78,Quantum Mutual Fund,0.86,Other,0.51,14,Chirag Mehta,88,4.48863636973214,500,500,2,-0.5,22.9,9.1,6,Quantum Equity Fund,14.75,1.32,3.01,FoFs Domestic
+-0.98,Quantum Mutual Fund,0.99,Other,0.06,12,Chirag Mehta,83,4.430816798843313,500,500,1,14.3,11.7,13,5,Quantum Gold Savings Fund,13.78,0.44,0.98,FoFs Domestic
+0.94,Quantum Mutual Fund,0.65,Debt,0.15,17,Pankaj Pathak,628,6.444131256700441,5000,500,2,5.4,4,4.9,1,Quantum Liquid Fund,0.36,0.19,0.92,Liquid Mutual Funds
+2.04,Quantum Mutual Fund,0.9,Equity,1.29,17,George Thomas,837,6.731018100482083,500,500,2,2.4,26.5,8.8,6,Quantum Long Term Equity Value Fund,15.72,1.42,3,Value Funds
+0.61,Quantum Mutual Fund,0.42,Other,0.1,11,Chirag Mehta,49,3.912023005428146,500,500,3,5.5,12.4,8.1,4,Quantum Multi Asset Fund,6.73,1.24,3.12,FoFs Domestic
+1.68,Quantum Mutual Fund,0.88,Equity,1.29,14,Christy Mathai,115,4.7535901911063645,500,500,3,2.9,26.6,8.9,6,Quantum Tax Saving Fund,15.47,1.44,3.04,ELSS Mutual Funds
+1.18,SBI Mutual Fund,0.45,Hybrid,0.36,10,Neeraj Kumar,8800,9.082620630373812,5000,500,2,5.8,4.5,5.4,1,SBI Arbitrage Opportunities Fund,0.76,0.77,0.93,Arbitrage Mutual Funds
+0.4,SBI Mutual Fund,0.85,Equity,0.78,8,Milind Agrawal,3747,8.228977643358313,5000,500,5,5.5,22.4,12.5,6,SBI Banking & Financial Services Fund,22.28,0.95,1.98,Sectoral / Thematic Mutual Funds
+4.72,SBI Mutual Fund,2.4,Debt,0.35,10,Rajeev Radhakrishnan,4982,8.513787398281405,5000,500,2,3.8,6.2,7,3,SBI Banking and PSU Fund,2.06,0.73,1.17,Banking and PSU Mutual Funds
+1.08,SBI Mutual Fund,0.96,Equity,0.9,10,Sohini Andani,33987,10.433762800123432,5000,500,3,4.2,27,11.4,6,SBI BlueChip Fund,16.39,1.39,3.98,Large Cap Mutual Funds
+5.19,SBI Mutual Fund,0.56,Hybrid,0.57,10,Saurabh Pant,7250,8.888894669371593,5000,500,4,6.2,13.8,8.8,5,SBI Conservative Hybrid Fund,4.11,2.23,4.24,Conservative Hybrid Mutual Funds
+10.04,SBI Mutual Fund,0.76,Equity,1.18,10,Saurabh Pant,1185,7.078341579557671,5000,500,4,11.1,31,12.7,6,SBI Consumption Opportunities Fund,15.53,1.77,3.65,Sectoral / Thematic Mutual Funds
+15.26,SBI Mutual Fund,0.89,Equity,0.91,10,Dinesh Balachandran,8340,9.028938392241612,5000,500,5,15,43.4,15.6,6,SBI Contra Fund,16.56,2.13,4.43,Contra Funds
+1.51,SBI Mutual Fund,0.75,Debt,0.34,4,Rajeev Radhakrishnan,16551,9.714262219425379,5000,500,3,4.1,6.4,8.8,2,SBI Corporate Bond Fund,1.88,0.92,1.54,Corporate Bond Mutual Funds
+2.96,SBI Mutual Fund,0.17,Debt,0.92,10,Lokesh Mallya,2782,7.931284761525891,10000,500,3,5.2,7.2,7,5,SBI Credit Risk Fund,1.82,1.5,2.05,Credit Risk Funds
+1.34,SBI Mutual Fund,1.06,Debt,0.87,10,Dinesh Ahuja,2407,7.786551806428712,5000,500,4,5.9,5.9,7.9,3,SBI Dynamic Bond Fund,2.49,0.66,0.88,Dynamic Bond
+0.1,SBI Mutual Fund,0.79,Hybrid,0.79,10,R Srinivasan,54492,10.905827532035193,1000,500,3,-1.9,18.4,10.8,6,SBI Equity Hybrid Fund,11.8,1.25,2.77,Aggressive Hybrid Mutual Funds
+2.72,SBI Mutual Fund,0.81,Equity,0.42,4,Raviprakash Sharma,134,4.90527477843843,5000,500,3,4.9,27,8.8,6,SBI Equity Minimum Variance – Direct Growth,14.84,1.47,3.09,Sectoral / Thematic Mutual Funds
+2.91,SBI Mutual Fund,1.02,Hybrid,0.67,8,Neeraj Kumar,2264,7.725330037917135,1000,500,3,2.2,14.6,8.1,4,SBI Equity Savings Fund,6.94,1.47,3.49,Equity Savings Mutual Funds
+0.62,SBI Mutual Fund,0.88,Equity,0.85,10,R Srinivasan,15602,9.655218482441182,1000,500,3,-1,25.2,11,6,SBI Flexi Cap Fund,15.31,1.4,3.25,Flexi Cap Funds
+1.82,SBI Mutual Fund,0.86,Debt,0.26,2,Rajeev Radhakrishnan,1604,7.380879035564116,5000,500,3,5,18.15,8.8,2,SBI Floating Rate Debt Fund,12.1,1.29,2.86,Floater Mutual Funds
+9.3,SBI Mutual Fund,5.09,Debt,0,4,Ranjana Gupta,40,3.713572066704308,5000,0,3,4.8,6.2,8.8,3,SBI FMP – Series 1 (3668 Days) – Direct Growth,3.62,0.69,1,Fixed Maturity Plans
+-0.62,SBI Mutual Fund,0.81,Equity,0.69,10,R Srinivasan,26561,10.187236901960196,5000,500,3,-4.9,22,12.2,6,SBI Focused Equity Fund,15.84,1.17,2.61,Focused Funds
+-0.94,SBI Mutual Fund,0.98,Other,0.1,10,Raviprakash Sharma,1265,7.143617602704121,5000,500,3,14.8,11.9,13.4,6,SBI Gold Fund,13.62,0.44,0.95,FoFs Domestic
+4.45,SBI Mutual Fund,0.87,Equity,1.09,10,Tanmaya Desai,1574,7.362010551259734,5000,500,3,-1.6,25.7,13.6,6,SBI Healthcare Opportunities Fund,19.03,1.09,2.12,Sectoral / Thematic Mutual Funds
+10.52,SBI Mutual Fund,0.57,Equity,1.88,10,Bhavin Vithiani,927,6.833031732786201,5000,500,4,12.8,33.5,13,6,SBI Infrastructure Fund,16.14,1.79,4,Sectoral / Thematic Mutual Funds
+6.49,SBI Mutual Fund,0.89,Equity,0.99,10,Saurabh Pant,9441,9.152923101106232,5000,500,5,6.5,30.2,13.6,6,SBI Large & Midcap Fund,16.04,1.67,3.24,Large & Mid Cap Funds
+1.35,SBI Mutual Fund,0.76,Debt,0.18,10,R Arun,57052,10.951735939359013,500,500,3,5.6,4.3,5.3,2,SBI Liquid Fund,0.38,0.88,4.07,Liquid Mutual Funds
+12.2,SBI Mutual Fund,0.87,Equity,1.75,6,R Srinivasan,164,5.10594547390058,500,0,3,0.1,43.3,19.5,4,SBI Long Term Advantage Fund,18.27,1.79,3.93,ELSS Mutual Funds
+3.78,SBI Mutual Fund,0.9,Equity,1.07,10,Dinesh Balachandran,12158,9.405824915296419,500,500,3,8.7,30.1,11.6,6,SBI Long Term Equity Fund,15.64,1.59,3.21,ELSS Mutual Funds
+6.29,SBI Mutual Fund,0.57,Solution Oriented,0.86,10,Rajeev Radhakrishnan,89,4.499809670330265,5000,500,4,3.1,15.2,8.3,4,SBI Magnum Children’s Benefit Fund,6.03,1.72,3.92,Childrens Funds
+1.41,SBI Mutual Fund,1.06,Equity,2.03,10,Richard Dsouza,417,6.035481432524756,5000,500,3,-12.1,30.9,11.3,6,SBI Magnum Comma Fund,21.13,1.24,2.37,Sectoral / Thematic Mutual Funds
+-0.26,SBI Mutual Fund,0.92,Equity,1.35,10,Rohit Shimpi,4456,8.402231172946555,1000,500,3,-2.7,24.2,12.2,6,SBI Magnum Equity ESG Fund,15.89,1.29,2.88,Sectoral / Thematic Mutual Funds
+1.45,SBI Mutual Fund,0.53,Debt,0.46,10,Dinesh Ahuja,4301,8.366835309827675,5000,500,5,5.7,6.1,8.3,3,SBI Magnum Gilt Fund,2.66,0.77,1.1,Gilt Mutual Funds
+3.66,SBI Mutual Fund,0.64,Equity,1.25,10,R Srinivasan,5257,8.567506005289827,5000,500,3,1.6,24.1,11.5,6,SBI Magnum Global Fund,13.28,1.42,2.42,Sectoral / Thematic Mutual Funds
+1.92,SBI Mutual Fund,1.04,Debt,0.8,10,Dinesh Ahuja,1510,7.32052696227274,5000,500,4,4.8,6.9,7.8,4,SBI Magnum Income Fund,2.35,0.94,1.56,Medium to Long Duration Funds
+3.11,SBI Mutual Fund,1.37,Debt,0.4,10,Rajeev Radhakrishnan,7717,8.951310542097564,5000,500,3,5.2,5.6,6.4,3,SBI Magnum Low Duration Fund,0.8,1.58,3.47,Low Duration Funds
+2.34,SBI Mutual Fund,0.87,Debt,0.69,10,Dinesh Ahuja,7087,8.866158492284917,5000,500,4,4.6,7.2,7.9,4,SBI Magnum Medium Duration Fund,2.19,1.18,2.05,Medium Duration Funds
+5.5,SBI Mutual Fund,0.91,Equity,0.97,10,Sohini Andani,8732,9.074864232413733,5000,500,4,6.4,37,13.5,6,SBI Magnum Midcap Fund,17.15,1.89,3.93,Mid Cap Mutual Funds
+2.47,SBI Mutual Fund,1.2,Debt,0.31,10,R Arun,8907,9.094705028377259,5000,2000,2,5.2,5.1,6.1,2,SBI Magnum Ultra Short Duration Fund,0.58,1.49,3.14,Ultra Short Duration Funds
+2.18,SBI Mutual Fund,0.48,Hybrid,0.88,10,Dinesh Balachandran,609,6.413458957167357,5000,500,3,5.9,16.1,9.6,6,SBI Multi Asset Allocation Fund,8.2,1.35,2.98,Multi Asset Allocation Mutual Funds
+-0.69,SBI Mutual Fund,1,Other,0.18,10,Raviprakash Sharma,3324,8.109224953089955,5000,500,3,0.9,26,11.8,6,SBI Nifty Index Fund,16.8,1.31,3.47,Index Funds
+0.56,SBI Mutual Fund,0.43,Debt,0.1,10,R Arun,19888,9.897922094063247,5000,2000,2,5.3,3.9,4.6,1,SBI Overnight Fund,0.35,-0.05,-0.25,Overnight Mutual Funds
+-0.18,SBI Mutual Fund,0.78,Equity,1.42,10,Richard Dsouza,505,6.226536669287466,5000,500,3,16,26.3,7.4,6,SBI PSU Fund,19.98,1.1,2.32,Sectoral / Thematic Mutual Funds
+2.73,SBI Mutual Fund,1.19,Debt,0.23,10,R Arun,19441,9.875190953381015,500,500,3,5.5,5.3,6.2,3,SBI Savings Fund,0.59,1.93,4.1,Money Market Funds
+5,SBI Mutual Fund,2.44,Debt,0.35,10,Rajeev Radhakrishnan,13289,9.494767151707292,5000,500,3,4.6,6.4,6.8,2,SBI Short Term Debt Fund,1.7,1.02,1.57,Short Duration Funds
+6.48,SBI Mutual Fund,0.75,Equity,0.7,10,R Srinivasan,15395,9.641863014403636,5000,500,4,8.2,38.3,15.3,6,SBI Small Cap Fund,16.81,1.88,4.07,Small Cap Mutual Funds
+9.96,SBI Mutual Fund,0.84,Equity,1.76,9,R Srinivasan,28,3.367295829986474,500,0,3,1.9,41.1,21.8,4,SBI Tax Advantage Fund,16.07,1.85,4.1,ELSS Mutual Funds
+8.38,SBI Mutual Fund,0.77,Equity,0.87,10,Saurabh Pant,2861,7.959275960116396,5000,500,3,-8.7,37.1,21,6,SBI Technology Opportunities Fund,19.71,1.51,2.36,Sectoral / Thematic Mutual Funds
+-0.22,Shriram Mutual Fund,0.53,Hybrid,0.6,4,Deepak Ramaraju,48,3.8918202981106265,5000,1000,3,2.9,13.9,8.8,6,Shriram Balanced Advantage Fund,7.82,1.22,2.42,Dynamic Asset Allocation or Balanced Advantage
+-2.52,Shriram Mutual Fund,0.85,Equity,0.65,4,Deepak Ramaraju,60,4.110873864173311,5000,1000,2,1.4,21.5,8.8,6,Shriram Flexi Cap Fund,14.68,1.19,2.74,Flexi Cap Funds
+-1.5,Shriram Mutual Fund,0.81,Hybrid,0.65,9,Deepak Ramaraju,56,4.04305126783455,5000,1000,3,0.7,17.7,8.9,6,Shriram Hybrid Equity Fund,11.64,1.16,2.79,Aggressive Hybrid Mutual Funds
+-3.01,Shriram Mutual Fund,0.83,Equity,0.6,4,Deepak Ramaraju,36,3.6109179126442243,500,500,3,0.8,20.1,8.8,6,Shriram Long Term Equity Fund,14.39,1.14,2.37,ELSS Mutual Funds
+2.31,Sundaram Mutual Fund,0.8,Hybrid,0.67,10,S Bharath,2981,8.000349495324684,100,100,4,1.2,21.7,9.7,5,Sundaram Aggressive Hybrid Fund,11.63,1.46,4.11,Aggressive Hybrid Mutual Funds
+0.75,Sundaram Mutual Fund,0.39,Hybrid,0.28,7,Rohit Seksaria,108,4.6913478822291435,100,500,1,5.3,3.3,2.8,2,Sundaram Arbitrage Fund,0.7,0.33,0.48,Arbitrage Mutual Funds
+2.13,Sundaram Mutual Fund,0.51,Hybrid,0.62,10,S Bharath,1532,7.334981878871814,100,500,5,3.9,11.9,7.2,4,Sundaram Balanced Advantage Fund,7.66,1.51,3.24,Dynamic Asset Allocation or Balanced Advantage
+3.49,Sundaram Mutual Fund,2.13,Debt,0.19,10,Dwijendra Srivastava,450,6.111467339502679,5000,250,2,3.5,5,6.1,2,Sundaram Banking & PSU Debt Fund,1.35,0.48,0.73,Banking and PSU Mutual Funds
+0.56,Sundaram Mutual Fund,0.8,Equity,1.46,10,Ratish Varier,1106,7.009408932708637,100,100,2,7.3,22.5,8.8,6,Sundaram Consumption Fund,14.69,1.28,3.32,Sectoral / Thematic Mutual Funds
+1.84,Sundaram Mutual Fund,0.58,Debt,0.28,10,Dwijendra Srivastava,996,6.904750769961838,5000,250,4,4.5,6.8,7.3,2,Sundaram Corporate Bond Fund,1.74,1.15,2.14,Corporate Bond Mutual Funds
+2.48,Sundaram Mutual Fund,0.62,Hybrid,1.2,10,Dwijendra Srivastava,30,3.4339872044851463,5000,100,2,4.1,11.6,6.2,3,Sundaram Debt Oriented Hybrid Fund,5.16,1.33,3.43,Conservative Hybrid Mutual Funds
+0.65,Sundaram Mutual Fund,0.9,Equity,1.66,10,Sudhir Kedia,1623,7.392647520721623,500,100,2,2.2,26.1,8.9,6,Sundaram Diversified Equity – Direct Growth,15.5,1.41,3.5,ELSS Mutual Funds
+2.79,Sundaram Mutual Fund,0.8,Equity,1.02,10,Ratish Varier,382,5.948034989180646,5000,500,3,3.2,26.4,11.7,6,Sundaram Dividend Yield Fund,13.93,1.55,4.03,Dividend Yield Funds
+8.84,Sundaram Mutual Fund,0.86,Equity,0.75,5,Rohit Seksaria,297,5.697093486505405,5000,0,3,9.4,43.7,8.8,2,Sundaram Emerging Small Cap Series III – Dir Growth,19.13,1.97,4.45,Small Cap Mutual Funds
+7.54,Sundaram Mutual Fund,0.85,Equity,0.75,5,Rohit Seksaria,208,5.342334251964811,5000,0,3,6.7,41.4,8.8,4,Sundaram Emerging Small Cap Series IV – Dir Growth,18.88,1.9,4.29,Small Cap Mutual Funds
+8.3,Sundaram Mutual Fund,0.86,Equity,0.79,5,Rohit Seksaria,79,4.382026634673881,5000,0,3,7.6,42.3,8.8,6,Sundaram Emerging Small Cap Series V – Dir Growth,19.15,1.93,4.56,Small Cap Mutual Funds
+8.43,Sundaram Mutual Fund,0.84,Equity,0.77,5,Rohit Seksaria,41,3.7376696182833684,5000,0,3,7.8,41.9,8.8,6,Sundaram Emerging Small Cap Series VI – Dir Growth,18.61,1.95,4.27,Small Cap Mutual Funds
+6.51,Sundaram Mutual Fund,0.76,Equity,0.97,4,Rohit Seksaria,141,4.955827057601261,5000,0,3,8,36.9,8.8,6,Sundaram Emerging Small Cap Series VII – Dir Growth,17.13,1.86,3.95,Small Cap Mutual Funds
+2.5,Sundaram Mutual Fund,0.94,Hybrid,0.54,10,Sudhir Kedia,415,6.030685260261263,100,500,4,3.9,16.8,9.9,3,Sundaram Equity Savings Fund,6.14,1.5,3.24,Equity Savings Mutual Funds
+2.92,Sundaram Mutual Fund,0.89,Equity,0.51,10,Rohit Seksaria,601,6.400257445308821,100,100,4,11.4,25.9,12.6,6,Sundaram Fin Serv Opportunities – Direct Growth,22.98,1.06,2.35,Sectoral / Thematic Mutual Funds
+-1.91,Sundaram Mutual Fund,0.94,Equity,1.2,10,Ravi Gopalakrishnan,771,6.648984550024776,300,100,4,-1.8,24.5,13.1,6,Sundaram Focused Fund,16.55,1.22,2.47,Focused Funds
+1.82,Sundaram Mutual Fund,0.86,Other,1.42,10,Rohit Seksaria,117,4.770684624465665,100,100,3,2.4,20.5,7.7,6,Sundaram Global Brand Fund,16.95,0.88,1.59,FoFs Overseas
+6.79,Sundaram Mutual Fund,0.68,Equity,1.87,10,Ashish Aggarwal,594,6.38856140554563,100,100,2,7.3,32.5,9.1,6,Sundaram Infrastructure Advantage Fund,18.26,1.55,2.9,Sectoral / Thematic Mutual Funds
+1.94,Sundaram Mutual Fund,0.93,Equity,0.72,10,Ravi Gopalakrishnan,4885,8.494129251817686,100,100,3,-1.3,25.4,11.7,6,Sundaram Large and Mid Cap Fund,16.28,1.43,3.07,Large & Mid Cap Funds
+-0.51,Sundaram Mutual Fund,0.91,Equity,0.6,2,Sudhir Kedia,2855,7.957177323459475,100,100,5,0.9,18.15,8.8,6,Sundaram Large Cap Fund,15.44,1.3,3.64,Large Cap Mutual Funds
+1.36,Sundaram Mutual Fund,0.74,Debt,0.17,10,Dwijendra Srivastava,4169,8.335671314792847,1000,2000,4,5.7,4.2,3.3,2,Sundaram Liquid Fund,0.38,0.98,4.89,Liquid Mutual Funds
+1.44,Sundaram Mutual Fund,-1.59,Debt,0.33,10,Dwijendra Srivastava,433,6.073044534100405,1000,2000,2,5.6,4.9,1.8,2,Sundaram Low Duration Fund,4.28,0.83,3.93,Low Duration Funds
+13.76,Sundaram Mutual Fund,0.95,Equity,1.26,6,Rohit Seksaria,62,4.143134726391533,500,0,3,3.5,42.3,8.6,6,Sundaram LT MC Tax Advantage Fund,19.92,1.81,3.89,ELSS Mutual Funds
+2.52,Sundaram Mutual Fund,0.94,Equity,1.01,8,Rohit Seksaria,16,2.833213344056216,500,0,3,4.4,29.6,11.5,6,Sundaram LT Tax Advantage Fund,16.1,1.53,3.5,ELSS Mutual Funds
+-0.16,Sundaram Mutual Fund,1.03,Debt,1.11,10,Dwijendra Srivastava,45,3.828641396489095,5000,250,2,2.5,5,5.3,3,Sundaram Medium Term Bond Fund,2.44,0.05,0.08,Medium Duration Funds
+-1.14,Sundaram Mutual Fund,0.87,Equity,1.04,10,S Bharath,7048,8.860641041773876,100,100,2,4.3,27.4,8.2,6,Sundaram Mid Cap Fund,16.07,1.53,3.74,Mid Cap Mutual Funds
+1.87,Sundaram Mutual Fund,0.96,Debt,0.22,5,Sandeep Agarwal,64,4.174387269895637,1000,1000,3,5.4,4.7,8.8,1,Sundaram Money Market Fund,0.44,1.34,4.91,Money Market Funds
+2.11,Sundaram Mutual Fund,0.9,Equity,0.97,10,Sudhir Kedia,1795,7.493317248862145,100,100,3,-2.2,28.1,11,6,Sundaram Multi Cap Fund,15.69,1.48,3.06,Multi Cap Funds
+-0.45,Sundaram Mutual Fund,0.98,Other,0.46,10,Rohit Seksaria,52,3.970291913552122,100,500,2,-3.1,26.2,8.2,6,Sundaram Nifty 100 Equal Weight Fund,16.99,1.27,2.51,Index Funds
+0.6,Sundaram Mutual Fund,0.46,Debt,0.07,4,Sandeep Agarwal,1006,6.914730892718563,5000,1000,2,5.4,3.9,8.8,2,Sundaram Overnight Fund,0.35,-0.05,-0.3,Overnight Mutual Funds
+4.81,Sundaram Mutual Fund,0.92,Equity,0.93,5,Rohit Seksaria,2272,7.728855823852543,100,750,3,3.2,31.3,8.8,6,Sundaram Services Fund,16.55,1.6,3.44,Sectoral / Thematic Mutual Funds
+2.16,Sundaram Mutual Fund,-1.49,Debt,0.28,10,Dwijendra Srivastava,200,5.303304908059076,5000,2000,5,4.8,6.4,4.8,2,Sundaram Short Duration Fund,4.82,0.86,2.28,Short Duration Funds
+6.06,Sundaram Mutual Fund,0.83,Equity,1.01,10,Ravi Gopalakrishnan,1962,7.5822291942764615,100,250,2,1.6,44.9,9.3,6,Sundaram Small Cap Fund,18.08,1.88,3.47,Small Cap Mutual Funds
+1.74,Sundaram Mutual Fund,0.92,Equity,1.76,10,Sudhir Kedia,930,6.836259277277067,500,500,3,1.2,27.7,9.9,6,Sundaram Tax Savings Fund,15.82,1.48,3.24,ELSS Mutual Funds
+2.16,Sundaram Mutual Fund,0.99,Debt,0.17,10,Sandeep Agarwal,1412,7.253470382684528,1000,2000,3,5.7,4.7,4.5,3,Sundaram Ultra Short Duration Fund,0.46,1.85,4.75,Ultra Short Duration Funds
+1.94,Tata Mutual Fund,0.69,Hybrid,0.28,4,Sailesh Jain,5925,8.68710472813351,5000,150,5,5.7,5,8.8,1,Tata Arbitrage Fund,0.75,1.36,1.97,Arbitrage Mutual Funds
+3.8,Tata Mutual Fund,0.57,Hybrid,0.28,4,RahulSingh,6396,8.763584409450138,5000,150,4,5.8,18.7,8.8,4,Tata Balanced Advantage Fund,8.5,1.69,4.01,Dynamic Asset Allocation or Balanced Advantage
+1.61,Tata Mutual Fund,0.81,Equity,0.59,7,Sonam Udasi,1272,7.149131598557407,5000,150,4,11.9,23.2,12.6,6,Tata Banking & Financial Services Fund,21.31,1,2.2,Sectoral / Thematic Mutual Funds
+4.51,Tata Mutual Fund,1.85,Debt,0.23,3,Amit Somani,262,5.572154032177765,5000,150,3,4,6.9,8.8,2,Tata Banking & PSU Debt Fund,2.28,0.89,1.68,Banking and PSU Mutual Funds
+6.11,Tata Mutual Fund,0.92,Equity,0.31,7,Meeta Shetty,6765,8.819665349340653,5000,150,3,-16,39,22.1,6,Tata Digital India Fund,22.78,1.37,2.29,Sectoral / Thematic Mutual Funds
+3.51,Tata Mutual Fund,0.86,Equity,0.91,10,Sonam Udasi,5119,8.540909718033554,5000,150,2,6.6,27.8,10,6,Tata Equity P/E Fund,14.91,1.54,3.31,Value Funds
+2.17,Tata Mutual Fund,0.81,Hybrid,0.12,10,Sailesh Jain,142,4.962844630259907,5000,150,3,3.4,12,7.5,4,Tata Equity Saving Fund,5.15,1.54,3.37,Equity Savings Mutual Funds
+4.88,Tata Mutual Fund,0.74,Equity,0.94,10,Abhinav Sharma,1501,7.31455283232408,5000,150,3,-1.6,27.9,13.1,6,Tata Ethical Fund,14.48,1.53,2.75,Sectoral / Thematic Mutual Funds
+-1.52,Tata Mutual Fund,0.79,Equity,0.77,5,Sonam Udasi,2096,7.64826303090192,5000,150,2,-2.5,21.3,8.8,6,Tata Flexi Cap Fund,13.88,1.23,2.58,Flexi Cap Funds
+1.82,Tata Mutual Fund,0.86,Debt,0.3,2,Akhil Mittal,225,5.420534999272286,5000,150,4,5.6,18.15,8.8,2,Tata Floating Rate Fund,12.1,1.29,2.86,Floater Mutual Funds
+1.14,Tata Mutual Fund,0.96,Equity,0.46,3,Meeta Shetty,1212,7.10085190894405,5000,150,3,0.4,28.4,8.8,6,Tata Focused Equity Fund,16.67,1.43,3.06,Focused Funds
+0.07,Tata Mutual Fund,0.66,Debt,0.9,10,Akhil Mittal,256,5.54907608489522,5000,150,2,5.2,4.8,6.9,2,Tata Gilt Securities Fund,2.99,0.27,0.31,Gilt Mutual Funds
+2.77,Tata Mutual Fund,0.84,Hybrid,1.05,10,Chandraprakash Padiyar,3166,8.06054004653864,5000,150,3,6.2,22.8,10.5,6,Tata Hybrid Equity Fund,12.35,1.47,3.25,Aggressive Hybrid Mutual Funds
+1.38,Tata Mutual Fund,0.73,Equity,0.91,7,Sonam Udasi,1346,7.205635176410364,5000,150,2,2.8,23,10.6,6,Tata India Consumer Fund,13.88,1.31,2.78,Sectoral / Thematic Mutual Funds
+2.68,Tata Mutual Fund,0.86,Equity,1.01,7,Meeta Shetty,485,6.186208623900494,5000,150,3,-8.1,21.7,14.8,6,Tata India Pharma & Healthcare Fund,18.72,1,2.41,Sectoral / Thematic Mutual Funds
+0.43,Tata Mutual Fund,0.94,Equity,0.76,8,Tejas Gutka,3078,8.0323601479245,500,500,3,2.2,26.5,12,6,Tata India Tax Savings Fund,16.24,1.39,3.36,ELSS Mutual Funds
+9.44,Tata Mutual Fund,0.63,Equity,1.42,10,Abhinav Sharma,950,6.85751406254539,5000,150,3,14,35,13.1,6,Tata Infrastructure Fund,17.14,1.73,3.52,Sectoral / Thematic Mutual Funds
+2.58,Tata Mutual Fund,0.94,Equity,0.89,10,Chandraprakash Padiyar,3680,8.210939733379021,5000,150,4,8.8,33.5,14,6,Tata Large & Mid Cap Fund,16.57,1.46,3.47,Large & Mid Cap Funds
+0.45,Tata Mutual Fund,0.94,Equity,1.24,10,Amey Sathe,1365,7.2196420401307355,5000,150,2,1.8,25.7,11.3,6,Tata Large Cap Fund,16,1.35,3.05,Large Cap Mutual Funds
+1.42,Tata Mutual Fund,0.8,Debt,0.21,10,Amit Somani,18212,9.809890903798543,5000,150,3,5.6,4.4,5.3,2,Tata Liquid Fund,0.38,0.93,4.25,Liquid Mutual Funds
+0.16,Tata Mutual Fund,0.87,Equity,0.98,10,Satish Chandra Mishra,1759,7.473069088032197,5000,150,3,1.3,29.2,13.5,6,Tata Mid Cap Growth Fund,15.94,1.61,3.3,Mid Cap Mutual Funds
+2.92,Tata Mutual Fund,1.18,Debt,0.17,10,Amit Somani,8814,9.08421009483197,5000,150,5,5.7,5.6,4.8,3,Tata Money Market Fund,0.65,2.05,4.59,Money Market Funds
+-0.56,Tata Mutual Fund,0.98,Other,0.16,10,Sonam Udasi,369,5.91350300563827,5000,150,3,1,25.6,12,6,Tata Nifty 50 Index Fund,16.49,1.31,3.45,Index Funds
+0.47,Tata Mutual Fund,0.43,Debt,0.09,4,Amit Somani,3236,8.082402253926244,5000,1000,3,5.4,3.9,8.8,1,Tata Overnight Fund,0.35,-0.3,-1.59,Overnight Mutual Funds
+16.72,Tata Mutual Fund,0.49,Equity,0.91,7,Satish Chandra Mishra,232,5.4510384535657,5000,150,3,-3.4,34.7,15.5,6,Tata Resources & Energy Fund,20.36,1.44,2.48,Sectoral / Thematic Mutual Funds
+0.12,Tata Mutual Fund,0.72,Solution Oriented,0.68,10,Murthy Nagarajan,1557,7.351158226430694,5000,150,3,0.5,19.3,9.4,6,Tata Retirement Savings Fund,4.71,1.12,2.23,Retirement Funds
+-1.23,Tata Mutual Fund,0.99,Other,0.27,10,Sonam Udasi,174,5.1647859739235145,5000,150,4,2.4,25.1,12.8,6,Tata S&P BSE Sensex Index Fund,16.75,1.26,3.2,Index Funds
+4.74,Tata Mutual Fund,2.16,Debt,0.37,10,Murthy Nagarajan,2271,7.7284157798410416,10000,150,3,4.7,6.6,5.8,2,Tata Short Term Bond Fund,1.87,0.99,1.88,Short Duration Funds
+11.28,Tata Mutual Fund,0.77,Equity,0.26,4,Chandraprakash Padiyar,3300,8.101980731853192,5000,150,4,17.1,44.1,8.8,6,Tata Small Cap Fund,17.43,2.12,3.98,Small Cap Mutual Funds
+3.08,Tata Mutual Fund,1.28,Debt,0.3,10,Akhil Mittal,2602,7.864419904994565,5000,150,3,5,5.6,5.2,2,Tata Treasury Advantage Fund,0.87,1.58,2.98,Low Duration Funds
+2.45,Tata Mutual Fund,1.1,Debt,0.25,4,Akhil Mittal,1629,7.396335293800808,5000,150,4,5.5,5.1,8.8,2,Tata Ultra Short Term Fund,0.48,2.03,4.14,Ultra Short Duration Funds
+1.44,Tata Mutual Fund,0.9,Solution Oriented,1.8,10,Amey Sathe,257,5.552959584921617,500,500,3,1.5,27.3,10.3,6,Tata Young Citizens Fund,15.49,1.46,2.85,Childrens Funds
+-0.23,Taurus Mutual Fund,0.87,Equity,1.66,10,Hardik Shah,8.91,2.2935443483418965,5000,1000,4,9,21.9,11.9,6,Taurus Banking & Financial Services-Direct Growth,22.57,0.93,2.12,Sectoral / Thematic Mutual Funds
+-5.29,Taurus Mutual Fund,0.93,Equity,2.19,10,Hardik Shah,74,4.31748811353631,5000,1000,3,3.6,26.4,10.9,6,Taurus Discovery (Midcap) Fund,17.41,1.27,2.28,Mid Cap Mutual Funds
+0.83,Taurus Mutual Fund,0.73,Equity,1.18,10,Anuj Kapil,84,4.442651256490317,5000,1000,3,-3.5,22.3,11.4,6,Taurus Ethical Fund,13.82,1.29,2.66,Sectoral / Thematic Mutual Funds
+-4.83,Taurus Mutual Fund,0.91,Equity,2.59,10,Ankit Tikmany,233,5.455321115357702,5000,1000,1,-4.1,20.2,5.4,6,Taurus Flexi Cap Fund,16.22,1.02,1.69,Flexi Cap Funds
+3.64,Taurus Mutual Fund,0.56,Equity,2.02,10,Neha Raichura,5.12,1.8115620965242347,5000,1000,3,-0.7,25.3,8.9,6,Taurus Infrastructure Fund,16.22,1.32,2.68,Sectoral / Thematic Mutual Funds
+-5.6,Taurus Mutual Fund,0.96,Equity,0.44,10,Ankit Tikmany,30,3.4339872044851463,5000,1000,1,-2.5,19.5,7.6,6,Taurus Largecap Equity Fund,17.24,0.94,1.64,Large Cap Mutual Funds
+-0.33,Taurus Mutual Fund,0.98,Other,0.44,10,Ramneek Kundra,2.38,1.2178757094949273,5000,1000,3,1.2,25.8,12.3,6,Taurus Nifty 50 Index Fund,16.42,1.33,3.29,Index Funds
+2.15,Taurus Mutual Fund,0.76,Equity,1.73,10,Ramneek Kundra,59,4.0943445622221,500,500,3,6.8,24.4,10.6,6,Taurus Tax Shield – Direct Growth,13.7,1.47,2.62,ELSS Mutual Funds
+13.72,Franklin Templeton Mutual Fund,0.7,Equity,1.3,10,Anand Radhakrishnan,1350,7.208600337960199,5000,500,3,8.3,37.7,14.5,6,Templeton India Equity Income Fund,13.41,2.26,3.87,Dividend Yield Funds
+10.68,Franklin Templeton Mutual Fund,0.98,Equity,0.91,10,Anand Radhakrishnan,845,6.740519359606223,5000,500,3,13.1,39.4,12.3,6,Templeton India Value Fund,18.7,1.76,3.73,Value Funds
+1.82,Trust Mutual Fund,0.86,Debt,0.21,2,Anand Nevatia,345,5.846438775057724,1000,1000,2,3,18.15,8.8,3,TRUSTMF Banking & PSU Debt Fund,12.1,1.29,2.86,Banking and PSU Mutual Funds
+1.82,Trust Mutual Fund,0.86,Debt,0.1,2,Anand Nevatia,205,5.327876168789581,1000,1000,2,5.6,18.15,8.8,2,TRUSTMF Liquid Fund,12.1,1.29,2.86,Liquid Mutual Funds
+1.82,Trust Mutual Fund,0.86,Debt,0.23,2,Anand Nevatia,94,4.553876891600541,1000,1000,2,4.2,18.15,8.8,2,TRUSTMF Short Term Fund,12.1,1.29,2.86,Short Duration Funds
+1.51,Union Mutual Fund,0.79,Hybrid,0.44,4,Vishal Thakker,72,4.290459441148391,1000,500,3,5,4.4,8.8,1,Union Arbitrage Fund,0.73,0.63,0.98,Arbitrage Mutual Funds
+1.73,Union Mutual Fund,0.64,Hybrid,0.94,5,Parijat Agrawal,1679,7.426549072397305,1000,500,3,3.6,18.3,10.2,3,Union Balanced Advantage Fund,9.99,1.36,4.24,Dynamic Asset Allocation or Balanced Advantage
+1.1,Union Mutual Fund,0.85,Debt,0.45,5,Parijat Agrawal,390,5.968707559985366,1000,1000,2,3.1,6.2,8.8,2,Union Corporate Bond Fund,2.21,0.6,1.07,Corporate Bond Mutual Funds
+-0.29,Union Mutual Fund,1.41,Debt,1.29,10,Parijat Agrawal,92,4.532599493153256,1000,1000,1,2.6,4.7,6,3,Union Dynamic Bond Fund,2.89,0.04,0.05,Dynamic Bond
+0.32,Union Mutual Fund,0.91,Hybrid,1.47,5,Sanjay Bembalkar,133,4.897839799950911,1000,500,2,2,10.8,8.8,3,Union Equity Savings Fund,5.85,1.17,3,Equity Savings Mutual Funds
+1.28,Union Mutual Fund,0.92,Equity,1.06,10,Sanjay Bembalkar,1337,7.198931240688173,1000,500,4,0.6,27.7,12.9,6,Union Flexi Cap Fund,16.05,1.43,3.37,Flexi Cap Funds
+1.82,Union Mutual Fund,0.85,Equity,1.57,4,Hardick Bora,317,5.762051382780177,1000,500,4,-0.1,26.2,8.8,6,Union Focused Fund,15.14,1.44,3.33,Focused Funds
+2.26,Union Mutual Fund,0.93,Equity,1.2,3,Sanjay Bembalkar,396,5.983936280687191,1000,500,3,0.7,27.6,8.8,6,Union Large & Midcap Fund,16.6,1.42,2.94,Large & Mid Cap Funds
+-1.55,Union Mutual Fund,0.97,Equity,1.8,6,Hardick Bora,230,5.442417710521793,1000,1000,2,0.1,24.3,9.9,6,Union Largecap Fund,16.41,1.24,3.13,Large Cap Mutual Funds
+1.4,Union Mutual Fund,0.76,Debt,0.07,10,Devesh Thacker,1688,7.4318919168078,5000,2000,4,5.7,4.4,4.6,2,Union Liquid Fund,0.38,1,5.48,Liquid Mutual Funds
+2.09,Union Mutual Fund,0.92,Equity,1.62,10,Sanjay Bembalkar,573,6.352629396319567,500,500,4,2.3,28.5,12.8,6,Union Long Term Equity Fund,15.89,1.49,3.97,ELSS Mutual Funds
+1.82,Union Mutual Fund,0.86,Debt,0.64,3,Parijat Agrawal,170,5.14166355650266,1000,500,2,2.3,18.15,8.8,3,Union Medium Duration Fund,12.1,1.29,2.86,Medium Duration Funds
+1.82,Union Mutual Fund,0.86,Debt,0.24,2,Parijat Agrawal,144,4.976733742420574,5000,2000,3,5.4,18.15,8.8,2,Union Money Market Fund,12.1,1.29,2.86,Money Market Funds
+0.55,Union Mutual Fund,0.42,Debt,0.08,4,Devesh Thacker,158,5.0689042022202315,5000,2000,3,5.4,3.9,8.8,1,Union Overnight Fund,0.35,-0.04,-0.18,Overnight Mutual Funds
+5.81,Union Mutual Fund,0.75,Equity,1.35,9,Hardick Bora,710,6.566672429803241,1000,500,3,-0.1,37.1,12.8,6,Union Small Cap Fund,17.48,1.77,3.63,Small Cap Mutual Funds
+2.11,Union Mutual Fund,0.99,Equity,1.59,4,Sanjay Bembalkar,144,4.976733742420574,1000,500,3,2.9,29.7,8.8,6,Union Value Discovery Fund,17.21,1.43,4.01,Value Funds
+1.42,UTI Mutual Fund,0.5,Hybrid,0.34,10,Rajeev Gupta,3532,8.169902647359145,5000,500,3,5.4,4.7,5.5,1,UTI-Arbitrage Fund,0.68,1.11,1.45,Arbitrage Mutual Funds
+1.2,UTI Mutual Fund,-1.51,Debt,0.24,9,Anurag Mittal,524,6.263398262591624,500,500,1,11,7.9,5.6,3,UTI-Banking & PSU Debt Fund,3.44,0.94,3.32,Banking and PSU Mutual Funds
+1.05,UTI Mutual Fund,0.94,Equity,1.39,10,Amit Premchandani,824,6.715383386334681,5000,500,1,8.2,24.4,6.7,6,UTI-Banking and Financial Services Fund,24.46,0.98,2.17,Sectoral / Thematic Mutual Funds
+5.68,UTI Mutual Fund,0.72,Debt,1.29,10,Amandeep Chopra,285,5.655991810819852,500,500,5,12,10.4,4.4,3,UTI-Bond Fund,6.12,0.96,3.55,Medium to Long Duration Funds
+-0.7,UTI Mutual Fund,0.94,Solution Oriented,1.52,10,Vetri Subramaniam,685,6.530877627725885,1000,500,3,-3.3,24.1,10.1,6,UTI-CCF Investment Plan – Direct Growth,16.2,0.95,3,Childrens Funds
+4.97,UTI Mutual Fund,0.96,Equity,1.68,10,V Srivatsa,1506,7.317876198626496,5000,500,2,4.1,30.7,10.2,6,UTI-Core Equity Fund,17.02,1.58,3.56,Large & Mid Cap Funds
+1.63,UTI Mutual Fund,0.74,Debt,0.23,5,Anurag Mittal,3092,8.03689677268507,500,500,3,4.2,6.5,8.8,2,UTI-Corporate Bond Fund,2.06,0.89,1.7,Corporate Bond Mutual Funds
+0.94,UTI Mutual Fund,-2.54,Debt,0.81,10,Ritesh Nambiar,438,6.0844994130751715,500,500,4,5,8.3,-0.9,4,UTI-Credit Risk Fund,10.47,0.41,0.68,Credit Risk Funds
+1.9,UTI Mutual Fund,0.82,Equity,1.45,10,Swati Kulkarni,2786,7.932721027481948,5000,500,3,-1.5,26.8,11.3,6,UTI-Dividend Yield Fund,14.96,1.41,2.93,Dividend Yield Funds
+6.35,UTI Mutual Fund,0.56,Debt,0.81,10,Sudhir Agrawal,469,6.152732694704104,500,500,3,12.5,11,6.3,3,UTI-Dynamic Bond Fund,6.76,0.96,4.4,Dynamic Bond
+3.98,UTI Mutual Fund,0.91,Hybrid,0.68,5,V Srivatsa,257,5.552959584921617,5000,0,4,6.1,14.7,8.8,3,UTI-Equity Savings Fund,5.99,1.75,4.06,Equity Savings Mutual Funds
+-2.88,UTI Mutual Fund,0.97,Equity,0.9,10,Ajay Tyagi,23944,10.08351481277671,5000,500,4,-9,22.5,12.2,6,UTI-Flexi Cap Fund,17.47,1.14,2.36,Flexi Cap Funds
+3.41,UTI Mutual Fund,1.41,Debt,0.35,4,Sudhir Agrawal,1637,7.401231264413015,500,500,3,5.1,5.9,8.8,2,UTI-Floater Fund,1.05,1.45,3.07,Floater Mutual Funds
+0.47,UTI Mutual Fund,0.55,Debt,0.67,10,Sudhir Agrawal,517,6.249975242259483,500,500,3,5,5,7.3,3,UTI-Gilt Fund,2.8,0.38,0.55,Gilt Mutual Funds
+1.12,UTI Mutual Fund,0.94,Equity,1.47,10,V Srivatsa,655,6.486160788944089,5000,500,3,-9,22,12,6,UTI-Healthcare Fund,20.55,0.91,1.99,Sectoral / Thematic Mutual Funds
+5.77,UTI Mutual Fund,0.84,Hybrid,1.34,10,V Srivatsa,4286,8.363342466597977,1000,500,3,5.3,25.8,9.8,6,UTI-Hybrid Equity Fund,12.55,1.69,3.63,Aggressive Hybrid Mutual Funds
+-1.44,UTI Mutual Fund,0.71,Equity,1.8,10,Vishal Chopda,436,6.07993319509559,5000,500,1,-0.5,18,8.4,6,UTI-India Consumer Fund,13.74,1.09,2.29,Sectoral / Thematic Mutual Funds
+3.52,UTI Mutual Fund,0.67,Equity,1.92,10,Sachin Trivedi,1445,7.27655640271871,5000,500,2,12.9,28,9.4,6,UTI-Infrastructure Fund,17.99,1.38,2.9,Sectoral / Thematic Mutual Funds
+1.41,UTI Mutual Fund,0.77,Debt,0.14,10,Amandeep Chopra,31463,10.356599314111646,500,0,4,5.7,4.4,5.3,2,UTI-Liquid – Cash Plan – Direct Growth,0.38,0.98,4.83,Liquid Mutual Funds
+-0.52,UTI Mutual Fund,0.92,Equity,0.95,10,Vetri Subramaniam,2797,7.936660155225426,500,500,3,-2.9,24.5,10.9,6,UTI-Long Term Equity Fund,16.16,1.31,2.98,ELSS Mutual Funds
+-0.57,UTI Mutual Fund,0.93,Equity,0.97,10,Karthikraj Lakshmanan,10312,9.24116051431607,100,500,4,-2,24.2,11.5,6,UTI-Mastershare – Direct Growth,15.87,1.29,3.28,Large Cap Mutual Funds
+0.85,UTI Mutual Fund,0.8,Debt,1,8,Sunil Patil,54,4.007333185232471,500,500,2,3.7,5.4,4.6,3,UTI-Medium Term Fund,3.04,0.35,0.47,Medium Duration Funds
+1.03,UTI Mutual Fund,0.89,Equity,0.99,10,Ankit Agarwal,7077,8.864746660905409,5000,500,3,0.4,31.1,11.4,6,UTI-Mid Cap Fund,16.43,1.65,3.49,Mid Cap Mutual Funds
+-0.64,UTI Mutual Fund,0.62,Equity,1.24,10,Swati Kulkarni,2366,7.769378609513984,5000,500,3,3.3,18.1,7.9,6,UTI-MNC Fund,12.33,1.14,2.91,Sectoral / Thematic Mutual Funds
+2.75,UTI Mutual Fund,1.18,Debt,0.2,10,Amit Sharma,7897,8.974364841846596,500,500,4,5.6,5.3,6.2,3,UTI-Money Market Fund,0.59,1.98,5.01,Money Market Funds
+1.01,UTI Mutual Fund,0.64,Hybrid,1.04,10,Sharwan Kumar Goyal,860,6.7580945044277305,5000,500,2,4.9,16.5,7.5,6,UTI-Multi Asset Fund,9.98,1.28,2.87,Multi Asset Allocation Mutual Funds
+-0.6,UTI Mutual Fund,1,Other,0.2,10,Sharwan Kumar Goyal,9475,9.156517565278676,5000,500,3,0.9,26.2,12,6,UTI-Nifty 50 Index Fund,16.8,1.31,3.49,Index Funds
+-4.62,UTI Mutual Fund,0.99,Other,0.33,5,Sharwan Kumar Goyal,1926,7.563719668414366,5000,0,2,-6.4,22.2,8.8,6,UTI-Nifty Next 50 Index Fund,18.16,0.97,1.71,Index Funds
+0.6,UTI Mutual Fund,0.44,Debt,0.07,10,Amit Sharma,5600,8.630700432209832,500,500,3,5.4,3.9,4.6,1,UTI-Overnight Fund,0.34,0.02,0.12,Overnight Mutual Funds
+3.42,UTI Mutual Fund,0.73,Hybrid,1.2,10,Amandeep Chopra,1544,7.3427791893318455,5000,500,3,3.7,13.5,7.2,4,UTI-Regular Savings Fund,5.1,1.7,4.07,Conservative Hybrid Mutual Funds
+4.37,UTI Mutual Fund,0.45,Solution Oriented,1.05,10,Sunil Patil,3687,8.212839584676484,500,500,3,5.2,17.2,7.5,5,UTI-Retirement Benefit Pension Plan – Direct,6.72,1.88,3.59,Retirement Funds
+4.95,UTI Mutual Fund,0.82,Debt,0.33,10,Sudhir Agrawal,2269,7.727535110475448,500,500,5,5,8.5,5.4,3,UTI-Short Term Income Fund,2.91,1.33,4.4,Short Duration Funds
+10.26,UTI Mutual Fund,0.83,Equity,1.03,10,Sachin Trivedi,1908,7.554334823725748,5000,500,3,14.1,32.9,5.1,6,UTI-Transportation & Logistics Fund,18.98,1.57,3.56,Sectoral / Thematic Mutual Funds
+3.18,UTI Mutual Fund,0.14,Debt,0.33,10,Anurag Mittal,2565,7.850103545175582,500,500,5,5.2,7.3,4.8,2,UTI-Treasury Advantage Fund,2.63,1.14,6.28,Low Duration Funds
+2.62,UTI Mutual Fund,0.49,Debt,0.44,10,Ritesh Nambiar,2130,7.664346632098617,500,500,5,5.4,6.1,5.7,3,UTI-Ultra Short Term Fund,1.51,1.3,7.6,Ultra Short Duration Funds
+0.92,UTI Mutual Fund,0.44,Hybrid,0.96,10,Amandeep Chopra,5068,8.53089883847235,15000,500,3,-0.7,13.1,6.2,4,UTI-Unit Linked Insurance Plan – Direct,7.06,1.29,2.47,Dynamic Asset Allocation or Balanced Advantage
+2.73,UTI Mutual Fund,0.9,Equity,1.16,10,Vetri Subramaniam,6740,8.815963560853438,5000,500,4,1.7,27.2,12.2,6,UTI-Value Opportunities Fund,15.62,1.48,3.21,Value Funds
+0.93,WhiteOak Capital Mutual Fund,0.72,Debt,0.26,4,Piyush Baranwal,197,5.288267030694535,500,500,1,5.3,3.8,8.8,1,WhiteOak Capital Liquid Fund,0.39,-0.07,-0.42,Liquid Mutual Funds
+0.93,WhiteOak Capital Mutual Fund,0.72,Debt,0.22,4,Piyush Baranwal,14,2.70805020110221,500,500,1,1.7,32.4,13.3,1,WhiteOak Capital Overnight Fund,0.39,-0.07,-0.42,Overnight Mutual Funds
+1.2,WhiteOak Capital Mutual Fund,0.47,Debt,0.33,4,Piyush Baranwal,141,4.955827057601261,500,500,2,5.3,4.5,8.8,1,WhiteOak Capital Ultra Short Term Fund,0.72,0.8,2.81,Ultra Short Duration Funds
