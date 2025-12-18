@@ -1,0 +1,14 @@
+/* Minimal reset and any small tweaks */
+html,body,#root{height:100%;}
+body{font-family:Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial}
+
+.hero-gradient{background:linear-gradient(90deg,#1d72b8 0%,#3498db 100%)}
+
+/* mask gradient for hero images */
+.mask-gradient{
+	-webkit-mask-image: linear-gradient(to right, transparent, black 25%);
+	mask-image: linear-gradient(to right, transparent, black 25%);
+}
+
+/* ensure hero text sits above images */
+.hero-text-z{z-index:30}

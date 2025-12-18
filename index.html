@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Federal Wealth Management System</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap');
+        body { font-family: 'Inter', sans-serif; overflow-x: hidden; }
+        .hero-gradient {
+            background: linear-gradient(90deg, #1d72b8 0%, #3498db 100%);
+        }
+        [x-cloak] { display: none !important; }
+    </style>
+</head>
+<body class="bg-white text-gray-800" 
+      x-data="{ 
+        mobileMenu: false, 
+        activeSlide: 0,
+        slides: [
+            { 
+                title: 'BUILD YOUR FUTURE.<br>INVEST SMARTER.', 
+                slogan: 'Your Legacy Is Our Priority.', 
+                img: 'data/raw/assets/1.jpeg' 
+            },
+            { 
+                title: 'MAXIMIZE YOUR<br>GROWTH POTENTIAL.', 
+                slogan: 'Precision Planning for Maximum Prosperity.', 
+                img: 'data/raw/assets/2.jpeg' 
+            },
+            { 
+                title: 'SECURE YOUR<br>RETIREMENT FREEDOM.', 
+                slogan: 'Securing Your Today. Growing Your Tomorrow.', 
+                img: 'data/raw/assets/3.jpg' 
+            }
+        ],
+        init() {
+            setInterval(() => {
+                this.activeSlide = (this.activeSlide + 1) % this.slides.length;
+            }, 5000);
+        }
+      }">
+
+    <header class="bg-white border-b sticky top-0 z-50">
+        <div class="container mx-auto px-4 flex items-center justify-between h-20">
+            <div class="flex items-center space-x-2">
+                <div class="w-9 h-9 bg-blue-900 flex items-center justify-center rounded-tr-xl rounded-bl-xl">
+                    <a href="#" class="block" aria-label="Home">
+                        <img src="data/raw/logo.svg" alt="Federal Wealth logo" class="w-8 h-8 object-cover rounded-tr-xl rounded-bl-xl">
+                    </a>
+                </div>
+                <span class="text-xl font-extrabold tracking-tighter text-blue-900">Federal Wealth Management System</span>
+            </div>
+
+            <nav class="hidden lg:flex items-center space-x-6 text-sm font-semibold text-gray-600">
+                <a href="#" class="hover:text-blue-600 transition">Investment Solutions</a>
+                <a href="#" class="hover:text-blue-600 transition">Planning Tools</a>
+                <a href="#" class="hover:text-blue-600 transition">Client Services</a>
+                <a href="#" class="bg-blue-50 text-blue-700 px-4 py-2 rounded-md hover:bg-blue-100">About Us</a>
+            </nav>
+
+            <div class="flex items-center space-x-3">
+                <button class="p-2 text-gray-400 hover:text-blue-600 hidden md:block"><i class="fas fa-search"></i></button>
+                <button class="hidden md:block border border-blue-600 text-blue-600 px-5 py-2 rounded-md text-sm font-bold hover:bg-blue-50 transition">Open Account</button>
+                <button class="bg-blue-600 text-white px-6 py-2 rounded-md text-sm font-bold hover:bg-blue-700 shadow-md transition">Login</button>
+                <button @click="mobileMenu = !mobileMenu" class="lg:hidden text-2xl text-blue-900"><i class="fas fa-bars"></i></button>
+            </div>
+        </div>
+
+        <div x-show="mobileMenu" x-cloak class="lg:hidden bg-white border-t p-4 space-y-4">
+            <a href="#" class="block font-medium">Investment Solutions</a>
+            <a href="#" class="block font-medium">Planning Tools</a>
+            <a href="#" class="block font-medium">Client Services</a>
+            <hr>
+            <button class="w-full border border-blue-600 text-blue-600 py-2 rounded">Open Account</button>
+        </div>
+    </header>
+
+    <main class="relative hero-gradient text-white overflow-hidden min-h-[500px]">
+        <div class="container mx-auto px-4 flex flex-col md:flex-row items-center">
+            
+            <div class="w-full md:w-1/2 py-16 md:py-24 z-10">
+                <template x-for="(slide, index) in slides" :key="index">
+                    <div x-show="activeSlide === index" 
+                         x-transition:enter="transition ease-out duration-500"
+                         x-transition:enter-start="opacity-0 translate-x-12"
+                         x-transition:enter-end="opacity-100 translate-x-0"
+                         class="absolute md:static inset-x-4">
+                        <h1 class="text-4xl md:text-6xl font-black leading-tight" x-html="slide.title"></h1>
+                        <p class="text-lg md:text-xl mt-4 opacity-90 font-light italic" x-text="slide.slogan"></p>
+                        <button class="mt-8 bg-white text-blue-700 px-8 py-3 rounded font-bold hover:bg-gray-100 transition shadow-lg">Get Started</button>
+                    </div>
+                </template>
+            </div>
+
+            <div class="w-full md:w-1/2 relative h-80 md:h-[500px] flex items-end justify-center">
+                <template x-for="(slide, index) in slides" :key="index">
+                    <img x-show="activeSlide === index" 
+                         :src="slide.img" 
+                         x-transition:enter="transition ease-out duration-700"
+                         x-transition:enter-start="opacity-0 scale-95"
+                         x-transition:enter-end="opacity-100 scale-100"
+                         class="absolute object-cover h-full w-full mask-gradient" 
+                         style="mask-image: linear-gradient(to right, transparent, black 25%);">
+                </template>
+                
+                <div class="absolute inset-0 flex items-center justify-center opacity-20 pointer-events-none">
+                    
+                </div>
+            </div>
+        </div>
+
+        <div class="absolute bottom-8 left-1/2 md:left-4 transform -translate-x-1/2 md:translate-x-0 flex space-x-3 z-20">
+            <template x-for="(slide, index) in slides" :key="index">
+                <button @click="activeSlide = index" 
+                        :class="activeSlide === index ? 'w-10 bg-white' : 'w-2 bg-white/40'" 
+                        class="h-2 rounded-full transition-all duration-300"></button>
+            </template>
+        </div>
+    </main>
+
+    <section class="py-16 bg-white shadow-inner">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-10">
+                <div class="group cursor-pointer">
+                    <div class="w-12 h-12 flex items-center justify-center mb-4 transition-transform group-hover:translate-y-[-5px]">
+                        <i class="far fa-lightbulb text-4xl text-yellow-500"></i>
+                    </div>
+                    <h4 class="font-bold text-gray-900 mb-1">Explore Funds</h4>
+                    <p class="text-xs text-gray-500 leading-relaxed">Curated selection funds and plans for you</p>
+                </div>
+
+                <div class="group cursor-pointer">
+                    <div class="w-12 h-12 flex items-center justify-center mb-4 transition-transform group-hover:translate-y-[-5px]">
+                        <i class="fas fa-calculator text-4xl text-blue-900"></i>
+                    </div>
+                    <h4 class="font-bold text-gray-900 mb-1">Financial Planning</h4>
+                    <p class="text-xs text-gray-500 leading-relaxed">Set goals of tools to help you with your investments</p>
+                </div>
+
+                <div class="group cursor-pointer">
+                    <div class="w-12 h-12 flex items-center justify-center mb-4 transition-transform group-hover:translate-y-[-5px]">
+                        <i class="far fa-calendar-check text-4xl text-blue-600"></i>
+                    </div>
+                    <h4 class="font-bold text-gray-900 mb-1">Register Mandate</h4>
+                    <p class="text-xs text-gray-500 leading-relaxed">Set goals for recurring deposit investments</p>
+                </div>
+
+                <div class="group cursor-pointer">
+                    <div class="w-12 h-12 flex items-center justify-center mb-4 transition-transform group-hover:translate-y-[-5px]">
+                        <i class="fas fa-chart-line text-4xl text-blue-400"></i>
+                    </div>
+                    <h4 class="font-bold text-gray-900 mb-1">Track Performance</h4>
+                    <p class="text-xs text-gray-500 leading-relaxed">For hassle free recurring deposits</p>
+                </div>
+
+                <div class="group cursor-pointer">
+                    <div class="w-12 h-12 flex items-center justify-center mb-4 transition-transform group-hover:translate-y-[-5px]">
+                        <i class="fas fa-play-circle text-4xl text-blue-800"></i>
+                    </div>
+                    <h4 class="font-bold text-gray-900 mb-1">Starter Hub</h4>
+                    <p class="text-xs text-gray-500 leading-relaxed">Everything your Guides & webinars FAQS</p>
+                </div>
+
+                <div class="group cursor-pointer">
+                    <div class="w-12 h-12 flex items-center justify-center mb-4 transition-transform group-hover:translate-y-[-5px]">
+                        <i class="fas fa-headset text-4xl text-gray-700"></i>
+                    </div>
+                    <h4 class="font-bold text-gray-900 mb-1">Support Center</h4>
+                    <p class="text-xs text-gray-500 leading-relaxed">Get help & your Get help & FAQs</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="fixed bottom-6 right-6 z-50">
+        <a href="#" class="w-14 h-14 bg-green-500 rounded-full flex items-center justify-center text-white text-2xl shadow-2xl hover:bg-green-600 transition hover:scale-110">
+            <i class="fab fa-whatsapp"></i>
+        </a>
+    </div>
+
+</body>
+</html>
