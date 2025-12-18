@@ -102,6 +102,9 @@ document.addEventListener('DOMContentLoaded', async function () {
     // Load initial data
     loadFunds();
 
+    // Initialize MF Ticker tape widget
+    initMFTicker();
+
     console.log('🇮🇳 FIMFP Portal Initialized');
 });
 
@@ -114,14 +117,44 @@ function setupNavigation() {
 
     navLinks.forEach(link => {
         link.addEventListener('click', function (e) {
-            e.preventDefault();
+            // Only prevent default if this is a section-based link (has data-section)
+            // Allow normal navigation for links to actual HTML pages
             const section = this.dataset.section;
-            showSection(section);
+            const href = this.getAttribute('href');
+
+            // If it has a data-section attribute, use SPA-style navigation
+            if (section) {
+                e.preventDefault();
+                showSection(section);
+            }
+            // If href points to an HTML file (not just #), let the browser navigate normally
+            else if (href && href.includes('.html')) {
+                // Allow normal navigation - don't prevent default
+                return;
+            }
+            // For hash links or other internal links
+            else if (href && href.startsWith('#')) {
+                e.preventDefault();
+                const targetSection = href.substring(1);
+                if (targetSection) {
+                    showSection(targetSection);
+                }
+            }
         });
     });
 }
 
+// Protected sections that require authentication
+const PROTECTED_SECTIONS = ['funds', 'predict', 'recommend', 'optimize', 'compare', 'analytics', 'advanced'];
+
 function showSection(sectionId) {
+    // Check if this is a protected section that requires authentication
+    if (PROTECTED_SECTIONS.includes(sectionId) && !currentUser) {
+        // User not logged in - redirect to login page
+        showLoginPrompt(sectionId);
+        return;
+    }
+
     // Hide all sections
     document.querySelectorAll('.section').forEach(section => {
         section.style.display = 'none';
@@ -150,6 +183,19 @@ function showSection(sectionId) {
 
     // Scroll to top
     window.scrollTo(0, 0);
+}
+
+// Show login prompt when user tries to access protected section
+function showLoginPrompt(attemptedSection) {
+    // Store the attempted section for redirect after login
+    sessionStorage.setItem('redirectAfterLogin', attemptedSection);
+
+    // Show login modal or redirect to login page
+    const loginConfirm = confirm('🔐 You need to log in to access this feature.\n\nClick OK to go to the login page.');
+
+    if (loginConfirm) {
+        window.location.href = '/login';
+    }
 }
 
 // ============================================
@@ -1243,12 +1289,454 @@ document.addEventListener('keydown', function (e) {
     }
 });
 
-// Font size adjustment
-document.getElementById('langSize')?.addEventListener('click', function () {
-    const currentSize = parseFloat(getComputedStyle(document.documentElement).fontSize);
-    document.documentElement.style.fontSize = (currentSize + 1) + 'px';
-    setTimeout(() => {
-        document.documentElement.style.fontSize = '';
-    }, 3000);
-});
+// ============================================
+// Font Size Management System
+// ============================================
 
+const FontSizeManager = {
+    MIN_SIZE: 12,
+    MAX_SIZE: 20,
+    DEFAULT_SIZE: 15,
+    STORAGE_KEY: 'fimfp_font_size',
+    resetTimeout: null,
+
+    init() {
+        // Load saved preference
+        const savedSize = localStorage.getItem(this.STORAGE_KEY);
+        if (savedSize) {
+            this.setFontSize(parseFloat(savedSize), false);
+        }
+
+        // Add event listeners
+        document.getElementById('langSize')?.addEventListener('click', () => this.increase());
+        document.getElementById('langSizeDecrease')?.addEventListener('click', () => this.decrease());
+    },
+
+    getCurrentSize() {
+        const current = parseFloat(getComputedStyle(document.documentElement).fontSize);
+        return isNaN(current) ? this.DEFAULT_SIZE : current;
+    },
+
+    setFontSize(size, save = true) {
+        const clampedSize = Math.max(this.MIN_SIZE, Math.min(this.MAX_SIZE, size));
+        document.documentElement.style.fontSize = clampedSize + 'px';
+
+        if (save) {
+            localStorage.setItem(this.STORAGE_KEY, clampedSize.toString());
+        }
+
+        return clampedSize;
+    },
+
+    increase() {
+        const currentSize = this.getCurrentSize();
+        const newSize = this.setFontSize(currentSize + 1);
+
+        this.showFeedback(newSize >= this.MAX_SIZE ? 'Maximum font size reached' : `Font size: ${newSize}px`);
+        this.scheduleReset();
+    },
+
+    decrease() {
+        const currentSize = this.getCurrentSize();
+        const newSize = this.setFontSize(currentSize - 1);
+
+        this.showFeedback(newSize <= this.MIN_SIZE ? 'Minimum font size reached' : `Font size: ${newSize}px`);
+        this.scheduleReset();
+    },
+
+    scheduleReset() {
+        // Clear existing timeout
+        if (this.resetTimeout) {
+            clearTimeout(this.resetTimeout);
+        }
+
+        // Schedule reset to default after 5 seconds of inactivity
+        this.resetTimeout = setTimeout(() => {
+            this.setFontSize(this.DEFAULT_SIZE);
+            this.showFeedback('Font size reset to default');
+        }, 5000);
+    },
+
+    showFeedback(message) {
+        // Remove existing feedback
+        const existing = document.querySelector('.font-size-feedback');
+        if (existing) {
+            existing.remove();
+        }
+
+        // Create feedback element
+        const feedback = document.createElement('div');
+        feedback.className = 'font-size-feedback';
+        feedback.textContent = message;
+        feedback.style.cssText = `
+            position: fixed;
+            top: 60px;
+            right: 20px;
+            background: var(--gov-navy);
+            color: var(--white);
+            padding: 10px 16px;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            z-index: 10000;
+            animation: slideInRight 0.3s ease;
+            border-left: 4px solid var(--saffron);
+        `;
+
+        document.body.appendChild(feedback);
+
+        // Remove after 2 seconds
+        setTimeout(() => {
+            feedback.style.animation = 'slideOutRight 0.3s ease';
+            setTimeout(() => feedback.remove(), 300);
+        }, 2000);
+    }
+};
+
+// Add CSS animations for feedback
+const style = document.createElement('style');
+style.textContent = `
+    @keyframes slideInRight {
+        from {
+            transform: translateX(100%);
+            opacity: 0;
+        }
+        to {
+            transform: translateX(0);
+            opacity: 1;
+        }
+    }
+
+    @keyframes slideOutRight {
+        from {
+            transform: translateX(0);
+            opacity: 1;
+        }
+        to {
+            transform: translateX(100%);
+            opacity: 0;
+        }
+    }
+`;
+document.head.appendChild(style);
+
+// Initialize font size manager
+FontSizeManager.init();
+
+// ============================================
+// Mutual Fund Ticker Tape Widget
+// ============================================
+
+async function initMFTicker() {
+    const tickerTrack = document.getElementById('mfTickerTrack');
+    if (!tickerTrack) return;
+
+    try {
+        // Fetch a diverse set of funds for the ticker (top performers and major funds)
+        const result = await apiGet('/api/funds?limit=50&offset=0');
+
+        if (!result.success || !result.data || result.data.length === 0) {
+            // Fallback: hide ticker if no data
+            document.querySelector('.mf-ticker-container')?.style.setProperty('display', 'none');
+            return;
+        }
+
+        // Select 20 diverse funds for the ticker
+        const selectedFunds = result.data
+            .filter(fund => fund.returns_1yr !== null && fund.returns_1yr !== undefined)
+            .slice(0, 20);
+
+        if (selectedFunds.length === 0) {
+            document.querySelector('.mf-ticker-container')?.style.setProperty('display', 'none');
+            return;
+        }
+
+        // Create ticker items HTML
+        const tickerItemsHTML = selectedFunds.map(fund => {
+            const return1yr = parseFloat(fund.returns_1yr) || 0;
+            const returnClass = return1yr >= 0 ? 'positive' : 'negative';
+            const returnSign = return1yr >= 0 ? '+' : '';
+
+            // Get initials from AMC name for logo
+            const amcInitials = (fund.amc_name || 'MF')
+                .split(' ')
+                .slice(0, 2)
+                .map(word => word.charAt(0).toUpperCase())
+                .join('');
+
+            // Truncate fund name if too long
+            const displayName = fund.scheme_name.length > 35
+                ? fund.scheme_name.substring(0, 32) + '...'
+                : fund.scheme_name;
+
+            return `
+                <div class="mf-ticker-item" title="${fund.scheme_name}">
+                    <div class="mf-ticker-logo">${amcInitials}</div>
+                    <div class="mf-ticker-info">
+                        <span class="mf-ticker-name">${displayName}</span>
+                        <span class="mf-ticker-amc">${fund.amc_name || 'AMC'}</span>
+                    </div>
+                    <div class="mf-ticker-value">
+                        <span class="mf-ticker-return ${returnClass}">${returnSign}${return1yr.toFixed(1)}%</span>
+                        <span class="mf-ticker-period">1Y</span>
+                    </div>
+                </div>
+            `;
+        }).join('');
+
+        // Duplicate items for seamless infinite scroll
+        tickerTrack.innerHTML = tickerItemsHTML + tickerItemsHTML;
+
+        console.log('📈 MF Ticker initialized with', selectedFunds.length, 'funds');
+    } catch (error) {
+        console.error('Failed to initialize MF ticker:', error);
+        // Hide ticker on error
+        document.querySelector('.mf-ticker-container')?.style.setProperty('display', 'none');
+    }
+}
+
+// ============================================
+// Top Funds Grid (Home Page Screener Preview)
+// ============================================
+
+let cachedFundsByCategory = {};
+
+async function initTopFundsGrid() {
+    const tabsContainer = document.getElementById('fundCategoryTabs');
+    const gridContainer = document.getElementById('topFundsGrid');
+
+    if (!tabsContainer || !gridContainer) return;
+
+    // Set up tab click handlers
+    const tabBtns = tabsContainer.querySelectorAll('.tab-btn');
+    tabBtns.forEach(btn => {
+        btn.addEventListener('click', async function () {
+            // Update active state
+            tabBtns.forEach(b => b.classList.remove('active'));
+            this.classList.add('active');
+
+            // Load funds for selected category
+            const category = this.dataset.category;
+            await loadTopFundsByCategory(category);
+        });
+    });
+
+    // Load initial category (Equity)
+    await loadTopFundsByCategory('equity');
+}
+
+async function loadTopFundsByCategory(category) {
+    const gridContainer = document.getElementById('topFundsGrid');
+    if (!gridContainer) return;
+
+    // Show loading
+    gridContainer.innerHTML = '<div class="loading" style="grid-column: 1/-1;"></div>';
+
+    // Check cache first
+    if (cachedFundsByCategory[category]) {
+        renderTopFundsGrid(cachedFundsByCategory[category]);
+        return;
+    }
+
+    try {
+        // Map category to API filter
+        const categoryMap = {
+            'equity': 'Equity',
+            'debt': 'Debt',
+            'hybrid': 'Hybrid',
+            'solution': 'Solution Oriented'
+        };
+
+        const apiCategory = categoryMap[category] || 'Equity';
+        const result = await apiGet(`/api/funds?category=${encodeURIComponent(apiCategory)}&limit=6`);
+
+        if (result.success && result.data) {
+            // Sort by 1Y return and take top 6
+            const sortedFunds = result.data
+                .filter(f => f.returns_1yr !== null)
+                .sort((a, b) => (b.returns_1yr || 0) - (a.returns_1yr || 0))
+                .slice(0, 6);
+
+            cachedFundsByCategory[category] = sortedFunds;
+            renderTopFundsGrid(sortedFunds);
+        } else {
+            gridContainer.innerHTML = '<div class="empty-state"><p>No funds found</p></div>';
+        }
+    } catch (error) {
+        console.error('Failed to load top funds:', error);
+        gridContainer.innerHTML = '<div class="empty-state"><p>Failed to load funds</p></div>';
+    }
+}
+
+function renderTopFundsGrid(funds) {
+    const gridContainer = document.getElementById('topFundsGrid');
+    if (!gridContainer) return;
+
+    if (!funds || funds.length === 0) {
+        gridContainer.innerHTML = '<div class="empty-state"><p>No funds found in this category</p></div>';
+        return;
+    }
+
+    gridContainer.innerHTML = funds.map(fund => {
+        const return1yr = parseFloat(fund.returns_1yr) || 0;
+        const return3yr = parseFloat(fund.returns_3yr) || 0;
+        const returnClass = return1yr >= 0 ? 'positive' : 'negative';
+
+        return `
+            <div class="fund-card" onclick="viewFundDetails(${fund.fund_id})" data-fund-id="${fund.fund_id}">
+                <div class="fund-card-header">
+                    <span class="fund-card-name">${truncateText(fund.scheme_name, 45)}</span>
+                    <span class="fund-card-rating">${renderRating(fund.rating)}</span>
+                </div>
+                <div class="fund-card-amc">
+                    <img src="https://cdn-icons-png.flaticon.com/512/2830/2830295.png" alt="AMC" style="width: 14px; height: 14px;">
+                    ${truncateText(fund.amc_name, 30)}
+                </div>
+                <div class="fund-card-metrics">
+                    <div class="metric-item">
+                        <span class="value ${returnClass}">${return1yr >= 0 ? '+' : ''}${return1yr.toFixed(1)}%</span>
+                        <span class="label">1Y Return</span>
+                    </div>
+                    <div class="metric-item">
+                        <span class="value">${return3yr ? return3yr.toFixed(1) + '%' : '-'}</span>
+                        <span class="label">3Y Return</span>
+                    </div>
+                    <div class="metric-item">
+                        <span class="value">${fund.sharpe ? fund.sharpe.toFixed(2) : '-'}</span>
+                        <span class="label">Sharpe</span>
+                    </div>
+                </div>
+                <span class="fund-category-badge">${fund.sub_category || fund.category}</span>
+            </div>
+        `;
+    }).join('');
+}
+
+// ============================================
+// Personalized Recommendations (Home Page)
+// ============================================
+
+async function initPersonalizedRecommendations() {
+    const container = document.getElementById('personalizedRecommendations');
+    const profileSummary = document.getElementById('userProfileSummary');
+    const fundsGrid = document.getElementById('personalizedFundsGrid');
+
+    if (!container || !currentUser) {
+        // User not logged in - hide the section
+        if (container) container.style.display = 'none';
+        return;
+    }
+
+    // Show the section for logged-in users
+    container.style.display = 'block';
+
+    try {
+        // Get user's saved risk profile or use defaults
+        const userProfile = currentUser.riskProfile || {
+            age: 30,
+            income: 'medium',
+            horizon: 'medium',
+            loss_tolerance: 'medium',
+            experience: 'intermediate'
+        };
+
+        // Display user profile summary
+        profileSummary.innerHTML = `
+            <div class="profile-badge">
+                <img src="https://cdn-icons-png.flaticon.com/512/1828/1828817.png" alt="User">
+                ${currentUser.fullName || currentUser.firstName || 'User'}
+            </div>
+            <div class="profile-badge">
+                <img src="https://cdn-icons-png.flaticon.com/512/3655/3655585.png" alt="Risk">
+                Risk: ${userProfile.loss_tolerance || 'Medium'}
+            </div>
+            <div class="profile-badge">
+                <img src="https://cdn-icons-png.flaticon.com/512/2920/2920293.png" alt="Horizon">
+                Horizon: ${userProfile.horizon || 'Medium Term'}
+            </div>
+        `;
+
+        // Loading state
+        fundsGrid.innerHTML = '<div class="loading" style="grid-column: 1/-1;"></div>';
+
+        // Fetch personalized recommendations from the API
+        const result = await apiPost('/api/recommend', {
+            age: userProfile.age || 30,
+            income: userProfile.income || 'medium',
+            horizon: userProfile.horizon || 'medium',
+            loss_tolerance: userProfile.loss_tolerance || 'medium',
+            experience: userProfile.experience || 'intermediate',
+            investment: 100000,
+            top_n: 4
+        });
+
+        if (result.success && result.data && result.data.recommendations) {
+            renderPersonalizedFunds(result.data.recommendations);
+        } else {
+            fundsGrid.innerHTML = `
+                <div class="empty-state" style="grid-column: 1/-1;">
+                    <p>Complete your risk profile in the Recommendations section to get personalized suggestions.</p>
+                </div>
+            `;
+        }
+    } catch (error) {
+        console.error('Failed to load personalized recommendations:', error);
+        fundsGrid.innerHTML = `
+            <div class="empty-state" style="grid-column: 1/-1;">
+                <p>Unable to load recommendations. Please try again later.</p>
+            </div>
+        `;
+    }
+}
+
+function renderPersonalizedFunds(recommendations) {
+    const fundsGrid = document.getElementById('personalizedFundsGrid');
+    if (!fundsGrid) return;
+
+    fundsGrid.innerHTML = recommendations.map(rec => {
+        const return1yr = parseFloat(rec.metrics?.returns?.['1yr']) || 0;
+        const returnClass = return1yr >= 0 ? 'positive' : 'negative';
+
+        return `
+            <div class="fund-card" onclick="viewFundDetails(${rec.fund_id})" data-fund-id="${rec.fund_id}">
+                <div class="fund-card-header">
+                    <span class="fund-card-name">${truncateText(rec.scheme_name, 40)}</span>
+                    <span class="fund-card-rating">${renderRating(rec.rating)}</span>
+                </div>
+                <div class="fund-card-amc">
+                    <img src="https://cdn-icons-png.flaticon.com/512/2830/2830295.png" alt="AMC" style="width: 14px; height: 14px;">
+                    ${truncateText(rec.amc_name, 25)}
+                </div>
+                <div class="fund-card-metrics">
+                    <div class="metric-item">
+                        <span class="value ${returnClass}">${return1yr >= 0 ? '+' : ''}${return1yr.toFixed(1)}%</span>
+                        <span class="label">1Y Return</span>
+                    </div>
+                    <div class="metric-item">
+                        <span class="value">${rec.recommendation_score || '-'}</span>
+                        <span class="label">AI Score</span>
+                    </div>
+                    <div class="metric-item">
+                        <span class="value">${rec.metrics?.risk?.sharpe?.toFixed(2) || '-'}</span>
+                        <span class="label">Sharpe</span>
+                    </div>
+                </div>
+                ${rec.insights && rec.insights[0] ? `
+                    <div class="fund-insight" style="margin-top: 10px; font-size: 0.75rem; color: var(--success);">
+                        ✓ ${rec.insights[0]}
+                    </div>
+                ` : ''}
+            </div>
+        `;
+    }).join('');
+}
+
+// Initialize top funds grid and personalized recommendations when DOM is ready
+document.addEventListener('DOMContentLoaded', function () {
+    // Delay initialization to ensure API is ready
+    setTimeout(() => {
+        initTopFundsGrid();
+        initPersonalizedRecommendations();
+    }, 1000);
+});

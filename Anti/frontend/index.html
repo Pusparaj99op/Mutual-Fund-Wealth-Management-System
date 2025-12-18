@@ -48,6 +48,7 @@
                 <a href="https://rbi.org.in" target="_blank" rel="noopener">RBI</a>
             </div>
             <div class="language-switch">
+                <button id="langSizeDecrease" class="lang-btn" title="Decrease font size">A-</button>
                 <button id="langSize" class="lang-btn" title="Increase font size">A+</button>
                 <button class="lang-btn active" data-lang="en"
                     onclick="window.languageSystem.switch('en')">English</button>
@@ -105,21 +106,39 @@
         </div>
     </header>
 
+    <!-- Mutual Fund Ticker Tape Widget -->
+    <div class="mf-ticker-container">
+        <div class="mf-ticker-wrapper">
+            <div class="mf-ticker-track" id="mfTickerTrack">
+                <!-- Ticker items will be populated by JavaScript -->
+            </div>
+        </div>
+        <div class="mf-ticker-copyright">
+            <a href="https://amfiindia.com" target="_blank" rel="noopener nofollow">
+                <span class="mf-ticker-label">📈 Live Indian Mutual Fund Data</span>
+            </a>
+        </div>
+    </div>
+
     <!-- Main Navigation -->
     <nav class="main-nav" role="navigation" aria-label="Main Navigation">
         <div class="container">
             <ul class="nav-list">
-                <li><a href="#" class="nav-link active" data-section="home">Home</a></li>
-                <li><a href="#" class="nav-link" data-section="funds">Browse Funds</a></li>
-                <li><a href="#" class="nav-link" data-section="predict">AI Analysis</a></li>
-                <li><a href="#" class="nav-link" data-section="recommend">Recommendations</a></li>
-                <li><a href="#" class="nav-link" data-section="optimize">Portfolio</a></li>
-                <li><a href="#" class="nav-link" data-section="compare">Compare</a></li>
-                <li><a href="#" class="nav-link" data-section="analytics">Dashboard</a></li>
-                <li><a href="#" class="nav-link" data-section="advanced">Advanced AI</a></li>
+                <li><a href="index.html" class="nav-link active">Home</a></li>
+                <li><a href="pages/browse-funds.html" class="nav-link">Browse Funds</a></li>
+                <li><a href="pages/ai-analysis.html" class="nav-link">AI Analysis</a></li>
+                <li><a href="pages/recommendations.html" class="nav-link">Recommendations</a></li>
+                <li><a href="pages/portfolio.html" class="nav-link">Portfolio</a></li>
+                <li><a href="pages/compare.html" class="nav-link">Compare</a></li>
+                <li><a href="pages/dashboard.html" class="nav-link">Dashboard</a></li>
+                <li><a href="pages/advanced-ai.html" class="nav-link">Advanced AI</a></li>
             </ul>
             <div class="nav-auth" id="navAuth">
-                <a href="/login" class="btn btn-nav-login" id="loginBtn">🔐 Login</a>
+                <a href="login.html" class="btn btn-nav-login" id="loginBtn">
+                    <img src="https://cdn-icons-png.flaticon.com/512/3064/3064197.png" alt="Login"
+                        style="width: 16px; height: 16px; vertical-align: middle; margin-right: 5px;">
+                    Login
+                </a>
             </div>
         </div>
     </nav>
@@ -158,12 +177,16 @@
                         </div>
                     </div>
                     <div class="hero-actions">
-                        <button class="btn btn-primary" onclick="showSection('recommend')">
+                        <a href="pages/recommendations.html" class="btn btn-primary">
+                            <img src="https://cdn-icons-png.flaticon.com/512/3916/3916610.png" alt="AI"
+                                style="width: 18px; height: 18px; vertical-align: middle; margin-right: 5px;">
                             Get AI Recommendations
-                        </button>
-                        <button class="btn btn-secondary" onclick="showSection('funds')">
+                        </a>
+                        <a href="pages/browse-funds.html" class="btn btn-secondary">
+                            <img src="https://cdn-icons-png.flaticon.com/512/2920/2920323.png" alt="Browse"
+                                style="width: 18px; height: 18px; vertical-align: middle; margin-right: 5px;">
                             Browse All Funds
-                        </button>
+                        </a>
                     </div>
                 </div>
                 <div class="hero-visual">
@@ -174,42 +197,219 @@
             </div>
         </section>
 
-        <!-- Quick Info Cards -->
-        <section class="quick-info">
-            <div class="container">
-                <div class="info-grid">
-                    <div class="info-card">
-                        <div class="info-icon">📊</div>
-                        <h3>Monte Carlo Simulation</h3>
-                        <p>10,000 simulation paths using Geometric Brownian Motion for NAV prediction and VaR
-                            calculation.</p>
+        <!-- Mutual Fund Screener Section - Full Width -->
+        <section class="mf-screener-section full-width" id="screener">
+            <div class="screener-inner">
+                <div class="container">
+                    <div class="section-header-gov">
+                        <img src="https://cdn-icons-png.flaticon.com/512/2920/2920323.png" alt="Screener"
+                            class="section-icon">
+                        <div>
+                            <h2 class="section-title gov-section-title">Mutual Fund Screener</h2>
+                            <p class="section-subtitle">Browse and analyze 815+ mutual funds from AMFI registered
+                                schemes</p>
+                        </div>
                     </div>
-                    <div class="info-card">
-                        <div class="info-icon">📈</div>
-                        <h3>Black-Scholes Model</h3>
-                        <p>Greeks analysis (Delta, Gamma, Theta, Vega) and risk premium assessment.</p>
+
+                    <!-- Fund Stats Overview -->
+                    <div class="screener-stats">
+                        <div class="screener-stat-card">
+                            <img src="https://cdn-icons-png.flaticon.com/512/2920/2920293.png" alt="Funds"
+                                class="stat-icon-img">
+                            <span class="stat-value">815+</span>
+                            <span class="stat-label">Mutual Funds</span>
+                        </div>
+                        <div class="screener-stat-card">
+                            <img src="https://cdn-icons-png.flaticon.com/512/2830/2830295.png" alt="AMC"
+                                class="stat-icon-img">
+                            <span class="stat-value">45+</span>
+                            <span class="stat-label">AMC Houses</span>
+                        </div>
+                        <div class="screener-stat-card">
+                            <img src="https://cdn-icons-png.flaticon.com/512/2991/2991112.png" alt="Categories"
+                                class="stat-icon-img">
+                            <span class="stat-value">10+</span>
+                            <span class="stat-label">Categories</span>
+                        </div>
+                        <div class="screener-stat-card">
+                            <img src="https://cdn-icons-png.flaticon.com/512/3655/3655585.png" alt="Risk"
+                                class="stat-icon-img">
+                            <span class="stat-value">6</span>
+                            <span class="stat-label">Risk Levels</span>
+                        </div>
                     </div>
-                    <div class="info-card">
-                        <div class="info-icon">⚖️</div>
-                        <h3>Black-Litterman</h3>
-                        <p>Portfolio optimization with market equilibrium and investor views integration.</p>
+                </div>
+
+                <!-- TradingView Widget - Full Width -->
+                <div class="tradingview-screener-card full-width-widget">
+                    <div class="tradingview-header">
+                        <div class="header-content">
+                            <img src="https://cdn-icons-png.flaticon.com/512/3281/3281306.png" alt="Market"
+                                class="header-icon">
+                            <h3>Indian Market Overview</h3>
+                        </div>
+                        <span class="live-indicator"><span class="pulse-dot"></span> LIVE</span>
                     </div>
-                    <div class="info-card">
-                        <div class="info-icon">🤖</div>
-                        <h3>ML Prediction Engine</h3>
-                        <p>Ensemble learning with Random Forest and Gradient Boosting for return prediction.</p>
+                    <div class="tradingview-widget-container">
+                        <div class="tradingview-widget-container__widget"></div>
+                        <div class="tradingview-widget-copyright">
+                            <a href="https://in.tradingview.com/screener/" rel="noopener nofollow" target="_blank">
+                                <span class="blue-text">Track all markets on TradingView</span>
+                            </a>
+                        </div>
+                        <script type="text/javascript"
+                            src="https://s3.tradingview.com/external-embedding/embed-widget-screener.js" async>
+                                {
+                                    "market": "india",
+                                        "showToolbar": true,
+                                            "defaultColumn": "overview",
+                                                "defaultScreen": "most_capitalized",
+                                                    "isTransparent": false,
+                                                        "locale": "in",
+                                                            "colorTheme": "light",
+                                                                "width": "100%",
+                                                                    "height": 550
+                                }
+                            </script>
+                    </div>
+                </div>
+
+                <div class="container">
+                    <!-- Top Funds Quick Preview -->
+                    <div class="top-funds-section">
+                        <div class="subsection-header">
+                            <img src="https://cdn-icons-png.flaticon.com/512/2247/2247615.png" alt="Top Funds"
+                                class="subsection-icon">
+                            <h3 class="subsection-title">Top Performing Funds (By Category)</h3>
+                        </div>
+                        <div class="fund-category-tabs" id="fundCategoryTabs">
+                            <button class="tab-btn active" data-category="equity">
+                                <img src="https://cdn-icons-png.flaticon.com/512/2920/2920293.png" alt="Equity"
+                                    class="tab-icon">
+                                Equity
+                            </button>
+                            <button class="tab-btn" data-category="debt">
+                                <img src="https://cdn-icons-png.flaticon.com/512/2910/2910745.png" alt="Debt"
+                                    class="tab-icon">
+                                Debt
+                            </button>
+                            <button class="tab-btn" data-category="hybrid">
+                                <img src="https://cdn-icons-png.flaticon.com/512/3209/3209265.png" alt="Hybrid"
+                                    class="tab-icon">
+                                Hybrid
+                            </button>
+                            <button class="tab-btn" data-category="solution">
+                                <img src="https://cdn-icons-png.flaticon.com/512/3655/3655585.png" alt="Solution"
+                                    class="tab-icon">
+                                Solution Oriented
+                            </button>
+                        </div>
+                        <div class="top-funds-grid" id="topFundsGrid">
+                            <!-- Populated by JavaScript -->
+                        </div>
+                        <div class="view-all-link">
+                            <button class="btn btn-gov-primary" onclick="showSection('funds')">
+                                <img src="https://cdn-icons-png.flaticon.com/512/709/709610.png" alt="View"
+                                    class="btn-icon">
+                                View All 815+ Funds
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Personalized Recommendations (For Logged-in Users) -->
+                    <div class="personalized-recommendations" id="personalizedRecommendations" style="display: none;">
+                        <div class="subsection-header">
+                            <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="Personalized"
+                                class="subsection-icon">
+                            <h3 class="subsection-title">Personalized Recommendations For You</h3>
+                        </div>
+                        <div class="user-profile-summary" id="userProfileSummary">
+                            <!-- Populated by JavaScript based on user's saved profile -->
+                        </div>
+                        <div class="personalized-funds-grid" id="personalizedFundsGrid">
+                            <!-- Populated by JavaScript -->
+                        </div>
+                        <div class="view-all-link">
+                            <button class="btn btn-gov-secondary" onclick="showSection('recommend')">
+                                <img src="https://cdn-icons-png.flaticon.com/512/3916/3916610.png" alt="More"
+                                    class="btn-icon">
+                                Get More AI Recommendations
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
 
         <!-- Government Notice -->
-        <section style="padding: 20px 0;">
+        <section class="gov-notice-section">
             <div class="container">
                 <div class="gov-notice">
-                    <strong>Important Notice:</strong> Mutual Fund investments are subject to market risks.
-                    Read all scheme related documents carefully before investing. Past performance is not
-                    indicative of future returns. This portal is for educational and informational purposes only.
+                    <img src="https://cdn-icons-png.flaticon.com/512/2961/2961957.png" alt="Notice" class="notice-icon">
+                    <div class="notice-content">
+                        <strong>Important Notice:</strong> Mutual Fund investments are subject to market risks.
+                        Read all scheme related documents carefully before investing. Past performance is not
+                        indicative of future returns. This portal is for educational and informational purposes only.
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Quick Info Cards with Images -->
+        <section class="quick-info">
+            <div class="container">
+                <div class="section-header-gov">
+                    <img src="https://cdn-icons-png.flaticon.com/512/3062/3062634.png" alt="AI/ML" class="section-icon">
+                    <div>
+                        <h2 class="section-title gov-section-title">AI/ML Models & Technologies</h2>
+                        <p class="section-subtitle">Powered by Advanced Financial Engineering Algorithms</p>
+                    </div>
+                </div>
+                <div class="info-grid">
+                    <div class="info-card enhanced-card">
+                        <div class="card-image-wrapper">
+                            <img src="images/home/monte carlo.png" alt="Monte Carlo Simulation"
+                                class="card-feature-image">
+                        </div>
+                        <div class="card-content">
+                            <h3>Monte Carlo Simulation</h3>
+                            <p>10,000 simulation paths using Geometric Brownian Motion for NAV prediction and VaR
+                                calculation.</p>
+                            <div class="card-badge">Risk Analysis</div>
+                        </div>
+                    </div>
+                    <div class="info-card enhanced-card">
+                        <div class="card-image-wrapper">
+                            <img src="images/home/Black-Scholes Model.jpeg" alt="Black-Scholes Model"
+                                class="card-feature-image">
+                        </div>
+                        <div class="card-content">
+                            <h3>Black-Scholes Model</h3>
+                            <p>Greeks analysis (Delta, Gamma, Theta, Vega) and risk premium assessment.</p>
+                            <div class="card-badge">Options Pricing</div>
+                        </div>
+                    </div>
+                    <div class="info-card enhanced-card">
+                        <div class="card-image-wrapper">
+                            <img src="images/home/Black-Litterman.png" alt="Black-Litterman" class="card-feature-image">
+                        </div>
+                        <div class="card-content">
+                            <h3>Black-Litterman</h3>
+                            <p>Portfolio optimization with market equilibrium and investor views integration.</p>
+                            <div class="card-badge">Portfolio Optimization</div>
+                        </div>
+                    </div>
+                    <div class="info-card enhanced-card">
+                        <div class="card-image-wrapper">
+                            <img src="images/home/ML Prediction Engine.png" alt="ML Prediction Engine"
+                                class="card-feature-image">
+                        </div>
+                        <div class="card-content">
+                            <h3>ML Prediction Engine</h3>
+                            <p>Ensemble learning with Random Forest and Gradient Boosting for return prediction.</p>
+                            <div class="card-badge">Machine Learning</div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -614,11 +814,14 @@
                 <div class="footer-section">
                     <h4>Quick Links</h4>
                     <ul>
-                        <li><a href="#" onclick="showSection('home')">Home</a></li>
-                        <li><a href="#" onclick="showSection('funds')">Browse Funds</a></li>
-                        <li><a href="#" onclick="showSection('predict')">AI Analysis</a></li>
-                        <li><a href="#" onclick="showSection('recommend')">Recommendations</a></li>
-                        <li><a href="#" onclick="showSection('advanced')">Advanced AI</a></li>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="pages/browse-funds.html">Browse Funds</a></li>
+                        <li><a href="pages/ai-analysis.html">AI Analysis</a></li>
+                        <li><a href="pages/recommendations.html">Recommendations</a></li>
+                        <li><a href="pages/portfolio.html">Portfolio</a></li>
+                        <li><a href="pages/compare.html">Compare</a></li>
+                        <li><a href="pages/dashboard.html">Dashboard</a></li>
+                        <li><a href="pages/advanced-ai.html">Advanced AI</a></li>
                     </ul>
                 </div>
                 <div class="footer-section">

@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="AI Analysis - FIMFP Federal Indian Mutual Fund Portal">
+    <title>AI Analysis | FIMFP - Federal Indian Mutual Fund Portal</title>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml"
+        href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🇮🇳</text></svg>">
+
+    <!-- Google Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;600;700&family=Noto+Sans+Devanagari:wght@400;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="../css/gov-style.css">
+
+    <style>
+        .page-header {
+            background: linear-gradient(135deg, var(--gov-navy) 0%, var(--gov-navy-dark) 100%);
+            color: var(--white);
+            padding: 30px 0;
+            margin-bottom: 30px;
+        }
+
+        .page-header::after {
+            content: '';
+            display: block;
+            height: 4px;
+            background: linear-gradient(to right, var(--saffron), var(--white), var(--green));
+            margin-top: 30px;
+        }
+
+        .page-title-section {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .page-icon {
+            width: 48px;
+            height: 48px;
+        }
+
+        .page-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin: 0;
+        }
+
+        .page-subtitle {
+            font-size: 0.95rem;
+            opacity: 0.9;
+            margin-top: 5px;
+        }
+
+        .analysis-grid {
+            display: grid;
+            grid-template-columns: 350px 1fr;
+            gap: 25px;
+            margin-bottom: 30px;
+        }
+
+        .results-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .metric-card {
+            background: var(--gray-50);
+            border-radius: 6px;
+            padding: 15px;
+            text-align: center;
+            border-left: 4px solid var(--gov-navy);
+        }
+
+        .metric-card.highlight {
+            border-left-color: var(--saffron);
+            background: rgba(255, 153, 51, 0.1);
+        }
+
+        .metric-value {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--gov-navy);
+        }
+
+        .metric-label {
+            font-size: 0.75rem;
+            color: var(--gray-600);
+            text-transform: uppercase;
+        }
+
+        .risk-table {
+            width: 100%;
+            margin-top: 15px;
+        }
+
+        .risk-table td {
+            padding: 8px 10px;
+            border-bottom: 1px solid var(--gray-200);
+            font-size: 0.85rem;
+        }
+
+        .risk-table td:first-child {
+            color: var(--gray-600);
+        }
+
+        .confidence-bar {
+            background: var(--gray-200);
+            border-radius: 4px;
+            height: 8px;
+            margin-top: 10px;
+            overflow: hidden;
+        }
+
+        .confidence-fill {
+            height: 100%;
+            background: linear-gradient(to right, var(--green), var(--saffron));
+            border-radius: 4px;
+        }
+
+        .text-success {
+            color: #138808;
+        }
+
+        .text-error {
+            color: #F44336;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Skip Navigation -->
+    <a href="#main-content" class="skip-nav">Skip to main content</a>
+
+    <!-- Tricolor Strip Banner -->
+    <div class="top-banner"></div>
+
+    <!-- Government Secondary Banner -->
+    <div class="gov-secondary-banner">
+        <div class="container">
+            <div class="gov-links">
+                <a href="https://india.gov.in" target="_blank" rel="noopener">india.gov.in</a>
+                <span class="separator">|</span>
+                <a href="https://sebi.gov.in" target="_blank" rel="noopener">SEBI</a>
+                <span class="separator">|</span>
+                <a href="https://amfiindia.com" target="_blank" rel="noopener">AMFI</a>
+            </div>
+            <div class="language-switch">
+                <button class="lang-btn active" data-lang="en">English</button>
+                <button class="lang-btn" data-lang="hi">हिंदी</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Header -->
+    <header class="main-header">
+        <div class="container">
+            <div class="header-left">
+                <div class="emblem">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/5/55/Emblem_of_India.svg"
+                        alt="Emblem of India" width="65" height="75">
+                </div>
+                <div class="header-text">
+                    <h1 class="portal-title">FIMFP</h1>
+                    <p class="portal-subtitle">Federal Indian Mutual Fund Portal</p>
+                    <p class="portal-subtitle-hindi">भारतीय संघीय म्यूचुअल फंड पोर्टल</p>
+                </div>
+            </div>
+            <div class="header-right">
+                <div class="digital-india">
+                    <span class="di-text">An Initiative of</span>
+                    <span class="di-logo">Team CoDevian</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Navigation -->
+    <nav class="main-nav" role="navigation">
+        <div class="container">
+            <ul class="nav-list">
+                <li><a href="../index.html" class="nav-link">Home</a></li>
+                <li><a href="browse-funds.html" class="nav-link">Browse Funds</a></li>
+                <li><a href="ai-analysis.html" class="nav-link active">AI Analysis</a></li>
+                <li><a href="recommendations.html" class="nav-link">Recommendations</a></li>
+                <li><a href="portfolio.html" class="nav-link">Portfolio</a></li>
+                <li><a href="compare.html" class="nav-link">Compare</a></li>
+                <li><a href="dashboard.html" class="nav-link">Dashboard</a></li>
+                <li><a href="advanced-ai.html" class="nav-link">Advanced AI</a></li>
+            </ul>
+            <div class="nav-auth" id="navAuth">
+                <a href="../login.html" class="btn btn-nav-login">
+                    <img src="https://cdn-icons-png.flaticon.com/512/3064/3064197.png" alt="Login"
+                        style="width: 16px; height: 16px;">
+                    Login
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <div class="page-header">
+        <div class="container">
+            <div class="page-title-section">
+                <img src="https://cdn-icons-png.flaticon.com/512/2103/2103633.png" alt="AI Analysis" class="page-icon">
+                <div>
+                    <h1 class="page-title">AI-Powered Analysis</h1>
+                    <p class="page-subtitle">Monte Carlo simulation and risk analysis for any mutual fund</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main id="main-content">
+        <div class="container">
+            <div class="analysis-grid">
+                <!-- Analysis Form -->
+                <div class="card">
+                    <h3 class="card-title">
+                        <img src="https://cdn-icons-png.flaticon.com/512/3208/3208726.png" alt="Parameters"
+                            style="width: 20px; height: 20px; vertical-align: middle; margin-right: 8px;">
+                        Analysis Parameters
+                    </h3>
+                    <form id="analysisForm">
+                        <div class="form-group">
+                            <label for="fundId">
+                                <img src="https://cdn-icons-png.flaticon.com/512/2920/2920293.png" alt="Fund"
+                                    style="width: 14px; height: 14px; vertical-align: middle; margin-right: 5px;">
+                                Fund ID
+                            </label>
+                            <input type="number" id="fundId" class="form-input" placeholder="Enter Fund ID (1-790)"
+                                min="1" max="790" value="1">
+                        </div>
+                        <div class="form-group">
+                            <label for="investment">
+                                <img src="https://cdn-icons-png.flaticon.com/512/2489/2489756.png" alt="Investment"
+                                    style="width: 14px; height: 14px; vertical-align: middle; margin-right: 5px;">
+                                Investment Amount (₹)
+                            </label>
+                            <input type="number" id="investment" class="form-input" placeholder="100000" value="100000"
+                                min="1000">
+                        </div>
+                        <div class="form-group">
+                            <label for="days">
+                                <img src="https://cdn-icons-png.flaticon.com/512/2693/2693507.png" alt="Time"
+                                    style="width: 14px; height: 14px; vertical-align: middle; margin-right: 5px;">
+                                Forecast Horizon
+                            </label>
+                            <select id="days" class="form-select">
+                                <option value="30">1 Month (30 days)</option>
+                                <option value="90">3 Months (90 days)</option>
+                                <option value="180">6 Months (180 days)</option>
+                                <option value="252" selected>1 Year (252 trading days)</option>
+                                <option value="504">2 Years (504 days)</option>
+                                <option value="756">3 Years (756 days)</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-block">
+                            <img src="https://cdn-icons-png.flaticon.com/512/2103/2103633.png" alt="Run"
+                                style="width: 16px; height: 16px;">
+                            Run Monte Carlo Simulation
+                        </button>
+                    </form>
+
+                    <div style="margin-top: 20px; padding-top: 20px; border-top: 1px solid var(--gray-200);">
+                        <h4 style="font-size: 0.9rem; color: var(--gov-navy); margin-bottom: 10px;">
+                            <img src="https://cdn-icons-png.flaticon.com/512/1680/1680012.png" alt="Info"
+                                style="width: 14px; height: 14px; vertical-align: middle; margin-right: 5px;">
+                            About This Analysis
+                        </h4>
+                        <ul style="font-size: 0.8rem; color: var(--gray-600); margin-left: 20px;">
+                            <li>10,000 simulation paths using Geometric Brownian Motion</li>
+                            <li>Value at Risk (VaR) at 95% and 99% confidence</li>
+                            <li>Conditional VaR (Expected Shortfall)</li>
+                            <li>Probability of loss estimation</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Results Section -->
+                <div>
+                    <div class="card" id="resultsCard">
+                        <h3 class="card-title">
+                            <img src="https://cdn-icons-png.flaticon.com/512/3281/3281295.png" alt="Results"
+                                style="width: 20px; height: 20px; vertical-align: middle; margin-right: 8px;">
+                            Analysis Results
+                        </h3>
+                        <div id="resultsContent">
+                            <div class="empty-state">
+                                <img src="https://cdn-icons-png.flaticon.com/512/2920/2920313.png" alt="Chart"
+                                    style="width: 64px; height: 64px; opacity: 0.5; margin-bottom: 15px;">
+                                <p>Enter parameters and run simulation to view AI prediction results</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Chart Section -->
+                    <div class="card" id="chartCard" style="display: none; margin-top: 20px;">
+                        <h3 class="card-title">
+                            <img src="https://cdn-icons-png.flaticon.com/512/3281/3281306.png" alt="Chart"
+                                style="width: 20px; height: 20px; vertical-align: middle; margin-right: 8px;">
+                            Monte Carlo Simulation Paths
+                        </h3>
+                        <canvas id="simulationChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-bottom">
+                <p>© 2024 FIMFP - Federal Indian Mutual Fund Portal | Government of India</p>
+                <p>Designed & Developed under Digital India Programme by Team CoDevian</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="../js/page-common.js"></script>
+    <script src="../js/charts.js"></script>
+    <script>
+        let simulationChart = null;
+
+        async function pageInit() {
+            // Check for URL parameters
+            const params = new URLSearchParams(window.location.search);
+            const fundId = params.get('fund_id');
+            const autorun = params.get('autorun');
+
+            if (fundId) {
+                document.getElementById('fundId').value = fundId;
+                if (autorun === 'true') {
+                    await runAnalysis();
+                }
+            }
+
+            document.getElementById('analysisForm').addEventListener('submit', async (e) => {
+                e.preventDefault();
+                await runAnalysis();
+            });
+        }
+
+        async function runAnalysis() {
+            const fundId = document.getElementById('fundId').value;
+            const investment = document.getElementById('investment').value;
+            const days = document.getElementById('days').value;
+
+            if (!fundId) {
+                alert('Please enter a Fund ID');
+                return;
+            }
+
+            // Show loading
+            document.getElementById('resultsContent').innerHTML = '<div class="loading"></div>';
+
+            const result = await window.pageCommon.apiGet(`/api/predict/${fundId}?investment=${investment}&days=${days}`);
+
+            if (result.success && result.data) {
+                renderResults(result.data);
+            } else {
+                window.pageCommon.showError('resultsContent', result.error || 'Failed to generate prediction');
+            }
+        }
+
+        function renderResults(data) {
+            const stats = data.statistics;
+            const risk = data.risk_metrics;
+            const ci = data.confidence_intervals;
+
+            const html = `
+                <div style="margin-bottom: 20px;">
+                    <h4 style="color: var(--gov-navy); margin-bottom: 5px;">${data.fund?.scheme_name || 'Fund'}</h4>
+                    <p style="color: var(--gray-500); font-size: 0.85rem;">
+                        <img src="https://cdn-icons-png.flaticon.com/512/2693/2693507.png" alt="Time" style="width: 12px; height: 12px; vertical-align: middle;">
+                        ${data.prediction_days} days forecast |
+                        <img src="https://cdn-icons-png.flaticon.com/512/2103/2103633.png" alt="Simulations" style="width: 12px; height: 12px; vertical-align: middle;">
+                        ${data.n_simulations?.toLocaleString() || '10,000'} simulations
+                    </p>
+                </div>
+
+                <div class="results-grid">
+                    <div class="metric-card highlight">
+                        <div class="metric-value">₹${stats.mean_nav?.toLocaleString('en-IN')}</div>
+                        <div class="metric-label">Expected Value</div>
+                    </div>
+                    <div class="metric-card highlight">
+                        <div class="metric-value" style="color: ${stats.expected_return_pct >= 0 ? '#138808' : '#F44336'}">
+                            ${stats.expected_return_pct >= 0 ? '+' : ''}${stats.expected_return_pct}%
+                        </div>
+                        <div class="metric-label">Expected Return</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-value">₹${stats.std_dev?.toLocaleString('en-IN')}</div>
+                        <div class="metric-label">Std Deviation</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-value">₹${stats.median_nav?.toLocaleString('en-IN')}</div>
+                        <div class="metric-label">Median Value</div>
+                    </div>
+                </div>
+
+                <h4 style="margin: 20px 0 10px; font-size: 0.95rem;">
+                    <img src="https://cdn-icons-png.flaticon.com/512/1055/1055663.png" alt="CI" style="width: 16px; height: 16px; vertical-align: middle; margin-right: 5px;">
+                    Confidence Intervals
+                </h4>
+                <div style="background: var(--gray-50); padding: 15px; border-radius: 6px; margin-bottom: 20px;">
+                    <p style="margin-bottom: 8px;"><strong>90% Confidence:</strong> ₹${ci['90%']?.lower?.toLocaleString('en-IN')} - ₹${ci['90%']?.upper?.toLocaleString('en-IN')}</p>
+                    <div class="confidence-bar"><div class="confidence-fill" style="width: 90%;"></div></div>
+                    <p style="margin: 15px 0 8px;"><strong>50% Confidence:</strong> ₹${ci['50%']?.lower?.toLocaleString('en-IN')} - ₹${ci['50%']?.upper?.toLocaleString('en-IN')}</p>
+                    <div class="confidence-bar"><div class="confidence-fill" style="width: 50%;"></div></div>
+                </div>
+
+                <h4 style="margin: 20px 0 10px; font-size: 0.95rem;">
+                    <img src="https://cdn-icons-png.flaticon.com/512/3655/3655585.png" alt="Risk" style="width: 16px; height: 16px; vertical-align: middle; margin-right: 5px;">
+                    Risk Metrics
+                </h4>
+                <table class="risk-table">
+                    <tr>
+                        <td>Value at Risk (95%)</td>
+                        <td><span class="badge" style="background: #FF9800; color: #fff;">₹${risk.var_95?.toLocaleString('en-IN')}</span></td>
+                    </tr>
+                    <tr>
+                        <td>Value at Risk (99%)</td>
+                        <td><span class="badge" style="background: #F44336; color: #fff;">₹${risk.var_99?.toLocaleString('en-IN')}</span></td>
+                    </tr>
+                    <tr>
+                        <td>CVaR (95%)</td>
+                        <td>₹${risk.cvar_95?.toLocaleString('en-IN')}</td>
+                    </tr>
+                    <tr>
+                        <td>Probability of Loss</td>
+                        <td style="color: ${risk.probability_of_loss > 30 ? '#F44336' : '#138808'}; font-weight: 600;">${risk.probability_of_loss}%</td>
+                    </tr>
+                </table>
+            `;
+
+            document.getElementById('resultsContent').innerHTML = html;
+
+            // Render chart
+            if (data.sample_paths && data.sample_paths.length > 0) {
+                document.getElementById('chartCard').style.display = 'block';
+                renderSimulationChart(data.sample_paths, data.current_nav, data.prediction_days);
+            }
+        }
+
+        function renderSimulationChart(samplePaths, currentNav, days) {
+            const ctx = document.getElementById('simulationChart').getContext('2d');
+            const labels = Array.from({ length: days }, (_, i) => i + 1);
+
+            const colors = ['#003366', '#FF9933', '#138808', '#1e88e5', '#7c3aed', '#ec4899', '#14b8a6', '#f97316', '#ef4444'];
+
+            const datasets = samplePaths.map((path, index) => ({
+                label: `Path ${index + 1}`,
+                data: path,
+                borderColor: colors[index % colors.length],
+                backgroundColor: 'transparent',
+                borderWidth: 1.5,
+                pointRadius: 0,
+                tension: 0.1
+            }));
+
+            datasets.push({
+                label: 'Initial Investment',
+                data: Array(days).fill(currentNav),
+                borderColor: '#9E9E9E',
+                borderDash: [5, 5],
+                borderWidth: 2,
+                pointRadius: 0
+            });
+
+            if (simulationChart) {
+                simulationChart.destroy();
+            }
+
+            simulationChart = new Chart(ctx, {
+                type: 'line',
+                data: { labels, datasets },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: { display: false },
+                        title: {
+                            display: true,
+                            text: 'Sample Simulation Paths (from 10,000 total)',
+                            font: { size: 14, weight: 'bold' }
+                        }
+                    },
+                    scales: {
+                        x: {
+                            title: { display: true, text: 'Days' },
+                            ticks: { maxTicksLimit: 10 }
+                        },
+                        y: {
+                            title: { display: true, text: 'Value (₹)' },
+                            ticks: {
+                                callback: value => '₹' + value.toLocaleString('en-IN', { maximumFractionDigits: 0 })
+                            }
+                        }
+                    }
+                }
+            });
+        }
+    </script>
+</body>
+
+</html>

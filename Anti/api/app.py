@@ -226,6 +226,12 @@ def serve_images(filename):
     return send_from_directory(os.path.join(app.static_folder, 'images'), filename)
 
 
+@app.route('/pages/<path:filename>')
+def serve_pages(filename):
+    """Serve pages from the pages subdirectory"""
+    return send_from_directory(os.path.join(app.static_folder, 'pages'), filename)
+
+
 # ============== API Routes ==============
 
 @app.route('/api/health')
@@ -652,6 +658,46 @@ def risk_analysis(fund_id):
 
 # -------------- Recommendation Endpoints --------------
 
+def parse_profile_value(value, value_type='general'):
+    """Convert string profile values to numeric equivalents"""
+    if value is None:
+        return None
+
+    # If already a number, return it
+    if isinstance(value, (int, float)):
+        return value
+
+    # Try to parse as number first
+    try:
+        return float(value)
+    except (ValueError, TypeError):
+        pass
+
+    # Convert string labels to numbers
+    value_str = str(value).lower().strip()
+
+    if value_type == 'income':
+        # Income in lakhs
+        mapping = {'low': 5, 'medium': 15, 'high': 30, 'very_high': 50}
+        return mapping.get(value_str, 10)
+    elif value_type == 'horizon':
+        # Years
+        mapping = {'short': 2, 'medium': 5, 'long': 8, 'very_long': 15}
+        return mapping.get(value_str, 5)
+    elif value_type == 'loss_tolerance':
+        # Scale 1-5
+        mapping = {'very_low': 1, 'low': 2, 'medium': 3, 'high': 4, 'very_high': 5}
+        return mapping.get(value_str, 3)
+    elif value_type == 'experience':
+        # Scale 1-5
+        mapping = {'none': 1, 'beginner': 2, 'intermediate': 3, 'advanced': 4, 'expert': 5}
+        return mapping.get(value_str, 3)
+    else:
+        # Default mapping
+        mapping = {'low': 2, 'medium': 5, 'high': 8}
+        return mapping.get(value_str, 5)
+
+
 @app.route('/api/recommend', methods=['GET', 'POST'])
 def get_recommendations():
     """Get AI-powered fund recommendations"""
@@ -660,20 +706,20 @@ def get_recommendations():
     else:
         data = request.args.to_dict()
 
-    # Parse risk profile parameters
+    # Parse risk profile parameters with string-to-number conversion
     risk_profile = None
     if any(k in data for k in ['age', 'income', 'horizon', 'loss_tolerance', 'experience']):
         risk_profile = RiskProfiler.calculate_risk_score(
-            age=int(data.get('age', 35)),
-            income=float(data.get('income', 10)),
-            investment_horizon=int(data.get('horizon', 5)),
-            loss_tolerance=int(data.get('loss_tolerance', 3)),
-            investment_experience=int(data.get('experience', 3))
+            age=int(parse_profile_value(data.get('age', 35)) or 35),
+            income=float(parse_profile_value(data.get('income', 10), 'income') or 10),
+            investment_horizon=int(parse_profile_value(data.get('horizon', 5), 'horizon') or 5),
+            loss_tolerance=int(parse_profile_value(data.get('loss_tolerance', 3), 'loss_tolerance') or 3),
+            investment_experience=int(parse_profile_value(data.get('experience', 3), 'experience') or 3)
         )
 
     # Get recommendations
     investment_amount = float(data.get('investment', 100000))
-    horizon = int(data.get('horizon', 5))
+    horizon = int(parse_profile_value(data.get('horizon', 5), 'horizon') or 5)
     categories = data.get('categories', '').split(',') if data.get('categories') else None
     top_n = int(data.get('top_n', 10))
 

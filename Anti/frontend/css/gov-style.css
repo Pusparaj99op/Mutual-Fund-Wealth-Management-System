@@ -165,9 +165,10 @@ img {
 
 .language-switch {
     display: flex;
-    gap: 4px;
+    gap: 6px;
     flex-wrap: wrap;
     justify-content: flex-end;
+    align-items: center;
 }
 
 .lang-btn {
@@ -178,8 +179,29 @@ img {
     border-radius: 3px;
     cursor: pointer;
     font-size: 0.7rem;
-    transition: all 0.2s;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     white-space: nowrap;
+    position: relative;
+    overflow: hidden;
+}
+
+.lang-btn::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.2);
+    transform: translate(-50%, -50%);
+    transition: width 0.4s, height 0.4s;
+    pointer-events: none;
+}
+
+.lang-btn:hover::before {
+    width: 120%;
+    height: 120%;
 }
 
 .lang-btn:hover,
@@ -188,10 +210,55 @@ img {
     border-color: var(--white);
     color: var(--white);
     transform: translateY(-1px);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
 }
 
-.lang-btn[title] {
+/* Font Size Control Buttons - Enhanced Styling */
+.lang-btn[title*="font"] {
     font-weight: 700;
+    font-size: 0.75rem;
+    padding: 4px 10px;
+    background: rgba(255, 153, 51, 0.15);
+    border: 1.5px solid rgba(255, 153, 51, 0.6);
+    color: var(--saffron);
+    margin-right: 4px;
+    min-width: 32px;
+    position: relative;
+}
+
+.lang-btn[title*="font"]::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: var(--saffron);
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+}
+
+.lang-btn[title*="font"]:hover {
+    background: rgba(255, 153, 51, 0.25);
+    border-color: var(--saffron);
+    color: var(--white);
+    transform: translateY(-2px) scale(1.05);
+    box-shadow: 0 4px 12px rgba(255, 153, 51, 0.3);
+}
+
+.lang-btn[title*="font"]:hover::after {
+    transform: scaleX(1);
+}
+
+.lang-btn[title*="font"]:active {
+    transform: translateY(0) scale(0.98);
+}
+
+/* Separator between font controls and language buttons */
+.lang-btn[title*="font"]+.lang-btn:not([title*="font"]) {
+    margin-left: 6px;
+    padding-left: 10px;
+    border-left: 1px solid rgba(255, 255, 255, 0.3);
 }
 
 /* ============================================
@@ -280,11 +347,6 @@ img {
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
 }
 
-.dignitary.college-logo img {
-    /* border-radius: 8px;
-    border-color: var(--saffron); */
-}
-
 .dignitary-info {
     display: flex;
     flex-direction: column;
@@ -354,26 +416,47 @@ img {
 
 .nav-link {
     display: block;
-    padding: 12px 18px;
+    padding: 13px 20px;
     color: rgba(255, 255, 255, 0.95);
     font-size: 0.9rem;
     font-weight: 500;
-    transition: all 0.2s;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     border-bottom: 3px solid transparent;
     text-transform: uppercase;
     letter-spacing: 0.3px;
+    position: relative;
+    overflow: hidden;
+}
+
+.nav-link::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(255, 255, 255, 0.05);
+    transform: translateY(100%);
+    transition: transform 0.3s ease;
+    pointer-events: none;
+}
+
+.nav-link:hover::before {
+    transform: translateY(0);
 }
 
 .nav-link:hover {
-    background: rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.12);
     text-decoration: none;
     color: var(--white);
+    transform: translateY(-1px);
 }
 
 .nav-link.active {
-    background: rgba(255, 255, 255, 0.15);
+    background: rgba(255, 255, 255, 0.18);
     border-bottom-color: var(--saffron);
     color: var(--white);
+    box-shadow: inset 0 -3px 0 0 var(--saffron);
 }
 
 /* Navigation Auth Section */
@@ -460,6 +543,7 @@ img {
     bottom: 0;
     background: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='50' cy='50' r='40' fill='none' stroke='%23ffffff' stroke-opacity='0.03' stroke-width='1'/%3E%3C/svg%3E");
     opacity: 0.5;
+    pointer-events: none;
 }
 
 .hero-section::after {
@@ -655,16 +739,38 @@ img {
     border-radius: 4px;
     border: 2px solid transparent;
     cursor: pointer;
-    transition: all 0.2s;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     text-decoration: none;
     text-transform: uppercase;
     letter-spacing: 0.3px;
+    position: relative;
+    overflow: hidden;
+}
+
+.btn::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    transform: translate(-50%, -50%);
+    transition: width 0.5s, height 0.5s;
+    pointer-events: none;
+}
+
+.btn:hover::before {
+    width: 300%;
+    height: 300%;
 }
 
 .btn-primary {
     background: var(--saffron);
     color: var(--white);
     border-color: var(--saffron);
+    box-shadow: 0 2px 8px rgba(255, 153, 51, 0.3);
 }
 
 .btn-primary:hover {
@@ -672,12 +778,19 @@ img {
     border-color: var(--saffron-dark);
     color: var(--white);
     text-decoration: none;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 16px rgba(255, 153, 51, 0.4);
+}
+
+.btn-primary:active {
+    transform: translateY(0);
 }
 
 .btn-secondary {
     background: var(--white);
     color: var(--gov-navy);
     border-color: var(--white);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
 .btn-secondary:hover {
@@ -685,6 +798,8 @@ img {
     border-color: var(--gray-100);
     color: var(--gov-navy);
     text-decoration: none;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
 }
 
 .btn-outline {
@@ -697,6 +812,8 @@ img {
     background: var(--gov-navy);
     color: var(--white);
     text-decoration: none;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 16px rgba(0, 51, 102, 0.3);
 }
 
 .btn-block {
@@ -1514,5 +1631,758 @@ img {
 
     .header-dignitaries {
         display: none;
+    }
+}
+
+/* ============================================
+   Mutual Fund Ticker Tape Widget
+============================================ */
+.mf-ticker-container {
+    background: linear-gradient(to bottom, #f8f9fa 0%, #ffffff 100%);
+    border-bottom: 2px solid var(--gov-navy);
+    position: relative;
+    overflow: hidden;
+}
+
+.mf-ticker-wrapper {
+    overflow: hidden;
+    width: 100%;
+    padding: 4px 0;
+}
+
+.mf-ticker-track {
+    display: flex;
+    animation: mf-ticker-scroll 60s linear infinite;
+    width: max-content;
+}
+
+.mf-ticker-track:hover {
+    animation-play-state: paused;
+}
+
+@keyframes mf-ticker-scroll {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+.mf-ticker-item {
+    display: flex;
+    align-items: center;
+    padding: 3px 15px;
+    border-right: 1px solid var(--gray-200);
+    white-space: nowrap;
+    transition: background 0.2s ease;
+}
+
+.mf-ticker-item:hover {
+    background: rgba(0, 51, 102, 0.05);
+}
+
+.mf-ticker-logo {
+    width: 18px;
+    height: 18px;
+    background: var(--gov-navy);
+    border-radius: 3px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 8px;
+    font-size: 9px;
+    color: var(--white);
+    font-weight: 700;
+}
+
+.mf-ticker-info {
+    display: flex;
+    flex-direction: column;
+    margin-right: 10px;
+    line-height: 1.2;
+}
+
+.mf-ticker-name {
+    font-size: 0.65rem;
+    font-weight: 600;
+    color: var(--gov-navy);
+    max-width: 150px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.mf-ticker-amc {
+    font-size: 0.55rem;
+    color: var(--gray-500);
+}
+
+.mf-ticker-value {
+    display: flex;
+    align-items: baseline;
+    gap: 4px;
+}
+
+.mf-ticker-return {
+    font-size: 0.7rem;
+    font-weight: 700;
+}
+
+.mf-ticker-return.positive {
+    color: var(--green);
+}
+
+.mf-ticker-return.negative {
+    color: var(--error);
+}
+
+.mf-ticker-period {
+    font-size: 0.55rem;
+    color: var(--gray-500);
+}
+
+.mf-ticker-copyright {
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    background: linear-gradient(to right, transparent, #ffffff 30%, #ffffff);
+    padding: 0 10px 0 30px;
+    z-index: 10;
+}
+
+.mf-ticker-copyright a {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+}
+
+.mf-ticker-label {
+    font-size: 0.7rem;
+    color: var(--gov-navy);
+    font-weight: 500;
+    background: rgba(0, 51, 102, 0.08);
+    padding: 4px 10px;
+    border-radius: 4px;
+    border: 1px solid rgba(0, 51, 102, 0.15);
+}
+
+/* Responsive styles for ticker */
+@media (max-width: 768px) {
+    .mf-ticker-name {
+        max-width: 120px;
+    }
+
+    .mf-ticker-item {
+        padding: 6px 12px;
+    }
+
+    .mf-ticker-copyright {
+        padding: 0 10px 0 30px;
+    }
+}
+
+@media (max-width: 480px) {
+    .mf-ticker-container {
+        display: none;
+    }
+}
+
+/* ============================================
+   Enhanced Info Cards with Images
+============================================ */
+.gov-section-title {
+    position: relative;
+    padding-bottom: 15px;
+    margin-bottom: 10px;
+}
+
+.gov-section-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 4px;
+    background: linear-gradient(to right, var(--saffron), var(--white), var(--green));
+}
+
+.info-card.enhanced-card {
+    background: var(--white);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    border: 1px solid var(--gray-200);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.info-card.enhanced-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.card-image-wrapper {
+    width: 100%;
+    height: 160px;
+    overflow: hidden;
+    border-bottom: 3px solid var(--saffron);
+}
+
+.card-feature-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.info-card.enhanced-card:hover .card-feature-image {
+    transform: scale(1.05);
+}
+
+.info-card.enhanced-card .card-content {
+    padding: 20px;
+}
+
+.info-card.enhanced-card h3 {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--gov-navy);
+    margin-bottom: 10px;
+    border-bottom: 2px solid var(--saffron);
+    padding-bottom: 8px;
+}
+
+.info-card.enhanced-card p {
+    font-size: 0.85rem;
+    color: var(--gray-600);
+    line-height: 1.5;
+    margin-bottom: 15px;
+}
+
+.card-badge {
+    display: inline-block;
+    background: linear-gradient(135deg, var(--gov-navy) 0%, #1a365d 100%);
+    color: var(--white);
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* ============================================
+   Mutual Fund Screener Section - Full Width
+============================================ */
+.mf-screener-section {
+    background: linear-gradient(to bottom, #f0f4f8 0%, #ffffff 100%);
+    padding: 50px 0;
+    position: relative;
+}
+
+.mf-screener-section.full-width {
+    width: 100vw;
+    margin-left: calc(-50vw + 50%);
+    margin-right: calc(-50vw + 50%);
+}
+
+.mf-screener-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 5px;
+    background: linear-gradient(to right, var(--saffron), var(--white), var(--green));
+}
+
+.screener-inner {
+    width: 100%;
+}
+
+/* Section Header with Icon */
+.section-header-gov {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.section-header-gov .section-icon {
+    width: 60px;
+    height: 60px;
+    object-fit: contain;
+}
+
+.section-header-gov .gov-section-title::after {
+    left: 0;
+    transform: none;
+}
+
+.subsection-header {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 25px;
+}
+
+.subsection-icon {
+    width: 36px;
+    height: 36px;
+    object-fit: contain;
+}
+
+/* Stat cards with image icons */
+.stat-icon-img {
+    width: 40px;
+    height: 40px;
+    margin-bottom: 10px;
+    object-fit: contain;
+}
+
+.screener-stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    margin: 30px 0;
+}
+
+.screener-stat-card {
+    background: var(--white);
+    border: 2px solid var(--gov-navy);
+    border-radius: 8px;
+    padding: 25px 15px;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.screener-stat-card:hover {
+    transform: translateY(-3px);
+    border-color: var(--saffron);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+}
+
+.screener-stat-card .stat-value {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--gov-navy);
+}
+
+.screener-stat-card .stat-label {
+    font-size: 0.8rem;
+    color: var(--gray-600);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-top: 5px;
+}
+
+/* TradingView Widget Full Width */
+.tradingview-screener-card.full-width-widget {
+    margin: 30px 0;
+    border-radius: 0;
+    border-left: none;
+    border-right: none;
+}
+
+.tradingview-header {
+    background: linear-gradient(135deg, var(--gov-navy) 0%, #0d3a6a 100%);
+    padding: 15px 25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.tradingview-header .header-content {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.tradingview-header .header-icon {
+    width: 28px;
+    height: 28px;
+    filter: brightness(0) invert(1);
+}
+
+.tradingview-header h3 {
+    color: var(--white);
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin: 0;
+}
+
+.live-indicator {
+    background: rgba(76, 175, 80, 0.2);
+    border: 1px solid var(--success);
+    color: var(--success);
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.pulse-dot {
+    width: 8px;
+    height: 8px;
+    background: var(--success);
+    border-radius: 50%;
+    animation: pulse-animation 2s infinite;
+}
+
+@keyframes pulse-animation {
+
+    0%,
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+    50% {
+        opacity: 0.5;
+        transform: scale(1.2);
+    }
+}
+
+/* Tab buttons with icons */
+.tab-btn {
+    padding: 10px 20px;
+    border: 2px solid var(--gov-navy);
+    background: var(--white);
+    color: var(--gov-navy);
+    font-weight: 600;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 0.85rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.tab-btn .tab-icon {
+    width: 18px;
+    height: 18px;
+    object-fit: contain;
+}
+
+.tab-btn:hover {
+    background: rgba(0, 51, 102, 0.1);
+}
+
+.tab-btn.active {
+    background: var(--gov-navy);
+    color: var(--white);
+}
+
+.tab-btn.active .tab-icon {
+    filter: brightness(0) invert(1);
+}
+
+/* Government Style Buttons */
+.btn-gov-primary {
+    background: linear-gradient(135deg, var(--gov-navy) 0%, #1a365d 100%);
+    color: var(--white);
+    border: none;
+    padding: 12px 30px;
+    border-radius: 6px;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 51, 102, 0.3);
+}
+
+.btn-gov-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 51, 102, 0.4);
+}
+
+.btn-gov-primary .btn-icon {
+    width: 18px;
+    height: 18px;
+    filter: brightness(0) invert(1);
+}
+
+.btn-gov-secondary {
+    background: var(--white);
+    color: var(--gov-navy);
+    border: 2px solid var(--gov-navy);
+    padding: 12px 30px;
+    border-radius: 6px;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-gov-secondary:hover {
+    background: rgba(0, 51, 102, 0.05);
+}
+
+.btn-gov-secondary .btn-icon {
+    width: 18px;
+    height: 18px;
+}
+
+/* Government Notice Section */
+.gov-notice-section {
+    padding: 20px 0;
+    background: #fffbf0;
+}
+
+.gov-notice {
+    background: linear-gradient(to right, rgba(255, 153, 51, 0.15) 0%, rgba(19, 136, 8, 0.1) 100%);
+    border-left: 4px solid var(--saffron);
+    padding: 15px 20px;
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+    border-radius: 0 6px 6px 0;
+}
+
+.notice-icon {
+    width: 32px;
+    height: 32px;
+    flex-shrink: 0;
+}
+
+.notice-content {
+    font-size: 0.85rem;
+    color: var(--gray-700);
+    line-height: 1.5;
+}
+
+.notice-content strong {
+    color: var(--gov-navy);
+}
+
+/* Clickable Fund Cards */
+.fund-card {
+    background: var(--white);
+    border: 1px solid var(--gray-200);
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+    border-left: 4px solid var(--gov-navy);
+    cursor: pointer;
+    position: relative;
+}
+
+.fund-card:hover {
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    border-left-color: var(--saffron);
+    transform: translateY(-3px);
+}
+
+.fund-card::after {
+    content: '→';
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 1.2rem;
+    color: var(--gov-navy);
+    opacity: 0;
+    transition: all 0.3s ease;
+}
+
+.fund-card:hover::after {
+    opacity: 1;
+    right: 15px;
+}
+
+/* Personalized Recommendations Section */
+.personalized-recommendations {
+    margin-top: 40px;
+    padding: 30px;
+    background: linear-gradient(135deg, rgba(0, 51, 102, 0.03) 0%, rgba(255, 153, 51, 0.03) 100%);
+    border-radius: 12px;
+    border: 2px solid rgba(0, 51, 102, 0.1);
+}
+
+.user-profile-summary {
+    background: var(--white);
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 25px;
+    border: 1px solid var(--gray-200);
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.profile-badge {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 16px;
+    background: rgba(0, 51, 102, 0.1);
+    border-radius: 20px;
+    font-size: 0.85rem;
+    color: var(--gov-navy);
+    font-weight: 500;
+}
+
+.profile-badge img {
+    width: 16px;
+    height: 16px;
+}
+
+.personalized-funds-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 20px;
+}
+
+/* Top Funds Section */
+.top-funds-section {
+    margin-top: 40px;
+}
+
+.top-funds-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 20px;
+    margin-bottom: 25px;
+}
+
+.fund-category-tabs {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 25px;
+    flex-wrap: wrap;
+}
+
+.view-all-link {
+    text-align: center;
+    padding-top: 20px;
+}
+
+/* Responsive Styles for Screener */
+@media (max-width: 1024px) {
+    .screener-stats {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .info-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .section-header-gov {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .section-header-gov .gov-section-title::after {
+        left: 50%;
+        transform: translateX(-50%);
+    }
+}
+
+@media (max-width: 768px) {
+    .screener-stats {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+    }
+
+    .screener-stat-card {
+        padding: 20px 10px;
+    }
+
+    .screener-stat-card .stat-value {
+        font-size: 1.5rem;
+    }
+
+    .fund-category-tabs {
+        justify-content: center;
+    }
+
+    .tab-btn {
+        padding: 8px 16px;
+        font-size: 0.8rem;
+    }
+
+    .top-funds-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .info-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .card-image-wrapper {
+        height: 140px;
+    }
+
+    .mf-screener-section.full-width {
+        margin-left: 0;
+        margin-right: 0;
+        width: 100%;
+    }
+
+    .subsection-header {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .personalized-recommendations {
+        padding: 20px 15px;
+    }
+
+    .user-profile-summary {
+        flex-direction: column;
+        text-align: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .screener-stats {
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+    }
+
+    .screener-stat-card {
+        padding: 15px 8px;
+    }
+
+    .screener-stat-card .stat-value {
+        font-size: 1.25rem;
+    }
+
+    .fund-category-tabs {
+        flex-direction: column;
+    }
+
+    .tab-btn {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .stat-icon-img {
+        width: 30px;
+        height: 30px;
+    }
+
+    .btn-gov-primary,
+    .btn-gov-secondary {
+        padding: 10px 20px;
+        font-size: 0.85rem;
     }
 }

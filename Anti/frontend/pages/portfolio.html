@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Portfolio Optimizer - FIMFP">
+    <title>Portfolio | FIMFP</title>
+    <link rel="icon" type="image/svg+xml"
+        href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🇮🇳</text></svg>">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="../css/gov-style.css">
+    <style>
+        .page-header {
+            background: linear-gradient(135deg, var(--gov-navy) 0%, var(--gov-navy-dark) 100%);
+            color: var(--white);
+            padding: 30px 0;
+            margin-bottom: 30px
+        }
+
+        .page-header::after {
+            content: '';
+            display: block;
+            height: 4px;
+            background: linear-gradient(to right, var(--saffron), var(--white), var(--green));
+            margin-top: 30px
+        }
+
+        .page-title-section {
+            display: flex;
+            align-items: center;
+            gap: 15px
+        }
+
+        .page-icon {
+            width: 48px;
+            height: 48px
+        }
+
+        .page-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin: 0
+        }
+
+        .page-subtitle {
+            font-size: 0.95rem;
+            opacity: 0.9;
+            margin-top: 5px
+        }
+
+        .optimizer-grid {
+            display: grid;
+            grid-template-columns: 350px 1fr;
+            gap: 25px;
+            margin-bottom: 30px
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin-bottom: 20px
+        }
+
+        .stat-box {
+            background: var(--gray-50);
+            border-radius: 8px;
+            padding: 20px;
+            text-align: center;
+            border-left: 4px solid var(--gov-navy)
+        }
+
+        .stat-box.highlight {
+            border-left-color: var(--saffron);
+            background: rgba(255, 153, 51, 0.1)
+        }
+
+        .stat-value {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--gov-navy)
+        }
+
+        .stat-label {
+            font-size: 0.75rem;
+            color: var(--gray-600)
+        }
+
+        .charts-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-top: 20px
+        }
+    </style>
+</head>
+
+<body>
+    <a href="#main-content" class="skip-nav">Skip to main content</a>
+    <div class="top-banner"></div>
+    <div class="gov-secondary-banner">
+        <div class="container">
+            <div class="gov-links"><a href="https://india.gov.in" target="_blank">india.gov.in</a><span
+                    class="separator">|</span><a href="https://sebi.gov.in" target="_blank">SEBI</a></div>
+            <div class="language-switch"><button class="lang-btn active">English</button><button
+                    class="lang-btn">हिंदी</button></div>
+        </div>
+    </div>
+    <header class="main-header">
+        <div class="container">
+            <div class="header-left">
+                <div class="emblem"><img src="https://upload.wikimedia.org/wikipedia/commons/5/55/Emblem_of_India.svg"
+                        alt="Emblem" width="65" height="75"></div>
+                <div class="header-text">
+                    <h1 class="portal-title">FIMFP</h1>
+                    <p class="portal-subtitle">Federal Indian Mutual Fund Portal</p>
+                    <p class="portal-subtitle-hindi">भारतीय संघीय म्यूचुअल फंड पोर्टल</p>
+                </div>
+            </div>
+            <div class="header-right">
+                <div class="digital-india"><span class="di-text">An Initiative of</span><span class="di-logo">Team
+                        CoDevian</span></div>
+            </div>
+        </div>
+    </header>
+    <nav class="main-nav">
+        <div class="container">
+            <ul class="nav-list">
+                <li><a href="../index.html" class="nav-link">Home</a></li>
+                <li><a href="browse-funds.html" class="nav-link">Browse Funds</a></li>
+                <li><a href="ai-analysis.html" class="nav-link">AI Analysis</a></li>
+                <li><a href="recommendations.html" class="nav-link">Recommendations</a></li>
+                <li><a href="portfolio.html" class="nav-link active">Portfolio</a></li>
+                <li><a href="compare.html" class="nav-link">Compare</a></li>
+                <li><a href="dashboard.html" class="nav-link">Dashboard</a></li>
+                <li><a href="advanced-ai.html" class="nav-link">Advanced AI</a></li>
+            </ul>
+            <div class="nav-auth" id="navAuth"><a href="../login.html" class="btn btn-nav-login"><img
+                        src="https://cdn-icons-png.flaticon.com/512/3064/3064197.png" alt="Login"
+                        style="width:16px;height:16px">Login</a></div>
+        </div>
+    </nav>
+    <div class="page-header">
+        <div class="container">
+            <div class="page-title-section"><img src="https://cdn-icons-png.flaticon.com/512/3209/3209265.png"
+                    alt="Portfolio" class="page-icon">
+                <div>
+                    <h1 class="page-title">Portfolio Optimizer</h1>
+                    <p class="page-subtitle">Black-Litterman model for optimal asset allocation</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <main id="main-content">
+        <div class="container">
+            <div class="optimizer-grid">
+                <div class="card">
+                    <h3 class="card-title"><img src="https://cdn-icons-png.flaticon.com/512/3208/3208726.png"
+                            alt="Select" style="width:20px;height:20px;vertical-align:middle;margin-right:8px">Select
+                        Funds</h3>
+                    <p class="card-description">Enter fund IDs to include in your portfolio (comma-separated)</p>
+                    <form id="optimizerForm">
+                        <div class="form-group"><label for="fundIds"><img
+                                    src="https://cdn-icons-png.flaticon.com/512/2920/2920293.png" alt="Fund"
+                                    style="width:14px;height:14px;vertical-align:middle;margin-right:5px">Fund IDs
+                                (e.g., 1, 50, 100)</label><input type="text" id="fundIds" class="form-input"
+                                value="1, 50, 100, 150, 200"></div>
+                        <div class="form-group"><label for="investment"><img
+                                    src="https://cdn-icons-png.flaticon.com/512/2489/2489756.png" alt="Amount"
+                                    style="width:14px;height:14px;vertical-align:middle;margin-right:5px">Total
+                                Investment (₹)</label><input type="number" id="investment" class="form-input"
+                                value="500000" min="10000"></div>
+                        <button type="submit" class="btn btn-primary btn-block"><img
+                                src="https://cdn-icons-png.flaticon.com/512/3209/3209265.png" alt="Optimize"
+                                style="width:16px;height:16px">Optimize Portfolio</button>
+                    </form>
+                    <div style="margin-top:20px;padding-top:20px;border-top:1px solid var(--gray-200)">
+                        <h4 style="font-size:0.9rem;color:var(--gov-navy);margin-bottom:10px"><img
+                                src="https://cdn-icons-png.flaticon.com/512/1680/1680012.png" alt="Info"
+                                style="width:14px;height:14px;vertical-align:middle;margin-right:5px">About This Tool
+                        </h4>
+                        <ul style="font-size:0.8rem;color:var(--gray-600);margin-left:20px">
+                            <li>Mean-Variance Optimization</li>
+                            <li>Black-Litterman Model</li>
+                            <li>Efficient Frontier Analysis</li>
+                            <li>Risk Parity Allocation</li>
+                        </ul>
+                    </div>
+                </div>
+                <div>
+                    <div class="card" id="resultsCard">
+                        <h3 class="card-title"><img src="https://cdn-icons-png.flaticon.com/512/3281/3281295.png"
+                                alt="Results"
+                                style="width:20px;height:20px;vertical-align:middle;margin-right:8px">Optimal Allocation
+                        </h3>
+                        <div id="resultsContent">
+                            <div class="empty-state"><img src="https://cdn-icons-png.flaticon.com/512/3209/3209265.png"
+                                    alt="" style="width:64px;height:64px;opacity:0.5;margin-bottom:15px">
+                                <p>Enter fund IDs and click Optimize to view allocation</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="charts-grid" id="chartsSection" style="display:none">
+                        <div class="card">
+                            <h3 class="card-title"><img src="https://cdn-icons-png.flaticon.com/512/2920/2920323.png"
+                                    alt="Allocation"
+                                    style="width:20px;height:20px;vertical-align:middle;margin-right:8px">Allocation
+                                Breakdown</h3><canvas id="allocationChart"></canvas>
+                        </div>
+                        <div class="card">
+                            <h3 class="card-title"><img src="https://cdn-icons-png.flaticon.com/512/3281/3281306.png"
+                                    alt="Frontier"
+                                    style="width:20px;height:20px;vertical-align:middle;margin-right:8px">Efficient
+                                Frontier</h3><canvas id="frontierChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-bottom">
+                <p>© 2024 FIMFP | Government of India</p>
+            </div>
+        </div>
+    </footer>
+    <script src="../js/page-common.js"></script>
+    <script>
+        let allocationChart = null, frontierChart = null;
+        async function pageInit() { document.getElementById('optimizerForm').addEventListener('submit', async e => { e.preventDefault(); await optimizePortfolio() }) }
+        async function optimizePortfolio() {
+            const ids = document.getElementById('fundIds').value.split(',').map(id => parseInt(id.trim())).filter(id => !isNaN(id)); const inv = parseFloat(document.getElementById('investment').value);
+            if (ids.length < 2) { alert('Please enter at least 2 fund IDs'); return }
+            document.getElementById('resultsContent').innerHTML = '<div class="loading"></div>';
+            const r = await window.pageCommon.apiPost('/api/optimize', { fund_ids: ids, investment: inv });
+            if (r.success && r.data) { renderResults(r.data, inv) } else { window.pageCommon.showError('resultsContent', r.error || 'Failed') }
+        }
+        function renderResults(data, inv) {
+            const m = data.portfolio_metrics;
+            document.getElementById('resultsContent').innerHTML = `<div class="stats-grid"><div class="stat-box highlight"><div class="stat-value" style="color:#138808">${m.expected_return}%</div><div class="stat-label">Expected Return</div></div><div class="stat-box highlight"><div class="stat-value" style="color:#FF9800">${m.volatility}%</div><div class="stat-label">Volatility</div></div><div class="stat-box"><div class="stat-value">${m.sharpe_ratio}</div><div class="stat-label">Sharpe Ratio</div></div></div><h4 style="margin:20px 0 10px;font-size:0.95rem"><img src="https://cdn-icons-png.flaticon.com/512/2920/2920293.png" alt="" style="width:16px;height:16px;vertical-align:middle;margin-right:5px">Allocation Details</h4><table class="data-table"><thead><tr><th>Fund</th><th>Weight</th><th>Amount</th></tr></thead><tbody>${data.allocations.map(a => `<tr><td>${window.pageCommon.truncateText(a.scheme_name, 35)}</td><td><strong>${a.weight}%</strong></td><td>₹${(inv * a.weight / 100).toLocaleString('en-IN', { maximumFractionDigits: 0 })}</td></tr>`).join('')}</tbody></table>`;
+            document.getElementById('chartsSection').style.display = 'grid'; renderCharts(data, m)
+        }
+        function renderCharts(data, m) {
+            const colors = ['#003366', '#FF9933', '#138808', '#1e88e5', '#7c3aed', '#ec4899', '#14b8a6'];
+            if (allocationChart) allocationChart.destroy(); allocationChart = new Chart(document.getElementById('allocationChart'), { type: 'doughnut', data: { labels: data.allocations.map(a => a.scheme_name?.substring(0, 20) || `Fund ${a.fund_id}`), datasets: [{ data: data.allocations.map(a => a.weight), backgroundColor: colors, borderWidth: 2, borderColor: '#fff' }] }, options: { responsive: true, plugins: { legend: { position: 'right', labels: { boxWidth: 12, font: { size: 10 } } } } } });
+            if (data.efficient_frontier) { if (frontierChart) frontierChart.destroy(); const pts = data.efficient_frontier.volatilities.map((v, i) => ({ x: v, y: data.efficient_frontier.returns[i] })); frontierChart = new Chart(document.getElementById('frontierChart'), { type: 'scatter', data: { datasets: [{ label: 'Efficient Frontier', data: pts, borderColor: '#003366', backgroundColor: 'rgba(0,51,102,0.1)', borderWidth: 2, pointRadius: 2, showLine: true, tension: 0.4 }, { label: 'Optimal', data: [{ x: m.volatility, y: m.expected_return }], pointRadius: 10, pointBackgroundColor: '#FF9933', pointBorderColor: '#fff', pointBorderWidth: 2 }] }, options: { responsive: true, plugins: { legend: { position: 'top' } }, scales: { x: { title: { display: true, text: 'Volatility (%)' } }, y: { title: { display: true, text: 'Return (%)' } } } } }) }
+        }
+    </script>
+</body>
+
+</html>
