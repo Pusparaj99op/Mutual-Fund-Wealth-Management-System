@@ -10,5 +10,34 @@ body{font-family:Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica
 	mask-image: linear-gradient(to right, transparent, black 25%);
 }
 
+/* ensure hero images fully cover and avoid thin seams at container edges */
+.hero-img{
+	position:absolute;
+	top:0;
+	right:-2px; /* nudge right to cover container edge seams */
+	left:auto;
+	/* slightly oversize to avoid 1px seam from subpixel rounding */
+	width: calc(100% + 6px);
+	height: 100%;
+	object-fit: cover;
+	object-position: right center;
+	display:block;
+}
+
+.hero-img-container{position:relative;overflow:hidden}
+
+/* small blending overlay on the right edge to smoothly merge image with hero gradient */
+.hero-img-container::after{
+	content: '';
+	position: absolute;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	width: 56px;
+	pointer-events: none;
+	background: linear-gradient(to right, rgba(29,114,184,0) 0%, rgba(52,152,219,1) 100%);
+	mix-blend-mode: normal;
+}
+
 /* ensure hero text sits above images */
 .hero-text-z{z-index:30}

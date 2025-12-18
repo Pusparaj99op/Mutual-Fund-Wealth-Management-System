@@ -41,13 +41,13 @@ export default function Hero() {
           ))}
         </div>
 
-        <div className="w-full md:w-1/2 relative h-80 md:h-[500px] flex items-end justify-center">
+        <div className="w-full md:w-1/2 relative h-80 md:h-[500px] flex items-end justify-center overflow-hidden hero-img-container">
           {slides.map((s, i) => (
             <img key={i}
                  src={s.img}
                  alt={`slide-${i}`}
                  style={{ display: active === i ? 'block' : 'none' }}
-                 className="absolute object-cover object-right h-full w-full mask-gradient"
+                 className="hero-img mask-gradient"
             />
           ))}
 

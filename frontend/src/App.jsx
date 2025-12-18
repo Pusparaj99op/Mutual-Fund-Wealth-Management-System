@@ -6,8 +6,17 @@ import Login from './pages/Login'
 
 export default function App() {
   const [showLogin, setShowLogin] = useState(false)
-
   const containerClass = `min-h-screen ${showLogin ? '' : 'bg-white'} text-gray-800`
+
+  React.useEffect(() => {
+    // Prevent background scroll when the login/register overlay is open
+    if (showLogin) {
+      document.body.style.overflow = 'hidden'
+    } else {
+      document.body.style.overflow = ''
+    }
+    return () => { document.body.style.overflow = '' }
+  }, [showLogin])
 
   return (
     <div className={containerClass}>
