@@ -1,0 +1,172 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Raptor Demo</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/gsap.min.js"></script>
+  <style>body{font-family:Arial;padding:24px}#result{margin-top:16px}</style>
+</head>
+<body>
+  <h1>Raptor — Mutual Fund Forecast Demo</h1>
+  <div>
+    <label>Scheme code: <input id="code" value="100121"></label>
+    <label>Horizon: <input id="horizon" type="number" value="30" min="1" style="width:80px"></label>
+    <label>Simulations: <input id="nSim" type="number" value="400" min="10" style="width:100px"></label>
+    <label style="margin-left:12px"><input id="showPaths" type="checkbox"> Show MC paths</label>
+    <button id="btnPredict">Predict</button>
+    <button id="btnRecommend">Recommend</button>
+    <button id="btnBacktest">Backtest</button>
+    <button id="btnTrain">Train pooled model</button>
+    <button id="btnPlay" disabled>Play MC</button>
+    <button id="btnPause" disabled>Pause</button>
+    <label style="margin-left:8px">Path: <input id="pathSlider" type="range" min="0" max="0" value="0" style="width:180px"></label>
+    <button id="btnExport" style="margin-left:8px">Export Chart PNG</button>
+  </div>
+
+  <div id="result"></div>
+  <canvas id="chartForecast" width="600" height="250"></canvas>
+  <canvas id="chartAlloc" width="600" height="250"></canvas>
+  <canvas id="chartBacktest" width="800" height="300"></canvas>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script>
+    const base = '';
+    const resultEl = document.getElementById('result');
+    const forecastCtx = document.getElementById('chartForecast').getContext('2d');
+    const allocCtx = document.getElementById('chartAlloc').getContext('2d');
+    const backtestCtx = document.getElementById('chartBacktest').getContext('2d');
+    const btnPlay = document.getElementById('btnPlay');
+    const btnPause = document.getElementById('btnPause');
+    const pathSlider = document.getElementById('pathSlider');
+    const btnExport = document.getElementById('btnExport');
+
+    function animateIn(el){ gsap.fromTo(el,{opacity:0,y:-10},{opacity:1,y:0,duration:0.6}); }
+
+    async function postJSON(path, body){
+      const r = await fetch(base+path, {method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(body)});
+      return await r.json();
+    }
+
+    // state for MC samples and playback
+    let currentSamples = [];
+    let playbackTimer = null;
+    let forecastChart = null;
+
+    function clearSamples(){
+      currentSamples = [];
+      pathSlider.max = 0;
+      pathSlider.value = 0;
+      btnPlay.disabled = true;
+      btnPause.disabled = true;
+    }
+
+    function updateSliderMax(){
+      pathSlider.max = Math.max(0, currentSamples.length - 1);
+      if(currentSamples.length>0){ btnPlay.disabled = false; }
+    }
+
+    function drawForecast(p10, p50, p90, samples){
+      const datasets = [
+        {label:'p90', data:p90, borderColor:'rgba(200,200,200,0.2)', pointRadius:0, fill:'+1'},
+        {label:'median', data:p50, borderColor:'blue', backgroundColor:'rgba(0,0,255,0.05)', pointRadius:0, tension:0.2},
+        {label:'p10', data:p10, borderColor:'rgba(200,200,200,0.2)', pointRadius:0, fill:false}
+      ];
+      (samples||[]).slice(0,40).forEach((s,i)=>{
+        datasets.push({label:'path_'+i, data:s, borderColor:'rgba(0,0,0,0.06)', pointRadius:0, borderWidth:1, fill:false, hidden:true});
+      });
+      if(forecastChart) forecastChart.destroy();
+      forecastChart = new Chart(forecastCtx, {
+        type:'line', data:{labels: p50.map((_,i)=>i+1), datasets: datasets},
+        options:{responsive:true, interaction:{mode:'index', intersect:false}, plugins:{tooltip:{enabled:true, mode:'index'}}}
+      });
+    }
+
+    function highlightPath(index){
+      if(!forecastChart) return;
+      forecastChart.data.datasets.forEach(ds=>{ if(ds.label && ds.label.startsWith('path_')){ ds.hidden = true; ds.borderColor='rgba(0,0,0,0.06)'; ds.borderWidth=1; } });
+      const targetLabel = 'path_'+index;
+      const ds = forecastChart.data.datasets.find(d=>d.label===targetLabel);
+      if(ds){ ds.hidden = false; ds.borderColor='rgba(255,0,0,0.9)'; ds.borderWidth=2; }
+      forecastChart.update();
+    }
+
+    document.getElementById('btnPredict').addEventListener('click', async ()=>{
+      const code = document.getElementById('code').value;
+      resultEl.textContent = 'Loading forecast...';
+      try{
+        const n_sim = parseInt(document.getElementById('nSim')?.value || 400);
+        const horizon = parseInt(document.getElementById('horizon')?.value || 30);
+        // request percentiles and samples if requested
+        const showPaths = document.getElementById('showPaths')?.checked;
+        const j = await postJSON('/predict', {scheme_code: code, horizon: horizon, n_sim: n_sim, include_samples: showPaths, samples_to_return: 60});
+        const p10 = j.monte_carlo.percentile_10;
+        const p50 = j.monte_carlo.percentile_50;
+        const p90 = j.monte_carlo.percentile_90;
+        currentSamples = j.samples || [];
+        updateSliderMax();
+        resultEl.textContent = `Forecast median (last): ${p50[p50.length-1].toFixed(3)} (p10:${p10[p10.length-1].toFixed(3)}, p90:${p90[p90.length-1].toFixed(3)})`;
+        animateIn(resultEl);
+        drawForecast(p10,p50,p90,currentSamples);
+        if(playbackTimer){ clearInterval(playbackTimer); playbackTimer=null; btnPause.disabled=true; btnPlay.disabled=false; }
+      }catch(e){resultEl.textContent='Error: '+e}
+    });
+
+    document.getElementById('btnRecommend').addEventListener('click', async ()=>{
+      resultEl.textContent = 'Loading recommendations...';
+      try{
+        const j = await postJSON('/recommend', {amount:10000, top_k:5});
+        const alloc = j.allocations;
+        resultEl.textContent = 'Top allocations: ' + alloc.map(a=>a.scheme_code+':'+(a.weight*100).toFixed(2)+'%').join(', ');
+        animateIn(resultEl);
+        new Chart(allocCtx, {type:'bar', data:{labels: alloc.map(a=>a.scheme_code), datasets:[{label:'Weight', data:alloc.map(a=>a.weight), backgroundColor:'green'}]}, options:{indexAxis:'y', responsive:true}});
+      }catch(e){resultEl.textContent='Error: '+e}
+    });
+
+    document.getElementById('btnBacktest').addEventListener('click', async ()=>{
+      resultEl.textContent = 'Running backtest...';
+      try{
+        const j = await postJSON('/backtest', {lookback_days:252, rebalance_freq_days:21, top_k:5});
+        resultEl.textContent = 'Backtest metrics: ' + JSON.stringify(j.metrics);
+        animateIn(resultEl);
+        const dates = j.series.map(s=>s.date);
+        const navs = j.series.map(s=>s.nav);
+        new Chart(backtestCtx, {type:'line', data:{labels:dates, datasets:[{label:'Portfolio NAV', data:navs, borderColor:'purple', tension:0.15}]}, options:{scales:{x:{display:false}}, responsive:true}});
+      }catch(e){resultEl.textContent='Error: '+e}
+    });
+
+    document.getElementById('btnTrain').addEventListener('click', async ()=>{
+      resultEl.textContent = 'Triggering training (this may take some time)...';
+      try{
+        const r = await postJSON('/train_pooled', {horizon:7, n_estimators:50, sample_limit:20});
+        resultEl.textContent = 'Training finished: ' + JSON.stringify(r);
+        animateIn(resultEl);
+      }catch(e){resultEl.textContent = 'Train error: '+e}
+    });
+
+    // Play/Pause logic
+    btnPlay.addEventListener('click', ()=>{
+      if(!currentSamples.length) return;
+      btnPlay.disabled = true; btnPause.disabled = false;
+      let idx = parseInt(pathSlider.value||0);
+      playbackTimer = setInterval(()=>{
+        idx = (idx + 1) % currentSamples.length;
+        pathSlider.value = idx;
+        highlightPath(idx);
+      }, 300);
+    });
+    btnPause.addEventListener('click', ()=>{
+      if(playbackTimer) clearInterval(playbackTimer); playbackTimer=null; btnPlay.disabled=false; btnPause.disabled=true;
+    });
+
+    // slider interaction
+    pathSlider.addEventListener('input', (e)=>{ const idx = parseInt(e.target.value); highlightPath(idx); });
+
+    // export chart
+    btnExport.addEventListener('click', ()=>{
+      if(!forecastChart) return alert('No forecast chart to export');
+      const url = forecastChart.toBase64Image();
+      const a = document.createElement('a'); a.href = url; a.download = 'forecast.png'; document.body.appendChild(a); a.click(); a.remove();
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,15 @@
+pandas
+numpy
+scikit-learn
+matplotlib
+seaborn
+joblib
+fastapi
+uvicorn
+pydantic
+requests
+scipy
+pytest
+tqdm
+# Optional (deep learning - install only if you plan to train LSTMs):
+# tensorflow>=2.6
