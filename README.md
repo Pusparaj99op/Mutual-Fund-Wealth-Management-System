@@ -40,3 +40,63 @@ Return_5yr (%): The return percentage of the mutual fund scheme over 5year.
 
 ## Expected Outcomes:
 We have live web scraped data of Mutual Funds India, our goal is to present descriptive analysis to understand this data and their patterns, then make predictions on the given data to forecast the future performance of specific mutual funds, develop a dashboard to display past data and projections Finally, create an AI-based recommendation system for selected inputs: AMC Name, Category, Amount Invested, Tenure.
+
+## Topics: AI/ML ✅
+
+### Understanding (Problem statement)
+We aim to build an end-to-end AI/ML system to help middle-class investors with mutual fund selection and forecasting. The system will: (1) forecast scheme NAVs and returns, (2) recommend suitable schemes given investor constraints (AMC, category, amount, tenure), and (3) present explainable, auditable outputs for users.
+
+### Data (what we have)
+- Raw historical NAV CSVs are available under `data/raw/csv/` (downloaded). These files contain per-scheme NAV timeseries that are the primary signal for forecasting.
+- Supplementary metadata and engineered feature CSV/JSON files are in `data/` and `PS/dataset/` (e.g., `MF_India_AI.csv`).
+- Existing scripts that will help: `scripts/csv_to_json.py`, `scripts/clean_json_for_ml.py`, `scripts/feature_engineering.py`, `scripts/train_pipeline.py`, and evaluation utilities under `scripts/`.
+
+### Preprocessing & Cleaning 🔧
+- Parse and standardize dates, ensure consistent timezone/locale where needed.
+- Sanity checks: remove duplicates, fix or drop malformed rows, and ensure monotonicity of dates per scheme.
+- Missing values: impute or forward-fill NAVs carefully (or mark missing days explicitly and use models that support irregular time series).
+- Outliers: detect using statistical rules (z-score, IQR) and time-series anomaly detectors — treat or clip where appropriate.
+- Normalize and encode metadata (AMC, category, risk level) using label encoding or embedding tables for advanced models.
+
+### Feature Engineering ✨
+- Create rolling-window features (mean, std, median, skew) for multiple horizons (7d, 30d, 90d).
+- Compute returns (daily, weekly, monthly) and log-returns where appropriate.
+- Time features: day-of-week, month, quarter, time-since-inception, fund-age.
+- Volatility and risk metrics (rolling volatility, drawdown, maximum consecutive losses).
+- External covariates: macro indicators or market indices if available (can improve forecasting).
+
+### Modeling Approaches (what we'll try) 🧠
+- Baselines: naive (last value), simple moving averages, ETS/ARIMA.
+- Classical ML: Random Forest, XGBoost, LightGBM on engineered features for short/medium horizon forecasts.
+- Deep learning (time-series): LSTM/GRU, Temporal Convolutional Networks, Transformer-based models, Temporal Fusion Transformer for multivariate forecasting.
+- Probabilistic/forecasting-specific: Prophet, DeepAR/DeepState for probabilistic forecasts.
+- Recommendation layer: content-based ranking (AMC, category, risk), hybrid ranking with predicted returns and risk exposure, and re-ranking with business rules (minimum SIP, tenure compatibility).
+
+### Training & Validation 🔁
+- Use time-series-aware splitting (rolling-window / expanding window CV) to avoid leakage.
+- Use walk-forward validation for hyperparameter search (Optuna) and early stopping for DL models.
+- Optimize for business-relevant loss (e.g., MAE, RMSE, or custom loss that penalizes directional errors differently).
+
+### Evaluation & Backtesting 📊
+- Forecast metrics: MAE, RMSE, MAPE, and prediction intervals coverage for probabilistic models.
+- Recommendation metrics: precision@k, recall@k, NDCG, and offline portfolio backtests (simulated returns, drawdowns) to measure economic impact.
+- Model explainability: SHAP/feature importances for tree models and attention visualization for sequence models.
+
+### Production & Deployment 🚀
+- Package model artifacts with versioning (MLflow, DVC, or similar); store model metadata and training data hashes.
+- Serve models via a lightweight API (FastAPI/Flask) with Docker containerization and simple autoscaling rules.
+- Schedule inference and incremental retraining (cron / Airflow / Prefect) and keep retraining cadence aligned with data availability and concept drift.
+- Monitoring: track request latency, prediction distributions, data drift, and performance regression; set alerts for drift threshold breaches.
+
+### Reproducibility & Tooling 🔁
+- Use `requirements-dev.txt` or pinned environment files to ensure reproducible environments.
+- Experiment tracking with MLflow or Weights & Biases for hyperparameter search and model comparisons.
+- Unit tests for data validation and model contracts; CI pipeline for tests and linting.
+
+### Files & Next steps ✅
+- Convert and clean `data/raw/csv/*.csv` using `scripts/csv_to_json.py` and `scripts/clean_json_for_ml.py`.
+- Generate features with `scripts/feature_engineering.py` and store them under `data/features/`.
+- Train baseline models using `scripts/train_pipeline.py`, add hyperparameter tuning, and produce evaluation reports under `reports/models/`.
+- After validation, prepare a Docker image and FastAPI endpoint for serving forecasts and recommendations.
+
+> **Note:** This README addition describes the full plan to get to a working AI/ML pipeline; if you want, I can also create templates for model training notebooks, CI configs, or a simple FastAPI serving scaffold.
