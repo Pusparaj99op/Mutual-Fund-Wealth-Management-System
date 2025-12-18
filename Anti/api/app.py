@@ -7,6 +7,9 @@ from flask import Flask, jsonify, request, send_from_directory
 from flask_cors import CORS
 import os
 import sys
+import hashlib
+import secrets
+from datetime import datetime, timedelta
 
 # Add current directory to path for imports
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
@@ -18,8 +21,57 @@ from ml_models import (monte_carlo, black_scholes, black_litterman, create_portf
 from recommendation_engine import get_engine, RiskProfiler
 import numpy as np
 
+# MongoDB imports
+try:
+    from pymongo import MongoClient
+    from pymongo.errors import ConnectionFailure, DuplicateKeyError
+    MONGODB_AVAILABLE = True
+except ImportError:
+    MONGODB_AVAILABLE = False
+    print("Warning: pymongo not installed. User authentication will be disabled.")
+
 app = Flask(__name__, static_folder='../frontend', static_url_path='')
 CORS(app)
+
+# MongoDB Connection
+MONGODB_URI = "mongodb+srv://vineetmandhalkar_db_user:CHfu7ImZVF2yyTnf@fimfp.ls5aqqk.mongodb.net/?appName=FIMFP"
+db = None
+users_collection = None
+
+if MONGODB_AVAILABLE:
+    try:
+        client = MongoClient(MONGODB_URI, serverSelectionTimeoutMS=5000)
+        client.admin.command('ping')
+        db = client['fimfp_db']
+        users_collection = db['users']
+        # Create unique index on email
+        users_collection.create_index('email', unique=True)
+        print("✅ MongoDB connected successfully!")
+    except Exception as e:
+        print(f"⚠️ MongoDB connection failed: {e}")
+        MONGODB_AVAILABLE = False
+
+
+# Password hashing utilities
+def hash_password(password):
+    """Hash password using SHA-256 with salt"""
+    salt = secrets.token_hex(16)
+    hashed = hashlib.sha256((password + salt).encode()).hexdigest()
+    return f"{salt}:{hashed}"
+
+
+def verify_password(password, stored_hash):
+    """Verify password against stored hash"""
+    try:
+        salt, hashed = stored_hash.split(':')
+        return hashlib.sha256((password + salt).encode()).hexdigest() == hashed
+    except:
+        return False
+
+
+def generate_token():
+    """Generate a simple session token"""
+    return secrets.token_urlsafe(32)
 
 # Initialize components
 data_processor = get_processor()
@@ -30,6 +82,14 @@ data_processor.load_mutual_fund_data()
 
 
 # ============== Static File Routes ==============
+
+@app.after_request
+def add_header(response):
+    """Add headers to prevent caching during development"""
+    response.headers['Cache-Control'] = 'no-store, no-cache, must-revalidate, max-age=0'
+    response.headers['Pragma'] = 'no-cache'
+    response.headers['Expires'] = '0'
+    return response
 
 @app.route('/')
 def serve_frontend():
@@ -47,6 +107,12 @@ def serve_css(filename):
 def serve_js(filename):
     """Serve JavaScript files"""
     return send_from_directory(os.path.join(app.static_folder, 'js'), filename)
+
+
+@app.route('/images/<path:filename>')
+def serve_images(filename):
+    """Serve image files"""
+    return send_from_directory(os.path.join(app.static_folder, 'images'), filename)
 
 
 # ============== API Routes ==============

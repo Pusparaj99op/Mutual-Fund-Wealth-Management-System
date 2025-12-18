@@ -48,9 +48,13 @@
                 <a href="https://rbi.org.in" target="_blank" rel="noopener">RBI</a>
             </div>
             <div class="language-switch">
-                <button id="langEn" class="lang-btn active">A+</button>
-                <button id="langHi" class="lang-btn">हिंदी</button>
-                <button class="lang-btn">English</button>
+                <button id="langSize" class="lang-btn" title="Increase font size">A+</button>
+                <button class="lang-btn active" data-lang="en"
+                    onclick="window.languageSystem.switch('en')">English</button>
+                <button class="lang-btn" data-lang="hi" onclick="window.languageSystem.switch('hi')">हिंदी</button>
+                <button class="lang-btn" data-lang="mr" onclick="window.languageSystem.switch('mr')">मराठी</button>
+                <button class="lang-btn" data-lang="gu" onclick="window.languageSystem.switch('gu')">ગુજરાતી</button>
+                <button class="lang-btn" data-lang="bn" onclick="window.languageSystem.switch('bn')">বাংলা</button>
             </div>
         </div>
     </div>
@@ -69,10 +73,33 @@
                     <p class="portal-subtitle-hindi">भारतीय संघीय म्यूचुअल फंड पोर्टल</p>
                 </div>
             </div>
+            <div class="header-dignitaries">
+                <div class="dignitary">
+                    <img src="images/Shri Narendra Modi.jpeg" alt="Shri Narendra Modi">
+                    <div class="dignitary-info">
+                        <span class="dignitary-name">Shri Narendra Modi</span>
+                        <span class="dignitary-title">Hon'ble Prime Minister</span>
+                    </div>
+                </div>
+                <div class="dignitary">
+                    <img src="images/Shri Ashwini Vaishnaw.jpeg" alt="Shri Ashwini Vaishnaw">
+                    <div class="dignitary-info">
+                        <span class="dignitary-name">Shri Ashwini Vaishnaw</span>
+                        <span class="dignitary-title">Hon'ble Minister of IT</span>
+                    </div>
+                </div>
+                <div class="dignitary college-logo">
+                    <img src="images/SVPCET.jpeg" alt="SVPCET">
+                    <div class="dignitary-info">
+                        <span class="dignitary-name">SVPCET</span>
+                        <span class="dignitary-title">Hackathon TECHNEX 2025-26</span>
+                    </div>
+                </div>
+            </div>
             <div class="header-right">
                 <div class="digital-india">
-                    <span class="di-text">An Initiative of</span>
-                    <span class="di-logo">Digital India</span>
+                    <span class="di-text">An Initiative of </span>
+                    <span class="di-logo">Team CoDevian</span>
                 </div>
             </div>
         </div>
@@ -87,6 +114,7 @@
                 <li><a href="#" class="nav-link" data-section="predict">AI Analysis</a></li>
                 <li><a href="#" class="nav-link" data-section="recommend">Recommendations</a></li>
                 <li><a href="#" class="nav-link" data-section="optimize">Portfolio</a></li>
+                <li><a href="#" class="nav-link" data-section="compare">Compare</a></li>
                 <li><a href="#" class="nav-link" data-section="analytics">Dashboard</a></li>
                 <li><a href="#" class="nav-link" data-section="advanced">Advanced AI</a></li>
             </ul>
@@ -137,7 +165,7 @@
                 </div>
                 <div class="hero-visual">
                     <div class="ai-visualization">
-                        <canvas id="heroChart"></canvas>
+                        <img id="heroImage" src="" alt="AI Investment Analysis" class="hero-image">
                     </div>
                 </div>
             </div>
@@ -427,6 +455,59 @@
             </div>
         </section>
 
+        <!-- Fund Comparison Section -->
+        <section id="compare" class="section" style="display: none;">
+            <div class="container">
+                <h2 class="section-title">Fund Comparison Tool</h2>
+                <p class="section-subtitle">Select multiple mutual funds to compare their performance side by side</p>
+
+                <div class="compare-selector card">
+                    <h3 class="card-title">Select Funds to Compare</h3>
+                    <p class="card-description">Enter fund IDs to compare (comma-separated, max 5 funds)</p>
+                    <form id="compareForm" class="compare-form">
+                        <div class="form-group">
+                            <label for="compareFundIds">Fund IDs (e.g., 1, 5, 10, 25, 50)</label>
+                            <input type="text" id="compareFundIds" class="form-input"
+                                placeholder="Enter fund IDs separated by commas" value="1, 5, 10">
+                        </div>
+                        <button type="submit" class="btn btn-primary">Compare Funds</button>
+                    </form>
+                </div>
+
+                <!-- Comparison Results -->
+                <div id="compareResults" style="display: none;">
+                    <!-- Comparison Table -->
+                    <div class="card compare-table-card">
+                        <h3 class="card-title">Fund Comparison Table</h3>
+                        <div class="table-container">
+                            <table class="data-table compare-table" id="compareTable">
+                                <thead id="compareTableHead"></thead>
+                                <tbody id="compareTableBody"></tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- Comparison Charts -->
+                    <div class="compare-charts">
+                        <div class="card">
+                            <h3 class="card-title">Returns Comparison</h3>
+                            <canvas id="compareReturnsChart"></canvas>
+                        </div>
+                        <div class="card">
+                            <h3 class="card-title">Multi-Dimensional Score</h3>
+                            <canvas id="compareRadarChart"></canvas>
+                        </div>
+                    </div>
+
+                    <!-- Risk Analysis -->
+                    <div class="card">
+                        <h3 class="card-title">Risk-Return Analysis</h3>
+                        <canvas id="compareScatterChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <!-- Analytics Dashboard Section -->
         <section id="analytics" class="section" style="display: none;">
             <div class="container">
@@ -565,6 +646,7 @@
     </footer>
 
     <!-- JavaScript -->
+    <script src="js/i18n.js"></script>
     <script src="js/charts.js"></script>
     <script src="js/app.js"></script>
 </body>

@@ -7,6 +7,7 @@ import json
 import random
 import numpy as np
 from datetime import datetime, timedelta
+from pathlib import Path
 
 def generate_mutual_fund_dataset(num_funds=150, output_path="data/raw/MF_India_AI.json"):
     """
@@ -16,6 +17,10 @@ def generate_mutual_fund_dataset(num_funds=150, output_path="data/raw/MF_India_A
         num_funds: Number of mutual funds to generate
         output_path: Path to save the JSON dataset
     """
+    
+    # Ensure output directory exists
+    output_file = Path(output_path)
+    output_file.parent.mkdir(parents=True, exist_ok=True)
     
     amcs = [
         "HDFC AMC", "ICICI Prudential", "Axis Mutual Fund", "SBI Mutual Fund",

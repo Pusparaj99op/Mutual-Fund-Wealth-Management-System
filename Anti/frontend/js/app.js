@@ -3,8 +3,13 @@
  * Main Application JavaScript
  */
 
-// API Base URL
-const API_BASE = '';
+// API Base URL - Configure based on environment
+// When running Flask server (python app.py), it runs on port 8009
+// Leave empty if serving frontend from Flask static files
+// Set to 'http://localhost:8009' if running frontend separately
+const API_BASE = window.location.hostname === 'localhost' && window.location.port !== '8009'
+    ? 'http://localhost:8009'
+    : '';
 
 // Global state
 let currentSection = 'home';
@@ -17,9 +22,15 @@ const pageSize = 20;
 // ============================================
 
 document.addEventListener('DOMContentLoaded', function () {
-    // Initialize hero chart
-    if (window.chartUtils) {
-        window.chartUtils.createHeroChart();
+    // Initialize hero image - random on each page refresh
+    const heroImages = [
+        'images/Gemini_Generated_Image_defdaqdefdaqdefd.png',
+        'images/Gemini_Generated_Image_ssdwu2ssdwu2ssdw.png'
+    ];
+    const randomIndex = Math.floor(Math.random() * heroImages.length);
+    const heroImg = document.getElementById('heroImage');
+    if (heroImg) {
+        heroImg.src = heroImages[randomIndex];
     }
 
     // Load categories for filter
@@ -359,6 +370,15 @@ function setupForms() {
         advancedForm.addEventListener('submit', async function (e) {
             e.preventDefault();
             await runAdvancedAnalysis();
+        });
+    }
+
+    // Compare form
+    const compareForm = document.getElementById('compareForm');
+    if (compareForm) {
+        compareForm.addEventListener('submit', async function (e) {
+            e.preventDefault();
+            await compareFunds();
         });
     }
 }
@@ -967,6 +987,178 @@ function renderRiskBadge(riskLevel) {
 }
 
 // ============================================
+// Fund Comparison
+// ============================================
+
+let compareCharts = {};
+
+async function compareFunds() {
+    const fundIdsInput = document.getElementById('compareFundIds').value;
+    const fundIds = fundIdsInput.split(',').map(id => parseInt(id.trim())).filter(id => !isNaN(id));
+
+    if (fundIds.length < 2) {
+        alert('Please enter at least 2 fund IDs to compare');
+        return;
+    }
+
+    if (fundIds.length > 5) {
+        alert('Maximum 5 funds can be compared at once');
+        return;
+    }
+
+    // Show results container
+    document.getElementById('compareResults').style.display = 'block';
+
+    // Fetch fund data
+    const fundsPromises = fundIds.map(id => apiGet(`/api/fund/${id}`));
+    const results = await Promise.all(fundsPromises);
+
+    const funds = results.filter(r => r.success).map(r => r.data);
+
+    if (funds.length < 2) {
+        alert('Could not fetch enough fund data. Please check the fund IDs.');
+        return;
+    }
+
+    // Render comparison table
+    renderCompareTable(funds);
+
+    // Render comparison charts
+    renderCompareCharts(funds);
+}
+
+function renderCompareTable(funds) {
+    const thead = document.getElementById('compareTableHead');
+    const tbody = document.getElementById('compareTableBody');
+
+    // Table headers
+    let headerHtml = '<tr><th>Metric</th>';
+    funds.forEach(fund => {
+        const name = fund.scheme_name || fund.name || `Fund ${fund.fund_id}`;
+        headerHtml += `<th>${name.substring(0, 30)}...</th>`;
+    });
+    headerHtml += '</tr>';
+    thead.innerHTML = headerHtml;
+
+    // Table rows
+    const metrics = [
+        { key: 'amc_name', label: 'AMC' },
+        { key: 'category', label: 'Category' },
+        { key: 'rating', label: 'Rating', format: v => v ? '⭐'.repeat(Math.min(v, 5)) : 'N/A' },
+        { key: 'risk_level', label: 'Risk Level' },
+        { key: 'returns_1yr', label: '1Y Return', format: v => v ? `${(v * 100).toFixed(2)}%` : 'N/A' },
+        { key: 'returns_3yr', label: '3Y Return', format: v => v ? `${(v * 100).toFixed(2)}%` : 'N/A' },
+        { key: 'returns_5yr', label: '5Y Return', format: v => v ? `${(v * 100).toFixed(2)}%` : 'N/A' },
+        { key: 'sharpe_ratio', label: 'Sharpe Ratio', format: v => v ? v.toFixed(2) : 'N/A' },
+        { key: 'expense_ratio', label: 'Expense Ratio', format: v => v ? `${(v * 100).toFixed(2)}%` : 'N/A' },
+        { key: 'aum', label: 'AUM (Cr)', format: v => v ? `₹${v.toFixed(0)}` : 'N/A' }
+    ];
+
+    let bodyHtml = '';
+    metrics.forEach(metric => {
+        bodyHtml += `<tr><td><strong>${metric.label}</strong></td>`;
+        funds.forEach(fund => {
+            const value = fund[metric.key];
+            const displayValue = metric.format ? metric.format(value) : (value || 'N/A');
+            bodyHtml += `<td>${displayValue}</td>`;
+        });
+        bodyHtml += '</tr>';
+    });
+    tbody.innerHTML = bodyHtml;
+}
+
+function renderCompareCharts(funds) {
+    // Destroy existing charts
+    Object.values(compareCharts).forEach(chart => chart.destroy());
+    compareCharts = {};
+
+    const colors = [
+        'rgba(54, 162, 235, 0.8)',
+        'rgba(255, 99, 132, 0.8)',
+        'rgba(75, 192, 192, 0.8)',
+        'rgba(255, 206, 86, 0.8)',
+        'rgba(153, 102, 255, 0.8)'
+    ];
+
+    // Returns Bar Chart
+    const returnsCtx = document.getElementById('compareReturnsChart').getContext('2d');
+    compareCharts.returns = new Chart(returnsCtx, {
+        type: 'bar',
+        data: {
+            labels: ['1Y Return', '3Y Return', '5Y Return'],
+            datasets: funds.map((fund, i) => ({
+                label: (fund.scheme_name || `Fund ${fund.fund_id}`).substring(0, 20),
+                data: [
+                    (fund.returns_1yr || 0) * 100,
+                    (fund.returns_3yr || 0) * 100,
+                    (fund.returns_5yr || 0) * 100
+                ],
+                backgroundColor: colors[i],
+                borderWidth: 1
+            }))
+        },
+        options: {
+            responsive: true,
+            plugins: { legend: { position: 'top', labels: { color: '#fff' } } },
+            scales: {
+                y: { title: { display: true, text: 'Return (%)', color: '#fff' }, ticks: { color: '#ccc' }, grid: { color: 'rgba(255,255,255,0.1)' } },
+                x: { ticks: { color: '#ccc' }, grid: { color: 'rgba(255,255,255,0.1)' } }
+            }
+        }
+    });
+
+    // Radar Chart
+    const radarCtx = document.getElementById('compareRadarChart').getContext('2d');
+    compareCharts.radar = new Chart(radarCtx, {
+        type: 'radar',
+        data: {
+            labels: ['Low Risk', 'Rating', 'Low Cost', 'Sharpe', '5Y Return'],
+            datasets: funds.map((fund, i) => ({
+                label: (fund.scheme_name || `Fund ${fund.fund_id}`).substring(0, 15),
+                data: [
+                    fund.risk_level ? (7 - fund.risk_level) * 16 : 50,
+                    (fund.rating || 3) * 20,
+                    fund.expense_ratio ? (1 - fund.expense_ratio) * 100 : 50,
+                    fund.sharpe_ratio ? Math.min(fund.sharpe_ratio * 30, 100) : 50,
+                    fund.returns_5yr ? Math.min(fund.returns_5yr * 500, 100) : 50
+                ],
+                backgroundColor: colors[i].replace('0.8', '0.3'),
+                borderColor: colors[i],
+                borderWidth: 2
+            }))
+        },
+        options: {
+            responsive: true,
+            plugins: { legend: { position: 'right', labels: { color: '#fff' } } },
+            scales: { r: { angleLines: { color: 'rgba(255,255,255,0.2)' }, grid: { color: 'rgba(255,255,255,0.2)' }, pointLabels: { color: '#fff' }, ticks: { display: false } } }
+        }
+    });
+
+    // Scatter Chart (Risk-Return)
+    const scatterCtx = document.getElementById('compareScatterChart').getContext('2d');
+    compareCharts.scatter = new Chart(scatterCtx, {
+        type: 'scatter',
+        data: {
+            datasets: funds.map((fund, i) => ({
+                label: (fund.scheme_name || `Fund ${fund.fund_id}`).substring(0, 20),
+                data: [{ x: fund.risk_level || 3, y: (fund.returns_3yr || 0) * 100 }],
+                backgroundColor: colors[i],
+                pointRadius: 12,
+                pointHoverRadius: 15
+            }))
+        },
+        options: {
+            responsive: true,
+            plugins: { legend: { position: 'top', labels: { color: '#fff' } } },
+            scales: {
+                x: { title: { display: true, text: 'Risk Level', color: '#fff' }, min: 0, max: 7, ticks: { color: '#ccc' }, grid: { color: 'rgba(255,255,255,0.1)' } },
+                y: { title: { display: true, text: '3Y Return (%)', color: '#fff' }, ticks: { color: '#ccc' }, grid: { color: 'rgba(255,255,255,0.1)' } }
+            }
+        }
+    });
+}
+
+// ============================================
 // Event Listeners
 // ============================================
 
@@ -977,15 +1169,12 @@ document.addEventListener('keydown', function (e) {
     }
 });
 
-// Language switch (placeholder)
-document.getElementById('langEn')?.addEventListener('click', function () {
-    this.classList.add('active');
-    document.getElementById('langHi')?.classList.remove('active');
+// Font size adjustment
+document.getElementById('langSize')?.addEventListener('click', function () {
+    const currentSize = parseFloat(getComputedStyle(document.documentElement).fontSize);
+    document.documentElement.style.fontSize = (currentSize + 1) + 'px';
+    setTimeout(() => {
+        document.documentElement.style.fontSize = '';
+    }, 3000);
 });
 
-document.getElementById('langHi')?.addEventListener('click', function () {
-    this.classList.add('active');
-    document.getElementById('langEn')?.classList.remove('active');
-    // In a real implementation, this would switch the language
-    alert('Hindi translation coming soon! हिंदी अनुवाद जल्द आ रहा है!');
-});

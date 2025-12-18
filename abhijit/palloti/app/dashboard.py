@@ -329,7 +329,7 @@ with tab2:
         with col2:
             st.metric("Avg Rating", f"{df['rating'].mean():.2f}")
         with col3:
-            st.metric("Avg Return (5Y)", f"{df['return_5yr'].mean():.2f}%")
+            st.metric("Avg Return (5Y)", f"{df['returns_5yr'].mean():.2f}%")
         
         st.divider()
         
@@ -366,8 +366,8 @@ with tab2:
         st.subheader("Risk vs Return Analysis")
         
         fig = go.Figure(data=[go.Scatter(
-            x=df['std_deviation'],
-            y=df['return_5yr'],
+            x=df['sd'],
+            y=df['returns_5yr'],
             mode='markers',
             marker=dict(
                 size=df['rating'] * 3,
@@ -394,9 +394,9 @@ with tab2:
         st.subheader("Historical Returns Comparison")
         
         returns_data = {
-            '1-Year': df['return_1yr'].mean(),
-            '3-Year': df['return_3yr'].mean(),
-            '5-Year': df['return_5yr'].mean()
+            '1-Year': df['returns_1yr'].mean(),
+            '3-Year': df['returns_3yr'].mean(),
+            '5-Year': df['returns_5yr'].mean()
         }
         
         fig = go.Figure(data=[go.Bar(
@@ -546,7 +546,7 @@ with tab4:
             
             comparison_cols = [
                 'scheme_name', 'amc_name', 'category', 'rating', 'risk_level',
-                'return_5yr', 'sharpe_ratio', 'expense_ratio', 'fund_size_cr'
+                'returns_5yr', 'sharpe', 'expense_ratio', 'fund_size_cr'
             ]
             
             display_df = comparison_df[comparison_cols].copy()
@@ -575,7 +575,7 @@ with tab4:
                     fig.add_trace(go.Bar(
                         name=row['scheme_name'][:20],
                         x=['1Y', '3Y', '5Y'],
-                        y=[row['return_1yr'], row['return_3yr'], row['return_5yr']]
+                        y=[row['returns_1yr'], row['returns_3yr'], row['returns_5yr']]
                     ))
                 fig.update_layout(
                     title="Returns Comparison",
@@ -593,7 +593,7 @@ with tab4:
                         r=[
                             row['rating'] / 5 * 100,
                             (1 - row['risk_level'] / 6) * 100,
-                            min(row['sharpe_ratio'] / 3 * 100, 100),
+                            min(row['sharpe'] / 3 * 100, 100),
                             (1 - min(row['expense_ratio'] / 2.5, 1.0)) * 100
                         ],
                         theta=['Rating', 'Low Risk', 'Sharpe', 'Low Cost'],
