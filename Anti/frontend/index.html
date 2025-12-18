@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="FIMFP - Federal Indian Mutual Fund Portal - AI-Powered Mutual Fund Analysis and Recommendations by Government of India">
+    <meta name="author" content="National Informatics Centre">
+    <meta name="keywords" content="Mutual Fund, Investment, India, SEBI, AMFI, Government, AI, ML, Portfolio">
+    <title>FIMFP | Federal Indian Mutual Fund Portal | भारतीय संघीय म्यूचुअल फंड पोर्टल</title>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml"
+        href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🇮🇳</text></svg>">
+
+    <!-- Google Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;600;700&family=Noto+Sans+Devanagari:wght@400;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="css/gov-style.css">
+</head>
+
+<body>
+    <!-- Skip Navigation for Accessibility -->
+    <a href="#main-content" class="skip-nav">Skip to main content</a>
+
+    <!-- Tricolor Strip Banner -->
+    <div class="top-banner"></div>
+
+    <!-- Government Secondary Banner -->
+    <div class="gov-secondary-banner">
+        <div class="container">
+            <div class="gov-links">
+                <a href="https://india.gov.in" target="_blank" rel="noopener">india.gov.in</a>
+                <span class="separator">|</span>
+                <a href="https://data.gov.in" target="_blank" rel="noopener">data.gov.in</a>
+                <span class="separator">|</span>
+                <a href="https://sebi.gov.in" target="_blank" rel="noopener">SEBI</a>
+                <span class="separator">|</span>
+                <a href="https://amfiindia.com" target="_blank" rel="noopener">AMFI</a>
+                <span class="separator">|</span>
+                <a href="https://rbi.org.in" target="_blank" rel="noopener">RBI</a>
+            </div>
+            <div class="language-switch">
+                <button id="langEn" class="lang-btn active">A+</button>
+                <button id="langHi" class="lang-btn">हिंदी</button>
+                <button class="lang-btn">English</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Header -->
+    <header class="main-header">
+        <div class="container">
+            <div class="header-left">
+                <div class="emblem">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/5/55/Emblem_of_India.svg"
+                        alt="Emblem of India - सत्यमेव जयते" width="65" height="75" loading="eager">
+                </div>
+                <div class="header-text">
+                    <h1 class="portal-title">FIMFP</h1>
+                    <p class="portal-subtitle">Federal Indian Mutual Fund Portal</p>
+                    <p class="portal-subtitle-hindi">भारतीय संघीय म्यूचुअल फंड पोर्टल</p>
+                </div>
+            </div>
+            <div class="header-right">
+                <div class="digital-india">
+                    <span class="di-text">An Initiative of</span>
+                    <span class="di-logo">Digital India</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Navigation -->
+    <nav class="main-nav" role="navigation" aria-label="Main Navigation">
+        <div class="container">
+            <ul class="nav-list">
+                <li><a href="#" class="nav-link active" data-section="home">Home</a></li>
+                <li><a href="#" class="nav-link" data-section="funds">Browse Funds</a></li>
+                <li><a href="#" class="nav-link" data-section="predict">AI Analysis</a></li>
+                <li><a href="#" class="nav-link" data-section="recommend">Recommendations</a></li>
+                <li><a href="#" class="nav-link" data-section="optimize">Portfolio</a></li>
+                <li><a href="#" class="nav-link" data-section="analytics">Dashboard</a></li>
+                <li><a href="#" class="nav-link" data-section="advanced">Advanced AI</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main id="main-content">
+
+        <!-- Hero Section -->
+        <section id="home" class="section hero-section">
+            <div class="container">
+                <div class="hero-content">
+                    <div class="hero-badge">Government of India Initiative</div>
+                    <h2 class="hero-title">AI-Powered Mutual Fund<br>Analysis & Recommendations</h2>
+                    <p class="hero-description">
+                        Make informed investment decisions with advanced AI/ML models including
+                        <strong>Monte Carlo Simulation</strong>, <strong>Black-Scholes</strong>,
+                        <strong>Black-Litterman</strong>, <strong>GARCH Volatility</strong>, and
+                        <strong>Machine Learning Predictors</strong>.
+                    </p>
+                    <div class="hero-stats">
+                        <div class="stat-item">
+                            <span class="stat-number" id="totalFunds">790</span>
+                            <span class="stat-label">Mutual Funds</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">40+</span>
+                            <span class="stat-label">AMCs</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">10</span>
+                            <span class="stat-label">AI Models</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">10K</span>
+                            <span class="stat-label">Simulations</span>
+                        </div>
+                    </div>
+                    <div class="hero-actions">
+                        <button class="btn btn-primary" onclick="showSection('recommend')">
+                            Get AI Recommendations
+                        </button>
+                        <button class="btn btn-secondary" onclick="showSection('funds')">
+                            Browse All Funds
+                        </button>
+                    </div>
+                </div>
+                <div class="hero-visual">
+                    <div class="ai-visualization">
+                        <canvas id="heroChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Quick Info Cards -->
+        <section class="quick-info">
+            <div class="container">
+                <div class="info-grid">
+                    <div class="info-card">
+                        <div class="info-icon">📊</div>
+                        <h3>Monte Carlo Simulation</h3>
+                        <p>10,000 simulation paths using Geometric Brownian Motion for NAV prediction and VaR
+                            calculation.</p>
+                    </div>
+                    <div class="info-card">
+                        <div class="info-icon">📈</div>
+                        <h3>Black-Scholes Model</h3>
+                        <p>Greeks analysis (Delta, Gamma, Theta, Vega) and risk premium assessment.</p>
+                    </div>
+                    <div class="info-card">
+                        <div class="info-icon">⚖️</div>
+                        <h3>Black-Litterman</h3>
+                        <p>Portfolio optimization with market equilibrium and investor views integration.</p>
+                    </div>
+                    <div class="info-card">
+                        <div class="info-icon">🤖</div>
+                        <h3>ML Prediction Engine</h3>
+                        <p>Ensemble learning with Random Forest and Gradient Boosting for return prediction.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Government Notice -->
+        <section style="padding: 20px 0;">
+            <div class="container">
+                <div class="gov-notice">
+                    <strong>Important Notice:</strong> Mutual Fund investments are subject to market risks.
+                    Read all scheme related documents carefully before investing. Past performance is not
+                    indicative of future returns. This portal is for educational and informational purposes only.
+                </div>
+            </div>
+        </section>
+
+        <!-- Explore Funds Section -->
+        <section id="funds" class="section" style="display: none;">
+            <div class="container">
+                <h2 class="section-title">Browse Mutual Funds</h2>
+                <p class="section-subtitle">Explore and analyze 790+ mutual funds registered with SEBI</p>
+
+                <!-- Filters -->
+                <div class="filters-container">
+                    <div class="filter-group">
+                        <label for="searchQuery">Search Fund / AMC</label>
+                        <input type="text" id="searchQuery" placeholder="Enter scheme name or AMC..."
+                            class="form-input">
+                    </div>
+                    <div class="filter-group">
+                        <label for="categoryFilter">Category</label>
+                        <select id="categoryFilter" class="form-select">
+                            <option value="">All Categories</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label for="riskFilter">Risk Level</label>
+                        <select id="riskFilter" class="form-select">
+                            <option value="">All Risk Levels</option>
+                            <option value="1">1 - Very Low</option>
+                            <option value="2">2 - Low</option>
+                            <option value="3">3 - Moderate</option>
+                            <option value="4">4 - High</option>
+                            <option value="5">5 - Very High</option>
+                            <option value="6">6 - Extremely High</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label for="ratingFilter">Min Rating</label>
+                        <select id="ratingFilter" class="form-select">
+                            <option value="">Any Rating</option>
+                            <option value="5">5 Stars</option>
+                            <option value="4">4+ Stars</option>
+                            <option value="3">3+ Stars</option>
+                        </select>
+                    </div>
+                    <button class="btn btn-primary" onclick="searchFunds()">Search</button>
+                </div>
+
+                <!-- Funds Table -->
+                <div class="table-container">
+                    <table class="data-table" id="fundsTable">
+                        <thead>
+                            <tr>
+                                <th>Scheme Name</th>
+                                <th>AMC</th>
+                                <th>Category</th>
+                                <th>Rating</th>
+                                <th>1Y Return</th>
+                                <th>3Y Return</th>
+                                <th>Sharpe</th>
+                                <th>Risk</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="fundsTableBody">
+                            <!-- Populated by JavaScript -->
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Pagination -->
+                <div class="pagination" id="fundsPagination"></div>
+            </div>
+        </section>
+
+        <!-- AI Predictions Section -->
+        <section id="predict" class="section" style="display: none;">
+            <div class="container">
+                <h2 class="section-title">AI-Powered Analysis</h2>
+                <p class="section-subtitle">Monte Carlo simulation and risk analysis for any mutual fund</p>
+
+                <div class="prediction-grid">
+                    <div class="card">
+                        <h3 class="card-title">Analysis Parameters</h3>
+                        <form id="predictionForm" class="prediction-form">
+                            <div class="form-group">
+                                <label for="predictFundId">Fund ID</label>
+                                <input type="number" id="predictFundId" class="form-input"
+                                    placeholder="Enter Fund ID (1-790)" min="1" max="790" value="1">
+                            </div>
+                            <div class="form-group">
+                                <label for="predictInvestment">Investment Amount (₹)</label>
+                                <input type="number" id="predictInvestment" class="form-input" placeholder="100000"
+                                    value="100000" min="1000">
+                            </div>
+                            <div class="form-group">
+                                <label for="predictDays">Forecast Horizon</label>
+                                <select id="predictDays" class="form-select">
+                                    <option value="30">1 Month (30 days)</option>
+                                    <option value="90">3 Months (90 days)</option>
+                                    <option value="180">6 Months (180 days)</option>
+                                    <option value="252" selected>1 Year (252 trading days)</option>
+                                    <option value="504">2 Years (504 days)</option>
+                                    <option value="756">3 Years (756 days)</option>
+                                </select>
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-block">
+                                Run Monte Carlo Simulation
+                            </button>
+                        </form>
+                    </div>
+
+                    <div class="prediction-results" id="predictionResults">
+                        <div class="card">
+                            <h3 class="card-title">Analysis Results</h3>
+                            <div class="empty-state" id="predictionEmpty">
+                                <div class="empty-icon">📊</div>
+                                <p>Enter parameters and run simulation to view AI prediction results</p>
+                            </div>
+                            <div class="results-content" id="predictionContent" style="display: none;"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Prediction Chart -->
+                <div class="card" id="predictionChartContainer" style="display: none;">
+                    <h3 class="card-title">Monte Carlo Simulation Paths (Sample of 10,000)</h3>
+                    <canvas id="predictionChart"></canvas>
+                </div>
+            </div>
+        </section>
+
+        <!-- Recommendations Section -->
+        <section id="recommend" class="section" style="display: none;">
+            <div class="container">
+                <h2 class="section-title">AI Fund Recommendations</h2>
+                <p class="section-subtitle">Personalized fund suggestions based on your risk profile and investment
+                    goals</p>
+
+                <div class="recommendation-grid">
+                    <div class="card">
+                        <h3 class="card-title">Your Investment Profile</h3>
+                        <form id="riskProfileForm">
+                            <div class="form-group">
+                                <label for="userAge">Your Age (Years)</label>
+                                <input type="number" id="userAge" class="form-input" value="35" min="18" max="80">
+                            </div>
+                            <div class="form-group">
+                                <label for="userIncome">Annual Income (₹ Lakhs)</label>
+                                <input type="number" id="userIncome" class="form-input" value="10" min="1">
+                            </div>
+                            <div class="form-group">
+                                <label for="userHorizon">Investment Horizon</label>
+                                <select id="userHorizon" class="form-select">
+                                    <option value="1">1 Year (Short-term)</option>
+                                    <option value="3">3 Years (Medium-term)</option>
+                                    <option value="5" selected>5 Years (Long-term)</option>
+                                    <option value="7">7 Years</option>
+                                    <option value="10">10+ Years (Very Long-term)</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="userLossTolerance">Loss Tolerance Level</label>
+                                <select id="userLossTolerance" class="form-select">
+                                    <option value="1">Very Low - Cannot accept any loss</option>
+                                    <option value="2">Low - Can tolerate up to 10% loss</option>
+                                    <option value="3" selected>Moderate - Can tolerate up to 20% loss</option>
+                                    <option value="4">High - Can tolerate up to 30% loss</option>
+                                    <option value="5">Very High - Can tolerate 30%+ loss</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="userExperience">Investment Experience</label>
+                                <select id="userExperience" class="form-select">
+                                    <option value="1">Beginner - New to investing</option>
+                                    <option value="2">Basic - Some experience</option>
+                                    <option value="3" selected>Intermediate - Few years experience</option>
+                                    <option value="4">Advanced - Experienced investor</option>
+                                    <option value="5">Expert - Professional trader</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="userInvestment">Investment Amount (₹)</label>
+                                <input type="number" id="userInvestment" class="form-input" value="100000" min="1000">
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-block">
+                                Get AI Recommendations
+                            </button>
+                        </form>
+                    </div>
+
+                    <div class="card" id="riskProfileCard" style="display: none;">
+                        <h3 class="card-title">Your Risk Profile</h3>
+                        <div class="risk-profile-display" id="riskProfileDisplay"></div>
+                    </div>
+                </div>
+
+                <div class="card" id="recommendationsCard" style="display: none;">
+                    <h3 class="card-title">Top Recommended Funds Based on Your Profile</h3>
+                    <div class="recommendations-list" id="recommendationsList"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Portfolio Optimizer Section -->
+        <section id="optimize" class="section" style="display: none;">
+            <div class="container">
+                <h2 class="section-title">Portfolio Optimizer</h2>
+                <p class="section-subtitle">Black-Litterman model for optimal asset allocation</p>
+
+                <div class="optimizer-grid">
+                    <div class="card">
+                        <h3 class="card-title">Select Funds for Optimization</h3>
+                        <p class="card-description">Enter fund IDs to include in your portfolio (comma-separated)</p>
+                        <form id="optimizerForm">
+                            <div class="form-group">
+                                <label for="optimizeFundIds">Fund IDs (e.g., 1, 50, 100, 200)</label>
+                                <input type="text" id="optimizeFundIds" class="form-input" value="1, 50, 100, 150, 200">
+                            </div>
+                            <div class="form-group">
+                                <label for="optimizeInvestment">Total Investment Amount (₹)</label>
+                                <input type="number" id="optimizeInvestment" class="form-input" value="500000"
+                                    min="10000">
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-block">
+                                Optimize Portfolio
+                            </button>
+                        </form>
+                    </div>
+
+                    <div class="card" id="optimizationResults" style="display: none;">
+                        <h3 class="card-title">Optimal Portfolio Allocation</h3>
+                        <div class="optimization-content" id="optimizationContent"></div>
+                    </div>
+                </div>
+
+                <div class="charts-row" id="optimizationCharts" style="display: none;">
+                    <div class="card">
+                        <h3 class="card-title">Allocation Breakdown</h3>
+                        <canvas id="allocationChart"></canvas>
+                    </div>
+                    <div class="card">
+                        <h3 class="card-title">Efficient Frontier</h3>
+                        <canvas id="frontierChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Analytics Dashboard Section -->
+        <section id="analytics" class="section" style="display: none;">
+            <div class="container">
+                <h2 class="section-title">Market Analytics Dashboard</h2>
+                <p class="section-subtitle">Comprehensive market overview and fund statistics</p>
+
+                <div class="analytics-stats" id="analyticsStats"></div>
+
+                <div class="analytics-grid">
+                    <div class="card">
+                        <h3 class="card-title">Fund Distribution by Category</h3>
+                        <canvas id="categoryChart"></canvas>
+                    </div>
+                    <div class="card">
+                        <h3 class="card-title">Average Returns by Category</h3>
+                        <canvas id="returnsChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Advanced AI Section -->
+        <section id="advanced" class="section" style="display: none;">
+            <div class="container">
+                <h2 class="section-title">Advanced AI/ML Analytics</h2>
+                <p class="section-subtitle">Extended AI models: GARCH, Momentum, Factor Analysis, ML Predictions</p>
+
+                <div class="prediction-grid">
+                    <div class="card">
+                        <h3 class="card-title">Advanced Analysis Tools</h3>
+                        <form id="advancedForm">
+                            <div class="form-group">
+                                <label for="advFundId">Fund ID</label>
+                                <input type="number" id="advFundId" class="form-input" value="1" min="1" max="790">
+                            </div>
+                            <div class="form-group">
+                                <label for="advAnalysisType">Analysis Type</label>
+                                <select id="advAnalysisType" class="form-select">
+                                    <option value="ml_prediction">ML Return Prediction</option>
+                                    <option value="momentum">Momentum Analysis</option>
+                                    <option value="factor">Factor Model Analysis</option>
+                                    <option value="sentiment">Market Sentiment</option>
+                                    <option value="all">Complete Analysis</option>
+                                </select>
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-block">
+                                Run Advanced Analysis
+                            </button>
+                        </form>
+
+                        <div style="margin-top: 20px; padding-top: 20px; border-top: 1px solid var(--gray-200);">
+                            <h4 style="font-size: 0.9rem; color: var(--gov-navy); margin-bottom: 10px;">Available AI
+                                Models:</h4>
+                            <ul style="font-size: 0.8rem; color: var(--gray-600); margin-left: 20px;">
+                                <li>🔮 Monte Carlo Simulation (10K paths)</li>
+                                <li>📉 Black-Scholes Greeks Analysis</li>
+                                <li>⚖️ Black-Litterman Optimization</li>
+                                <li>📊 GARCH Volatility Forecasting</li>
+                                <li>🚀 Momentum Strategy Analysis</li>
+                                <li>🎯 Multi-Factor Model (6 factors)</li>
+                                <li>⚡ Risk Parity Optimization</li>
+                                <li>🤖 ML Ensemble Predictor</li>
+                                <li>💭 Sentiment Analyzer</li>
+                                <li>📉 Drawdown Analyzer</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="card" id="advancedResults">
+                        <h3 class="card-title">Analysis Results</h3>
+                        <div class="empty-state" id="advancedEmpty">
+                            <div class="empty-icon">🤖</div>
+                            <p>Select an analysis type and run to view AI/ML results</p>
+                        </div>
+                        <div id="advancedContent" style="display: none;"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Fund Details Modal -->
+    <div class="modal" id="fundModal">
+        <div class="modal-overlay" onclick="closeModal()"></div>
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal()">&times;</button>
+            <div class="modal-body" id="fundModalBody"></div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>About FIMFP</h4>
+                    <p>Federal Indian Mutual Fund Portal is an AI-powered investment analysis platform developed under
+                        the Digital India Programme. Content is sourced from AMFI and SEBI regulated mutual funds.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#" onclick="showSection('home')">Home</a></li>
+                        <li><a href="#" onclick="showSection('funds')">Browse Funds</a></li>
+                        <li><a href="#" onclick="showSection('predict')">AI Analysis</a></li>
+                        <li><a href="#" onclick="showSection('recommend')">Recommendations</a></li>
+                        <li><a href="#" onclick="showSection('advanced')">Advanced AI</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Important Links</h4>
+                    <ul>
+                        <li><a href="https://sebi.gov.in" target="_blank" rel="noopener">Securities and Exchange Board
+                                of India</a></li>
+                        <li><a href="https://amfiindia.com" target="_blank" rel="noopener">Association of Mutual Funds
+                                in India</a></li>
+                        <li><a href="https://rbi.org.in" target="_blank" rel="noopener">Reserve Bank of India</a></li>
+                        <li><a href="https://india.gov.in" target="_blank" rel="noopener">National Portal of India</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Disclaimer</h4>
+                    <p class="disclaimer">Mutual Fund investments are subject to market risks. Read all scheme related
+                        documents carefully before investing. Past performance is not indicative of future returns. This
+                        portal is developed for educational purposes only and should not be considered as financial
+                        advice.</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2024 FIMFP - Federal Indian Mutual Fund Portal | Government of India</p>
+                <p>Designed & Developed under Digital India Programme by National Informatics Centre</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="js/charts.js"></script>
+    <script src="js/app.js"></script>
+</body>
+
+</html>
