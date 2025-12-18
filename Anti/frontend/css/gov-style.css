@@ -418,7 +418,7 @@ img {
     display: block;
     padding: 13px 20px;
     color: rgba(255, 255, 255, 0.95);
-    font-size: 0.9rem;
+    font-size: 0.85rem;
     font-weight: 500;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     border-bottom: 3px solid transparent;
@@ -496,31 +496,233 @@ img {
 .nav-user-info {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 12px;
     color: var(--white);
     font-size: 0.85rem;
+    position: relative;
+}
+
+.nav-user-profile {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 6px 14px 6px 8px;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0.08) 100%);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    text-decoration: none !important;
+    position: relative;
+}
+
+.nav-user-profile:hover {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.25) 0%, rgba(255, 255, 255, 0.15) 100%);
+    border-color: rgba(255, 255, 255, 0.4);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+}
+
+.nav-user-avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--saffron) 0%, #e67e22 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 0.85rem;
+    color: var(--white);
+    text-transform: uppercase;
+    box-shadow: 0 2px 8px rgba(255, 153, 51, 0.4);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+.nav-user-avatar img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.nav-user-details {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.2;
 }
 
 .nav-user-name {
-    padding: 5px 10px;
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: 4px;
+    font-weight: 600;
+    font-size: 0.85rem;
+    color: var(--white);
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+    white-space: nowrap;
+    max-width: 120px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.nav-user-role {
+    font-size: 0.65rem;
+    color: rgba(255, 255, 255, 0.7);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.nav-user-dropdown-icon {
+    margin-left: 4px;
+    font-size: 0.6rem;
+    transition: transform 0.3s ease;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.nav-user-info:hover .nav-user-dropdown-icon {
+    transform: rotate(180deg);
+}
+
+/* User Dropdown Menu */
+.nav-user-dropdown {
+    position: absolute;
+    top: calc(100% + 10px);
+    right: 0;
+    min-width: 220px;
+    background: var(--white);
+    border-radius: 12px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2), 0 0 0 1px rgba(0, 0, 0, 0.05);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px) scale(0.95);
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 1000;
+    overflow: hidden;
+}
+
+.nav-user-dropdown::before {
+    content: '';
+    position: absolute;
+    top: -6px;
+    right: 20px;
+    width: 12px;
+    height: 12px;
+    background: var(--white);
+    transform: rotate(45deg);
+    border-left: 1px solid rgba(0, 0, 0, 0.05);
+    border-top: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.nav-user-info:hover .nav-user-dropdown {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0) scale(1);
+}
+
+.nav-dropdown-header {
+    padding: 16px;
+    background: linear-gradient(135deg, var(--gov-navy) 0%, var(--gov-navy-dark) 100%);
+    color: var(--white);
+    text-align: center;
+}
+
+.nav-dropdown-header .avatar-large {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--saffron) 0%, #e67e22 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 1.2rem;
+    margin: 0 auto 8px;
+    border: 3px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.nav-dropdown-header .user-fullname {
+    font-weight: 600;
+    font-size: 0.95rem;
+    margin-bottom: 2px;
+}
+
+.nav-dropdown-header .user-email {
+    font-size: 0.75rem;
+    opacity: 0.8;
+}
+
+.nav-dropdown-menu {
+    padding: 8px 0;
+}
+
+.nav-dropdown-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 16px;
+    color: var(--gray-700);
+    font-size: 0.85rem;
+    transition: all 0.2s ease;
+    text-decoration: none;
+    cursor: pointer;
+    border: none;
+    background: none;
+    width: 100%;
+    text-align: left;
+}
+
+.nav-dropdown-item:hover {
+    background: var(--gray-50);
+    color: var(--gov-navy);
+}
+
+.nav-dropdown-item img {
+    width: 18px;
+    height: 18px;
+    opacity: 0.7;
+}
+
+.nav-dropdown-item:hover img {
+    opacity: 1;
+}
+
+.nav-dropdown-divider {
+    height: 1px;
+    background: var(--gray-200);
+    margin: 8px 0;
+}
+
+.nav-dropdown-item.logout {
+    color: #e74c3c;
+}
+
+.nav-dropdown-item.logout:hover {
+    background: #fdf2f2;
+    color: #c0392b;
 }
 
 .btn-nav-logout {
-    background: transparent;
-    border: 1px solid rgba(255, 255, 255, 0.5);
-    color: var(--white);
-    padding: 6px 12px;
-    border-radius: 4px;
+    background: linear-gradient(135deg, rgba(231, 76, 60, 0.1) 0%, rgba(192, 57, 43, 0.1) 100%);
+    border: 1px solid rgba(231, 76, 60, 0.3);
+    color: #e74c3c;
+    padding: 8px 16px;
+    border-radius: 50px;
     font-size: 0.8rem;
+    font-weight: 600;
     cursor: pointer;
-    transition: all 0.2s;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex;
+    align-items: center;
+    gap: 6px;
 }
 
 .btn-nav-logout:hover {
-    background: rgba(255, 255, 255, 0.1);
-    border-color: var(--white);
+    background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
+    border-color: #e74c3c;
+    color: var(--white);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(231, 76, 60, 0.3);
 }
 
 /* ============================================
@@ -2214,6 +2416,10 @@ img {
     background: linear-gradient(135deg, rgba(0, 51, 102, 0.03) 0%, rgba(255, 153, 51, 0.03) 100%);
     border-radius: 12px;
     border: 2px solid rgba(0, 51, 102, 0.1);
+    width: 100%;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .user-profile-summary {

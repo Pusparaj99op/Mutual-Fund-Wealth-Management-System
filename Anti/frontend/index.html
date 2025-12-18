@@ -196,6 +196,30 @@
                 </div>
             </div>
         </section>
+                   <!-- Personalized Recommendations (For Logged-in Users) -->
+                    <div class="personalized-recommendations" id="personalizedRecommendations" style="display: none;">
+                        <div class="subsection-header">
+                            <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="Personalized"
+                                class="subsection-icon">
+                            <h3 class="subsection-title">Personalized Recommendations For You</h3>
+                        </div>
+                        <div class="user-profile-summary" id="userProfileSummary">
+                            <!-- Populated by JavaScript based on user's saved profile -->
+                        </div>
+                        <div class="personalized-funds-grid" id="personalizedFundsGrid">
+                            <!-- Populated by JavaScript -->
+                        </div>
+                        <div class="view-all-link">
+                            <button class="btn btn-gov-secondary" onclick="showSection('recommend')">
+                                <img src="https://cdn-icons-png.flaticon.com/512/3916/3916610.png" alt="More"
+                                    class="btn-icon">
+                                Get More AI Recommendations
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+
 
         <!-- Mutual Fund Screener Section - Full Width -->
         <section class="mf-screener-section full-width" id="screener">
@@ -211,34 +235,7 @@
                         </div>
                     </div>
 
-                    <!-- Fund Stats Overview -->
-                    <div class="screener-stats">
-                        <div class="screener-stat-card">
-                            <img src="https://cdn-icons-png.flaticon.com/512/2920/2920293.png" alt="Funds"
-                                class="stat-icon-img">
-                            <span class="stat-value">815+</span>
-                            <span class="stat-label">Mutual Funds</span>
-                        </div>
-                        <div class="screener-stat-card">
-                            <img src="https://cdn-icons-png.flaticon.com/512/2830/2830295.png" alt="AMC"
-                                class="stat-icon-img">
-                            <span class="stat-value">45+</span>
-                            <span class="stat-label">AMC Houses</span>
-                        </div>
-                        <div class="screener-stat-card">
-                            <img src="https://cdn-icons-png.flaticon.com/512/2991/2991112.png" alt="Categories"
-                                class="stat-icon-img">
-                            <span class="stat-value">10+</span>
-                            <span class="stat-label">Categories</span>
-                        </div>
-                        <div class="screener-stat-card">
-                            <img src="https://cdn-icons-png.flaticon.com/512/3655/3655585.png" alt="Risk"
-                                class="stat-icon-img">
-                            <span class="stat-value">6</span>
-                            <span class="stat-label">Risk Levels</span>
-                        </div>
-                    </div>
-                </div>
+
 
                 <!-- TradingView Widget - Full Width -->
                 <div class="tradingview-screener-card full-width-widget">
@@ -316,25 +313,31 @@
                         </div>
                     </div>
 
-                    <!-- Personalized Recommendations (For Logged-in Users) -->
-                    <div class="personalized-recommendations" id="personalizedRecommendations" style="display: none;">
-                        <div class="subsection-header">
-                            <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="Personalized"
-                                class="subsection-icon">
-                            <h3 class="subsection-title">Personalized Recommendations For You</h3>
+                    <!-- Fund Stats Overview -->
+                    <div class="screener-stats">
+                        <div class="screener-stat-card">
+                            <img src="https://cdn-icons-png.flaticon.com/512/2920/2920293.png" alt="Funds"
+                                class="stat-icon-img">
+                            <span class="stat-value">815+</span>
+                            <span class="stat-label">Mutual Funds</span>
                         </div>
-                        <div class="user-profile-summary" id="userProfileSummary">
-                            <!-- Populated by JavaScript based on user's saved profile -->
+                        <div class="screener-stat-card">
+                            <img src="https://cdn-icons-png.flaticon.com/512/2830/2830295.png" alt="AMC"
+                                class="stat-icon-img">
+                            <span class="stat-value">45+</span>
+                            <span class="stat-label">AMC Houses</span>
                         </div>
-                        <div class="personalized-funds-grid" id="personalizedFundsGrid">
-                            <!-- Populated by JavaScript -->
+                        <div class="screener-stat-card">
+                            <img src="https://cdn-icons-png.flaticon.com/512/2991/2991112.png" alt="Categories"
+                                class="stat-icon-img">
+                            <span class="stat-value">10+</span>
+                            <span class="stat-label">Categories</span>
                         </div>
-                        <div class="view-all-link">
-                            <button class="btn btn-gov-secondary" onclick="showSection('recommend')">
-                                <img src="https://cdn-icons-png.flaticon.com/512/3916/3916610.png" alt="More"
-                                    class="btn-icon">
-                                Get More AI Recommendations
-                            </button>
+                        <div class="screener-stat-card">
+                            <img src="https://cdn-icons-png.flaticon.com/512/3655/3655585.png" alt="Risk"
+                                class="stat-icon-img">
+                            <span class="stat-value">6</span>
+                            <span class="stat-label">Risk Levels</span>
                         </div>
                     </div>
                 </div>

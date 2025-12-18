@@ -136,6 +136,65 @@
         .text-error {
             color: #F44336;
         }
+
+        /* Autocomplete Styles */
+        .autocomplete-suggestions {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background: var(--white);
+            border: 1px solid var(--gray-300);
+            border-top: none;
+            border-radius: 0 0 6px 6px;
+            max-height: 250px;
+            overflow-y: auto;
+            z-index: 1000;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .autocomplete-item {
+            padding: 10px 12px;
+            cursor: pointer;
+            border-bottom: 1px solid var(--gray-100);
+            transition: background 0.2s;
+        }
+
+        .autocomplete-item:hover {
+            background: var(--gray-50);
+        }
+
+        .autocomplete-item:last-child {
+            border-bottom: none;
+        }
+
+        .autocomplete-item .fund-name {
+            font-weight: 500;
+            color: var(--gov-navy);
+            font-size: 0.85rem;
+            margin-bottom: 2px;
+        }
+
+        .autocomplete-item .fund-info {
+            font-size: 0.75rem;
+            color: var(--gray-500);
+        }
+
+        .autocomplete-item.selected {
+            background: rgba(0, 51, 102, 0.1);
+        }
+
+        .selected-fund-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            background: rgba(0, 51, 102, 0.1);
+            color: var(--gov-navy);
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            margin-top: 5px;
+        }
     </style>
 </head>
 
@@ -234,14 +293,16 @@
                         Analysis Parameters
                     </h3>
                     <form id="analysisForm">
-                        <div class="form-group">
-                            <label for="fundId">
+                        <div class="form-group" style="position: relative;">
+                            <label for="fundSearch">
                                 <img src="https://cdn-icons-png.flaticon.com/512/2920/2920293.png" alt="Fund"
                                     style="width: 14px; height: 14px; vertical-align: middle; margin-right: 5px;">
-                                Fund ID
+                                Search Mutual Fund
                             </label>
-                            <input type="number" id="fundId" class="form-input" placeholder="Enter Fund ID (1-790)"
-                                min="1" max="790" value="1">
+                            <input type="text" id="fundSearch" class="form-input"
+                                placeholder="Type fund name to search..." autocomplete="off">
+                            <input type="hidden" id="fundId" value="">
+                            <div id="fundSuggestions" class="autocomplete-suggestions" style="display: none;"></div>
                         </div>
                         <div class="form-group">
                             <label for="investment">
@@ -306,6 +367,49 @@
                         </div>
                     </div>
 
+                    <!-- Historical NAV Chart Section -->
+                    <div class="card" id="historyChartCard" style="margin-top: 20px;">
+                        <h3 class="card-title">
+                            <img src="https://cdn-icons-png.flaticon.com/512/2920/2920313.png" alt="History"
+                                style="width: 20px; height: 20px; vertical-align: middle; margin-right: 8px;">
+                            Historical NAV Performance
+                        </h3>
+                        <div style="display: flex; gap: 8px; margin-bottom: 15px; flex-wrap: wrap;">
+                            <button class="btn btn-sm btn-outline period-btn" data-period="1M">1M</button>
+                            <button class="btn btn-sm btn-outline period-btn" data-period="3M">3M</button>
+                            <button class="btn btn-sm btn-outline period-btn" data-period="6M">6M</button>
+                            <button class="btn btn-sm btn-primary period-btn active" data-period="1Y">1Y</button>
+                            <button class="btn btn-sm btn-outline period-btn" data-period="3Y">3Y</button>
+                            <button class="btn btn-sm btn-outline period-btn" data-period="5Y">5Y</button>
+                            <button class="btn btn-sm btn-outline period-btn" data-period="MAX">MAX</button>
+                        </div>
+                        <div id="historyChartStats"
+                            style="display: flex; gap: 20px; margin-bottom: 15px; flex-wrap: wrap;">
+                            <div style="text-align: center;">
+                                <div id="historyStartNav"
+                                    style="font-size: 1.1rem; font-weight: 600; color: var(--gov-navy);">-</div>
+                                <div style="font-size: 0.75rem; color: var(--gray-500);">Start NAV</div>
+                            </div>
+                            <div style="text-align: center;">
+                                <div id="historyEndNav"
+                                    style="font-size: 1.1rem; font-weight: 600; color: var(--gov-navy);">-</div>
+                                <div style="font-size: 0.75rem; color: var(--gray-500);">Current NAV</div>
+                            </div>
+                            <div style="text-align: center;">
+                                <div id="historyChange" style="font-size: 1.1rem; font-weight: 600;">-</div>
+                                <div style="font-size: 0.75rem; color: var(--gray-500);">Change</div>
+                            </div>
+                        </div>
+                        <div id="historyChartContainer">
+                            <canvas id="historyChart"></canvas>
+                        </div>
+                        <div id="historyChartEmpty" class="empty-state" style="display: none; padding: 30px;">
+                            <img src="https://cdn-icons-png.flaticon.com/512/2920/2920313.png" alt="Chart"
+                                style="width: 48px; height: 48px; opacity: 0.5; margin-bottom: 10px;">
+                            <p>Select a fund to view historical NAV data</p>
+                        </div>
+                    </div>
+
                     <!-- Chart Section -->
                     <div class="card" id="chartCard" style="display: none; margin-top: 20px;">
                         <h3 class="card-title">
@@ -314,6 +418,75 @@
                             Monte Carlo Simulation Paths
                         </h3>
                         <canvas id="simulationChart"></canvas>
+                    </div>
+
+                    <!-- TradingView Widgets Section -->
+                    <div class="card" id="tradingViewSection" style="margin-top: 20px; display: none;">
+                        <h3 class="card-title">
+                            <img src="https://cdn-icons-png.flaticon.com/512/2920/2920322.png" alt="Analysis"
+                                style="width: 20px; height: 20px; vertical-align: middle; margin-right: 8px;">
+                            AMC Stock Analysis (TradingView)
+                        </h3>
+                        <p id="amcStockInfo" style="font-size: 0.85rem; color: var(--gray-600); margin-bottom: 15px;">
+                            Showing analysis for the parent Asset Management Company's stock
+                        </p>
+
+                        <!-- Symbol Info Widget -->
+                        <div id="tvWidgetSymbolInfo" class="tradingview-widget-box"
+                            style="margin-bottom: 20px; opacity: 0; transition: opacity 0.5s ease-in;"></div>
+
+                        <!-- Widgets Grid -->
+                        <div
+                            style="display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 20px;">
+                            <!-- Technical Analysis Widget -->
+                            <div class="widget-card"
+                                style="background: var(--gray-50); padding: 15px; border-radius: 8px; border: 1px solid var(--gray-200);">
+                                <h4
+                                    style="font-size: 0.9rem; color: var(--gov-navy); margin-bottom: 10px; display: flex; align-items: center; gap: 8px;">
+                                    <img src="https://cdn-icons-png.flaticon.com/512/2920/2920313.png" alt=""
+                                        style="width: 16px; height: 16px;">
+                                    Technical Analysis
+                                </h4>
+                                <div id="tvWidgetTechnical" class="tradingview-widget-box"
+                                    style="opacity: 0; transition: opacity 0.5s ease-in 0.2s;"></div>
+                            </div>
+
+                            <!-- Fundamental Data Widget -->
+                            <div class="widget-card"
+                                style="background: var(--gray-50); padding: 15px; border-radius: 8px; border: 1px solid var(--gray-200);">
+                                <h4
+                                    style="font-size: 0.9rem; color: var(--gov-navy); margin-bottom: 10px; display: flex; align-items: center; gap: 8px;">
+                                    <img src="https://cdn-icons-png.flaticon.com/512/2830/2830284.png" alt=""
+                                        style="width: 16px; height: 16px;">
+                                    Fundamental Data
+                                </h4>
+                                <div id="tvWidgetFundamental" class="tradingview-widget-box"
+                                    style="opacity: 0; transition: opacity 0.5s ease-in 0.4s;"></div>
+                            </div>
+
+                            <!-- Company Profile Widget -->
+                            <div class="widget-card"
+                                style="background: var(--gray-50); padding: 15px; border-radius: 8px; border: 1px solid var(--gray-200);">
+                                <h4
+                                    style="font-size: 0.9rem; color: var(--gov-navy); margin-bottom: 10px; display: flex; align-items: center; gap: 8px;">
+                                    <img src="https://cdn-icons-png.flaticon.com/512/1077/1077114.png" alt=""
+                                        style="width: 16px; height: 16px;">
+                                    Company Profile
+                                </h4>
+                                <div id="tvWidgetProfile" class="tradingview-widget-box"
+                                    style="opacity: 0; transition: opacity 0.5s ease-in 0.6s;"></div>
+                            </div>
+                        </div>
+
+                        <!-- No Data Message -->
+                        <div id="tvNoData"
+                            style="display: none; text-align: center; padding: 40px; color: var(--gray-500);">
+                            <img src="https://cdn-icons-png.flaticon.com/512/2920/2920322.png" alt="No data"
+                                style="width: 48px; height: 48px; opacity: 0.5; margin-bottom: 10px;">
+                            <p>TradingView data not available for this AMC</p>
+                            <p style="font-size: 0.8rem;">The parent company may not be publicly listed on stock
+                                exchanges</p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -335,8 +508,16 @@
     <script src="../js/charts.js"></script>
     <script>
         let simulationChart = null;
+        let allFunds = [];
+        let selectedFundIndex = -1;
 
         async function pageInit() {
+            // Load funds for autocomplete
+            await loadFundsForAutocomplete();
+
+            // Set up autocomplete
+            setupAutocomplete();
+
             // Check for URL parameters
             const params = new URLSearchParams(window.location.search);
             const fundId = params.get('fund_id');
@@ -344,6 +525,11 @@
 
             if (fundId) {
                 document.getElementById('fundId').value = fundId;
+                // Find and set the fund name
+                const fund = allFunds.find(f => f.fund_id == fundId);
+                if (fund) {
+                    document.getElementById('fundSearch').value = fund.scheme_name;
+                }
                 if (autorun === 'true') {
                     await runAnalysis();
                 }
@@ -355,13 +541,116 @@
             });
         }
 
+        async function loadFundsForAutocomplete() {
+            try {
+                const result = await window.pageCommon.apiGet('/api/funds?limit=1000');
+                if (result.success && result.data) {
+                    allFunds = result.data;
+                }
+            } catch (error) {
+                console.error('Failed to load funds:', error);
+            }
+        }
+
+        function setupAutocomplete() {
+            const searchInput = document.getElementById('fundSearch');
+            const suggestionsDiv = document.getElementById('fundSuggestions');
+            let debounceTimer;
+
+            searchInput.addEventListener('input', function () {
+                clearTimeout(debounceTimer);
+                debounceTimer = setTimeout(() => {
+                    const query = this.value.toLowerCase().trim();
+
+                    if (query.length < 2) {
+                        suggestionsDiv.style.display = 'none';
+                        return;
+                    }
+
+                    const matches = allFunds.filter(fund =>
+                        fund.scheme_name.toLowerCase().includes(query) ||
+                        fund.amc_name.toLowerCase().includes(query)
+                    ).slice(0, 10);
+
+                    if (matches.length > 0) {
+                        renderSuggestions(matches);
+                        suggestionsDiv.style.display = 'block';
+                    } else {
+                        suggestionsDiv.style.display = 'none';
+                    }
+                }, 200);
+            });
+
+            searchInput.addEventListener('keydown', function (e) {
+                const items = suggestionsDiv.querySelectorAll('.autocomplete-item');
+
+                if (e.key === 'ArrowDown') {
+                    e.preventDefault();
+                    selectedFundIndex = Math.min(selectedFundIndex + 1, items.length - 1);
+                    updateSelectedItem(items);
+                } else if (e.key === 'ArrowUp') {
+                    e.preventDefault();
+                    selectedFundIndex = Math.max(selectedFundIndex - 1, 0);
+                    updateSelectedItem(items);
+                } else if (e.key === 'Enter' && selectedFundIndex >= 0) {
+                    e.preventDefault();
+                    items[selectedFundIndex]?.click();
+                } else if (e.key === 'Escape') {
+                    suggestionsDiv.style.display = 'none';
+                    selectedFundIndex = -1;
+                }
+            });
+
+            // Close on click outside
+            document.addEventListener('click', function (e) {
+                if (!searchInput.contains(e.target) && !suggestionsDiv.contains(e.target)) {
+                    suggestionsDiv.style.display = 'none';
+                    selectedFundIndex = -1;
+                }
+            });
+        }
+
+        function renderSuggestions(funds) {
+            const suggestionsDiv = document.getElementById('fundSuggestions');
+            selectedFundIndex = -1;
+
+            suggestionsDiv.innerHTML = funds.map((fund, index) => `
+                <div class="autocomplete-item" data-fund-id="${fund.fund_id}" data-fund-name="${fund.scheme_name}">
+                    <div class="fund-name">${fund.scheme_name}</div>
+                    <div class="fund-info">${fund.amc_name} | ${fund.category} | ⭐ ${fund.rating || 'N/A'}</div>
+                </div>
+            `).join('');
+
+            // Add click handlers
+            suggestionsDiv.querySelectorAll('.autocomplete-item').forEach(item => {
+                item.addEventListener('click', function () {
+                    const fundId = this.dataset.fundId;
+                    const fundName = this.dataset.fundName;
+
+                    document.getElementById('fundId').value = fundId;
+                    document.getElementById('fundSearch').value = fundName;
+                    suggestionsDiv.style.display = 'none';
+                    selectedFundIndex = -1;
+                });
+            });
+        }
+
+        function updateSelectedItem(items) {
+            items.forEach((item, index) => {
+                item.classList.toggle('selected', index === selectedFundIndex);
+                if (index === selectedFundIndex) {
+                    item.scrollIntoView({ block: 'nearest' });
+                }
+            });
+        }
+
         async function runAnalysis() {
             const fundId = document.getElementById('fundId').value;
             const investment = document.getElementById('investment').value;
             const days = document.getElementById('days').value;
 
             if (!fundId) {
-                alert('Please enter a Fund ID');
+                alert('Please select a mutual fund from the suggestions');
                 return;
             }
 
@@ -515,6 +804,334 @@
                 }
             });
         }
+
+        // Historical Chart Variables
+        let historyChart = null;
+        let currentPeriod = '1Y';
+
+        // Load historical NAV data for selected fund
+        async function loadHistoricalChart(fundId, period = '1Y') {
+            if (!fundId) {
+                document.getElementById('historyChartContainer').style.display = 'none';
+                document.getElementById('historyChartEmpty').style.display = 'block';
+                return;
+            }
+
+            currentPeriod = period;
+
+            try {
+                const result = await window.pageCommon.apiGet(`/api/fund/${fundId}/history?period=${period}`);
+
+                if (result.success && result.data && result.data.dates && result.data.values) {
+                    document.getElementById('historyChartContainer').style.display = 'block';
+                    document.getElementById('historyChartEmpty').style.display = 'none';
+
+                    // Update stats
+                    document.getElementById('historyStartNav').textContent = '₹' + result.data.start_nav.toLocaleString('en-IN');
+                    document.getElementById('historyEndNav').textContent = '₹' + result.data.end_nav.toLocaleString('en-IN');
+
+                    const changeEl = document.getElementById('historyChange');
+                    const changePct = result.data.change_pct;
+                    changeEl.textContent = (changePct >= 0 ? '+' : '') + changePct + '%';
+                    changeEl.style.color = changePct >= 0 ? '#138808' : '#F44336';
+
+                    renderHistoryChart(result.data);
+                } else {
+                    document.getElementById('historyChartContainer').style.display = 'none';
+                    document.getElementById('historyChartEmpty').style.display = 'block';
+                }
+            } catch (error) {
+                console.error('Failed to load historical data:', error);
+                document.getElementById('historyChartContainer').style.display = 'none';
+                document.getElementById('historyChartEmpty').style.display = 'block';
+            }
+        }
+
+        function renderHistoryChart(data) {
+            const ctx = document.getElementById('historyChart').getContext('2d');
+
+            // Create gradient
+            const gradient = ctx.createLinearGradient(0, 0, 0, 300);
+            const isPositive = data.change_pct >= 0;
+            if (isPositive) {
+                gradient.addColorStop(0, 'rgba(19, 136, 8, 0.3)');
+                gradient.addColorStop(1, 'rgba(19, 136, 8, 0.0)');
+            } else {
+                gradient.addColorStop(0, 'rgba(244, 67, 54, 0.3)');
+                gradient.addColorStop(1, 'rgba(244, 67, 54, 0.0)');
+            }
+
+            // Format dates for display
+            const labels = data.dates.map(date => {
+                const d = new Date(date);
+                return d.toLocaleDateString('en-IN', { month: 'short', year: '2-digit' });
+            });
+
+            if (historyChart) {
+                historyChart.destroy();
+            }
+
+            historyChart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        label: 'NAV (₹)',
+                        data: data.values,
+                        borderColor: isPositive ? '#138808' : '#F44336',
+                        backgroundColor: gradient,
+                        fill: true,
+                        borderWidth: 2,
+                        pointRadius: 0,
+                        pointHoverRadius: 5,
+                        pointHoverBackgroundColor: isPositive ? '#138808' : '#F44336',
+                        tension: 0.3
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: true,
+                    animation: {
+                        duration: 1500,
+                        easing: 'easeOutQuart'
+                    },
+                    interaction: {
+                        intersect: false,
+                        mode: 'index'
+                    },
+                    plugins: {
+                        legend: { display: false },
+                        tooltip: {
+                            backgroundColor: 'rgba(0, 51, 102, 0.9)',
+                            titleFont: { size: 12 },
+                            bodyFont: { size: 13 },
+                            padding: 12,
+                            callbacks: {
+                                label: function (context) {
+                                    return '₹' + context.parsed.y.toLocaleString('en-IN', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+                                }
+                            }
+                        }
+                    },
+                    scales: {
+                        x: {
+                            grid: { display: false },
+                            ticks: {
+                                maxTicksLimit: 8,
+                                font: { size: 10 }
+                            }
+                        },
+                        y: {
+                            grid: { color: 'rgba(0,0,0,0.05)' },
+                            ticks: {
+                                callback: value => '₹' + value.toLocaleString('en-IN', { maximumFractionDigits: 0 }),
+                                font: { size: 10 }
+                            }
+                        }
+                    }
+                }
+            });
+        }
+
+        // Setup period buttons
+        function setupPeriodButtons() {
+            document.querySelectorAll('.period-btn').forEach(btn => {
+                btn.addEventListener('click', function () {
+                    // Update active state
+                    document.querySelectorAll('.period-btn').forEach(b => {
+                        b.classList.remove('active', 'btn-primary');
+                        b.classList.add('btn-outline');
+                    });
+                    this.classList.remove('btn-outline');
+                    this.classList.add('active', 'btn-primary');
+
+                    // Load new period
+                    const fundId = document.getElementById('fundId').value;
+                    const period = this.dataset.period;
+                    if (fundId) {
+                        loadHistoricalChart(fundId, period);
+                    }
+                });
+            });
+        }
+
+        // Override the original fund selection to also load historical chart
+        const originalRenderSuggestions = renderSuggestions;
+        renderSuggestions = function (funds) {
+            const suggestionsDiv = document.getElementById('fundSuggestions');
+            selectedFundIndex = -1;
+
+            suggestionsDiv.innerHTML = funds.map((fund, index) => `
+                <div class="autocomplete-item" data-fund-id="${fund.fund_id}" data-fund-name="${fund.scheme_name}" data-amc="${fund.amc_name}">
+                    <div class="fund-name">${fund.scheme_name}</div>
+                    <div class="fund-info">${fund.amc_name} | ${fund.category} | ⭐ ${fund.rating || 'N/A'}</div>
+                </div>
+            `).join('');
+
+            // Add click handlers with historical chart and TradingView widget loading
+            suggestionsDiv.querySelectorAll('.autocomplete-item').forEach(item => {
+                item.addEventListener('click', function () {
+                    const fundId = this.dataset.fundId;
+                    const fundName = this.dataset.fundName;
+
+                    document.getElementById('fundId').value = fundId;
+                    document.getElementById('fundSearch').value = fundName;
+                    suggestionsDiv.style.display = 'none';
+                    selectedFundIndex = -1;
+
+                    // Load historical chart for selected fund
+                    loadHistoricalChart(fundId, currentPeriod);
+
+                    // Load TradingView widgets for selected fund
+                    loadTradingViewWidgets(fundId);
+                });
+            });
+        };
+
+        // Load TradingView widgets for a fund
+        async function loadTradingViewWidgets(fundId) {
+            try {
+                // Get fund details including AMC stock symbol
+                const result = await window.pageCommon.apiGet(`/api/fund/${fundId}`);
+
+                if (result.success && result.data && result.data.amc_stock_symbol) {
+                    const symbol = result.data.amc_stock_symbol;
+                    const amcName = result.data.amc_name;
+
+                    // Show section and update info
+                    document.getElementById('tradingViewSection').style.display = 'block';
+                    document.getElementById('tvNoData').style.display = 'none';
+                    document.getElementById('amcStockInfo').innerHTML =
+                        `Showing analysis for <strong>${amcName}</strong> parent company stock: <code>${symbol}</code>`;
+
+                    // Clear previous widgets
+                    document.getElementById('tvWidgetSymbolInfo').innerHTML = '';
+                    document.getElementById('tvWidgetTechnical').innerHTML = '';
+                    document.getElementById('tvWidgetFundamental').innerHTML = '';
+                    document.getElementById('tvWidgetProfile').innerHTML = '';
+
+                    // Create widgets with delay for animation
+                    setTimeout(() => createSymbolInfoWidget(symbol), 100);
+                    setTimeout(() => createTechnicalAnalysisWidget(symbol), 300);
+                    setTimeout(() => createFundamentalWidget(symbol), 500);
+                    setTimeout(() => createProfileWidget(symbol), 700);
+
+                } else {
+                    // Show no data message
+                    document.getElementById('tradingViewSection').style.display = 'block';
+                    document.getElementById('tvNoData').style.display = 'block';
+                    document.getElementById('tvWidgetSymbolInfo').innerHTML = '';
+                    document.getElementById('tvWidgetTechnical').innerHTML = '';
+                    document.getElementById('tvWidgetFundamental').innerHTML = '';
+                    document.getElementById('tvWidgetProfile').innerHTML = '';
+                }
+            } catch (error) {
+                console.error('Failed to load TradingView widgets:', error);
+                document.getElementById('tradingViewSection').style.display = 'none';
+            }
+        }
+
+        // Create Symbol Info Widget
+        function createSymbolInfoWidget(symbol) {
+            const container = document.getElementById('tvWidgetSymbolInfo');
+            container.innerHTML = `
+                <div class="tradingview-widget-container">
+                    <div class="tradingview-widget-container__widget"></div>
+                    <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-symbol-info.js" async>
+                    {
+                        "symbol": "${symbol}",
+                        "colorTheme": "light",
+                        "isTransparent": true,
+                        "locale": "en",
+                        "width": "100%"
+                    }
+                    <\/script>
+                </div>
+            `;
+            container.style.opacity = '1';
+        }
+
+        // Create Technical Analysis Widget
+        function createTechnicalAnalysisWidget(symbol) {
+            const container = document.getElementById('tvWidgetTechnical');
+            container.innerHTML = `
+                <div class="tradingview-widget-container">
+                    <div class="tradingview-widget-container__widget"></div>
+                    <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-technical-analysis.js" async>
+                    {
+                        "colorTheme": "light",
+                        "displayMode": "single",
+                        "isTransparent": true,
+                        "locale": "en",
+                        "interval": "1D",
+                        "disableInterval": false,
+                        "width": "100%",
+                        "height": 450,
+                        "symbol": "${symbol}",
+                        "showIntervalTabs": true
+                    }
+                    <\/script>
+                </div>
+            `;
+            container.style.opacity = '1';
+        }
+
+        // Create Fundamental Data Widget
+        function createFundamentalWidget(symbol) {
+            const container = document.getElementById('tvWidgetFundamental');
+            container.innerHTML = `
+                <div class="tradingview-widget-container">
+                    <div class="tradingview-widget-container__widget"></div>
+                    <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-financials.js" async>
+                    {
+                        "symbol": "${symbol}",
+                        "colorTheme": "light",
+                        "displayMode": "regular",
+                        "isTransparent": true,
+                        "locale": "en",
+                        "width": "100%",
+                        "height": 500
+                    }
+                    <\/script>
+                </div>
+            `;
+            container.style.opacity = '1';
+        }
+
+        // Create Company Profile Widget
+        function createProfileWidget(symbol) {
+            const container = document.getElementById('tvWidgetProfile');
+            container.innerHTML = `
+                <div class="tradingview-widget-container">
+                    <div class="tradingview-widget-container__widget"></div>
+                    <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-symbol-profile.js" async>
+                    {
+                        "symbol": "${symbol}",
+                        "colorTheme": "light",
+                        "isTransparent": true,
+                        "locale": "en",
+                        "width": "100%",
+                        "height": 500
+                    }
+                    <\/script>
+                </div>
+            `;
+            container.style.opacity = '1';
+        }
+
+        // Modify pageInit to setup period buttons and load chart if fund_id present
+        const originalPageInit = pageInit;
+        pageInit = async function () {
+            await originalPageInit();
+            setupPeriodButtons();
+
+            // If fund is pre-selected, load its historical chart and TradingView widgets
+            const fundId = document.getElementById('fundId').value;
+            if (fundId) {
+                loadHistoricalChart(fundId, currentPeriod);
+                loadTradingViewWidgets(fundId);
+            }
+        };
     </script>
 </body>
 

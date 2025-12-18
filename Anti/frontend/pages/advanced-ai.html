@@ -102,6 +102,44 @@
             font-size: 0.7rem;
             color: var(--gray-600)
         }
+
+        /* Autocomplete Styles */
+        .autocomplete-suggestions {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background: var(--white);
+            border: 1px solid var(--gray-300);
+            border-top: none;
+            border-radius: 0 0 6px 6px;
+            max-height: 200px;
+            overflow-y: auto;
+            z-index: 1000;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .autocomplete-item {
+            padding: 8px 12px;
+            cursor: pointer;
+            border-bottom: 1px solid var(--gray-100);
+        }
+
+        .autocomplete-item:hover,
+        .autocomplete-item.selected {
+            background: var(--gray-50);
+        }
+
+        .autocomplete-item .fund-name {
+            font-weight: 500;
+            color: var(--gov-navy);
+            font-size: 0.8rem;
+        }
+
+        .autocomplete-item .fund-info {
+            font-size: 0.7rem;
+            color: var(--gray-500);
+        }
     </style>
 </head>
 
@@ -168,11 +206,14 @@
                     <h3 class="card-title"><img src="https://cdn-icons-png.flaticon.com/512/3208/3208726.png" alt=""
                             style="width:20px;height:20px;vertical-align:middle;margin-right:8px">Analysis Tools</h3>
                     <form id="analysisForm">
-                        <div class="form-group"><label for="fundId"><img
+                        <div class="form-group" style="position:relative"><label for="fundSearch"><img
                                     src="https://cdn-icons-png.flaticon.com/512/2920/2920293.png" alt=""
-                                    style="width:14px;height:14px;vertical-align:middle;margin-right:5px">Fund
-                                ID</label><input type="number" id="fundId" class="form-input" value="1" min="1"
-                                max="790"></div>
+                                    style="width:14px;height:14px;vertical-align:middle;margin-right:5px">Search Mutual
+                                Fund</label><input type="text" id="fundSearch" class="form-input"
+                                placeholder="Type fund name..." autocomplete="off"><input type="hidden" id="fundId"
+                                value="">
+                            <div id="fundSuggestions" class="autocomplete-suggestions" style="display:none"></div>
+                        </div>
                         <div class="form-group"><label for="analysisType"><img
                                     src="https://cdn-icons-png.flaticon.com/512/2103/2103633.png" alt=""
                                     style="width:14px;height:14px;vertical-align:middle;margin-right:5px">Analysis
@@ -228,13 +269,74 @@
     </footer>
     <script src="../js/page-common.js"></script>
     <script>
-        async function pageInit() { document.getElementById('analysisForm').addEventListener('submit', async e => { e.preventDefault(); await runAnalysis() }) }
+        let allFunds = [];
+        let selectedIndex = -1;
+
+        async function pageInit() {
+            await loadFunds();
+            setupAutocomplete();
+            document.getElementById('analysisForm').addEventListener('submit', async e => { e.preventDefault(); await runAnalysis() });
+        }
+
+        async function loadFunds() {
+            try {
+                const r = await window.pageCommon.apiGet('/api/funds?limit=1000');
+                if (r.success && r.data) allFunds = r.data;
+            } catch (e) { console.error('Failed to load funds:', e); }
+        }
+
+        function setupAutocomplete() {
+            const input = document.getElementById('fundSearch');
+            const suggestions = document.getElementById('fundSuggestions');
+            let timer;
+
+            input.addEventListener('input', function () {
+                clearTimeout(timer);
+                timer = setTimeout(() => {
+                    const q = this.value.toLowerCase().trim();
+                    if (q.length < 2) { suggestions.style.display = 'none'; return; }
+                    const matches = allFunds.filter(f => f.scheme_name.toLowerCase().includes(q) || f.amc_name.toLowerCase().includes(q)).slice(0, 8);
+                    if (matches.length > 0) { renderSuggestions(matches); suggestions.style.display = 'block'; }
+                    else { suggestions.style.display = 'none'; }
+                }, 200);
+            });
+
+            input.addEventListener('keydown', function (e) {
+                const items = suggestions.querySelectorAll('.autocomplete-item');
+                if (e.key === 'ArrowDown') { e.preventDefault(); selectedIndex = Math.min(selectedIndex + 1, items.length - 1); updateSelected(items); }
+                else if (e.key === 'ArrowUp') { e.preventDefault(); selectedIndex = Math.max(selectedIndex - 1, 0); updateSelected(items); }
+                else if (e.key === 'Enter' && selectedIndex >= 0) { e.preventDefault(); items[selectedIndex]?.click(); }
+                else if (e.key === 'Escape') { suggestions.style.display = 'none'; selectedIndex = -1; }
+            });
+
+            document.addEventListener('click', e => { if (!input.contains(e.target) && !suggestions.contains(e.target)) { suggestions.style.display = 'none'; selectedIndex = -1; } });
+        }
+
+        function renderSuggestions(funds) {
+            const div = document.getElementById('fundSuggestions');
+            selectedIndex = -1;
+            div.innerHTML = funds.map(f => `<div class="autocomplete-item" data-id="${f.fund_id}" data-name="${f.scheme_name}"><div class="fund-name">${f.scheme_name}</div><div class="fund-info">${f.amc_name} | ${f.category}</div></div>`).join('');
+            div.querySelectorAll('.autocomplete-item').forEach(item => {
+                item.addEventListener('click', function () {
+                    document.getElementById('fundId').value = this.dataset.id;
+                    document.getElementById('fundSearch').value = this.dataset.name;
+                    div.style.display = 'none';
+                    selectedIndex = -1;
+                });
+            });
+        }
+
+        function updateSelected(items) { items.forEach((item, i) => { item.classList.toggle('selected', i === selectedIndex); if (i === selectedIndex) item.scrollIntoView({ block: 'nearest' }); }); }
+
         async function runAnalysis() {
-            const fundId = document.getElementById('fundId').value; const type = document.getElementById('analysisType').value;
+            const fundId = document.getElementById('fundId').value;
+            const type = document.getElementById('analysisType').value;
+            if (!fundId) { alert('Please select a fund'); return; }
             document.getElementById('resultsContent').innerHTML = '<div class="loading"></div>';
             const r = await window.pageCommon.apiGet(`/api/advanced/${fundId}/${type}`);
             if (r.success && r.data) { renderResults(r.data, type) } else { window.pageCommon.showError('resultsContent', r.error || 'Failed to run analysis') }
         }
+
         function renderResults(data, type) {
             let html = `<div style="margin-bottom:20px"><h4 style="color:var(--gov-navy)">${data.fund?.scheme_name || 'Fund Analysis'}</h4><p style="color:var(--gray-500);font-size:0.85rem">Analysis Type: ${type.replace('_', ' ').toUpperCase()}</p></div>`;
             if (data.ml_prediction) { html += `<h5 style="margin:15px 0 10px;font-size:0.9rem"><img src="https://cdn-icons-png.flaticon.com/512/2103/2103633.png" style="width:16px;height:16px;vertical-align:middle;margin-right:5px">ML Prediction</h5><div class="metric-grid"><div class="metric-box"><div class="metric-value">${data.ml_prediction.predicted_return?.toFixed(2) || '-'}%</div><div class="metric-label">Predicted Return</div></div><div class="metric-box"><div class="metric-value">${data.ml_prediction.confidence?.toFixed(0) || '-'}%</div><div class="metric-label">Confidence</div></div><div class="metric-box"><div class="metric-value">${data.ml_prediction.signal || '-'}</div><div class="metric-label">Signal</div></div></div>` }

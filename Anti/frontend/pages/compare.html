@@ -68,6 +68,66 @@
             text-align: left;
             background: var(--gray-50)
         }
+
+        /* Autocomplete Styles */
+        .autocomplete-suggestions {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background: var(--white);
+            border: 1px solid var(--gray-300);
+            border-radius: 0 0 6px 6px;
+            max-height: 200px;
+            overflow-y: auto;
+            z-index: 1000;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .autocomplete-item {
+            padding: 8px 12px;
+            cursor: pointer;
+            border-bottom: 1px solid var(--gray-100);
+        }
+
+        .autocomplete-item:hover {
+            background: var(--gray-50);
+        }
+
+        .autocomplete-item .fund-name {
+            font-weight: 500;
+            color: var(--gov-navy);
+            font-size: 0.8rem;
+        }
+
+        .autocomplete-item .fund-info {
+            font-size: 0.7rem;
+            color: var(--gray-500);
+        }
+
+        .selected-funds {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
+            margin-top: 8px;
+        }
+
+        .fund-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            background: rgba(0, 51, 102, 0.1);
+            color: var(--gov-navy);
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 0.75rem;
+        }
+
+        .fund-tag .remove {
+            cursor: pointer;
+            color: #F44336;
+            font-weight: bold;
+        }
     </style>
 </head>
 
@@ -133,13 +193,17 @@
                 <h3 class="card-title"><img src="https://cdn-icons-png.flaticon.com/512/3208/3208726.png" alt="Select"
                         style="width:20px;height:20px;vertical-align:middle;margin-right:8px">Select Funds to Compare
                 </h3>
-                <p class="card-description">Enter fund IDs (comma-separated, max 5 funds)</p>
+                <p class="card-description">Search and select funds to compare (2-5 funds)</p>
                 <form id="compareForm" class="filters-container" style="margin-bottom:0">
-                    <div class="filter-group" style="flex:3"><label for="fundIds"><img
+                    <div class="filter-group" style="flex:3;position:relative"><label for="fundSearch"><img
                                 src="https://cdn-icons-png.flaticon.com/512/2920/2920293.png" alt="Fund"
-                                style="width:14px;height:14px;vertical-align:middle;margin-right:5px">Fund
-                            IDs</label><input type="text" id="fundIds" class="form-input"
-                            placeholder="e.g., 1, 5, 10, 25, 50" value="1, 5, 10"></div>
+                                style="width:14px;height:14px;vertical-align:middle;margin-right:5px">Search
+                            Funds</label><input type="text" id="fundSearch" class="form-input"
+                            placeholder="Type fund name to add..." autocomplete="off">
+                        <input type="hidden" id="fundIds" value="">
+                        <div id="fundSuggestions" class="autocomplete-suggestions" style="display:none"></div>
+                        <div id="selectedFunds" class="selected-funds"></div>
+                    </div>
                     <button type="submit" class="btn btn-primary"><img
                             src="https://cdn-icons-png.flaticon.com/512/1055/1055663.png" alt="Compare"
                             style="width:16px;height:16px">Compare</button>
@@ -186,24 +250,276 @@
     <script src="../js/page-common.js"></script>
     <script>
         let returnsChart = null, radarChart = null, scatterChart = null;
-        async function pageInit() { document.getElementById('compareForm').addEventListener('submit', async e => { e.preventDefault(); await compareFunds() }) }
-        async function compareFunds() {
-            const ids = document.getElementById('fundIds').value.split(',').map(id => parseInt(id.trim())).filter(id => !isNaN(id)).slice(0, 5);
-            if (ids.length < 2) { alert('Please enter at least 2 fund IDs'); return }
-            const funds = []; for (const id of ids) { const r = await window.pageCommon.apiGet(`/api/fund/${id}`); if (r.success && r.data) funds.push(r.data) }
-            if (funds.length < 2) { window.pageCommon.showError('resultsSection', 'Could not load funds'); return }
-            document.getElementById('resultsSection').style.display = 'block'; renderTable(funds); renderCharts(funds)
+        let allFunds = [];
+        let selectedFundIds = [];
+
+        async function pageInit() {
+            await loadFunds();
+            setupAutocomplete();
+            document.getElementById('compareForm').addEventListener('submit', async e => { e.preventDefault(); await compareFunds() });
         }
+
+        async function loadFunds() {
+            try {
+                const r = await window.pageCommon.apiGet('/api/funds?limit=1000');
+                if (r.success && r.data) allFunds = r.data;
+            } catch (e) { console.error('Failed to load funds:', e); }
+        }
+
+        function setupAutocomplete() {
+            const input = document.getElementById('fundSearch');
+            const suggestions = document.getElementById('fundSuggestions');
+            let timer;
+
+            input.addEventListener('input', function () {
+                clearTimeout(timer);
+                timer = setTimeout(() => {
+                    const q = this.value.toLowerCase().trim();
+                    if (q.length < 2) { suggestions.style.display = 'none'; return; }
+                    if (selectedFundIds.length >= 5) { suggestions.style.display = 'none'; return; }
+                    const matches = allFunds.filter(f => !selectedFundIds.includes(f.fund_id) && (f.scheme_name.toLowerCase().includes(q) || f.amc_name.toLowerCase().includes(q))).slice(0, 8);
+                    if (matches.length > 0) { renderSuggestions(matches); suggestions.style.display = 'block'; }
+                    else { suggestions.style.display = 'none'; }
+                }, 200);
+            });
+
+            input.addEventListener('keydown', function (e) {
+                if (e.key === 'Escape') { suggestions.style.display = 'none'; }
+            });
+
+            document.addEventListener('click', e => { if (!input.contains(e.target) && !suggestions.contains(e.target)) { suggestions.style.display = 'none'; } });
+        }
+
+        function renderSuggestions(funds) {
+            const div = document.getElementById('fundSuggestions');
+            div.innerHTML = funds.map(f => `<div class="autocomplete-item" data-id="${f.fund_id}" data-name="${f.scheme_name}"><div class="fund-name">${f.scheme_name}</div><div class="fund-info">${f.amc_name} | ${f.category}</div></div>`).join('');
+            div.querySelectorAll('.autocomplete-item').forEach(item => {
+                item.addEventListener('click', function () {
+                    addFund(parseInt(this.dataset.id), this.dataset.name);
+                    document.getElementById('fundSearch').value = '';
+                    div.style.display = 'none';
+                });
+            });
+        }
+
+        function addFund(id, name) {
+            if (!selectedFundIds.includes(id) && selectedFundIds.length < 5) {
+                selectedFundIds.push(id);
+                updateSelectedFundsDisplay();
+                document.getElementById('fundIds').value = selectedFundIds.join(',');
+            }
+        }
+
+        function removeFund(id) {
+            selectedFundIds = selectedFundIds.filter(fid => fid !== id);
+            updateSelectedFundsDisplay();
+            document.getElementById('fundIds').value = selectedFundIds.join(',');
+        }
+
+        function updateSelectedFundsDisplay() {
+            const container = document.getElementById('selectedFunds');
+            container.innerHTML = selectedFundIds.map(id => {
+                const fund = allFunds.find(f => f.fund_id === id);
+                return `<span class="fund-tag">${fund?.scheme_name?.substring(0, 20) || 'Fund ' + id}<span class="remove" onclick="removeFund(${id})">×</span></span>`;
+            }).join('');
+        }
+
+        async function compareFunds() {
+            if (selectedFundIds.length < 2) { alert('Please select at least 2 funds'); return }
+            const funds = [];
+            for (const id of selectedFundIds) {
+                const r = await window.pageCommon.apiGet(`/api/fund/${id}`);
+                if (r.success && r.data) funds.push(r.data);
+            }
+            if (funds.length < 2) { window.pageCommon.showError('resultsSection', 'Could not load funds'); return }
+            document.getElementById('resultsSection').style.display = 'block';
+            renderTable(funds);
+            renderCharts(funds);
+        }
+
         function renderTable(funds) {
             const rows = [{ label: 'Scheme', key: f => f.scheme_name?.substring(0, 25) || '-' }, { label: 'AMC', key: f => f.amc_name?.substring(0, 20) || '-' }, { label: 'Category', key: f => f.category || '-' }, { label: 'Rating', key: f => f.fund_details?.rating || '-' }, { label: '1Y Return', key: f => `${f.returns?.['1yr'] || '-'}%` }, { label: '3Y Return', key: f => `${f.returns?.['3yr'] || '-'}%` }, { label: '5Y Return', key: f => `${f.returns?.['5yr'] || '-'}%` }, { label: 'Sharpe', key: f => f.risk_metrics?.sharpe || '-' }, { label: 'Risk Level', key: f => f.risk_metrics?.risk_level || '-' }, { label: 'Expense Ratio', key: f => `${f.fund_details?.expense_ratio || '-'}%` }];
             const html = `<thead><tr><th>Metric</th>${funds.map((f, i) => `<th style="background:${['#003366', '#FF9933', '#138808', '#1e88e5', '#7c3aed'][i]};color:#fff">Fund ${i + 1}</th>`).join('')}</tr></thead><tbody>${rows.map(r => `<tr><td><strong>${r.label}</strong></td>${funds.map(f => `<td>${r.key(f)}</td>`).join('')}</tr>`).join('')}</tbody>`;
             document.getElementById('compareTable').innerHTML = html
         }
+
         function renderCharts(funds) {
-            const colors = ['#003366', '#FF9933', '#138808', '#1e88e5', '#7c3aed']; const labels = funds.map((f, i) => `Fund ${i + 1}`);
-            if (returnsChart) returnsChart.destroy(); returnsChart = new Chart(document.getElementById('returnsChart'), { type: 'bar', data: { labels: ['1Y Return', '3Y Return', '5Y Return'], datasets: funds.map((f, i) => ({ label: labels[i], data: [f.returns?.['1yr'] || 0, f.returns?.['3yr'] || 0, f.returns?.['5yr'] || 0], backgroundColor: colors[i] })) }, options: { responsive: true, plugins: { legend: { position: 'top' } } } });
-            if (radarChart) radarChart.destroy(); radarChart = new Chart(document.getElementById('radarChart'), { type: 'radar', data: { labels: ['Return', 'Sharpe', 'Rating', 'Size', 'Age'], datasets: funds.map((f, i) => ({ label: labels[i], data: [Math.min((f.returns?.['1yr'] || 0) / 5, 10), (f.risk_metrics?.sharpe || 0) * 3, (f.fund_details?.rating || 0) * 2, Math.min((f.fund_details?.fund_size_cr || 0) / 1000, 10), Math.min((f.fund_details?.fund_age_yr || 0), 10)], borderColor: colors[i], backgroundColor: `${colors[i]}33` })) }, options: { responsive: true, scales: { r: { beginAtZero: true, max: 10 } } } });
-            if (scatterChart) scatterChart.destroy(); scatterChart = new Chart(document.getElementById('scatterChart'), { type: 'scatter', data: { datasets: funds.map((f, i) => ({ label: labels[i], data: [{ x: f.risk_metrics?.std_dev || 0, y: f.returns?.['1yr'] || 0 }], pointRadius: 12, pointBackgroundColor: colors[i] })) }, options: { responsive: true, plugins: { legend: { position: 'top' } }, scales: { x: { title: { display: true, text: 'Risk (Std Dev %)' } }, y: { title: { display: true, text: 'Return (%)' } } } } })
+            const colors = ['#003366', '#FF9933', '#138808', '#1e88e5', '#7c3aed'];
+            const fundNames = funds.map(f => f.scheme_name?.substring(0, 15) || 'Unknown');
+            const labels = funds.map((f, i) => fundNames[i]);
+
+            // Returns Comparison Bar Chart - Enhanced
+            if (returnsChart) returnsChart.destroy();
+            returnsChart = new Chart(document.getElementById('returnsChart'), {
+                type: 'bar',
+                data: {
+                    labels: ['1Y Return', '3Y Return', '5Y Return'],
+                    datasets: funds.map((f, i) => ({
+                        label: fundNames[i],
+                        data: [f.returns?.['1yr'] || 0, f.returns?.['3yr'] || 0, f.returns?.['5yr'] || 0],
+                        backgroundColor: colors[i],
+                        borderColor: colors[i],
+                        borderWidth: 2,
+                        borderRadius: 4
+                    }))
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: { position: 'top', labels: { boxWidth: 12, font: { size: 10 } } },
+                        tooltip: {
+                            callbacks: {
+                                label: ctx => `${ctx.dataset.label}: ${ctx.raw.toFixed(2)}%`
+                            }
+                        }
+                    },
+                    scales: {
+                        y: {
+                            title: { display: true, text: 'Return (%)', font: { weight: 'bold' } },
+                            grid: { color: 'rgba(0,0,0,0.05)' }
+                        },
+                        x: { grid: { display: false } }
+                    }
+                }
+            });
+
+            // Multi-Dimensional Radar Chart - Enhanced
+            if (radarChart) radarChart.destroy();
+            radarChart = new Chart(document.getElementById('radarChart'), {
+                type: 'radar',
+                data: {
+                    labels: ['Return', 'Sharpe', 'Rating', 'Fund Size', 'Experience'],
+                    datasets: funds.map((f, i) => ({
+                        label: fundNames[i],
+                        data: [
+                            Math.min((f.returns?.['1yr'] || 0) / 5, 10),
+                            (f.risk_metrics?.sharpe || 0) * 3,
+                            (f.fund_details?.rating || 0) * 2,
+                            Math.min((f.fund_details?.fund_size_cr || 0) / 1000, 10),
+                            Math.min((f.fund_details?.fund_age_yr || 0), 10)
+                        ],
+                        borderColor: colors[i],
+                        backgroundColor: `${colors[i]}25`,
+                        borderWidth: 2,
+                        pointBackgroundColor: colors[i],
+                        pointBorderColor: '#fff',
+                        pointBorderWidth: 2,
+                        pointRadius: 5
+                    }))
+                },
+                options: {
+                    responsive: true,
+                    plugins: { legend: { position: 'top', labels: { boxWidth: 12, font: { size: 10 } } } },
+                    scales: {
+                        r: {
+                            beginAtZero: true,
+                            max: 10,
+                            grid: { color: 'rgba(0,51,102,0.1)' },
+                            angleLines: { color: 'rgba(0,51,102,0.1)' },
+                            pointLabels: { font: { size: 11, weight: '500' } }
+                        }
+                    }
+                }
+            });
+
+            // Risk-Return Scatter Chart - Enhanced with quadrants and labels
+            if (scatterChart) scatterChart.destroy();
+            const scatterData = funds.map((f, i) => ({
+                x: f.risk_metrics?.std_dev || 0,
+                y: f.returns?.['1yr'] || 0,
+                fundName: fundNames[i],
+                sharpe: f.risk_metrics?.sharpe || 0
+            }));
+
+            scatterChart = new Chart(document.getElementById('scatterChart'), {
+                type: 'scatter',
+                data: {
+                    datasets: funds.map((f, i) => ({
+                        label: fundNames[i],
+                        data: [scatterData[i]],
+                        pointRadius: 14,
+                        pointHoverRadius: 18,
+                        pointBackgroundColor: colors[i],
+                        pointBorderColor: '#fff',
+                        pointBorderWidth: 3,
+                        pointStyle: 'circle'
+                    }))
+                },
+                plugins: [{
+                    id: 'quadrants',
+                    beforeDraw: (chart) => {
+                        const { ctx, chartArea: { left, top, right, bottom }, scales: { x, y } } = chart;
+                        const midX = x.getPixelForValue((x.max + x.min) / 2);
+                        const midY = y.getPixelForValue((y.max + y.min) / 2);
+
+                        // Top-left: Low Risk, High Return (Best)
+                        ctx.fillStyle = 'rgba(19, 136, 8, 0.08)';
+                        ctx.fillRect(left, top, midX - left, midY - top);
+
+                        // Top-right: High Risk, High Return
+                        ctx.fillStyle = 'rgba(255, 153, 51, 0.08)';
+                        ctx.fillRect(midX, top, right - midX, midY - top);
+
+                        // Bottom-left: Low Risk, Low Return
+                        ctx.fillStyle = 'rgba(30, 136, 229, 0.08)';
+                        ctx.fillRect(left, midY, midX - left, bottom - midY);
+
+                        // Bottom-right: High Risk, Low Return (Worst)
+                        ctx.fillStyle = 'rgba(244, 67, 54, 0.08)';
+                        ctx.fillRect(midX, midY, right - midX, bottom - midY);
+                    }
+                }, {
+                    id: 'pointLabels',
+                    afterDatasetsDraw: (chart) => {
+                        const ctx = chart.ctx;
+                        chart.data.datasets.forEach((dataset, i) => {
+                            const meta = chart.getDatasetMeta(i);
+                            meta.data.forEach((point, j) => {
+                                const data = dataset.data[j];
+                                ctx.fillStyle = '#333';
+                                ctx.font = 'bold 10px sans-serif';
+                                ctx.textAlign = 'center';
+                                ctx.fillText(`F${i + 1}`, point.x, point.y + 4);
+                            });
+                        });
+                    }
+                }],
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: { position: 'top', labels: { boxWidth: 12, font: { size: 10 } } },
+                        tooltip: {
+                            backgroundColor: 'rgba(0, 51, 102, 0.95)',
+                            titleFont: { size: 13, weight: 'bold' },
+                            bodyFont: { size: 12 },
+                            padding: 12,
+                            displayColors: false,
+                            callbacks: {
+                                title: (items) => items[0].dataset.label,
+                                label: (ctx) => {
+                                    const d = ctx.raw;
+                                    return [
+                                        `Risk (Std Dev): ${d.x.toFixed(2)}%`,
+                                        `Return (1Y): ${d.y.toFixed(2)}%`,
+                                        `Sharpe Ratio: ${d.sharpe?.toFixed(2) || 'N/A'}`
+                                    ];
+                                }
+                            }
+                        }
+                    },
+                    scales: {
+                        x: {
+                            title: { display: true, text: 'Risk (Std Dev %)', font: { size: 12, weight: 'bold' } },
+                            grid: { color: 'rgba(0,0,0,0.05)' },
+                            min: 0
+                        },
+                        y: {
+                            title: { display: true, text: 'Return (%)', font: { size: 12, weight: 'bold' } },
+                            grid: { color: 'rgba(0,0,0,0.05)' }
+                        }
+                    }
+                }
+            });
         }
     </script>
 </body>

@@ -496,6 +496,30 @@ def get_fund(fund_id):
     })
 
 
+@app.route('/api/fund/<int:fund_id>/history')
+def get_fund_history(fund_id):
+    """Get historical NAV data for charts with period filtering"""
+    period = request.args.get('period', '1Y').upper()
+
+    # Validate period
+    valid_periods = ['1M', '3M', '6M', '1Y', '3Y', '5Y', 'MAX']
+    if period not in valid_periods:
+        period = '1Y'
+
+    history = data_processor.get_historical_nav(fund_id, period)
+
+    if 'error' in history:
+        return jsonify({
+            'success': False,
+            'error': history['error']
+        }), 404
+
+    return jsonify({
+        'success': True,
+        'data': history
+    })
+
+
 @app.route('/api/categories')
 def get_categories():
     """Get all available fund categories"""

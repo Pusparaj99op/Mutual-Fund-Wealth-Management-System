@@ -42,15 +42,57 @@ function updateNavForLoggedInUser(user) {
     const navAuth = document.getElementById('navAuth');
     if (!navAuth) return;
 
+    const initials = getInitials(user.fullName || user.firstName || 'User');
+    const displayName = user.fullName || user.firstName || 'User';
+    const email = user.email || '';
+
     navAuth.innerHTML = `
         <div class="nav-user-info">
-            <a href="/profile.html" class="nav-user-name" style="text-decoration: none; cursor: pointer;">
-                <img src="https://cdn-icons-png.flaticon.com/512/1077/1077114.png" alt="User" style="width: 16px; height: 16px; vertical-align: middle; margin-right: 5px;">
-                ${user.fullName || user.firstName}
-            </a>
-            <button class="btn-nav-logout" onclick="logout()">Logout</button>
+            <div class="nav-user-profile">
+                <div class="nav-user-avatar">${initials}</div>
+                <div class="nav-user-details">
+                    <span class="nav-user-name">${displayName}</span>
+                    <span class="nav-user-role">Investor</span>
+                </div>
+                <span class="nav-user-dropdown-icon">▼</span>
+            </div>
+            <div class="nav-user-dropdown">
+                <div class="nav-dropdown-header">
+                    <div class="avatar-large">${initials}</div>
+                    <div class="user-fullname">${displayName}</div>
+                    <div class="user-email">${email}</div>
+                </div>
+                <div class="nav-dropdown-menu">
+                    <a href="/profile.html" class="nav-dropdown-item">
+                        <img src="https://cdn-icons-png.flaticon.com/512/1077/1077114.png" alt="Profile">
+                        My Profile
+                    </a>
+                    <a href="dashboard.html" class="nav-dropdown-item">
+                        <img src="https://cdn-icons-png.flaticon.com/512/1828/1828765.png" alt="Dashboard">
+                        Dashboard
+                    </a>
+                    <a href="portfolio.html" class="nav-dropdown-item">
+                        <img src="https://cdn-icons-png.flaticon.com/512/2920/2920293.png" alt="Portfolio">
+                        My Portfolio
+                    </a>
+                    <div class="nav-dropdown-divider"></div>
+                    <button class="nav-dropdown-item logout" onclick="logout()">
+                        <img src="https://cdn-icons-png.flaticon.com/512/1286/1286853.png" alt="Logout">
+                        Sign Out
+                    </button>
+                </div>
+            </div>
         </div>
     `;
+}
+
+function getInitials(name) {
+    if (!name) return 'U';
+    const parts = name.trim().split(' ').filter(p => p.length > 0);
+    if (parts.length >= 2) {
+        return (parts[0][0] + parts[parts.length - 1][0]).toUpperCase();
+    }
+    return parts[0].substring(0, 2).toUpperCase();
 }
 
 async function logout() {

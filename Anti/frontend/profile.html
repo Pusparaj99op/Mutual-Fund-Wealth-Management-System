@@ -453,7 +453,10 @@
     </style>
 </head>
 
-<body class="auth-page">
+<body>
+    <!-- Skip Navigation -->
+    <a href="#main-content" class="skip-nav">Skip to main content</a>
+
     <!-- Tricolor Strip Banner -->
     <div class="top-banner"></div>
 
@@ -474,230 +477,343 @@
         </div>
     </div>
 
-    <!-- Main Container -->
-    <div class="profile-container">
-        <a href="/" class="back-link">← Back to Dashboard</a>
-
-        <!-- Alert Container -->
-        <div id="alertContainer"></div>
-
-        <!-- Profile Header -->
-        <div class="profile-header">
-            <div class="profile-avatar" id="avatar">U</div>
-            <div class="profile-info">
-                <h1 id="fullName">Loading...</h1>
-                <p id="email">Loading...</p>
-            </div>
-        </div>
-
-        <!-- Profile Tabs -->
-        <div class="profile-tabs">
-            <button class="profile-tab active" data-tab="personal" onclick="switchTab('personal')">👤 Personal
-                Info</button>
-            <button class="profile-tab" data-tab="investment" onclick="switchTab('investment')">📊 Investment
-                Profile</button>
-            <button class="profile-tab" data-tab="broker" onclick="switchTab('broker')">🏦 Broker</button>
-            <button class="profile-tab" data-tab="preferences" onclick="switchTab('preferences')">⚙️ MF
-                Preferences</button>
-        </div>
-
-        <!-- Personal Info Section -->
-        <div class="profile-section active" id="section-personal">
-            <h2>Personal Information / व्यक्तिगत जानकारी</h2>
-
-            <div class="view-mode" id="personalView">
-                <div class="info-grid">
-                    <div class="info-item">
-                        <label>First Name / प्रथम नाम</label>
-                        <div class="value" id="firstName">-</div>
-                    </div>
-                    <div class="info-item">
-                        <label>Last Name / उपनाम</label>
-                        <div class="value" id="lastName">-</div>
-                    </div>
-                    <div class="info-item">
-                        <label>Email / ईमेल</label>
-                        <div class="value" id="emailDisplay">-</div>
-                    </div>
-                    <div class="info-item">
-                        <label>Mobile / मोबाइल</label>
-                        <div class="value" id="mobile">-</div>
-                    </div>
-                    <div class="info-item">
-                        <label>PAN Card / पैन कार्ड</label>
-                        <div class="value" id="panCard">Not Provided</div>
-                    </div>
-                    <div class="info-item">
-                        <label>Member Since</label>
-                        <div class="value" id="memberSince">-</div>
-                    </div>
+    <!-- Main Header -->
+    <header class="main-header">
+        <div class="container">
+            <div class="header-left">
+                <div class="emblem">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/5/55/Emblem_of_India.svg"
+                        alt="Emblem of India" width="65" height="75">
                 </div>
-                <div class="save-btn-container">
-                    <button class="btn btn-primary" onclick="toggleEdit('personal')">✏️ Edit Personal Info</button>
+                <div class="header-text">
+                    <h1 class="portal-title">FIMFP</h1>
+                    <p class="portal-subtitle">Federal Indian Mutual Fund Portal</p>
+                    <p class="portal-subtitle-hindi">भारतीय संघीय म्यूचुअल फंड पोर्टल</p>
                 </div>
             </div>
-
-            <div class="edit-form" id="personalEdit">
-                <div class="info-grid">
-                    <div class="form-group">
-                        <label for="editFirstName">First Name <span class="required">*</span></label>
-                        <input type="text" id="editFirstName" class="form-input" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="editLastName">Last Name <span class="required">*</span></label>
-                        <input type="text" id="editLastName" class="form-input" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="editMobile">Mobile Number <span class="required">*</span></label>
-                        <input type="tel" id="editMobile" class="form-input" pattern="[0-9]{10}" maxlength="10">
-                    </div>
-                    <div class="form-group">
-                        <label for="editPanCard">PAN Card</label>
-                        <input type="text" id="editPanCard" class="form-input" pattern="[A-Z]{5}[0-9]{4}[A-Z]{1}"
-                            maxlength="10" style="text-transform: uppercase;">
-                    </div>
-                </div>
-                <div class="save-btn-container">
-                    <button class="btn btn-outline" onclick="toggleEdit('personal')">Cancel</button>
-                    <button class="btn btn-primary" onclick="savePersonal()">💾 Save Changes</button>
+            <div class="header-right">
+                <div class="digital-india">
+                    <span class="di-text">An Initiative of</span>
+                    <span class="di-logo">Team CoDevian</span>
                 </div>
             </div>
         </div>
+    </header>
 
-        <!-- Investment Profile Section -->
-        <div class="profile-section" id="section-investment">
-            <h2>Investment Profile / निवेश प्रोफाइल</h2>
-
-            <div class="view-mode" id="investmentView">
-                <div class="info-grid">
-                    <div class="info-item">
-                        <label>Age / उम्र</label>
-                        <div class="value" id="age">Not Set</div>
-                    </div>
-                    <div class="info-item">
-                        <label>Annual Income / वार्षिक आय</label>
-                        <div class="value" id="annualIncome">Not Set</div>
-                    </div>
-                    <div class="info-item">
-                        <label>Investment Experience</label>
-                        <div class="value" id="experience">Not Set</div>
-                    </div>
-                    <div class="info-item">
-                        <label>Risk Tolerance</label>
-                        <div class="value" id="riskTolerance">Not Set</div>
-                    </div>
-                </div>
-                <div class="save-btn-container">
-                    <button class="btn btn-primary" onclick="toggleEdit('investment')">✏️ Edit Investment
-                        Profile</button>
-                </div>
+    <!-- Main Navigation -->
+    <nav class="main-nav" role="navigation">
+        <div class="container">
+            <ul class="nav-list">
+                <li><a href="/" class="nav-link">Home</a></li>
+                <li><a href="pages/browse-funds.html" class="nav-link">Browse Funds</a></li>
+                <li><a href="pages/ai-analysis.html" class="nav-link">AI Analysis</a></li>
+                <li><a href="pages/recommendations.html" class="nav-link">Recommendations</a></li>
+                <li><a href="pages/portfolio.html" class="nav-link">Portfolio</a></li>
+                <li><a href="pages/compare.html" class="nav-link">Compare</a></li>
+                <li><a href="pages/dashboard.html" class="nav-link">Dashboard</a></li>
+            </ul>
+            <div class="nav-auth" id="navAuth">
+                <a href="login.html" class="btn btn-nav-login">
+                    <img src="https://cdn-icons-png.flaticon.com/512/3064/3064197.png" alt="Login"
+                        style="width: 16px; height: 16px;">
+                    Login
+                </a>
             </div>
+        </div>
+    </nav>
 
-            <div class="edit-form" id="investmentEdit">
-                <div class="info-grid">
-                    <div class="form-group">
-                        <label for="editAge">Age</label>
-                        <input type="number" id="editAge" class="form-input" min="18" max="100">
-                    </div>
-                    <div class="form-group">
-                        <label for="editIncome">Annual Income</label>
-                        <select id="editIncome" class="form-select">
-                            <option value="">Select income range</option>
-                            <option value="300000">Below ₹3 Lakh</option>
-                            <option value="500000">₹3 - 5 Lakh</option>
-                            <option value="1000000">₹5 - 10 Lakh</option>
-                            <option value="2000000">₹10 - 20 Lakh</option>
-                            <option value="5000000">₹20 - 50 Lakh</option>
-                            <option value="10000000">Above ₹50 Lakh</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="editExperience">Investment Experience</label>
-                        <select id="editExperience" class="form-select">
-                            <option value="beginner">Beginner (0-2 years)</option>
-                            <option value="intermediate">Intermediate (2-5 years)</option>
-                            <option value="expert">Expert (5+ years)</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label>Risk Tolerance</label>
-                        <div class="risk-slider-container">
-                            <input type="range" id="editRisk" class="risk-slider" min="1" max="5" value="3">
-                            <div class="risk-labels">
-                                <span>Conservative</span>
-                                <span>Moderate</span>
-                                <span>Aggressive</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="save-btn-container">
-                    <button class="btn btn-outline" onclick="toggleEdit('investment')">Cancel</button>
-                    <button class="btn btn-primary" onclick="saveInvestment()">💾 Save Changes</button>
+    <!-- Page Header Banner -->
+    <div class="page-header"
+        style="background: linear-gradient(135deg, var(--gov-navy) 0%, var(--gov-navy-dark) 100%); color: var(--white); padding: 25px 0; margin-bottom: 0;">
+        <div class="container">
+            <div style="display: flex; align-items: center; gap: 15px;">
+                <img src="https://cdn-icons-png.flaticon.com/512/1077/1077114.png" alt="Profile"
+                    style="width: 48px; height: 48px; filter: brightness(0) invert(1);">
+                <div>
+                    <h1 style="font-size: 1.6rem; font-weight: 700; margin: 0;">My Profile / मेरा प्रोफाइल</h1>
+                    <p style="font-size: 0.9rem; opacity: 0.9; margin-top: 4px;">Manage your personal information,
+                        investment profile, and preferences</p>
                 </div>
             </div>
         </div>
-
-        <!-- Broker Section -->
-        <div class="profile-section" id="section-broker">
-            <h2>Broker Information / ब्रोकर जानकारी</h2>
-
-            <div id="brokerContent">
-                <div class="broker-display" id="brokerDisplay" style="display: none;">
-                    <div class="broker-logo" id="brokerLogo">Z</div>
-                    <div class="broker-details">
-                        <h4 id="brokerName">Zerodha</h4>
-                        <p id="brokerDemat">Demat: Not linked</p>
-                    </div>
-                </div>
-                <p id="noBroker" style="color: var(--gray-500);">No broker selected. <a href="/onboarding">Complete your
-                        profile</a></p>
-            </div>
-
-            <div class="save-btn-container">
-                <a href="/onboarding" class="btn btn-outline">🔄 Change Broker</a>
-            </div>
-        </div>
-
-        <!-- MF Preferences Section -->
-        <div class="profile-section" id="section-preferences">
-            <h2>Mutual Fund Preferences / म्यूचुअल फंड प्राथमिकताएं</h2>
-
-            <div class="info-grid">
-                <div class="info-item">
-                    <label>Investment Goal</label>
-                    <div class="value" id="investmentGoal">Not Set</div>
-                </div>
-                <div class="info-item">
-                    <label>Investment Horizon</label>
-                    <div class="value" id="investmentHorizon">Not Set</div>
-                </div>
-                <div class="info-item">
-                    <label>Monthly SIP</label>
-                    <div class="value" id="monthlySIP">Not Set</div>
-                </div>
-            </div>
-
-            <div style="margin-top: 20px;">
-                <label
-                    style="font-size: 0.85rem; color: var(--gray-600); margin-bottom: 10px; display: block;">Preferred
-                    Categories</label>
-                <div class="preference-tags" id="preferredCategories">
-                    <span class="preference-tag secondary">No categories selected</span>
-                </div>
-            </div>
-
-            <div class="save-btn-container">
-                <a href="/onboarding" class="btn btn-outline">✏️ Update Preferences</a>
-            </div>
+        <div
+            style="height: 4px; background: linear-gradient(to right, var(--saffron), var(--white), var(--green)); margin-top: 25px;">
         </div>
     </div>
 
-    <!-- Footer -->
-    <footer class="auth-footer">
+    <!-- Main Content -->
+    <main id="main-content" style="background: var(--gray-100); padding: 30px 0;">
         <div class="container">
-            <p>© 2024 FIMFP - Federal Indian Mutual Fund Portal | Government of India</p>
-            <p>Designed & Developed under Digital India Programme</p>
+            <!-- Breadcrumb -->
+            <nav aria-label="Breadcrumb" style="margin-bottom: 20px;">
+                <ol style="display: flex; gap: 8px; font-size: 0.85rem; list-style: none; padding: 0; margin: 0;">
+                    <li><a href="/" style="color: var(--gov-navy); text-decoration: none;">Home</a></li>
+                    <li style="color: var(--gray-500);">/</li>
+                    <li style="color: var(--gray-600); font-weight: 600;">My Profile</li>
+                </ol>
+            </nav>
+
+            <!-- Main Container -->
+            <div class="profile-container">
+                <a href="/" class="back-link">← Back to Dashboard</a>
+
+                <!-- Alert Container -->
+                <div id="alertContainer"></div>
+
+                <!-- Profile Header -->
+                <div class="profile-header">
+                    <div class="profile-avatar" id="avatar">U</div>
+                    <div class="profile-info">
+                        <h1 id="fullName">Loading...</h1>
+                        <p id="email">Loading...</p>
+                    </div>
+                </div>
+
+                <!-- Profile Tabs -->
+                <div class="profile-tabs">
+                    <button class="profile-tab active" data-tab="personal" onclick="switchTab('personal')">
+                        <img src="https://cdn-icons-png.flaticon.com/512/1077/1077114.png" alt=""
+                            style="width: 16px; height: 16px; filter: brightness(0) invert(0.3);">
+                        Personal Info
+                    </button>
+                    <button class="profile-tab" data-tab="investment" onclick="switchTab('investment')">
+                        <img src="https://cdn-icons-png.flaticon.com/512/2920/2920313.png" alt=""
+                            style="width: 16px; height: 16px; filter: brightness(0) invert(0.3);">
+                        Investment Profile
+                    </button>
+                    <button class="profile-tab" data-tab="broker" onclick="switchTab('broker')">
+                        <img src="https://cdn-icons-png.flaticon.com/512/2830/2830284.png" alt=""
+                            style="width: 16px; height: 16px; filter: brightness(0) invert(0.3);">
+                        Broker
+                    </button>
+                    <button class="profile-tab" data-tab="preferences" onclick="switchTab('preferences')">
+                        <img src="https://cdn-icons-png.flaticon.com/512/3524/3524659.png" alt=""
+                            style="width: 16px; height: 16px; filter: brightness(0) invert(0.3);">
+                        MF Preferences
+                    </button>
+                </div>
+
+                <!-- Personal Info Section -->
+                <div class="profile-section active" id="section-personal">
+                    <h2>Personal Information / व्यक्तिगत जानकारी</h2>
+
+                    <div class="view-mode" id="personalView">
+                        <div class="info-grid">
+                            <div class="info-item">
+                                <label>First Name / प्रथम नाम</label>
+                                <div class="value" id="firstName">-</div>
+                            </div>
+                            <div class="info-item">
+                                <label>Last Name / उपनाम</label>
+                                <div class="value" id="lastName">-</div>
+                            </div>
+                            <div class="info-item">
+                                <label>Email / ईमेल</label>
+                                <div class="value" id="emailDisplay">-</div>
+                            </div>
+                            <div class="info-item">
+                                <label>Mobile / मोबाइल</label>
+                                <div class="value" id="mobile">-</div>
+                            </div>
+                            <div class="info-item">
+                                <label>PAN Card / पैन कार्ड</label>
+                                <div class="value" id="panCard">Not Provided</div>
+                            </div>
+                            <div class="info-item">
+                                <label>Member Since</label>
+                                <div class="value" id="memberSince">-</div>
+                            </div>
+                        </div>
+                        <div class="save-btn-container">
+                            <button class="btn btn-primary" onclick="toggleEdit('personal')">
+                                <img src="https://cdn-icons-png.flaticon.com/512/1159/1159633.png" alt=""
+                                    style="width: 14px; height: 14px; filter: brightness(0) invert(1);">
+                                Edit Personal Info
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="edit-form" id="personalEdit">
+                        <div class="info-grid">
+                            <div class="form-group">
+                                <label for="editFirstName">First Name <span class="required">*</span></label>
+                                <input type="text" id="editFirstName" class="form-input" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="editLastName">Last Name <span class="required">*</span></label>
+                                <input type="text" id="editLastName" class="form-input" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="editMobile">Mobile Number <span class="required">*</span></label>
+                                <input type="tel" id="editMobile" class="form-input" pattern="[0-9]{10}" maxlength="10">
+                            </div>
+                            <div class="form-group">
+                                <label for="editPanCard">PAN Card</label>
+                                <input type="text" id="editPanCard" class="form-input"
+                                    pattern="[A-Z]{5}[0-9]{4}[A-Z]{1}" maxlength="10"
+                                    style="text-transform: uppercase;">
+                            </div>
+                        </div>
+                        <div class="save-btn-container">
+                            <button class="btn btn-outline" onclick="toggleEdit('personal')">Cancel</button>
+                            <button class="btn btn-primary" onclick="savePersonal()">💾 Save Changes</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Investment Profile Section -->
+                <div class="profile-section" id="section-investment">
+                    <h2>Investment Profile / निवेश प्रोफाइल</h2>
+
+                    <div class="view-mode" id="investmentView">
+                        <div class="info-grid">
+                            <div class="info-item">
+                                <label>Age / उम्र</label>
+                                <div class="value" id="age">Not Set</div>
+                            </div>
+                            <div class="info-item">
+                                <label>Annual Income / वार्षिक आय</label>
+                                <div class="value" id="annualIncome">Not Set</div>
+                            </div>
+                            <div class="info-item">
+                                <label>Investment Experience</label>
+                                <div class="value" id="experience">Not Set</div>
+                            </div>
+                            <div class="info-item">
+                                <label>Risk Tolerance</label>
+                                <div class="value" id="riskTolerance">Not Set</div>
+                            </div>
+                        </div>
+                        <div class="save-btn-container">
+                            <button class="btn btn-primary" onclick="toggleEdit('investment')">✏️ Edit Investment
+                                Profile</button>
+                        </div>
+                    </div>
+
+                    <div class="edit-form" id="investmentEdit">
+                        <div class="info-grid">
+                            <div class="form-group">
+                                <label for="editAge">Age</label>
+                                <input type="number" id="editAge" class="form-input" min="18" max="100">
+                            </div>
+                            <div class="form-group">
+                                <label for="editIncome">Annual Income</label>
+                                <select id="editIncome" class="form-select">
+                                    <option value="">Select income range</option>
+                                    <option value="300000">Below ₹3 Lakh</option>
+                                    <option value="500000">₹3 - 5 Lakh</option>
+                                    <option value="1000000">₹5 - 10 Lakh</option>
+                                    <option value="2000000">₹10 - 20 Lakh</option>
+                                    <option value="5000000">₹20 - 50 Lakh</option>
+                                    <option value="10000000">Above ₹50 Lakh</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="editExperience">Investment Experience</label>
+                                <select id="editExperience" class="form-select">
+                                    <option value="beginner">Beginner (0-2 years)</option>
+                                    <option value="intermediate">Intermediate (2-5 years)</option>
+                                    <option value="expert">Expert (5+ years)</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Risk Tolerance</label>
+                                <div class="risk-slider-container">
+                                    <input type="range" id="editRisk" class="risk-slider" min="1" max="5" value="3">
+                                    <div class="risk-labels">
+                                        <span>Conservative</span>
+                                        <span>Moderate</span>
+                                        <span>Aggressive</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="save-btn-container">
+                            <button class="btn btn-outline" onclick="toggleEdit('investment')">Cancel</button>
+                            <button class="btn btn-primary" onclick="saveInvestment()">
+                                <img src="https://cdn-icons-png.flaticon.com/512/2874/2874091.png" alt=""
+                                    style="width: 14px; height: 14px; filter: brightness(0) invert(1);">
+                                Save Changes
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Broker Section -->
+                <div class="profile-section" id="section-broker">
+                    <h2>Broker Information / ब्रोकर जानकारी</h2>
+
+                    <div id="brokerContent">
+                        <div class="broker-display" id="brokerDisplay" style="display: none;">
+                            <div class="broker-logo" id="brokerLogo">Z</div>
+                            <div class="broker-details">
+                                <h4 id="brokerName">Zerodha</h4>
+                                <p id="brokerDemat">Demat: Not linked</p>
+                            </div>
+                        </div>
+                        <p id="noBroker" style="color: var(--gray-500);">No broker selected. <a
+                                href="/onboarding">Complete your
+                                profile</a></p>
+                    </div>
+
+                    <div class="save-btn-container">
+                        <a href="/onboarding" class="btn btn-outline">
+                            <img src="https://cdn-icons-png.flaticon.com/512/1250/1250649.png" alt=""
+                                style="width: 14px; height: 14px; filter: brightness(0);">
+                            Change Broker
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- MF Preferences Section -->
+            <div class="profile-section" id="section-preferences">
+                <h2>Mutual Fund Preferences / म्यूचुअल फंड प्राथमिकताएं</h2>
+
+                <div class="info-grid">
+                    <div class="info-item">
+                        <label>Investment Goal</label>
+                        <div class="value" id="investmentGoal">Not Set</div>
+                    </div>
+                    <div class="info-item">
+                        <label>Investment Horizon</label>
+                        <div class="value" id="investmentHorizon">Not Set</div>
+                    </div>
+                    <div class="info-item">
+                        <label>Monthly SIP</label>
+                        <div class="value" id="monthlySIP">Not Set</div>
+                    </div>
+                </div>
+
+                <div style="margin-top: 20px;">
+                    <label
+                        style="font-size: 0.85rem; color: var(--gray-600); margin-bottom: 10px; display: block;">Preferred
+                        Categories</label>
+                    <div class="preference-tags" id="preferredCategories">
+                        <span class="preference-tag secondary">No categories selected</span>
+                    </div>
+                </div>
+
+                <div class="save-btn-container">
+                    <a href="/onboarding" class="btn btn-outline">
+                        <img src="https://cdn-icons-png.flaticon.com/512/1159/1159633.png" alt=""
+                            style="width: 14px; height: 14px; filter: brightness(0);">
+                        Update Preferences
+                    </a>
+                </div>
+            </div>
+        </div>
+        </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-bottom">
+                <p>© 2024 FIMFP - Federal Indian Mutual Fund Portal | Government of India</p>
+                <p>Designed & Developed under Digital India Programme by Team CoDevian</p>
+            </div>
         </div>
     </footer>
 
