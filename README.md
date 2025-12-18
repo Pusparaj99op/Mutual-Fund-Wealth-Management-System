@@ -100,3 +100,23 @@ We aim to build an end-to-end AI/ML system to help middle-class investors with m
 - After validation, prepare a Docker image and FastAPI endpoint for serving forecasts and recommendations.
 
 > **Note:** This README addition describes the full plan to get to a working AI/ML pipeline; if you want, I can also create templates for model training notebooks, CI configs, or a simple FastAPI serving scaffold.
+
+## Details
+
+### Team Workflow & Collaboration
+To ensure efficiency during the hackathon, we will follow a structured workflow:
+- **Version Control**: We will use Git for version control.
+    - `main`: Production-ready code.
+    - `dev`: Integration branch for testing.
+    - `feature/<name>`: Individual branches for specific features or tasks.
+- **Communication**: Regular sync-ups to track progress and blockers.
+- **Task Management**: Using this README and the `task.md` artifact to track to-dos.
+
+### Architecture Overview
+The system consists of three main components:
+1. **Data Pipeline**: Scripts to clean and engineer features from the mutual fund CSVs.
+2. **AI/ML Core**: Models to predict NAV and recommend funds based on user inputs.
+3. **Application Interface**: A web-based dashboard (likely using FastAPI for backend and a modern frontend) to interact with the models.
+
+### Setup Guide
+For step-by-step instructions on setting up the AI/ML environment on Ubuntu 22.04, please refer to [AI_ML_SETUP_GUIDE.md](AI_ML_SETUP_GUIDE.md).
