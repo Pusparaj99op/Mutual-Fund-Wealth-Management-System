@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function Header() {
+export default function Header({ onLogin }) {
   return (
     <header className="bg-white border-b sticky top-0 z-50">
       <div className="container mx-auto px-4 flex items-center justify-between h-20">
@@ -23,7 +23,7 @@ export default function Header() {
         <div className="flex items-center space-x-3">
           <button className="p-2 text-gray-400 hover:text-blue-600 hidden md:block"><i className="fas fa-search"></i></button>
           <button className="hidden md:block border border-blue-600 text-blue-600 px-5 py-2 rounded-md text-sm font-bold hover:bg-blue-50 transition">Open Account</button>
-          <button className="bg-blue-600 text-white px-6 py-2 rounded-md text-sm font-bold hover:bg-blue-700 shadow-md transition">Login</button>
+          <button onClick={() => onLogin && onLogin()} className="bg-blue-600 text-white px-6 py-2 rounded-md text-sm font-bold hover:bg-blue-700 shadow-md transition">Login</button>
         </div>
       </div>
 
