@@ -8,9 +8,9 @@ Develop an AI/ML-powered system for middle-class investors using Indian mutual f
 ## Problem:
 The problem domain concerns wealth management for the common middle class people, focusing on Mutual Funds. Now why this topic there are very limited technique or wealth management like FDs, Stocks Trading, Crypto, Estate Planning, Corporate Bonds etc. However, all of them require time, focus, significant capital, involve risk  factors, and offer limited interest rates. Mutual funds are investment vehicles that pool money from multiple investors to invest in a diversified portfolio of securities such as stocks, bonds, money market instruments, where they are managed by an asset management company (AMC).
 
-## dataset: /PS/dataset/Clean_MF_India_AI.csv
+## dataset: PS/dataset/MF_India_AI.json
 
-## terms of dataset: Data Parameters for Mutual Funds India (MF_India_AI.csv):
+## terms of dataset: Data Parameters for Mutual Funds India (MF_India_AI.json):
 Scheme Name: Name of the mutual fund scheme
 Min sip: Min sip amount required to start.
 Min lumpsum: Min lumpsum amount required to start.
@@ -47,8 +47,8 @@ We have live web scraped data of Mutual Funds India, our goal is to present desc
 We aim to build an end-to-end AI/ML system to help middle-class investors with mutual fund selection and forecasting. The system will: (1) forecast scheme NAVs and returns, (2) recommend suitable schemes given investor constraints (AMC, category, amount, tenure), and (3) present explainable, auditable outputs for users.
 
 ### Data (what we have)
-- Raw historical NAV CSVs are available under `data/raw/csv/` (downloaded). These files contain per-scheme NAV timeseries that are the primary signal for forecasting.
-- Supplementary metadata and engineered feature CSV/JSON files are in `data/` and `PS/dataset/` (e.g., `MF_India_AI.csv`).
+- Raw historical NAV CSVs are available under `data/raw/` (downloaded). These files contain per-scheme NAV timeseries that are the primary signal for forecasting.
+- Supplementary metadata and engineered feature CSV/JSON files are in `data/` and `PS/dataset/` (e.g., `MF_India_AI.json`).
 - Existing scripts that will help: `scripts/csv_to_json.py`, `scripts/clean_json_for_ml.py`, `scripts/feature_engineering.py`, `scripts/train_pipeline.py`, and evaluation utilities under `scripts/`.
 
 ### Preprocessing & Cleaning 🔧
