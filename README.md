@@ -1,4 +1,4 @@
-# Mutual Fund Wealth Management System
+# Federal Wealth Management System
 ## Problem Statement Title:
 AI-Based Mutual Fund Wealth Management System.
 
