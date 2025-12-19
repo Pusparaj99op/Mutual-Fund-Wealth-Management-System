@@ -632,6 +632,7 @@
                 const response = await fetch('/api/user/onboarding', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
+                    credentials: 'include',
                     body: JSON.stringify({
                         investmentProfile: onboardingData.investmentProfile,
                         broker: onboardingData.broker,
