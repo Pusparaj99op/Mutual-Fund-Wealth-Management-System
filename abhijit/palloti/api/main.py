@@ -131,7 +131,7 @@ async def startup_event():
 async def health_check():
     """
     Health check endpoint
-    
+
     Returns:
         Health status, timestamp, and API version
     """
@@ -147,19 +147,19 @@ async def health_check():
 async def recommend_funds(profile: InvestorProfile):
     """
     Get personalized mutual fund recommendations
-    
+
     Args:
         profile: Investor profile with investment parameters
-    
+
     Returns:
         List of recommended funds with explanations
     """
     try:
         if recommendation_engine is None:
             raise HTTPException(status_code=503, detail="Recommendation engine not initialized")
-        
+
         logger.info(f"Processing recommendation request: {profile.investment_amount} INR")
-        
+
         # Get recommendations
         recommendations, filtering_stats = recommendation_engine.get_recommendations(
             investment_amount=profile.investment_amount,
@@ -168,7 +168,7 @@ async def recommend_funds(profile: InvestorProfile):
             category=profile.category,
             k=5
         )
-        
+
         # Format response
         response = RecommendationsResponse(
             timestamp=datetime.now().isoformat(),
@@ -181,9 +181,9 @@ async def recommend_funds(profile: InvestorProfile):
             recommendations=recommendations,
             filtering_stats=filtering_stats
         )
-        
+
         return response
-    
+
     except Exception as e:
         logger.error(f"Error in recommendation endpoint: {str(e)}")
         raise HTTPException(status_code=500, detail=str(e))
@@ -194,34 +194,34 @@ async def recommend_funds(profile: InvestorProfile):
 async def predict_returns(request: ReturnPredictionRequest):
     """
     Predict future returns for a specific fund
-    
+
     Args:
         request: Fund ID and prediction period
-    
+
     Returns:
         Predicted returns with confidence intervals
     """
     try:
         if recommendation_engine is None:
             raise HTTPException(status_code=503, detail="Recommendation engine not initialized")
-        
+
         # Get fund data
         fund_data = recommendation_engine.df[
             recommendation_engine.df['scheme_id'] == request.scheme_id
         ]
-        
+
         if fund_data.empty:
             raise HTTPException(status_code=404, detail=f"Fund {request.scheme_id} not found")
-        
+
         fund = fund_data.iloc[0]
-        
+
         # Calculate prediction (using historical returns + trend)
         base_return = fund['returns_5yr']
         trend = MetricsCalculator.calculate_return_trend([
             fund['returns_1yr'], fund['returns_3yr'], fund['returns_5yr']
         ])
         predicted_return = base_return + (trend * 2)  # Extrapolate trend
-        
+
         # Confidence intervals
         std_dev = fund['std_deviation']
         confidence_interval = {
@@ -229,7 +229,7 @@ async def predict_returns(request: ReturnPredictionRequest):
             "expected": round(predicted_return, 2),
             "upper": round(predicted_return + (std_dev * 1.96), 2)
         }
-        
+
         # Risk metrics
         risk_metrics = {
             "volatility": round(fund['std_deviation'], 2),
@@ -239,10 +239,10 @@ async def predict_returns(request: ReturnPredictionRequest):
             "sortino_ratio": round(fund['sortino_ratio'], 2),
             "risk_level": int(fund['risk_level'])
         }
-        
+
         # Explanation
         explanation = SHAPExplainer.get_feature_contribution(fund.to_dict())
-        
+
         response = ReturnPredictionResponse(
             scheme_id=request.scheme_id,
             scheme_name=fund['scheme_name'],
@@ -251,11 +251,11 @@ async def predict_returns(request: ReturnPredictionRequest):
             risk_metrics=risk_metrics,
             explanation=explanation
         )
-        
+
         logger.info(f"Return prediction for {fund['scheme_name']}: {confidence_interval['expected']}%")
-        
+
         return response
-    
+
     except HTTPException:
         raise
     except Exception as e:
@@ -268,42 +268,42 @@ async def predict_returns(request: ReturnPredictionRequest):
 async def forecast_nav(request: NAVForecastRequest):
     """
     Forecast NAV (Net Asset Value) for a fund
-    
+
     Args:
         request: Fund ID and forecast horizon
-    
+
     Returns:
         NAV forecast with confidence intervals
     """
     try:
         if recommendation_engine is None:
             raise HTTPException(status_code=503, detail="Recommendation engine not initialized")
-        
+
         # Get fund data
         fund_data = recommendation_engine.df[
             recommendation_engine.df['scheme_id'] == request.scheme_id
         ]
-        
+
         if fund_data.empty:
             raise HTTPException(status_code=404, detail=f"Fund {request.scheme_id} not found")
-        
+
         fund = fund_data.iloc[0]
-        
+
         # Generate forecast data (simplified polynomial trend)
         current_nav = float(fund['nav'])
         monthly_return = (fund['return_1yr'] / 100) / 12
-        
+
         forecast_data = []
         for month in range(1, request.forecast_months + 1):
             projected_nav = current_nav * ((1 + monthly_return) ** month)
-            
+
             forecast_data.append({
                 "date": f"Month {month}",
                 "forecasted_nav": round(projected_nav, 2),
                 "lower_bound": round(projected_nav * 0.95, 2),
                 "upper_bound": round(projected_nav * 1.05, 2)
             })
-        
+
         response = NAVForecastResponse(
             scheme_id=request.scheme_id,
             scheme_name=fund['scheme_name'],
@@ -311,11 +311,11 @@ async def forecast_nav(request: NAVForecastRequest):
             confidence_level=request.confidence_level,
             methodology="Exponential growth model based on historical returns"
         )
-        
+
         logger.info(f"NAV forecast for {fund['scheme_name']}: {request.forecast_months} months")
-        
+
         return response
-    
+
     except HTTPException:
         raise
     except Exception as e:
@@ -328,26 +328,26 @@ async def forecast_nav(request: NAVForecastRequest):
 async def get_fund_info(scheme_id: str):
     """
     Get detailed information about a fund
-    
+
     Args:
         scheme_id: Fund scheme ID
-    
+
     Returns:
         Complete fund details
     """
     try:
         if recommendation_engine is None:
             raise HTTPException(status_code=503, detail="Recommendation engine not initialized")
-        
+
         fund_data = recommendation_engine.df[
             recommendation_engine.df['scheme_id'] == scheme_id
         ]
-        
+
         if fund_data.empty:
             raise HTTPException(status_code=404, detail=f"Fund {scheme_id} not found")
-        
+
         fund = fund_data.iloc[0]
-        
+
         return {
             "scheme_id": fund['scheme_id'],
             "scheme_name": fund['scheme_name'],
@@ -388,7 +388,7 @@ async def get_fund_info(scheme_id: str):
                 "inception_date": fund['inception_date']
             }
         }
-    
+
     except HTTPException:
         raise
     except Exception as e:
@@ -401,22 +401,22 @@ async def get_fund_info(scheme_id: str):
 async def compare_funds(scheme_ids: List[str] = Query(..., description="List of scheme IDs to compare")):
     """
     Compare multiple funds side-by-side
-    
+
     Args:
         scheme_ids: List of fund IDs to compare
-    
+
     Returns:
         Comparative analysis of funds
     """
     try:
         if recommendation_engine is None:
             raise HTTPException(status_code=503, detail="Recommendation engine not initialized")
-        
+
         comparison_df = recommendation_engine.get_fund_comparison(scheme_ids)
-        
+
         if comparison_df.empty:
             raise HTTPException(status_code=404, detail="No matching funds found")
-        
+
         # Convert to comparison format
         comparison_data = []
         for _, fund in comparison_df.iterrows():
@@ -429,12 +429,12 @@ async def compare_funds(scheme_ids: List[str] = Query(..., description="List of 
                 "sharpe_ratio": round(float(fund['sharpe']), 2),
                 "expense_ratio": round(float(fund['expense_ratio']), 2)
             })
-        
+
         return {
             "comparison": comparison_data,
             "timestamp": datetime.now().isoformat()
         }
-    
+
     except HTTPException:
         raise
     except Exception as e:
@@ -453,7 +453,7 @@ async def http_exception_handler(request, exc):
 
 if __name__ == "__main__":
     import uvicorn
-    
+
     logger.info(f"Starting {API_TITLE} v{API_VERSION}")
     uvicorn.run(
         app,

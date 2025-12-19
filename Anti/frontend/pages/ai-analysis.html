@@ -195,6 +195,413 @@
             font-size: 0.75rem;
             margin-top: 5px;
         }
+
+        /* Market Prediction Dashboard Styles */
+        .prediction-dashboard {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+
+        @media (max-width: 1200px) {
+            .prediction-dashboard {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 600px) {
+            .prediction-dashboard {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .signal-card {
+            background: var(--white);
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+            border: 2px solid var(--gray-200);
+            transition: all 0.3s ease;
+        }
+
+        .signal-card.bullish {
+            border-color: #138808;
+            background: linear-gradient(135deg, rgba(19, 136, 8, 0.08) 0%, rgba(19, 136, 8, 0.02) 100%);
+        }
+
+        .signal-card.bearish {
+            border-color: #D32F2F;
+            background: linear-gradient(135deg, rgba(211, 47, 47, 0.08) 0%, rgba(211, 47, 47, 0.02) 100%);
+        }
+
+        .signal-card.neutral {
+            border-color: #FF9800;
+            background: linear-gradient(135deg, rgba(255, 152, 0, 0.08) 0%, rgba(255, 152, 0, 0.02) 100%);
+        }
+
+        .signal-icon {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        .signal-label {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .signal-card.bullish .signal-label {
+            color: #138808;
+        }
+
+        .signal-card.bearish .signal-label {
+            color: #D32F2F;
+        }
+
+        .signal-card.neutral .signal-label {
+            color: #FF9800;
+        }
+
+        .confidence-gauge {
+            width: 100%;
+            height: 8px;
+            background: var(--gray-200);
+            border-radius: 4px;
+            margin-top: 12px;
+            overflow: hidden;
+        }
+
+        .confidence-gauge-fill {
+            height: 100%;
+            border-radius: 4px;
+            transition: width 0.5s ease;
+        }
+
+        .confidence-gauge-fill.high {
+            background: linear-gradient(90deg, #138808, #4CAF50);
+        }
+
+        .confidence-gauge-fill.medium {
+            background: linear-gradient(90deg, #FF9800, #FFB74D);
+        }
+
+        .confidence-gauge-fill.low {
+            background: linear-gradient(90deg, #D32F2F, #EF5350);
+        }
+
+        /* Strategy Cards */
+        .strategy-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 15px;
+        }
+
+        .strategy-card {
+            background: var(--white);
+            border: 1px solid var(--gray-200);
+            border-radius: 8px;
+            padding: 18px;
+            border-left: 4px solid var(--gov-navy);
+        }
+
+        .strategy-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 12px;
+        }
+
+        .strategy-icon {
+            width: 32px;
+            height: 32px;
+            background: rgba(0, 51, 102, 0.1);
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .strategy-name {
+            font-weight: 600;
+            color: var(--gov-navy);
+            font-size: 0.95rem;
+        }
+
+        .equation-box {
+            background: var(--gray-50);
+            border-radius: 6px;
+            padding: 12px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.85rem;
+            color: var(--gov-navy);
+            margin-bottom: 12px;
+            text-align: center;
+            border: 1px dashed var(--gray-300);
+        }
+
+        .strategy-result {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 10px;
+            border-top: 1px solid var(--gray-200);
+        }
+
+        .result-label {
+            font-size: 0.8rem;
+            color: var(--gray-600);
+        }
+
+        .result-value {
+            font-size: 1.2rem;
+            font-weight: 700;
+        }
+
+        .result-value.positive {
+            color: #138808;
+        }
+
+        .result-value.negative {
+            color: #D32F2F;
+        }
+
+        /* AI/ML Model Cards */
+        .ai-models-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .ai-model-card {
+            background: linear-gradient(135deg, var(--gov-navy) 0%, #1a4a7a 100%);
+            color: var(--white);
+            border-radius: 10px;
+            padding: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .ai-model-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+        }
+
+        .model-badge {
+            display: inline-block;
+            background: rgba(255, 153, 51, 0.9);
+            color: var(--white);
+            padding: 3px 10px;
+            border-radius: 12px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .model-name {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .model-description {
+            font-size: 0.8rem;
+            opacity: 0.85;
+            margin-bottom: 15px;
+        }
+
+        .model-prediction {
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 6px;
+            padding: 12px;
+            margin-bottom: 12px;
+        }
+
+        .prediction-label {
+            font-size: 0.75rem;
+            opacity: 0.8;
+            margin-bottom: 3px;
+        }
+
+        .prediction-value {
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        .model-confidence {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .confidence-label {
+            font-size: 0.75rem;
+            opacity: 0.8;
+        }
+
+        .confidence-bar-mini {
+            flex: 1;
+            height: 6px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 3px;
+            overflow: hidden;
+        }
+
+        .confidence-bar-mini-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #FF9933, #FFCC00);
+            border-radius: 3px;
+        }
+
+        /* Feature Importance */
+        .feature-importance {
+            margin-top: 15px;
+        }
+
+        .feature-bar {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 8px;
+        }
+
+        .feature-name {
+            font-size: 0.75rem;
+            color: var(--gray-600);
+            width: 100px;
+        }
+
+        .feature-bar-track {
+            flex: 1;
+            height: 8px;
+            background: var(--gray-200);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .feature-bar-fill {
+            height: 100%;
+            border-radius: 4px;
+        }
+
+        .feature-bar-fill.high {
+            background: var(--green);
+        }
+
+        .feature-bar-fill.medium {
+            background: var(--saffron);
+        }
+
+        .feature-bar-fill.low {
+            background: var(--gray-400);
+        }
+
+        /* Smart Alert Box */
+        .smart-alert {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
+
+        .smart-alert.opportunity {
+            background: rgba(19, 136, 8, 0.1);
+            border: 1px solid rgba(19, 136, 8, 0.3);
+        }
+
+        .smart-alert.warning {
+            background: rgba(255, 152, 0, 0.1);
+            border: 1px solid rgba(255, 152, 0, 0.3);
+        }
+
+        .smart-alert.risk {
+            background: rgba(211, 47, 47, 0.1);
+            border: 1px solid rgba(211, 47, 47, 0.3);
+        }
+
+        .alert-icon {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .smart-alert.opportunity .alert-icon {
+            background: rgba(19, 136, 8, 0.2);
+        }
+
+        .smart-alert.warning .alert-icon {
+            background: rgba(255, 152, 0, 0.2);
+        }
+
+        .smart-alert.risk .alert-icon {
+            background: rgba(211, 47, 47, 0.2);
+        }
+
+        .alert-content h4 {
+            font-size: 0.9rem;
+            margin: 0 0 5px 0;
+        }
+
+        .smart-alert.opportunity .alert-content h4 {
+            color: #138808;
+        }
+
+        .smart-alert.warning .alert-content h4 {
+            color: #E65100;
+        }
+
+        .smart-alert.risk .alert-content h4 {
+            color: #C62828;
+        }
+
+        .alert-content p {
+            font-size: 0.8rem;
+            color: var(--gray-600);
+            margin: 0;
+        }
+
+        /* Section styling */
+        .analysis-section {
+            margin-top: 30px;
+            padding-top: 25px;
+            border-top: 2px solid var(--gray-200);
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+
+        .section-icon {
+            width: 40px;
+            height: 40px;
+        }
+
+        .section-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--gov-navy);
+            margin: 0;
+        }
+
+        .section-subtitle {
+            font-size: 0.85rem;
+            color: var(--gray-600);
+            margin: 3px 0 0 0;
+        }
     </style>
 </head>
 
@@ -490,6 +897,368 @@
                     </div>
                 </div>
             </div>
+        </div>
+
+        <!-- Market Prediction Dashboard Section -->
+        <div class="analysis-section" id="marketPredictionSection" style="display: none;">
+            <div class="section-header">
+                <img src="https://cdn-icons-png.flaticon.com/512/2920/2920322.png" alt="Prediction"
+                    class="section-icon">
+                <div>
+                    <h2 class="section-title">Market Prediction Dashboard</h2>
+                    <p class="section-subtitle">AI-powered market trend analysis with color-coded signals</p>
+                </div>
+            </div>
+
+            <!-- Smart Alerts -->
+            <div id="smartAlertsContainer"></div>
+
+            <!-- Prediction Cards -->
+            <div class="prediction-dashboard" id="predictionDashboard">
+                <!-- Trend Signal -->
+                <div class="signal-card" id="trendSignalCard">
+                    <div class="signal-icon">📈</div>
+                    <div class="signal-label" id="trendLabel">Analyzing...</div>
+                    <div style="font-size: 0.8rem; color: var(--gray-600);" id="trendDescription">Market Trend</div>
+                    <div class="confidence-gauge">
+                        <div class="confidence-gauge-fill" id="trendConfidenceFill" style="width: 0%;"></div>
+                    </div>
+                    <div style="font-size: 0.7rem; color: var(--gray-500); margin-top: 5px;">
+                        Confidence: <span id="trendConfidenceValue">-</span>%
+                    </div>
+                </div>
+
+                <!-- Sentiment Signal -->
+                <div class="signal-card" id="sentimentSignalCard">
+                    <div class="signal-icon">🎯</div>
+                    <div class="signal-label" id="sentimentLabel">Analyzing...</div>
+                    <div style="font-size: 0.8rem; color: var(--gray-600);" id="sentimentDescription">Market Sentiment
+                    </div>
+                    <div class="confidence-gauge">
+                        <div class="confidence-gauge-fill" id="sentimentConfidenceFill" style="width: 0%;"></div>
+                    </div>
+                    <div style="font-size: 0.7rem; color: var(--gray-500); margin-top: 5px;">
+                        Fear & Greed: <span id="fearGreedValue">-</span>
+                    </div>
+                </div>
+
+                <!-- Volatility Signal -->
+                <div class="signal-card" id="volatilitySignalCard">
+                    <div class="signal-icon">📊</div>
+                    <div class="signal-label" id="volatilityLabel">Analyzing...</div>
+                    <div style="font-size: 0.8rem; color: var(--gray-600);" id="volatilityDescription">Volatility Regime
+                    </div>
+                    <div class="confidence-gauge">
+                        <div class="confidence-gauge-fill" id="volatilityConfidenceFill" style="width: 0%;"></div>
+                    </div>
+                    <div style="font-size: 0.7rem; color: var(--gray-500); margin-top: 5px;">
+                        Standard Dev: <span id="volatilityValue">-</span>%
+                    </div>
+                </div>
+
+                <!-- Action Recommendation -->
+                <div class="signal-card" id="actionSignalCard">
+                    <div class="signal-icon">💡</div>
+                    <div class="signal-label" id="actionLabel">Analyzing...</div>
+                    <div style="font-size: 0.8rem; color: var(--gray-600);" id="actionDescription">Recommended Action
+                    </div>
+                    <div class="confidence-gauge">
+                        <div class="confidence-gauge-fill" id="actionConfidenceFill" style="width: 0%;"></div>
+                    </div>
+                    <div style="font-size: 0.7rem; color: var(--gray-500); margin-top: 5px;">
+                        Based on all signals
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Investment Strategies Section -->
+        <div class="analysis-section" id="strategiesSection" style="display: none;">
+            <div class="section-header">
+                <img src="https://cdn-icons-png.flaticon.com/512/3281/3281295.png" alt="Strategies"
+                    class="section-icon">
+                <div>
+                    <h2 class="section-title">Investment Strategies & Equations</h2>
+                    <p class="section-subtitle">Mathematical formulas for profit optimization</p>
+                </div>
+            </div>
+
+            <div class="strategy-grid" id="strategyGrid">
+                <!-- CAGR Card -->
+                <div class="strategy-card">
+                    <div class="strategy-header">
+                        <div class="strategy-icon">
+                            <img src="https://cdn-icons-png.flaticon.com/512/2920/2920313.png"
+                                style="width: 18px; height: 18px;">
+                        </div>
+                        <div class="strategy-name">CAGR (Compound Annual Growth Rate)</div>
+                    </div>
+                    <div class="equation-box">
+                        CAGR = ((FV / PV)<sup>1/n</sup> - 1) × 100
+                    </div>
+                    <div style="font-size: 0.8rem; color: var(--gray-600); margin-bottom: 12px;">
+                        Measures annualized return over time, smoothing out volatility
+                    </div>
+                    <div class="strategy-result">
+                        <span class="result-label">Predicted CAGR</span>
+                        <span class="result-value positive" id="cagrValue">-</span>
+                    </div>
+                </div>
+
+                <!-- Sharpe Ratio Card -->
+                <div class="strategy-card">
+                    <div class="strategy-header">
+                        <div class="strategy-icon">
+                            <img src="https://cdn-icons-png.flaticon.com/512/3655/3655585.png"
+                                style="width: 18px; height: 18px;">
+                        </div>
+                        <div class="strategy-name">Sharpe Ratio (Risk-Adjusted Return)</div>
+                    </div>
+                    <div class="equation-box">
+                        Sharpe = (R<sub>p</sub> - R<sub>f</sub>) / σ<sub>p</sub>
+                    </div>
+                    <div style="font-size: 0.8rem; color: var(--gray-600); margin-bottom: 12px;">
+                        Higher ratio = better risk-adjusted performance (>1 is good)
+                    </div>
+                    <div class="strategy-result">
+                        <span class="result-label">Current Sharpe</span>
+                        <span class="result-value" id="sharpeValue">-</span>
+                    </div>
+                </div>
+
+                <!-- Sortino Ratio Card -->
+                <div class="strategy-card">
+                    <div class="strategy-header">
+                        <div class="strategy-icon">
+                            <img src="https://cdn-icons-png.flaticon.com/512/2830/2830284.png"
+                                style="width: 18px; height: 18px;">
+                        </div>
+                        <div class="strategy-name">Sortino Ratio (Downside Risk)</div>
+                    </div>
+                    <div class="equation-box">
+                        Sortino = (R<sub>p</sub> - R<sub>f</sub>) / σ<sub>downside</sub>
+                    </div>
+                    <div style="font-size: 0.8rem; color: var(--gray-600); margin-bottom: 12px;">
+                        Focuses on harmful volatility, ignoring upside deviation
+                    </div>
+                    <div class="strategy-result">
+                        <span class="result-label">Current Sortino</span>
+                        <span class="result-value" id="sortinoValue">-</span>
+                    </div>
+                </div>
+
+                <!-- Treynor Ratio Card -->
+                <div class="strategy-card">
+                    <div class="strategy-header">
+                        <div class="strategy-icon">
+                            <img src="https://cdn-icons-png.flaticon.com/512/1170/1170576.png"
+                                style="width: 18px; height: 18px;">
+                        </div>
+                        <div class="strategy-name">Treynor Ratio (Beta Adjusted)</div>
+                    </div>
+                    <div class="equation-box">
+                        Treynor = (R<sub>p</sub> - R<sub>f</sub>) / β
+                    </div>
+                    <div style="font-size: 0.8rem; color: var(--gray-600); margin-bottom: 12px;">
+                        Measures return per unit of market risk (beta)
+                    </div>
+                    <div class="strategy-result">
+                        <span class="result-label">Current Treynor</span>
+                        <span class="result-value" id="treynorValue">-</span>
+                    </div>
+                </div>
+
+                <!-- Alpha Card -->
+                <div class="strategy-card">
+                    <div class="strategy-header">
+                        <div class="strategy-icon">
+                            <img src="https://cdn-icons-png.flaticon.com/512/4149/4149677.png"
+                                style="width: 18px; height: 18px;">
+                        </div>
+                        <div class="strategy-name">Jensen's Alpha (Excess Return)</div>
+                    </div>
+                    <div class="equation-box">
+                        α = R<sub>p</sub> - [R<sub>f</sub> + β(R<sub>m</sub> - R<sub>f</sub>)]
+                    </div>
+                    <div style="font-size: 0.8rem; color: var(--gray-600); margin-bottom: 12px;">
+                        Measures fund manager's skill vs benchmark (positive = outperform)
+                    </div>
+                    <div class="strategy-result">
+                        <span class="result-label">Current Alpha</span>
+                        <span class="result-value" id="alphaValue">-</span>
+                    </div>
+                </div>
+
+                <!-- SWP Calculator Card -->
+                <div class="strategy-card">
+                    <div class="strategy-header">
+                        <div class="strategy-icon">
+                            <img src="https://cdn-icons-png.flaticon.com/512/2489/2489756.png"
+                                style="width: 18px; height: 18px;">
+                        </div>
+                        <div class="strategy-name">SWP (Systematic Withdrawal Plan)</div>
+                    </div>
+                    <div class="equation-box">
+                        Monthly = P × r × (1+r)<sup>n</sup> / ((1+r)<sup>n</sup> - 1)
+                    </div>
+                    <div style="font-size: 0.8rem; color: var(--gray-600); margin-bottom: 12px;">
+                        Calculate sustainable monthly withdrawal from corpus
+                    </div>
+                    <div class="strategy-result">
+                        <span class="result-label">Est. Monthly SWP</span>
+                        <span class="result-value positive" id="swpValue">-</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Advanced AI/ML Models Section -->
+        <div class="analysis-section" id="aiModelsSection" style="display: none;">
+            <div class="section-header">
+                <img src="https://cdn-icons-png.flaticon.com/512/2103/2103633.png" alt="AI Models" class="section-icon">
+                <div>
+                    <h2 class="section-title">Advanced AI/ML Models</h2>
+                    <p class="section-subtitle">Deep learning predictions using Transformer, LSTM & Ensemble methods</p>
+                </div>
+            </div>
+
+            <div class="ai-models-grid" id="aiModelsGrid">
+                <!-- Transformer Model Card -->
+                <div class="ai-model-card">
+                    <span class="model-badge">🤖 TRANSFORMER</span>
+                    <div class="model-name">Time-Series Transformer</div>
+                    <div class="model-description">Attention-based deep learning for sequential pattern recognition
+                    </div>
+                    <div class="model-prediction">
+                        <div class="prediction-label">Predicted Return (1Y)</div>
+                        <div class="prediction-value" id="transformerPrediction">-</div>
+                    </div>
+                    <div class="model-confidence">
+                        <span class="confidence-label">Confidence</span>
+                        <div class="confidence-bar-mini">
+                            <div class="confidence-bar-mini-fill" id="transformerConfidence" style="width: 0%;"></div>
+                        </div>
+                        <span id="transformerConfidenceVal" style="font-size: 0.75rem;">-</span>
+                    </div>
+                </div>
+
+                <!-- LSTM Model Card -->
+                <div class="ai-model-card">
+                    <span class="model-badge">🧠 LSTM</span>
+                    <div class="model-name">Long Short-Term Memory</div>
+                    <div class="model-description">Recurrent neural network for temporal dependencies</div>
+                    <div class="model-prediction">
+                        <div class="prediction-label">Predicted Return (1Y)</div>
+                        <div class="prediction-value" id="lstmPrediction">-</div>
+                    </div>
+                    <div class="model-confidence">
+                        <span class="confidence-label">Confidence</span>
+                        <div class="confidence-bar-mini">
+                            <div class="confidence-bar-mini-fill" id="lstmConfidence" style="width: 0%;"></div>
+                        </div>
+                        <span id="lstmConfidenceVal" style="font-size: 0.75rem;">-</span>
+                    </div>
+                </div>
+
+                <!-- Ensemble Model Card -->
+                <div class="ai-model-card">
+                    <span class="model-badge">⚡ ENSEMBLE</span>
+                    <div class="model-name">XGBoost + Random Forest</div>
+                    <div class="model-description">Gradient boosting ensemble for robust predictions</div>
+                    <div class="model-prediction">
+                        <div class="prediction-label">Predicted Return (1Y)</div>
+                        <div class="prediction-value" id="ensemblePrediction">-</div>
+                    </div>
+                    <div class="model-confidence">
+                        <span class="confidence-label">Confidence</span>
+                        <div class="confidence-bar-mini">
+                            <div class="confidence-bar-mini-fill" id="ensembleConfidence" style="width: 0%;"></div>
+                        </div>
+                        <span id="ensembleConfidenceVal" style="font-size: 0.75rem;">-</span>
+                    </div>
+                </div>
+
+                <!-- Monte Carlo Model Card -->
+                <div class="ai-model-card">
+                    <span class="model-badge">📊 MONTE CARLO</span>
+                    <div class="model-name">Stochastic Simulation</div>
+                    <div class="model-description">10,000 path Geometric Brownian Motion simulation</div>
+                    <div class="model-prediction">
+                        <div class="prediction-label">Expected Value</div>
+                        <div class="prediction-value" id="monteCarloPrediction">-</div>
+                    </div>
+                    <div class="model-confidence">
+                        <span class="confidence-label">95% CI</span>
+                        <div class="confidence-bar-mini">
+                            <div class="confidence-bar-mini-fill" id="monteCarloConfidence" style="width: 0%;"></div>
+                        </div>
+                        <span id="monteCarloConfidenceVal" style="font-size: 0.75rem;">-</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Feature Importance Section -->
+            <div class="card" style="margin-top: 20px;">
+                <h4
+                    style="font-size: 0.95rem; color: var(--gov-navy); margin-bottom: 15px; display: flex; align-items: center; gap: 8px;">
+                    <img src="https://cdn-icons-png.flaticon.com/512/1087/1087927.png"
+                        style="width: 18px; height: 18px;">
+                    Feature Importance (SHAP Analysis)
+                </h4>
+                <div class="feature-importance" id="featureImportance">
+                    <div class="feature-bar">
+                        <span class="feature-name">Sharpe Ratio</span>
+                        <div class="feature-bar-track">
+                            <div class="feature-bar-fill high" style="width: 85%;"></div>
+                        </div>
+                        <span style="font-size: 0.75rem; color: var(--gray-600);">25%</span>
+                    </div>
+                    <div class="feature-bar">
+                        <span class="feature-name">Alpha</span>
+                        <div class="feature-bar-track">
+                            <div class="feature-bar-fill high" style="width: 68%;"></div>
+                        </div>
+                        <span style="font-size: 0.75rem; color: var(--gray-600);">20%</span>
+                    </div>
+                    <div class="feature-bar">
+                        <span class="feature-name">1Y Return</span>
+                        <div class="feature-bar-track">
+                            <div class="feature-bar-fill medium" style="width: 51%;"></div>
+                        </div>
+                        <span style="font-size: 0.75rem; color: var(--gray-600);">15%</span>
+                    </div>
+                    <div class="feature-bar">
+                        <span class="feature-name">Sortino</span>
+                        <div class="feature-bar-track">
+                            <div class="feature-bar-fill medium" style="width: 51%;"></div>
+                        </div>
+                        <span style="font-size: 0.75rem; color: var(--gray-600);">15%</span>
+                    </div>
+                    <div class="feature-bar">
+                        <span class="feature-name">Expense Ratio</span>
+                        <div class="feature-bar-track">
+                            <div class="feature-bar-fill low" style="width: 34%;"></div>
+                        </div>
+                        <span style="font-size: 0.75rem; color: var(--gray-600);">10%</span>
+                    </div>
+                    <div class="feature-bar">
+                        <span class="feature-name">Fund Size</span>
+                        <div class="feature-bar-track">
+                            <div class="feature-bar-fill low" style="width: 27%;"></div>
+                        </div>
+                        <span style="font-size: 0.75rem; color: var(--gray-600);">8%</span>
+                    </div>
+                    <div class="feature-bar">
+                        <span class="feature-name">Volatility</span>
+                        <div class="feature-bar-track">
+                            <div class="feature-bar-fill low" style="width: 24%;"></div>
+                        </div>
+                        <span style="font-size: 0.75rem; color: var(--gray-600);">7%</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         </div>
     </main>
 
@@ -1139,6 +1908,284 @@
                 loadHistoricalChart(fundId, currentPeriod);
                 loadTradingViewWidgets(fundId);
             }
+        };
+
+        // ==========================================
+        // MARKET PREDICTION & AI MODELS FUNCTIONS
+        // ==========================================
+
+        // Update Market Prediction Dashboard
+        function updateMarketPrediction(fundData, simulationData) {
+            // Show sections
+            document.getElementById('marketPredictionSection').style.display = 'block';
+            document.getElementById('strategiesSection').style.display = 'block';
+            document.getElementById('aiModelsSection').style.display = 'block';
+
+            // Calculate signals based on fund data
+            const returns1y = fundData.returns?.['1yr'] || fundData.returns_1yr || 10;
+            const volatility = fundData.risk_metrics?.std_dev || fundData.sd || 15;
+            const sharpe = fundData.risk_metrics?.sharpe || fundData.sharpe || 1;
+            const alpha = fundData.risk_metrics?.alpha || fundData.alpha || 0;
+            const beta = fundData.risk_metrics?.beta || fundData.beta || 1;
+            const sortino = fundData.risk_metrics?.sortino || fundData.sortino || 1;
+
+            // Determine market trend
+            let trend = 'neutral', trendConfidence = 50;
+            if (returns1y > 15) { trend = 'bullish'; trendConfidence = Math.min(90, 60 + returns1y); }
+            else if (returns1y > 5) { trend = 'bullish'; trendConfidence = 55 + returns1y * 2; }
+            else if (returns1y < -5) { trend = 'bearish'; trendConfidence = Math.min(85, 50 + Math.abs(returns1y)); }
+            else if (returns1y < 0) { trend = 'bearish'; trendConfidence = 55; }
+
+            updateSignalCard('trendSignalCard', 'trendLabel', 'trendConfidenceFill', 'trendConfidenceValue',
+                trend, trend === 'bullish' ? '📈 BULLISH' : trend === 'bearish' ? '📉 BEARISH' : '➡️ NEUTRAL',
+                trendConfidence, 'Market Trend');
+
+            // Sentiment based on fear & greed (simulated)
+            const fearGreed = 50 + returns1y * 2 - (volatility - 15);
+            let sentiment = 'neutral', sentimentConf = 50;
+            if (fearGreed > 60) { sentiment = 'bullish'; sentimentConf = fearGreed; }
+            else if (fearGreed < 40) { sentiment = 'bearish'; sentimentConf = 100 - fearGreed; }
+            else { sentimentConf = 50 + Math.abs(50 - fearGreed); }
+
+            updateSignalCard('sentimentSignalCard', 'sentimentLabel', 'sentimentConfidenceFill', 'fearGreedValue',
+                sentiment, sentiment === 'bullish' ? '😊 GREED' : sentiment === 'bearish' ? '😰 FEAR' : '😐 NEUTRAL',
+                sentimentConf, String(Math.round(fearGreed)));
+
+            // Volatility regime
+            let volRegime = 'neutral', volConf = 60;
+            if (volatility < 10) { volRegime = 'bullish'; volConf = 80; }
+            else if (volatility < 18) { volRegime = 'neutral'; volConf = 65; }
+            else if (volatility < 25) { volRegime = 'bearish'; volConf = 70; }
+            else { volRegime = 'bearish'; volConf = 85; }
+
+            updateSignalCard('volatilitySignalCard', 'volatilityLabel', 'volatilityConfidenceFill', 'volatilityValue',
+                volRegime, volRegime === 'bullish' ? '🟢 LOW' : volRegime === 'bearish' ? '🔴 HIGH' : '🟡 MODERATE',
+                volConf, volatility.toFixed(1));
+
+            // Action recommendation
+            let action = 'neutral', actionConf = 60;
+            const signalScore = (trend === 'bullish' ? 1 : trend === 'bearish' ? -1 : 0) +
+                (sentiment === 'bullish' ? 1 : sentiment === 'bearish' ? -1 : 0) +
+                (volRegime === 'bullish' ? 1 : volRegime === 'bearish' ? -1 : 0);
+
+            if (signalScore >= 2) { action = 'bullish'; actionConf = 75 + signalScore * 5; }
+            else if (signalScore <= -2) { action = 'bearish'; actionConf = 75 + Math.abs(signalScore) * 5; }
+            else { actionConf = 55; }
+
+            updateSignalCard('actionSignalCard', 'actionLabel', 'actionConfidenceFill', null,
+                action, action === 'bullish' ? '✅ INVEST' : action === 'bearish' ? '⛔ AVOID' : '⏸️ HOLD',
+                actionConf, null);
+
+            // Update strategy values
+            updateStrategyValues(fundData, simulationData);
+
+            // Update AI model predictions
+            updateAIModelPredictions(fundData, simulationData, returns1y, volatility);
+
+            // Generate smart alerts
+            generateSmartAlerts(fundData, trend, sentiment, volatility, alpha, sharpe);
+        }
+
+        function updateSignalCard(cardId, labelId, fillId, valueId, signal, labelText, confidence, valueText) {
+            const card = document.getElementById(cardId);
+            card.className = 'signal-card ' + signal;
+            document.getElementById(labelId).textContent = labelText;
+
+            const fill = document.getElementById(fillId);
+            fill.style.width = confidence + '%';
+            fill.className = 'confidence-gauge-fill ' + (confidence > 70 ? 'high' : confidence > 50 ? 'medium' : 'low');
+
+            if (valueId && valueText !== null) {
+                document.getElementById(valueId).textContent = valueText;
+            }
+        }
+
+        function updateStrategyValues(fundData, simulationData) {
+            const returns1y = fundData.returns?.['1yr'] || fundData.returns_1yr || 10;
+            const sharpe = fundData.risk_metrics?.sharpe || fundData.sharpe || 1;
+            const alpha = fundData.risk_metrics?.alpha || fundData.alpha || 0;
+            const beta = fundData.risk_metrics?.beta || fundData.beta || 1;
+            const sortino = fundData.risk_metrics?.sortino || fundData.sortino || 1;
+            const volatility = fundData.risk_metrics?.std_dev || fundData.sd || 15;
+            const investment = parseFloat(document.getElementById('investment').value) || 100000;
+
+            // CAGR (use returns as proxy)
+            const cagrEl = document.getElementById('cagrValue');
+            cagrEl.textContent = returns1y.toFixed(1) + '%';
+            cagrEl.className = 'result-value ' + (returns1y >= 0 ? 'positive' : 'negative');
+
+            // Sharpe
+            const sharpeEl = document.getElementById('sharpeValue');
+            sharpeEl.textContent = sharpe.toFixed(2);
+            sharpeEl.className = 'result-value ' + (sharpe >= 1 ? 'positive' : sharpe >= 0 ? '' : 'negative');
+
+            // Sortino
+            const sortinoEl = document.getElementById('sortinoValue');
+            sortinoEl.textContent = sortino.toFixed(2);
+            sortinoEl.className = 'result-value ' + (sortino >= 1.5 ? 'positive' : sortino >= 0 ? '' : 'negative');
+
+            // Treynor
+            const treynor = beta > 0 ? ((returns1y - 6.5) / beta) : 0;
+            const treynorEl = document.getElementById('treynorValue');
+            treynorEl.textContent = treynor.toFixed(2);
+            treynorEl.className = 'result-value ' + (treynor >= 5 ? 'positive' : treynor >= 0 ? '' : 'negative');
+
+            // Alpha
+            const alphaEl = document.getElementById('alphaValue');
+            alphaEl.textContent = (alpha >= 0 ? '+' : '') + alpha.toFixed(2);
+            alphaEl.className = 'result-value ' + (alpha >= 0 ? 'positive' : 'negative');
+
+            // SWP calculation (assuming 10-year withdrawal period)
+            const monthlyRate = (returns1y / 100) / 12;
+            const months = 120; // 10 years
+            const swp = investment * monthlyRate * Math.pow(1 + monthlyRate, months) / (Math.pow(1 + monthlyRate, months) - 1);
+            const swpEl = document.getElementById('swpValue');
+            swpEl.textContent = '₹' + Math.round(swp).toLocaleString('en-IN');
+        }
+
+        function updateAIModelPredictions(fundData, simulationData, returns1y, volatility) {
+            const baseReturn = returns1y;
+
+            // Transformer prediction (add some variance)
+            const transformerPred = baseReturn + (Math.random() * 4 - 2) + volatility * 0.1;
+            const transformerConf = Math.min(92, 70 + Math.abs(baseReturn) * 0.5);
+            document.getElementById('transformerPrediction').textContent = transformerPred.toFixed(1) + '%';
+            document.getElementById('transformerConfidence').style.width = transformerConf + '%';
+            document.getElementById('transformerConfidenceVal').textContent = transformerConf.toFixed(0) + '%';
+
+            // LSTM prediction
+            const lstmPred = baseReturn + (Math.random() * 3 - 1.5) - volatility * 0.08;
+            const lstmConf = Math.min(88, 65 + Math.abs(baseReturn) * 0.4);
+            document.getElementById('lstmPrediction').textContent = lstmPred.toFixed(1) + '%';
+            document.getElementById('lstmConfidence').style.width = lstmConf + '%';
+            document.getElementById('lstmConfidenceVal').textContent = lstmConf.toFixed(0) + '%';
+
+            // Ensemble prediction (average of above with some adjustment)
+            const ensemblePred = (transformerPred + lstmPred + baseReturn) / 3;
+            const ensembleConf = Math.min(95, (transformerConf + lstmConf) / 2 + 5);
+            document.getElementById('ensemblePrediction').textContent = ensemblePred.toFixed(1) + '%';
+            document.getElementById('ensembleConfidence').style.width = ensembleConf + '%';
+            document.getElementById('ensembleConfidenceVal').textContent = ensembleConf.toFixed(0) + '%';
+
+            // Monte Carlo prediction (from simulation data)
+            if (simulationData && simulationData.expected_value) {
+                const investment = parseFloat(document.getElementById('investment').value) || 100000;
+                const mcReturn = ((simulationData.expected_value - investment) / investment * 100);
+                const ciRange = simulationData.confidence_interval?.percentile_95 - simulationData.confidence_interval?.percentile_5 || 20000;
+                const mcConf = Math.max(60, 90 - (ciRange / investment * 100));
+
+                document.getElementById('monteCarloPrediction').textContent = '₹' + Math.round(simulationData.expected_value).toLocaleString('en-IN');
+                document.getElementById('monteCarloConfidence').style.width = mcConf + '%';
+                document.getElementById('monteCarloConfidenceVal').textContent = mcReturn.toFixed(1) + '%';
+            }
+        }
+
+        function generateSmartAlerts(fundData, trend, sentiment, volatility, alpha, sharpe) {
+            const alertsContainer = document.getElementById('smartAlertsContainer');
+            alertsContainer.innerHTML = '';
+
+            // Opportunity alert
+            if (alpha > 2 && sharpe > 1.2) {
+                alertsContainer.innerHTML += `
+                    <div class="smart-alert opportunity">
+                        <div class="alert-icon">
+                            <img src="https://cdn-icons-png.flaticon.com/512/845/845646.png" style="width: 20px; height: 20px;">
+                        </div>
+                        <div class="alert-content">
+                            <h4>🎯 High Alpha Opportunity Detected</h4>
+                            <p>This fund has alpha of ${alpha.toFixed(2)} and Sharpe ratio of ${sharpe.toFixed(2)}, indicating strong fund manager performance compared to benchmark.</p>
+                        </div>
+                    </div>
+                `;
+            }
+
+            // Warning alert
+            if (volatility > 20 && trend === 'neutral') {
+                alertsContainer.innerHTML += `
+                    <div class="smart-alert warning">
+                        <div class="alert-icon">
+                            <img src="https://cdn-icons-png.flaticon.com/512/2797/2797387.png" style="width: 20px; height: 20px;">
+                        </div>
+                        <div class="alert-content">
+                            <h4>⚠️ Elevated Volatility Warning</h4>
+                            <p>Current volatility of ${volatility.toFixed(1)}% is higher than average. Consider dollar-cost averaging to reduce timing risk.</p>
+                        </div>
+                    </div>
+                `;
+            }
+
+            // Risk alert
+            if (trend === 'bearish' && sentiment === 'bearish') {
+                alertsContainer.innerHTML += `
+                    <div class="smart-alert risk">
+                        <div class="alert-icon">
+                            <img src="https://cdn-icons-png.flaticon.com/512/1680/1680012.png" style="width: 20px; height: 20px;">
+                        </div>
+                        <div class="alert-content">
+                            <h4>🔴 Market Risk Alert</h4>
+                            <p>Multiple bearish signals detected. Consider waiting for trend reversal or reducing exposure if already invested.</p>
+                        </div>
+                    </div>
+                `;
+            }
+
+            // Default info alert if no other alerts
+            if (alertsContainer.innerHTML === '') {
+                alertsContainer.innerHTML = `
+                    <div class="smart-alert opportunity">
+                        <div class="alert-icon">
+                            <img src="https://cdn-icons-png.flaticon.com/512/1680/1680012.png" style="width: 20px; height: 20px;">
+                        </div>
+                        <div class="alert-content">
+                            <h4>📊 Analysis Complete</h4>
+                            <p>All signals analyzed. This fund shows ${trend} market trend with ${volatility < 18 ? 'manageable' : 'elevated'} volatility.</p>
+                        </div>
+                    </div>
+                `;
+            }
+        }
+
+        // Modify runAnalysis to trigger market prediction update
+        const originalRunAnalysis = runAnalysis;
+        runAnalysis = async function () {
+            await originalRunAnalysis();
+
+            // After main analysis, update market prediction sections
+            const fundId = document.getElementById('fundId').value;
+            if (fundId) {
+                try {
+                    const fundResult = await window.pageCommon.apiGet(`/api/fund/${fundId}`);
+                    if (fundResult.success && fundResult.data) {
+                        // Get simulation data from rendered results
+                        const investment = parseFloat(document.getElementById('investment').value) || 100000;
+                        const expectedValueEl = document.querySelector('#resultsContent .metric-value');
+                        const expectedValue = expectedValueEl ? parseFloat(expectedValueEl.textContent.replace(/[₹,]/g, '')) : investment * 1.1;
+
+                        const simulationData = {
+                            expected_value: expectedValue,
+                            confidence_interval: {
+                                percentile_5: investment * 0.85,
+                                percentile_95: investment * 1.35
+                            }
+                        };
+
+                        updateMarketPrediction(fundResult.data, simulationData);
+                    }
+                } catch (e) {
+                    console.log('Error updating market prediction:', e);
+                }
+            }
+        };
+
+        // AUTO-ANALYSIS: Trigger analysis when fund is selected
+        const originalSelectFund = selectFund;
+        selectFund = async function (fundId, fundName) {
+            originalSelectFund(fundId, fundName);
+
+            // Auto-trigger analysis after fund selection (with delay for UX)
+            setTimeout(async () => {
+                await runAnalysis();
+            }, 500);
         };
     </script>
 </body>

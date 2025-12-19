@@ -12,23 +12,23 @@ from pathlib import Path
 def generate_mutual_fund_dataset(num_funds=150, output_path="data/raw/MF_India_AI.json"):
     """
     Generate synthetic mutual fund data with realistic characteristics.
-    
+
     Args:
         num_funds: Number of mutual funds to generate
         output_path: Path to save the JSON dataset
     """
-    
+
     # Ensure output directory exists
     output_file = Path(output_path)
     output_file.parent.mkdir(parents=True, exist_ok=True)
-    
+
     amcs = [
         "HDFC AMC", "ICICI Prudential", "Axis Mutual Fund", "SBI Mutual Fund",
         "Aditya Birla Sun Life", "Reliance Mutual Fund", "Kotak Mahindra",
         "Franklin Templeton", "T. Rowe Price", "DSP BlackRock", "UTI Mutual Fund",
         "BNP Paribas", "Principal Mutual Fund", "LIC Mutual Fund", "BOI AXA"
     ]
-    
+
     categories = {
         "Equity": ["Large Cap", "Mid Cap", "Small Cap", "Multi Cap", "Dividend Yield"],
         "Debt": ["Liquid", "Money Market", "Short Duration", "Medium Duration", "Long Duration"],
@@ -36,13 +36,13 @@ def generate_mutual_fund_dataset(num_funds=150, output_path="data/raw/MF_India_A
         "Solution Oriented": ["Retirement", "Education"],
         "Other": ["Gold", "International"]
     }
-    
+
     funds = []
-    
+
     for i in range(num_funds):
         category = random.choice(list(categories.keys()))
         sub_category = random.choice(categories[category])
-        
+
         # Risk level based on category
         if category == "Equity":
             risk_level = random.randint(4, 6)
@@ -76,24 +76,24 @@ def generate_mutual_fund_dataset(num_funds=150, output_path="data/raw/MF_India_A
             min_sip = random.randint(500, 1000)
             min_lumpsum = random.randint(5000, 25000)
             expense_ratio = round(random.uniform(0.3, 1.2), 2)
-        
+
         # Realistic metrics
         fund_size = round(random.uniform(100, 50000), 2)  # In crores
         fund_age = random.randint(1, 25)  # Years
-        
+
         # Alpha, Beta, Sharpe, Sortino
         alpha = round(random.uniform(-5, 15), 2)
         beta = round(random.uniform(0.5, 1.8), 2) if "Equity" in category else round(random.uniform(0.1, 0.5), 2)
         sharpe = round(random.uniform(0.5, 3.0), 2)
         sortino = round(random.uniform(1.0, 4.5), 2)
         std_dev = round(random.uniform(2, 25), 2)
-        
+
         # Rating (0-5)
         rating = round(random.uniform(2.5, 5.0), 1)
-        
+
         # AUM (Assets Under Management)
         aum_nav = round(random.uniform(10, 500), 2)
-        
+
         fund = {
             "scheme_id": f"FUND_{i+1:04d}",
             "scheme_name": f"{random.choice(amcs)} {sub_category} Fund {i+1}",
@@ -120,13 +120,13 @@ def generate_mutual_fund_dataset(num_funds=150, output_path="data/raw/MF_India_A
             "nav": round(random.uniform(10, 200), 2),
             "nav_date": datetime.now().strftime("%Y-%m-%d")
         }
-        
+
         funds.append(fund)
-    
+
     # Save dataset
     with open(output_path, 'w') as f:
         json.dump(funds, f, indent=2)
-    
+
     print(f"✓ Generated {num_funds} mutual funds and saved to {output_path}")
     return funds
 

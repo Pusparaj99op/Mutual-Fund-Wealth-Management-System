@@ -84,23 +84,475 @@
             margin-bottom: 20px
         }
 
+        /* Government Stats Box Style */
         .metric-box {
-            background: var(--gray-50);
-            border-radius: 8px;
-            padding: 15px;
+            background: linear-gradient(180deg, #ffffff 0%, #f8f9fa 100%);
+            border-radius: 0;
+            padding: 20px 15px;
             text-align: center;
-            border-left: 4px solid var(--gov-navy)
+            border: 2px solid var(--gov-navy);
+            border-top: 4px solid var(--saffron);
+            position: relative;
+            transition: all 0.3s ease;
+            animation: fadeInUp 0.5s ease-out forwards;
+            opacity: 0;
+            box-shadow: 0 2px 8px rgba(0, 51, 102, 0.1);
+        }
+
+        .metric-box::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--saffron) 0%, var(--saffron) 33%, #ffffff 33%, #ffffff 66%, var(--green) 66%, var(--green) 100%);
+        }
+
+        .metric-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 51, 102, 0.2);
+            border-color: var(--saffron);
+        }
+
+        .metric-box:nth-child(1) {
+            animation-delay: 0.1s;
+        }
+
+        .metric-box:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .metric-box:nth-child(3) {
+            animation-delay: 0.3s;
+        }
+
+        .metric-box:nth-child(4) {
+            animation-delay: 0.4s;
+        }
+
+        .metric-box:nth-child(5) {
+            animation-delay: 0.5s;
+        }
+
+        .metric-box:nth-child(6) {
+            animation-delay: 0.6s;
         }
 
         .metric-value {
-            font-size: 1.4rem;
+            font-size: 1.8rem;
             font-weight: 700;
-            color: var(--gov-navy)
+            color: var(--gov-navy);
+            line-height: 1.2;
+            margin-bottom: 5px;
+            font-family: 'Noto Sans', sans-serif;
         }
 
         .metric-label {
+            font-size: 0.75rem;
+            color: var(--gray-600);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            font-weight: 500;
+        }
+
+        /* Government Stats Section Header */
+        .stats-section-header {
+            background: var(--gov-navy);
+            color: white;
+            padding: 10px 15px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            border-left: 4px solid var(--saffron);
+        }
+
+        .stats-section-header img {
+            width: 18px;
+            height: 18px;
+            filter: brightness(0) invert(1);
+        }
+
+        /* Government Notice Style Box */
+        .gov-notice-box {
+            background: #fffbeb;
+            border: 1px solid #fbbf24;
+            border-left: 4px solid var(--saffron);
+            padding: 12px 15px;
+            margin-bottom: 20px;
+            font-size: 0.8rem;
+            color: #92400e;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* Enhanced Signal Badges */
+        .signal-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 6px 14px;
+            border-radius: 0;
+            font-weight: 600;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .signal-badge.buy {
+            background: #dcfce7;
+            color: #166534;
+            border: 1px solid #16a34a;
+        }
+
+        .signal-badge.sell {
+            background: #fee2e2;
+            color: #991b1b;
+            border: 1px solid #dc2626;
+        }
+
+        .signal-badge.hold {
+            background: #fef3c7;
+            color: #92400e;
+            border: 1px solid #f59e0b;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.05);
+            }
+        }
+
+        @keyframes countUp {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes fillGauge {
+            from {
+                stroke-dashoffset: 283;
+            }
+        }
+
+        /* Chart containers - Government Style */
+        .chart-container {
+            background: linear-gradient(180deg, #ffffff 0%, #fafbfc 100%);
+            border-radius: 0;
+            padding: 20px;
+            margin-top: 20px;
+            border: 1px solid var(--gray-300);
+            border-top: 4px solid var(--gov-navy);
+            box-shadow: 0 2px 8px rgba(0, 51, 102, 0.08);
+            animation: fadeInUp 0.6s ease-out forwards;
+            opacity: 0;
+            position: relative;
+        }
+
+        .chart-container::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--saffron), var(--white), var(--green));
+        }
+
+        .chart-title {
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--gov-navy);
+            margin-bottom: 15px;
+            padding: 12px 15px;
+            background: linear-gradient(135deg, #f0f4f8 0%, #e8eef4 100%);
+            border-left: 4px solid var(--saffron);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            margin: -20px -20px 20px -20px;
+        }
+
+        .chart-title img {
+            width: 20px;
+            height: 20px;
+        }
+
+        .charts-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 25px;
+        }
+
+        @media (max-width: 900px) {
+            .charts-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Gauge styles - Enhanced Government Theme */
+        .gauge-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 30px 20px;
+            background: radial-gradient(circle at center, rgba(0, 51, 102, 0.02) 0%, transparent 70%);
+        }
+
+        .gauge-svg {
+            width: 180px;
+            height: 180px;
+            transform: rotate(-90deg);
+            filter: drop-shadow(0 4px 15px rgba(0, 51, 102, 0.15));
+        }
+
+        .gauge-bg {
+            fill: none;
+            stroke: #e5e7eb;
+            stroke-width: 14;
+        }
+
+        .gauge-fill {
+            fill: none;
+            stroke-width: 14;
+            stroke-linecap: round;
+            transition: stroke-dashoffset 1.5s cubic-bezier(0.4, 0, 0.2, 1);
+            filter: drop-shadow(0 2px 8px currentColor);
+        }
+
+        .gauge-text {
+            position: absolute;
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--gov-navy);
+            font-family: 'Noto Sans', sans-serif;
+            text-shadow: 0 2px 4px rgba(0, 51, 102, 0.1);
+        }
+
+        .gauge-label {
             font-size: 0.7rem;
-            color: var(--gray-600)
+            color: var(--gray-500);
+            margin-top: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 500;
+            background: var(--gray-100);
+            padding: 5px 12px;
+            border-radius: 3px;
+        }
+
+        .gauge-wrapper {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* Prediction class badge - Enhanced Official Style */
+        .prediction-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 24px;
+            border-radius: 4px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            animation: pulse 2.5s ease-in-out infinite;
+            border: 2px solid;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .prediction-badge:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .prediction-badge::before {
+            content: '📈';
+            font-size: 1rem;
+        }
+
+        .prediction-badge.high-growth {
+            background: linear-gradient(135deg, #ecfdf5 0%, #d1fae5 100%);
+            color: #065f46;
+            border-color: #059669;
+            box-shadow: 0 4px 15px rgba(5, 150, 105, 0.2);
+        }
+
+        .prediction-badge.high-growth::before {
+            content: '🚀';
+        }
+
+        .prediction-badge.moderate-growth {
+            background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+            color: #166534;
+            border-color: #22c55e;
+            box-shadow: 0 4px 15px rgba(34, 197, 94, 0.2);
+        }
+
+        .prediction-badge.moderate-growth::before {
+            content: '📈';
+        }
+
+        .prediction-badge.stable {
+            background: linear-gradient(135deg, #fffbeb 0%, #fef3c7 100%);
+            color: #92400e;
+            border-color: #f59e0b;
+            box-shadow: 0 4px 15px rgba(245, 158, 11, 0.2);
+        }
+
+        .prediction-badge.stable::before {
+            content: '➡️';
+        }
+
+        .prediction-badge.low-growth {
+            background: linear-gradient(135deg, #fff7ed 0%, #ffedd5 100%);
+            color: #9a3412;
+            border-color: #ea580c;
+            box-shadow: 0 4px 15px rgba(234, 88, 12, 0.2);
+        }
+
+        .prediction-badge.low-growth::before {
+            content: '📉';
+        }
+
+        .prediction-badge.negative {
+            background: linear-gradient(135deg, #fef2f2 0%, #fee2e2 100%);
+            color: #991b1b;
+            border-color: #dc2626;
+            box-shadow: 0 4px 15px rgba(220, 38, 38, 0.2);
+        }
+
+        .prediction-badge.negative::before {
+            content: '⚠️';
+        }
+
+        /* Prediction Value Large Display */
+        .prediction-value-large {
+            font-size: 3.5rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--gov-navy) 0%, #1e40af 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 15px;
+            text-shadow: none;
+            filter: drop-shadow(0 2px 4px rgba(0, 51, 102, 0.1));
+        }
+
+        .prediction-range {
+            display: inline-block;
+            background: var(--gray-100);
+            padding: 8px 16px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            color: var(--gray-600);
+            border-left: 3px solid var(--gov-navy);
+        }
+
+        /* Large Statistic Display - Government Style */
+        .stat-large {
+            background: linear-gradient(180deg, var(--gov-navy) 0%, #001f3f 100%);
+            color: white;
+            padding: 25px;
+            text-align: center;
+            position: relative;
+            margin-bottom: 20px;
+        }
+
+        .stat-large::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, var(--saffron), var(--white), var(--green));
+        }
+
+        .stat-large-value {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 5px;
+            font-family: 'Noto Sans', sans-serif;
+        }
+
+        .stat-large-label {
+            font-size: 0.85rem;
+            opacity: 0.9;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Feature bar */
+        .feature-bar-container {
+            margin: 8px 0;
+        }
+
+        .feature-bar-label {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.75rem;
+            color: var(--gray-600);
+            margin-bottom: 4px;
+        }
+
+        .feature-bar-track {
+            height: 8px;
+            background: var(--gray-200);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .feature-bar-fill {
+            height: 100%;
+            border-radius: 4px;
+            transition: width 1s ease-out;
+            background: linear-gradient(90deg, var(--gov-navy), var(--saffron));
         }
 
         /* Autocomplete Styles */
@@ -139,6 +591,18 @@
         .autocomplete-item .fund-info {
             font-size: 0.7rem;
             color: var(--gray-500);
+        }
+
+        /* Results animations */
+        .results-header {
+            animation: slideInLeft 0.4s ease-out;
+        }
+
+        .section-divider {
+            height: 2px;
+            background: linear-gradient(to right, var(--saffron), var(--gov-navy), var(--green));
+            margin: 25px 0;
+            border-radius: 1px;
         }
     </style>
 </head>
@@ -333,18 +797,363 @@
             const type = document.getElementById('analysisType').value;
             if (!fundId) { alert('Please select a fund'); return; }
             document.getElementById('resultsContent').innerHTML = '<div class="loading"></div>';
-            const r = await window.pageCommon.apiGet(`/api/advanced/${fundId}/${type}`);
-            if (r.success && r.data) { renderResults(r.data, type) } else { window.pageCommon.showError('resultsContent', r.error || 'Failed to run analysis') }
+
+            // Map analysis type to API endpoint
+            const endpointMap = {
+                'ml_prediction': 'ml-predict',
+                'momentum': 'momentum',
+                'factor': 'factor',
+                'sentiment': 'sentiment',
+                'all': 'complete'
+            };
+            const endpoint = endpointMap[type] || 'complete';
+
+            const r = await window.pageCommon.apiGet(`/api/advanced/${endpoint}/${fundId}`);
+            if (r.success && r.data) { renderResults(r.data, type, r.fund) } else { window.pageCommon.showError('resultsContent', r.error || 'Failed to run analysis') }
         }
 
-        function renderResults(data, type) {
-            let html = `<div style="margin-bottom:20px"><h4 style="color:var(--gov-navy)">${data.fund?.scheme_name || 'Fund Analysis'}</h4><p style="color:var(--gray-500);font-size:0.85rem">Analysis Type: ${type.replace('_', ' ').toUpperCase()}</p></div>`;
-            if (data.ml_prediction) { html += `<h5 style="margin:15px 0 10px;font-size:0.9rem"><img src="https://cdn-icons-png.flaticon.com/512/2103/2103633.png" style="width:16px;height:16px;vertical-align:middle;margin-right:5px">ML Prediction</h5><div class="metric-grid"><div class="metric-box"><div class="metric-value">${data.ml_prediction.predicted_return?.toFixed(2) || '-'}%</div><div class="metric-label">Predicted Return</div></div><div class="metric-box"><div class="metric-value">${data.ml_prediction.confidence?.toFixed(0) || '-'}%</div><div class="metric-label">Confidence</div></div><div class="metric-box"><div class="metric-value">${data.ml_prediction.signal || '-'}</div><div class="metric-label">Signal</div></div></div>` }
-            if (data.momentum) { html += `<h5 style="margin:15px 0 10px;font-size:0.9rem"><img src="https://cdn-icons-png.flaticon.com/512/2247/2247615.png" style="width:16px;height:16px;vertical-align:middle;margin-right:5px">Momentum</h5><div class="metric-grid"><div class="metric-box"><div class="metric-value">${data.momentum.rsi?.toFixed(1) || '-'}</div><div class="metric-label">RSI</div></div><div class="metric-box"><div class="metric-value">${data.momentum.macd_signal || '-'}</div><div class="metric-label">MACD Signal</div></div><div class="metric-box"><div class="metric-value">${data.momentum.trend || '-'}</div><div class="metric-label">Trend</div></div></div>` }
-            if (data.factor_analysis) { html += `<h5 style="margin:15px 0 10px;font-size:0.9rem"><img src="https://cdn-icons-png.flaticon.com/512/3281/3281306.png" style="width:16px;height:16px;vertical-align:middle;margin-right:5px">Factor Analysis</h5><table class="data-table"><tr><td>Market Beta</td><td>${data.factor_analysis.market_beta?.toFixed(2) || '-'}</td></tr><tr><td>Size Factor</td><td>${data.factor_analysis.size_factor?.toFixed(2) || '-'}</td></tr><tr><td>Value Factor</td><td>${data.factor_analysis.value_factor?.toFixed(2) || '-'}</td></tr><tr><td>R-Squared</td><td>${data.factor_analysis.r_squared?.toFixed(2) || '-'}</td></tr></table>` }
-            if (data.sentiment) { html += `<h5 style="margin:15px 0 10px;font-size:0.9rem"><img src="https://cdn-icons-png.flaticon.com/512/3655/3655585.png" style="width:16px;height:16px;vertical-align:middle;margin-right:5px">Market Sentiment</h5><div class="metric-grid"><div class="metric-box"><div class="metric-value">${data.sentiment.score?.toFixed(1) || '-'}</div><div class="metric-label">Score</div></div><div class="metric-box"><div class="metric-value">${data.sentiment.classification || '-'}</div><div class="metric-label">Classification</div></div><div class="metric-box"><div class="metric-value">${data.sentiment.market_regime || '-'}</div><div class="metric-label">Market Regime</div></div></div>` }
-            if (!data.ml_prediction && !data.momentum && !data.factor_analysis && !data.sentiment) { html += `<div class="empty-state"><p>No detailed data available for this analysis type</p></div>` }
-            document.getElementById('resultsContent').innerHTML = html
+        function renderResults(data, type, fundInfo) {
+            const fundName = fundInfo?.scheme_name || data.fund?.scheme_name || 'Fund Analysis';
+
+            // For individual endpoints, normalize the data structure
+            let normalizedData = data;
+            if (type === 'ml_prediction' && !data.ml_prediction) {
+                normalizedData = { ml_prediction: data };
+            } else if (type === 'momentum' && !data.momentum) {
+                normalizedData = { momentum: data };
+            } else if (type === 'factor' && !data.factor_analysis) {
+                normalizedData = { factor_analysis: data };
+            } else if (type === 'sentiment' && !data.sentiment) {
+                normalizedData = { sentiment: data };
+            }
+
+            let html = `
+                <div class="results-header" style="margin-bottom:25px">
+                    <h4 style="color:var(--gov-navy);margin-bottom:5px">${fundName}</h4>
+                    <p style="color:var(--gray-500);font-size:0.85rem">Analysis Type: ${type.replace('_', ' ').toUpperCase()}</p>
+                </div>`;
+
+            // ML Prediction rendering with charts
+            if (normalizedData.ml_prediction) {
+                const ml = normalizedData.ml_prediction;
+                const predictedReturn = ml.predicted_return || ml.ensemble_prediction || 0;
+                const confidence = ml.prediction_confidence || ml.confidence || 0;
+                const predClass = ml.prediction_class || ml.signal || 'UNKNOWN';
+                const predRange = ml.prediction_range || { lower: predictedReturn - 5, upper: predictedReturn + 5 };
+                const features = ml.feature_importance || {};
+
+                // Get badge class based on prediction
+                const badgeClass = predClass.toLowerCase().replace('_', '-');
+
+                html += `
+                    <h5 style="margin:15px 0 10px;font-size:0.95rem;display:flex;align-items:center;gap:8px">
+                        <img src="https://cdn-icons-png.flaticon.com/512/2103/2103633.png" style="width:20px;height:20px">
+                        ML Return Prediction
+                    </h5>
+
+                    <div class="charts-grid">
+                        <!-- Confidence Gauge -->
+                        <div class="chart-container" style="animation-delay: 0.2s">
+                            <div class="chart-title">
+                                <img src="https://cdn-icons-png.flaticon.com/512/3208/3208660.png" style="width:16px;height:16px">
+                                Model Confidence
+                            </div>
+                            <div class="gauge-wrapper">
+                                <svg class="gauge-svg" viewBox="0 0 100 100">
+                                    <circle class="gauge-bg" cx="50" cy="50" r="45"></circle>
+                                    <circle class="gauge-fill" cx="50" cy="50" r="45"
+                                        stroke="${confidence > 70 ? '#138808' : confidence > 50 ? '#FF9800' : '#D32F2F'}"
+                                        stroke-dasharray="283"
+                                        stroke-dashoffset="${283 - (283 * confidence / 100)}"
+                                        style="animation: fillGauge 1.5s ease-out">
+                                    </circle>
+                                </svg>
+                                <div class="gauge-text" style="position:absolute;transform:none">${confidence.toFixed(0)}%</div>
+                            </div>
+                            <div class="gauge-label">Higher is better</div>
+                        </div>
+
+                        <!-- Prediction summary -->
+                        <div class="chart-container" style="animation-delay: 0.3s">
+                            <div class="chart-title">
+                                <img src="https://cdn-icons-png.flaticon.com/512/3281/3281295.png">
+                                Prediction Summary
+                            </div>
+                            <div style="text-align:center;padding:25px 15px">
+                                <div class="prediction-value-large">
+                                    ${predictedReturn > 0 ? '+' : ''}${predictedReturn.toFixed(2)}%
+                                </div>
+                                <div style="margin-bottom:20px">
+                                    <span class="prediction-badge ${badgeClass}">${predClass.replace('_', ' ')}</span>
+                                </div>
+                                <div class="prediction-range">
+                                    📊 Range: ${predRange.lower?.toFixed(1) || '-'}% to ${predRange.upper?.toFixed(1) || '-'}%
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Feature Importance -->
+                    <div class="chart-container" style="animation-delay: 0.4s">
+                        <div class="chart-title">
+                            <img src="https://cdn-icons-png.flaticon.com/512/3655/3655585.png" style="width:16px;height:16px">
+                            Feature Importance
+                        </div>
+                        <div id="featureBars"></div>
+                        <canvas id="featureChart" style="max-height:200px;margin-top:15px"></canvas>
+                    </div>
+
+                    <div class="section-divider"></div>
+                `;
+
+                // Store features for chart
+                window._mlFeatures = features;
+                window._predRange = predRange;
+                window._predictedReturn = predictedReturn;
+            }
+
+            // Momentum rendering
+            if (normalizedData.momentum) {
+                const m = normalizedData.momentum;
+                const score = m.combined_score || m.composite_score || 0;
+                const signal = m.signal || '-';
+                const strength = m.trend_strength || m.trend || '-';
+
+                const signalColor = signal.includes('BUY') ? '#138808' : signal.includes('SELL') ? '#D32F2F' : '#FF9800';
+
+                html += `
+                    <h5 style="margin:15px 0 10px;font-size:0.95rem;display:flex;align-items:center;gap:8px">
+                        <img src="https://cdn-icons-png.flaticon.com/512/2247/2247615.png" style="width:20px;height:20px">
+                        Momentum Analysis
+                    </h5>
+                    <div class="metric-grid">
+                        <div class="metric-box">
+                            <div class="metric-value">${score.toFixed(1)}</div>
+                            <div class="metric-label">Momentum Score</div>
+                        </div>
+                        <div class="metric-box" style="border-left-color:${signalColor}">
+                            <div class="metric-value" style="color:${signalColor}">${signal}</div>
+                            <div class="metric-label">Signal</div>
+                        </div>
+                        <div class="metric-box">
+                            <div class="metric-value">${strength}</div>
+                            <div class="metric-label">Trend Strength</div>
+                        </div>
+                    </div>
+                    <div class="chart-container" style="animation-delay: 0.5s">
+                        <canvas id="momentumChart" style="max-height:180px"></canvas>
+                    </div>
+                `;
+
+                window._momentumData = {
+                    ts: m.time_series_momentum || 0,
+                    xs: m.cross_sectional_momentum || 0,
+                    combined: score
+                };
+            }
+
+            // Factor Analysis rendering
+            if (normalizedData.factor_analysis) {
+                const f = normalizedData.factor_analysis;
+                const factors = f.factors || {};
+
+                html += `
+                    <h5 style="margin:15px 0 10px;font-size:0.95rem;display:flex;align-items:center;gap:8px">
+                        <img src="https://cdn-icons-png.flaticon.com/512/3281/3281306.png" style="width:20px;height:20px">
+                        Factor Analysis
+                    </h5>
+                    <div class="metric-grid">
+                        <div class="metric-box">
+                            <div class="metric-value">${f.composite_score?.toFixed(1) || '-'}</div>
+                            <div class="metric-label">Composite Score</div>
+                        </div>
+                        <div class="metric-box">
+                            <div class="metric-value">${f.dominant_factor || '-'}</div>
+                            <div class="metric-label">Dominant Factor</div>
+                        </div>
+                        <div class="metric-box">
+                            <div class="metric-value">${factors.market?.toFixed(2) || '-'}</div>
+                            <div class="metric-label">Market Beta</div>
+                        </div>
+                    </div>
+                    <div class="chart-container" style="animation-delay: 0.5s">
+                        <canvas id="factorChart" style="max-height:220px"></canvas>
+                    </div>
+                `;
+
+                window._factorData = factors;
+            }
+
+            // Sentiment rendering
+            if (normalizedData.sentiment) {
+                const s = normalizedData.sentiment;
+                const fgIndex = s.fear_greed_index || 50;
+                const fgColor = fgIndex > 60 ? '#138808' : fgIndex < 40 ? '#D32F2F' : '#FF9800';
+
+                html += `
+                    <h5 style="margin:15px 0 10px;font-size:0.95rem;display:flex;align-items:center;gap:8px">
+                        <img src="https://cdn-icons-png.flaticon.com/512/3655/3655585.png" style="width:20px;height:20px">
+                        Market Sentiment
+                    </h5>
+                    <div class="metric-grid">
+                        <div class="metric-box" style="border-left-color:${fgColor}">
+                            <div class="metric-value" style="color:${fgColor}">${fgIndex.toFixed(0)}</div>
+                            <div class="metric-label">Fear & Greed Index</div>
+                        </div>
+                        <div class="metric-box">
+                            <div class="metric-value">${s.sentiment || '-'}</div>
+                            <div class="metric-label">Sentiment</div>
+                        </div>
+                        <div class="metric-box">
+                            <div class="metric-value">${s.volatility_regime || '-'}</div>
+                            <div class="metric-label">Volatility Regime</div>
+                        </div>
+                    </div>
+                    <div class="metric-grid">
+                        <div class="metric-box">
+                            <div class="metric-value">${s.trend || '-'}</div>
+                            <div class="metric-label">Market Trend</div>
+                        </div>
+                        <div class="metric-box">
+                            <div class="metric-value">${s.market_condition || '-'}</div>
+                            <div class="metric-label">Condition</div>
+                        </div>
+                        <div class="metric-box" style="border-left-color:${s.recommendation === 'INVEST' ? '#138808' : s.recommendation === 'REDUCE' ? '#D32F2F' : '#FF9800'}">
+                            <div class="metric-value">${s.recommendation || '-'}</div>
+                            <div class="metric-label">Recommendation</div>
+                        </div>
+                    </div>
+                `;
+            }
+
+            // Empty state
+            if (!normalizedData.ml_prediction && !normalizedData.momentum && !normalizedData.factor_analysis && !normalizedData.sentiment) {
+                html += `<div class="empty-state"><p>No detailed data available for this analysis type</p></div>`;
+            }
+
+            document.getElementById('resultsContent').innerHTML = html;
+
+            // Initialize charts after DOM update
+            setTimeout(() => initCharts(normalizedData), 100);
+        }
+
+        function initCharts(data) {
+            // Feature importance chart
+            if (data.ml_prediction && document.getElementById('featureChart')) {
+                const features = window._mlFeatures || data.ml_prediction.feature_importance || {};
+                const featureLabels = Object.keys(features).map(k => k.replace(/_/g, ' ').replace(/\b\w/g, l => l.toUpperCase()));
+                const featureValues = Object.values(features).map(v => (v * 100).toFixed(1));
+
+                // Render feature bars
+                const barsHtml = Object.entries(features).map(([key, val]) => `
+                    <div class="feature-bar-container">
+                        <div class="feature-bar-label">
+                            <span>${key.replace(/_/g, ' ')}</span>
+                            <span>${(val * 100).toFixed(1)}%</span>
+                        </div>
+                        <div class="feature-bar-track">
+                            <div class="feature-bar-fill" style="width: 0%"></div>
+                        </div>
+                    </div>
+                `).join('');
+                document.getElementById('featureBars').innerHTML = barsHtml;
+
+                // Animate bars
+                setTimeout(() => {
+                    document.querySelectorAll('.feature-bar-fill').forEach((bar, i) => {
+                        bar.style.width = `${featureValues[i]}%`;
+                    });
+                }, 200);
+
+                // Feature chart
+                new Chart(document.getElementById('featureChart'), {
+                    type: 'bar',
+                    data: {
+                        labels: featureLabels,
+                        datasets: [{
+                            label: 'Importance %',
+                            data: featureValues,
+                            backgroundColor: 'rgba(0, 51, 102, 0.7)',
+                            borderColor: 'rgba(0, 51, 102, 1)',
+                            borderWidth: 1,
+                            borderRadius: 4
+                        }]
+                    },
+                    options: {
+                        indexAxis: 'y',
+                        responsive: true,
+                        animation: { duration: 1500, easing: 'easeOutQuart' },
+                        plugins: { legend: { display: false } },
+                        scales: {
+                            x: { beginAtZero: true, max: 30, grid: { display: false } },
+                            y: { grid: { display: false } }
+                        }
+                    }
+                });
+            }
+
+            // Factor radar chart
+            if (data.factor_analysis && document.getElementById('factorChart')) {
+                const factors = window._factorData || data.factor_analysis.factors || {};
+                new Chart(document.getElementById('factorChart'), {
+                    type: 'radar',
+                    data: {
+                        labels: ['Market', 'Quality', 'Momentum', 'Low Vol', 'Size', 'Value'],
+                        datasets: [{
+                            label: 'Factor Exposure',
+                            data: [
+                                factors.market || 0,
+                                factors.quality || 0,
+                                factors.momentum || 0,
+                                factors.low_volatility || 0,
+                                factors.size || 0,
+                                factors.value || 0
+                            ],
+                            backgroundColor: 'rgba(255, 136, 0, 0.3)',
+                            borderColor: '#FF8800',
+                            borderWidth: 2,
+                            pointBackgroundColor: '#003366'
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        animation: { duration: 1500 },
+                        scales: {
+                            r: {
+                                beginAtZero: true,
+                                max: 1,
+                                ticks: { stepSize: 0.2 }
+                            }
+                        }
+                    }
+                });
+            }
+
+            // Momentum chart
+            if (data.momentum && document.getElementById('momentumChart')) {
+                const mData = window._momentumData || {};
+                new Chart(document.getElementById('momentumChart'), {
+                    type: 'bar',
+                    data: {
+                        labels: ['Time Series', 'Cross Sectional', 'Combined'],
+                        datasets: [{
+                            label: 'Momentum Score',
+                            data: [mData.ts, mData.xs, mData.combined],
+                            backgroundColor: ['rgba(0, 51, 102, 0.7)', 'rgba(255, 136, 0, 0.7)', 'rgba(19, 136, 8, 0.7)'],
+                            borderWidth: 0,
+                            borderRadius: 6
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        animation: { duration: 1200 },
+                        plugins: { legend: { display: false } },
+                        scales: {
+                            y: { beginAtZero: true, max: 100 }
+                        }
+                    }
+                });
+            }
         }
     </script>
 </body>

@@ -83,7 +83,7 @@ function updateNavForLoggedInUser(user) {
                         <img src="https://cdn-icons-png.flaticon.com/512/1828/1828765.png" alt="Dashboard">
                         Dashboard
                     </a>
-                    <a href="portfolio.html" class="nav-dropdown-item">
+                    <a href="my-portfolio.html" class="nav-dropdown-item">
                         <img src="https://cdn-icons-png.flaticon.com/512/2920/2920293.png" alt="Portfolio">
                         My Portfolio
                     </a>
@@ -138,9 +138,23 @@ async function apiGet(endpoint) {
             return { success: false, error: 'Authentication required' };
         }
 
+        // Check if response is JSON before parsing
+        const contentType = response.headers.get('content-type');
+        if (!contentType || !contentType.includes('application/json')) {
+            console.error('API Error: Expected JSON but received:', contentType);
+            return {
+                success: false,
+                error: `Server error (${response.status}). Please try again later.`
+            };
+        }
+
         return await response.json();
     } catch (error) {
         console.error('API Error:', error);
+        // Provide user-friendly error message for JSON parse errors
+        if (error.message && error.message.includes('Unexpected token')) {
+            return { success: false, error: 'Server returned an invalid response. Please try again.' };
+        }
         return { success: false, error: error.message };
     }
 }
@@ -159,9 +173,23 @@ async function apiPost(endpoint, body) {
             return { success: false, error: 'Authentication required' };
         }
 
+        // Check if response is JSON before parsing
+        const contentType = response.headers.get('content-type');
+        if (!contentType || !contentType.includes('application/json')) {
+            console.error('API Error: Expected JSON but received:', contentType);
+            return {
+                success: false,
+                error: `Server error (${response.status}). Please try again later.`
+            };
+        }
+
         return await response.json();
     } catch (error) {
         console.error('API Error:', error);
+        // Provide user-friendly error message for JSON parse errors
+        if (error.message && error.message.includes('Unexpected token')) {
+            return { success: false, error: 'Server returned an invalid response. Please try again.' };
+        }
         return { success: false, error: error.message };
     }
 }
