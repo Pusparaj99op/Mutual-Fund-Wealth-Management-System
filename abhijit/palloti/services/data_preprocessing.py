@@ -133,12 +133,12 @@ class DataPreprocessor:
         logger.info("Preparing target variables...")
         
         # Return prediction targets
-        self.y_targets['return_1yr'] = self.df['return_1yr'].values
-        self.y_targets['return_3yr'] = self.df['return_3yr'].values
-        self.y_targets['return_5yr'] = self.df['return_5yr'].values
+        self.y_targets['return_1yr'] = self.df['returns_1yr'].values
+        self.y_targets['return_3yr'] = self.df['returns_3yr'].values
+        self.y_targets['return_5yr'] = self.df['returns_5yr'].values
         
         # NAV forecasting target (use average return as proxy for NAV growth)
-        self.y_targets['nav_growth'] = (self.df['return_1yr'] + self.df['return_3yr'] + self.df['return_5yr']) / 3.0
+        self.y_targets['nav_growth'] = (self.df['returns_1yr'] + self.df['returns_3yr'] + self.df['returns_5yr']) / 3.0
         
         logger.info(f"✓ Prepared {len(self.y_targets)} target variables")
         return self.y_targets

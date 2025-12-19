@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Advanced AI - FIMFP">
+    <title>Advanced AI | FIMFP</title>
+    <link rel="icon" type="image/svg+xml"
+        href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🇮🇳</text></svg>">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="../css/gov-style.css">
+    <style>
+        .page-header {
+            background: linear-gradient(135deg, var(--gov-navy) 0%, var(--gov-navy-dark) 100%);
+            color: var(--white);
+            padding: 30px 0;
+            margin-bottom: 30px
+        }
+
+        .page-header::after {
+            content: '';
+            display: block;
+            height: 4px;
+            background: linear-gradient(to right, var(--saffron), var(--white), var(--green));
+            margin-top: 30px
+        }
+
+        .page-title-section {
+            display: flex;
+            align-items: center;
+            gap: 15px
+        }
+
+        .page-icon {
+            width: 48px;
+            height: 48px
+        }
+
+        .page-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin: 0
+        }
+
+        .page-subtitle {
+            font-size: 0.95rem;
+            opacity: 0.9;
+            margin-top: 5px
+        }
+
+        .analysis-grid {
+            display: grid;
+            grid-template-columns: 350px 1fr;
+            gap: 25px;
+            margin-bottom: 30px
+        }
+
+        .model-list {
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid var(--gray-200)
+        }
+
+        .model-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 8px 0;
+            font-size: 0.85rem;
+            color: var(--gray-700)
+        }
+
+        .model-icon {
+            width: 20px;
+            height: 20px
+        }
+
+        .metric-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin-bottom: 20px
+        }
+
+        .metric-box {
+            background: var(--gray-50);
+            border-radius: 8px;
+            padding: 15px;
+            text-align: center;
+            border-left: 4px solid var(--gov-navy)
+        }
+
+        .metric-value {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--gov-navy)
+        }
+
+        .metric-label {
+            font-size: 0.7rem;
+            color: var(--gray-600)
+        }
+
+        /* Autocomplete Styles */
+        .autocomplete-suggestions {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background: var(--white);
+            border: 1px solid var(--gray-300);
+            border-top: none;
+            border-radius: 0 0 6px 6px;
+            max-height: 200px;
+            overflow-y: auto;
+            z-index: 1000;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .autocomplete-item {
+            padding: 8px 12px;
+            cursor: pointer;
+            border-bottom: 1px solid var(--gray-100);
+        }
+
+        .autocomplete-item:hover,
+        .autocomplete-item.selected {
+            background: var(--gray-50);
+        }
+
+        .autocomplete-item .fund-name {
+            font-weight: 500;
+            color: var(--gov-navy);
+            font-size: 0.8rem;
+        }
+
+        .autocomplete-item .fund-info {
+            font-size: 0.7rem;
+            color: var(--gray-500);
+        }
+    </style>
+</head>
+
+<body>
+    <a href="#main-content" class="skip-nav">Skip to main content</a>
+    <div class="top-banner"></div>
+    <div class="gov-secondary-banner">
+        <div class="container">
+            <div class="gov-links"><a href="https://india.gov.in" target="_blank">india.gov.in</a><span
+                    class="separator">|</span><a href="https://sebi.gov.in" target="_blank">SEBI</a></div>
+            <div class="language-switch"><button class="lang-btn active">English</button><button
+                    class="lang-btn">हिंदी</button></div>
+        </div>
+    </div>
+    <header class="main-header">
+        <div class="container">
+            <div class="header-left">
+                <div class="emblem"><img src="https://upload.wikimedia.org/wikipedia/commons/5/55/Emblem_of_India.svg"
+                        alt="Emblem" width="65" height="75"></div>
+                <div class="header-text">
+                    <h1 class="portal-title">FIMFP</h1>
+                    <p class="portal-subtitle">Federal Indian Mutual Fund Portal</p>
+                    <p class="portal-subtitle-hindi">भारतीय संघीय म्यूचुअल फंड पोर्टल</p>
+                </div>
+            </div>
+            <div class="header-right">
+                <div class="digital-india"><span class="di-text">An Initiative of</span><span class="di-logo">Team
+                        CoDevian</span></div>
+            </div>
+        </div>
+    </header>
+    <nav class="main-nav">
+        <div class="container">
+            <ul class="nav-list">
+                <li><a href="../index.html" class="nav-link">Home</a></li>
+                <li><a href="browse-funds.html" class="nav-link">Browse Funds</a></li>
+                <li><a href="ai-analysis.html" class="nav-link">AI Analysis</a></li>
+                <li><a href="recommendations.html" class="nav-link">Recommendations</a></li>
+                <li><a href="portfolio.html" class="nav-link">Portfolio</a></li>
+                <li><a href="compare.html" class="nav-link">Compare</a></li>
+                <li><a href="dashboard.html" class="nav-link">Dashboard</a></li>
+                <li><a href="advanced-ai.html" class="nav-link active">Advanced AI</a></li>
+            </ul>
+            <div class="nav-auth" id="navAuth"><a href="../login.html" class="btn btn-nav-login"><img
+                        src="https://cdn-icons-png.flaticon.com/512/3064/3064197.png" alt="Login"
+                        style="width:16px;height:16px">Login</a></div>
+        </div>
+    </nav>
+    <div class="page-header">
+        <div class="container">
+            <div class="page-title-section"><img src="https://cdn-icons-png.flaticon.com/512/2103/2103633.png" alt="AI"
+                    class="page-icon">
+                <div>
+                    <h1 class="page-title">Advanced AI/ML Analytics</h1>
+                    <p class="page-subtitle">GARCH, Momentum, Factor Analysis, ML Predictions</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <main id="main-content">
+        <div class="container">
+            <div class="analysis-grid">
+                <div class="card">
+                    <h3 class="card-title"><img src="https://cdn-icons-png.flaticon.com/512/3208/3208726.png" alt=""
+                            style="width:20px;height:20px;vertical-align:middle;margin-right:8px">Analysis Tools</h3>
+                    <form id="analysisForm">
+                        <div class="form-group" style="position:relative"><label for="fundSearch"><img
+                                    src="https://cdn-icons-png.flaticon.com/512/2920/2920293.png" alt=""
+                                    style="width:14px;height:14px;vertical-align:middle;margin-right:5px">Search Mutual
+                                Fund</label><input type="text" id="fundSearch" class="form-input"
+                                placeholder="Type fund name..." autocomplete="off"><input type="hidden" id="fundId"
+                                value="">
+                            <div id="fundSuggestions" class="autocomplete-suggestions" style="display:none"></div>
+                        </div>
+                        <div class="form-group"><label for="analysisType"><img
+                                    src="https://cdn-icons-png.flaticon.com/512/2103/2103633.png" alt=""
+                                    style="width:14px;height:14px;vertical-align:middle;margin-right:5px">Analysis
+                                Type</label><select id="analysisType" class="form-select">
+                                <option value="ml_prediction">ML Return Prediction</option>
+                                <option value="momentum">Momentum Analysis</option>
+                                <option value="factor">Factor Model Analysis</option>
+                                <option value="sentiment">Market Sentiment</option>
+                                <option value="all">Complete Analysis</option>
+                            </select></div>
+                        <button type="submit" class="btn btn-primary btn-block"><img
+                                src="https://cdn-icons-png.flaticon.com/512/2103/2103633.png" alt=""
+                                style="width:16px;height:16px">Run Advanced Analysis</button>
+                    </form>
+                    <div class="model-list">
+                        <h4 style="font-size:0.9rem;color:var(--gov-navy);margin-bottom:10px"><img
+                                src="https://cdn-icons-png.flaticon.com/512/1680/1680012.png" alt=""
+                                style="width:14px;height:14px;vertical-align:middle;margin-right:5px">Available Models
+                        </h4>
+                        <div class="model-item"><img src="https://cdn-icons-png.flaticon.com/512/2920/2920313.png"
+                                class="model-icon">Monte Carlo (10K paths)</div>
+                        <div class="model-item"><img src="https://cdn-icons-png.flaticon.com/512/3281/3281306.png"
+                                class="model-icon">Black-Scholes Greeks</div>
+                        <div class="model-item"><img src="https://cdn-icons-png.flaticon.com/512/3209/3209265.png"
+                                class="model-icon">Black-Litterman</div>
+                        <div class="model-item"><img src="https://cdn-icons-png.flaticon.com/512/3655/3655585.png"
+                                class="model-icon">GARCH Volatility</div>
+                        <div class="model-item"><img src="https://cdn-icons-png.flaticon.com/512/2247/2247615.png"
+                                class="model-icon">Momentum Strategy</div>
+                        <div class="model-item"><img src="https://cdn-icons-png.flaticon.com/512/2103/2103633.png"
+                                class="model-icon">ML Ensemble Predictor</div>
+                    </div>
+                </div>
+                <div class="card" id="resultsCard">
+                    <h3 class="card-title"><img src="https://cdn-icons-png.flaticon.com/512/3281/3281295.png" alt=""
+                            style="width:20px;height:20px;vertical-align:middle;margin-right:8px">Analysis Results</h3>
+                    <div id="resultsContent">
+                        <div class="empty-state"><img src="https://cdn-icons-png.flaticon.com/512/2103/2103633.png"
+                                alt="" style="width:64px;height:64px;opacity:0.5;margin-bottom:15px">
+                            <p>Select analysis type and run to view results</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-bottom">
+                <p>© 2024 FIMFP | Government of India</p>
+            </div>
+        </div>
+    </footer>
+    <script src="../js/page-common.js"></script>
+    <script>
+        let allFunds = [];
+        let selectedIndex = -1;
+
+        async function pageInit() {
+            await loadFunds();
+            setupAutocomplete();
+            document.getElementById('analysisForm').addEventListener('submit', async e => { e.preventDefault(); await runAnalysis() });
+        }
+
+        async function loadFunds() {
+            try {
+                const r = await window.pageCommon.apiGet('/api/funds?limit=1000');
+                if (r.success && r.data) allFunds = r.data;
+            } catch (e) { console.error('Failed to load funds:', e); }
+        }
+
+        function setupAutocomplete() {
+            const input = document.getElementById('fundSearch');
+            const suggestions = document.getElementById('fundSuggestions');
+            let timer;
+
+            input.addEventListener('input', function () {
+                clearTimeout(timer);
+                timer = setTimeout(() => {
+                    const q = this.value.toLowerCase().trim();
+                    if (q.length < 2) { suggestions.style.display = 'none'; return; }
+                    const matches = allFunds.filter(f => f.scheme_name.toLowerCase().includes(q) || f.amc_name.toLowerCase().includes(q)).slice(0, 8);
+                    if (matches.length > 0) { renderSuggestions(matches); suggestions.style.display = 'block'; }
+                    else { suggestions.style.display = 'none'; }
+                }, 200);
+            });
+
+            input.addEventListener('keydown', function (e) {
+                const items = suggestions.querySelectorAll('.autocomplete-item');
+                if (e.key === 'ArrowDown') { e.preventDefault(); selectedIndex = Math.min(selectedIndex + 1, items.length - 1); updateSelected(items); }
+                else if (e.key === 'ArrowUp') { e.preventDefault(); selectedIndex = Math.max(selectedIndex - 1, 0); updateSelected(items); }
+                else if (e.key === 'Enter' && selectedIndex >= 0) { e.preventDefault(); items[selectedIndex]?.click(); }
+                else if (e.key === 'Escape') { suggestions.style.display = 'none'; selectedIndex = -1; }
+            });
+
+            document.addEventListener('click', e => { if (!input.contains(e.target) && !suggestions.contains(e.target)) { suggestions.style.display = 'none'; selectedIndex = -1; } });
+        }
+
+        function renderSuggestions(funds) {
+            const div = document.getElementById('fundSuggestions');
+            selectedIndex = -1;
+            div.innerHTML = funds.map(f => `<div class="autocomplete-item" data-id="${f.fund_id}" data-name="${f.scheme_name}"><div class="fund-name">${f.scheme_name}</div><div class="fund-info">${f.amc_name} | ${f.category}</div></div>`).join('');
+            div.querySelectorAll('.autocomplete-item').forEach(item => {
+                item.addEventListener('click', function () {
+                    document.getElementById('fundId').value = this.dataset.id;
+                    document.getElementById('fundSearch').value = this.dataset.name;
+                    div.style.display = 'none';
+                    selectedIndex = -1;
+                });
+            });
+        }
+
+        function updateSelected(items) { items.forEach((item, i) => { item.classList.toggle('selected', i === selectedIndex); if (i === selectedIndex) item.scrollIntoView({ block: 'nearest' }); }); }
+
+        async function runAnalysis() {
+            const fundId = document.getElementById('fundId').value;
+            const type = document.getElementById('analysisType').value;
+            if (!fundId) { alert('Please select a fund'); return; }
+            document.getElementById('resultsContent').innerHTML = '<div class="loading"></div>';
+            const r = await window.pageCommon.apiGet(`/api/advanced/${fundId}/${type}`);
+            if (r.success && r.data) { renderResults(r.data, type) } else { window.pageCommon.showError('resultsContent', r.error || 'Failed to run analysis') }
+        }
+
+        function renderResults(data, type) {
+            let html = `<div style="margin-bottom:20px"><h4 style="color:var(--gov-navy)">${data.fund?.scheme_name || 'Fund Analysis'}</h4><p style="color:var(--gray-500);font-size:0.85rem">Analysis Type: ${type.replace('_', ' ').toUpperCase()}</p></div>`;
+            if (data.ml_prediction) { html += `<h5 style="margin:15px 0 10px;font-size:0.9rem"><img src="https://cdn-icons-png.flaticon.com/512/2103/2103633.png" style="width:16px;height:16px;vertical-align:middle;margin-right:5px">ML Prediction</h5><div class="metric-grid"><div class="metric-box"><div class="metric-value">${data.ml_prediction.predicted_return?.toFixed(2) || '-'}%</div><div class="metric-label">Predicted Return</div></div><div class="metric-box"><div class="metric-value">${data.ml_prediction.confidence?.toFixed(0) || '-'}%</div><div class="metric-label">Confidence</div></div><div class="metric-box"><div class="metric-value">${data.ml_prediction.signal || '-'}</div><div class="metric-label">Signal</div></div></div>` }
+            if (data.momentum) { html += `<h5 style="margin:15px 0 10px;font-size:0.9rem"><img src="https://cdn-icons-png.flaticon.com/512/2247/2247615.png" style="width:16px;height:16px;vertical-align:middle;margin-right:5px">Momentum</h5><div class="metric-grid"><div class="metric-box"><div class="metric-value">${data.momentum.rsi?.toFixed(1) || '-'}</div><div class="metric-label">RSI</div></div><div class="metric-box"><div class="metric-value">${data.momentum.macd_signal || '-'}</div><div class="metric-label">MACD Signal</div></div><div class="metric-box"><div class="metric-value">${data.momentum.trend || '-'}</div><div class="metric-label">Trend</div></div></div>` }
+            if (data.factor_analysis) { html += `<h5 style="margin:15px 0 10px;font-size:0.9rem"><img src="https://cdn-icons-png.flaticon.com/512/3281/3281306.png" style="width:16px;height:16px;vertical-align:middle;margin-right:5px">Factor Analysis</h5><table class="data-table"><tr><td>Market Beta</td><td>${data.factor_analysis.market_beta?.toFixed(2) || '-'}</td></tr><tr><td>Size Factor</td><td>${data.factor_analysis.size_factor?.toFixed(2) || '-'}</td></tr><tr><td>Value Factor</td><td>${data.factor_analysis.value_factor?.toFixed(2) || '-'}</td></tr><tr><td>R-Squared</td><td>${data.factor_analysis.r_squared?.toFixed(2) || '-'}</td></tr></table>` }
+            if (data.sentiment) { html += `<h5 style="margin:15px 0 10px;font-size:0.9rem"><img src="https://cdn-icons-png.flaticon.com/512/3655/3655585.png" style="width:16px;height:16px;vertical-align:middle;margin-right:5px">Market Sentiment</h5><div class="metric-grid"><div class="metric-box"><div class="metric-value">${data.sentiment.score?.toFixed(1) || '-'}</div><div class="metric-label">Score</div></div><div class="metric-box"><div class="metric-value">${data.sentiment.classification || '-'}</div><div class="metric-label">Classification</div></div><div class="metric-box"><div class="metric-value">${data.sentiment.market_regime || '-'}</div><div class="metric-label">Market Regime</div></div></div>` }
+            if (!data.ml_prediction && !data.momentum && !data.factor_analysis && !data.sentiment) { html += `<div class="empty-state"><p>No detailed data available for this analysis type</p></div>` }
+            document.getElementById('resultsContent').innerHTML = html
+        }
+    </script>
+</body>
+
+</html>

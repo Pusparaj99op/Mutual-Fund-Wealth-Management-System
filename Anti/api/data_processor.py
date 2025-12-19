@@ -13,6 +13,35 @@ from datetime import datetime, timedelta
 # Get the base directory
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
+# AMC to NSE Stock Symbol Mapping for TradingView widgets
+AMC_STOCK_SYMBOLS = {
+    'HDFC Mutual Fund': 'NSE:HDFCAMC',
+    'ICICI Prudential Mutual Fund': 'NSE:ICICIPRULI',
+    'SBI Mutual Fund': 'NSE:SBILIFE',
+    'Aditya Birla Sun Life Mutual Fund': 'NSE:ABSLAMC',
+    'Kotak Mahindra Mutual Fund': 'NSE:KOTAKBANK',
+    'Axis Mutual Fund': 'NSE:AXISBANK',
+    'Nippon India Mutual Fund': 'NSE:NAM-INDIA',
+    'UTI Mutual Fund': 'NSE:UTIAMC',
+    'DSP Mutual Fund': 'NSE:DSPBR',
+    'Franklin Templeton Mutual Fund': 'NYSE:BEN',
+    'Tata Mutual Fund': 'NSE:TATASTEEL',
+    'L&T Mutual Fund': 'NSE:LT',
+    'Mirae Asset Mutual Fund': 'NSE:MIRAEASSET',
+    'Motilal Oswal Mutual Fund': 'NSE:MOTILALOFS',
+    'Edelweiss Mutual Fund': 'NSE:EDELWEISS',
+    'HSBC Mutual Fund': 'NYSE:HSBC',
+    'Invesco Mutual Fund': 'NYSE:IVZ',
+    'Canara Robeco Mutual Fund': 'NSE:CANBK',
+    'LIC Mutual Fund': 'NSE:LICI',
+    'Bank of India Mutual Fund': 'NSE:BANKINDIA',
+    'IDBI Mutual Fund': 'NSE:IDBI',
+    'Bandhan Mutual Fund': 'NSE:BANDHANBNK',
+    'Mahindra Manulife Mutual Fund': 'NSE:M&M',
+    'IIFL Mutual Fund': 'NSE:IIFL',
+    'JM Financial Mutual Fund': 'NSE:JMFINANCIL',
+}
+
 class MutualFundDataProcessor:
     """
     Processes mutual fund data from CSV and historical data sources
@@ -21,8 +50,11 @@ class MutualFundDataProcessor:
     def __init__(self):
         self.mf_data = None
         self.historical_data = {}
+        self.scheme_code_mapping = {}  # Maps fund_id to scheme_code
+        self.amc_stock_symbols = AMC_STOCK_SYMBOLS  # AMC to stock symbol mapping
         self.data_path = os.path.join(BASE_DIR, 'PS', 'dataset', 'cleaned dataset', 'Cleaned_MF_India_AI.csv')
         self.raw_data_path = os.path.join(BASE_DIR, 'data', 'raw')
+        self.nav_json_path = os.path.join(BASE_DIR, 'data', 'raw', 'json')
 
     def load_mutual_fund_data(self) -> pd.DataFrame:
         """Load the main mutual fund dataset"""
@@ -175,10 +207,14 @@ class MutualFundDataProcessor:
         if fund is None:
             return {}
 
+        amc_name = fund.get('amc_name', '')
+        amc_stock_symbol = self.amc_stock_symbols.get(amc_name, None)
+
         return {
             'fund_id': fund_id,
             'scheme_name': fund.get('scheme_name', ''),
-            'amc_name': fund.get('amc_name', ''),
+            'amc_name': amc_name,
+            'amc_stock_symbol': amc_stock_symbol,  # For TradingView widgets
             'category': fund.get('category', ''),
             'sub_category': fund.get('sub_category', ''),
             'returns': {
@@ -221,6 +257,160 @@ class MutualFundDataProcessor:
 
         funds = self.mf_data[self.mf_data['fund_id'].isin(fund_ids)]
         return funds.to_dict('records')
+
+    def build_scheme_code_mapping(self) -> Dict[int, int]:
+        """Build a mapping from fund_id to scheme_code by matching scheme names"""
+        if not os.path.exists(self.nav_json_path):
+            return {}
+
+        if self.mf_data is None:
+            self.load_mutual_fund_data()
+
+        if self.scheme_code_mapping:
+            return self.scheme_code_mapping
+
+        # Load all NAV JSON files and extract scheme names
+        nav_files = {}
+        for filename in os.listdir(self.nav_json_path):
+            if filename.startswith('nav_') and filename.endswith('.json'):
+                try:
+                    scheme_code = int(filename.replace('nav_', '').replace('.json', ''))
+                    filepath = os.path.join(self.nav_json_path, filename)
+                    with open(filepath, 'r') as f:
+                        data = json.load(f)
+                        scheme_name = data.get('meta', {}).get('scheme_name', '')
+                        if scheme_name:
+                            nav_files[scheme_code] = scheme_name.lower().strip()
+                except (ValueError, json.JSONDecodeError):
+                    continue
+
+        # Match scheme names from CSV to NAV files
+        for _, row in self.mf_data.iterrows():
+            fund_id = row['fund_id']
+            scheme_name = row['scheme_name'].lower().strip()
+
+            # Try exact match first
+            for scheme_code, nav_name in nav_files.items():
+                if scheme_name == nav_name or scheme_name in nav_name or nav_name in scheme_name:
+                    self.scheme_code_mapping[fund_id] = scheme_code
+                    break
+
+            # Try fuzzy match on key words
+            if fund_id not in self.scheme_code_mapping:
+                scheme_words = set(scheme_name.replace('-', ' ').replace('–', ' ').split()[:4])
+                for scheme_code, nav_name in nav_files.items():
+                    nav_words = set(nav_name.replace('-', ' ').replace('–', ' ').split()[:4])
+                    if len(scheme_words & nav_words) >= 3:
+                        self.scheme_code_mapping[fund_id] = scheme_code
+                        break
+
+        return self.scheme_code_mapping
+
+    def get_historical_nav(self, fund_id: int, period: str = '1Y') -> Dict:
+        """
+        Get historical NAV data for a fund from JSON files.
+
+        Args:
+            fund_id: The fund ID
+            period: Time period - 1M, 3M, 6M, 1Y, 3Y, 5Y, MAX
+
+        Returns:
+            Dict with dates, values, and metadata
+        """
+        if self.mf_data is None:
+            self.load_mutual_fund_data()
+
+        fund = self.get_fund_by_id(fund_id)
+        if fund is None:
+            return {'error': 'Fund not found'}
+
+        # Build mapping if not already done
+        if not self.scheme_code_mapping:
+            self.build_scheme_code_mapping()
+
+        scheme_code = self.scheme_code_mapping.get(fund_id)
+
+        if scheme_code:
+            # Try to load actual historical data
+            filepath = os.path.join(self.nav_json_path, f'nav_{scheme_code}.json')
+            if os.path.exists(filepath):
+                try:
+                    with open(filepath, 'r') as f:
+                        nav_data = json.load(f)
+
+                    data_points = nav_data.get('data', [])
+                    if data_points:
+                        # Parse dates and NAV values
+                        parsed_data = []
+                        for point in data_points:
+                            try:
+                                date_str = point.get('date', '')
+                                nav_val = float(point.get('nav', 0))
+                                # Parse date (format: DD-MM-YYYY)
+                                date_obj = datetime.strptime(date_str, '%d-%m-%Y')
+                                parsed_data.append({'date': date_obj, 'nav': nav_val})
+                            except (ValueError, TypeError):
+                                continue
+
+                        if parsed_data:
+                            # Sort by date ascending
+                            parsed_data.sort(key=lambda x: x['date'])
+
+                            # Filter by period
+                            period_days = {
+                                '1M': 30, '3M': 90, '6M': 180,
+                                '1Y': 365, '3Y': 1095, '5Y': 1825, 'MAX': 99999
+                            }
+                            days = period_days.get(period.upper(), 365)
+                            cutoff_date = datetime.now() - timedelta(days=days)
+                            filtered = [p for p in parsed_data if p['date'] >= cutoff_date]
+
+                            if not filtered:
+                                filtered = parsed_data[-min(len(parsed_data), 252):]  # Fallback to last 252 points
+
+                            # Sample to max 250 points for performance
+                            if len(filtered) > 250:
+                                step = len(filtered) // 250
+                                filtered = filtered[::step]
+
+                            return {
+                                'success': True,
+                                'fund_id': fund_id,
+                                'scheme_name': fund.get('scheme_name', ''),
+                                'scheme_code': scheme_code,
+                                'period': period,
+                                'dates': [p['date'].strftime('%Y-%m-%d') for p in filtered],
+                                'values': [round(p['nav'], 2) for p in filtered],
+                                'start_nav': round(filtered[0]['nav'], 2) if filtered else 0,
+                                'end_nav': round(filtered[-1]['nav'], 2) if filtered else 0,
+                                'change_pct': round(((filtered[-1]['nav'] - filtered[0]['nav']) / filtered[0]['nav'] * 100), 2) if filtered and filtered[0]['nav'] > 0 else 0
+                            }
+                except (json.JSONDecodeError, IOError) as e:
+                    print(f"Error loading NAV data: {e}")
+
+        # Fallback to synthetic data
+        synthetic = self._generate_synthetic_historical(fund.get('scheme_name', ''))
+        if isinstance(synthetic, pd.DataFrame) and not synthetic.empty:
+            # Filter by period
+            period_days = {'1M': 30, '3M': 90, '6M': 180, '1Y': 252, '3Y': 756, '5Y': 1260, 'MAX': 99999}
+            days = period_days.get(period.upper(), 252)
+            data = synthetic.tail(min(days, len(synthetic)))
+
+            return {
+                'success': True,
+                'fund_id': fund_id,
+                'scheme_name': fund.get('scheme_name', ''),
+                'scheme_code': None,
+                'period': period,
+                'dates': data['date'].tolist(),
+                'values': [round(v, 2) for v in data['nav'].tolist()],
+                'start_nav': round(data['nav'].iloc[0], 2),
+                'end_nav': round(data['nav'].iloc[-1], 2),
+                'change_pct': round(((data['nav'].iloc[-1] - data['nav'].iloc[0]) / data['nav'].iloc[0] * 100), 2) if data['nav'].iloc[0] > 0 else 0,
+                'synthetic': True
+            }
+
+        return {'error': 'No historical data available'}
 
 
 # Singleton instance

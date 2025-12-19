@@ -216,9 +216,9 @@ async def predict_returns(request: ReturnPredictionRequest):
         fund = fund_data.iloc[0]
         
         # Calculate prediction (using historical returns + trend)
-        base_return = fund['return_5yr']
+        base_return = fund['returns_5yr']
         trend = MetricsCalculator.calculate_return_trend([
-            fund['return_1yr'], fund['return_3yr'], fund['return_5yr']
+            fund['returns_1yr'], fund['returns_3yr'], fund['returns_5yr']
         ])
         predicted_return = base_return + (trend * 2)  # Extrapolate trend
         
@@ -356,17 +356,25 @@ async def get_fund_info(scheme_id: str):
             "sub_category": fund['sub_category'],
             "rating": float(fund['rating']),
             "risk_level": int(fund['risk_level']),
+            "return_1yr": round(float(fund['returns_1yr']), 2),
+            "return_3yr": round(float(fund['returns_3yr']), 2),
+            "return_5yr": round(float(fund['returns_5yr']), 2),
+            "sharpe_ratio": round(float(fund['sharpe']), 2),
+            "sortino_ratio": round(float(fund['sortino']), 2),
+            "alpha": round(float(fund['alpha']), 2),
+            "beta": round(float(fund['beta']), 2),
+            "std_deviation": round(float(fund['sd']), 2),
             "returns": {
-                "return_1yr": round(float(fund['return_1yr']), 2),
-                "return_3yr": round(float(fund['return_3yr']), 2),
-                "return_5yr": round(float(fund['return_5yr']), 2)
+                "return_1yr": round(float(fund['returns_1yr']), 2),
+                "return_3yr": round(float(fund['returns_3yr']), 2),
+                "return_5yr": round(float(fund['returns_5yr']), 2)
             },
             "metrics": {
-                "sharpe_ratio": round(float(fund['sharpe_ratio']), 2),
-                "sortino_ratio": round(float(fund['sortino_ratio']), 2),
+                "sharpe_ratio": round(float(fund['sharpe']), 2),
+                "sortino_ratio": round(float(fund['sortino']), 2),
                 "alpha": round(float(fund['alpha']), 2),
                 "beta": round(float(fund['beta']), 2),
-                "std_deviation": round(float(fund['std_deviation']), 2)
+                "std_deviation": round(float(fund['sd']), 2)
             },
             "investment_info": {
                 "min_sip": int(fund['min_sip']),
@@ -417,8 +425,8 @@ async def compare_funds(scheme_ids: List[str] = Query(..., description="List of 
                 "scheme_name": fund['scheme_name'],
                 "rating": float(fund['rating']),
                 "risk_level": int(fund['risk_level']),
-                "return_5yr": round(float(fund['return_5yr']), 2),
-                "sharpe_ratio": round(float(fund['sharpe_ratio']), 2),
+                "return_5yr": round(float(fund['returns_5yr']), 2),
+                "sharpe_ratio": round(float(fund['sharpe']), 2),
                 "expense_ratio": round(float(fund['expense_ratio']), 2)
             })
         

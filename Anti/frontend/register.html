@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Register - FIMFP Federal Indian Mutual Fund Portal">
+    <title>Register | FIMFP - Federal Indian Mutual Fund Portal</title>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml"
+        href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🇮🇳</text></svg>">
+
+    <!-- Google Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;600;700&family=Noto+Sans+Devanagari:wght@400;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="css/gov-style.css">
+    <link rel="stylesheet" href="css/auth.css">
+</head>
+
+<body class="auth-page">
+    <!-- Tricolor Strip Banner -->
+    <div class="top-banner"></div>
+
+    <!-- Government Secondary Banner -->
+    <div class="gov-secondary-banner">
+        <div class="container">
+            <div class="gov-links">
+                <a href="https://india.gov.in" target="_blank" rel="noopener">india.gov.in</a>
+                <span class="separator">|</span>
+                <a href="https://sebi.gov.in" target="_blank" rel="noopener">SEBI</a>
+                <span class="separator">|</span>
+                <a href="https://amfiindia.com" target="_blank" rel="noopener">AMFI</a>
+            </div>
+            <div class="language-switch">
+                <button class="lang-btn active" data-lang="en">English</button>
+                <button class="lang-btn" data-lang="hi">हिंदी</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Auth Container -->
+    <div class="auth-container">
+        <div class="auth-card auth-card-register">
+            <!-- Government Header -->
+            <div class="auth-header">
+                <div class="auth-emblem">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/5/55/Emblem_of_India.svg"
+                        alt="Emblem of India - सत्यमेव जयते" width="60" height="70">
+                </div>
+                <div class="auth-title-group">
+                    <h1 class="auth-portal-title">FIMFP</h1>
+                    <p class="auth-portal-subtitle">Federal Indian Mutual Fund Portal</p>
+                    <p class="auth-portal-hindi">भारतीय संघीय म्यूचुअल फंड पोर्टल</p>
+                </div>
+            </div>
+
+            <!-- Registration Form Section -->
+            <div class="auth-form-section">
+                <h2 class="auth-form-title">New User Registration / नया पंजीकरण</h2>
+                <p class="auth-form-subtitle">Create your account to access investment tools</p>
+
+                <!-- Alert Messages -->
+                <div id="alertContainer"></div>
+
+                <form id="registerForm" class="auth-form">
+                    <!-- Personal Information -->
+                    <div class="form-section-title">
+                        <span class="section-icon">👤</span>
+                        Personal Information / व्यक्तिगत जानकारी
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="firstName">
+                                First Name / प्रथम नाम <span class="required">*</span>
+                            </label>
+                            <input type="text" id="firstName" name="firstName" class="form-input"
+                                placeholder="Enter first name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="lastName">
+                                Last Name / उपनाम <span class="required">*</span>
+                            </label>
+                            <input type="text" id="lastName" name="lastName" class="form-input"
+                                placeholder="Enter last name" required>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="mobile">
+                                Mobile Number / मोबाइल नंबर <span class="required">*</span>
+                            </label>
+                            <div class="input-with-prefix">
+                                <span class="input-prefix">+91</span>
+                                <input type="tel" id="mobile" name="mobile" class="form-input"
+                                    placeholder="10-digit mobile number" required pattern="[0-9]{10}" maxlength="10">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="panCard">
+                                PAN Card (Optional) / पैन कार्ड
+                            </label>
+                            <input type="text" id="panCard" name="panCard" class="form-input" placeholder="XXXXX0000X"
+                                pattern="[A-Z]{5}[0-9]{4}[A-Z]{1}" maxlength="10" style="text-transform: uppercase;">
+                        </div>
+                    </div>
+
+                    <!-- Account Credentials -->
+                    <div class="form-section-title">
+                        <span class="section-icon">🔐</span>
+                        Account Credentials / खाता विवरण
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">
+                            Email ID / ईमेल आईडी <span class="required">*</span>
+                        </label>
+                        <input type="email" id="email" name="email" class="form-input"
+                            placeholder="Enter your email address" required>
+                        <span class="form-hint">This will be used for login and communications</span>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="password">
+                                Password / पासवर्ड <span class="required">*</span>
+                            </label>
+                            <div class="password-input-wrapper">
+                                <input type="password" id="password" name="password" class="form-input"
+                                    placeholder="Create password" required minlength="8">
+                                <button type="button" class="password-toggle" onclick="togglePassword('password')">
+                                    👁️
+                                </button>
+                            </div>
+                            <div class="password-strength" id="passwordStrength"></div>
+                        </div>
+                        <div class="form-group">
+                            <label for="confirmPassword">
+                                Confirm Password / पासवर्ड पुष्टि <span class="required">*</span>
+                            </label>
+                            <div class="password-input-wrapper">
+                                <input type="password" id="confirmPassword" name="confirmPassword" class="form-input"
+                                    placeholder="Confirm password" required minlength="8">
+                                <button type="button" class="password-toggle"
+                                    onclick="togglePassword('confirmPassword')">
+                                    👁️
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="password-requirements">
+                        <p><strong>Password Requirements:</strong></p>
+                        <ul>
+                            <li id="req-length">❌ Minimum 8 characters</li>
+                            <li id="req-upper">❌ At least one uppercase letter</li>
+                            <li id="req-lower">❌ At least one lowercase letter</li>
+                            <li id="req-number">❌ At least one number</li>
+                        </ul>
+                    </div>
+
+                    <!-- Terms and Conditions -->
+                    <div class="form-group terms-group">
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="acceptTerms" required>
+                            <span>I agree to the <a href="/terms" class="terms-link" target="_blank">Terms of
+                                    Service</a> and
+                                <a href="/privacy" class="terms-link" target="_blank">Privacy Policy</a> of FIMFP
+                                Portal</span>
+                        </label>
+                    </div>
+
+                    <div class="form-group terms-group">
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="acceptDisclaimer" required>
+                            <span>I understand that mutual fund investments are subject to market risks
+                                and I have read all scheme related documents</span>
+                        </label>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary btn-block auth-submit-btn">
+                        <span class="btn-text">Create Account / खाता बनाएं</span>
+                        <span class="btn-loader" style="display: none;">⏳</span>
+                    </button>
+                </form>
+
+                <!-- Divider -->
+                <div class="auth-divider">
+                    <span>OR</span>
+                </div>
+
+                <!-- Login Link -->
+                <div class="auth-alternate">
+                    <p>Already have an account? / पहले से खाता है?</p>
+                    <a href="login.html" class="btn btn-outline btn-block">
+                        Login to Existing Account
+                    </a>
+                </div>
+            </div>
+
+            <!-- Security Notice -->
+            <div class="auth-security-notice">
+                <div class="security-icon">🔐</div>
+                <div class="security-text">
+                    <strong>Data Protection:</strong> Your personal information is protected under the
+                    Information Technology Act, 2000 and will be used solely for portal services.
+                </div>
+            </div>
+        </div>
+
+        <!-- Side Information -->
+        <div class="auth-info-panel">
+            <div class="info-content">
+                <h3>🇮🇳 Join FIMFP Today</h3>
+                <p>Start your investment journey with AI-powered insights</p>
+
+                <div class="steps-list">
+                    <div class="step-item">
+                        <div class="step-number">1</div>
+                        <div class="step-text">Fill registration form with valid details</div>
+                    </div>
+                    <div class="step-item">
+                        <div class="step-number">2</div>
+                        <div class="step-text">Verify your email address</div>
+                    </div>
+                    <div class="step-item">
+                        <div class="step-number">3</div>
+                        <div class="step-text">Complete KYC (Optional for basic access)</div>
+                    </div>
+                    <div class="step-item">
+                        <div class="step-number">4</div>
+                        <div class="step-text">Start exploring mutual funds!</div>
+                    </div>
+                </div>
+
+                <div class="helpline-box">
+                    <h4>📞 Need Help?</h4>
+                    <p>Toll Free: 1800-XXX-XXXX</p>
+                    <p>Email: support@fimfp.gov.in</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="auth-footer">
+        <div class="container">
+            <p>© 2024 FIMFP - Federal Indian Mutual Fund Portal | Government of India</p>
+            <p>Designed & Developed under Digital India Programme</p>
+        </div>
+    </footer>
+
+    <script>
+        // Password toggle
+        function togglePassword(fieldId) {
+            const field = document.getElementById(fieldId);
+            field.type = field.type === 'password' ? 'text' : 'password';
+        }
+
+        // Show alert
+        function showAlert(message, type = 'error') {
+            const container = document.getElementById('alertContainer');
+            const alertClass = type === 'success' ? 'alert-success' : 'alert-error';
+            container.innerHTML = `<div class="alert ${alertClass}">${message}</div>`;
+            if (type !== 'success') {
+                setTimeout(() => container.innerHTML = '', 5000);
+            }
+        }
+
+        // Password validation
+        const passwordField = document.getElementById('password');
+        passwordField.addEventListener('input', function () {
+            const password = this.value;
+
+            // Check requirements
+            document.getElementById('req-length').textContent =
+                (password.length >= 8 ? '✅' : '❌') + ' Minimum 8 characters';
+            document.getElementById('req-upper').textContent =
+                (/[A-Z]/.test(password) ? '✅' : '❌') + ' At least one uppercase letter';
+            document.getElementById('req-lower').textContent =
+                (/[a-z]/.test(password) ? '✅' : '❌') + ' At least one lowercase letter';
+            document.getElementById('req-number').textContent =
+                (/[0-9]/.test(password) ? '✅' : '❌') + ' At least one number';
+
+            // Strength indicator
+            let strength = 0;
+            if (password.length >= 8) strength++;
+            if (/[A-Z]/.test(password)) strength++;
+            if (/[a-z]/.test(password)) strength++;
+            if (/[0-9]/.test(password)) strength++;
+            if (/[^A-Za-z0-9]/.test(password)) strength++;
+
+            const strengthEl = document.getElementById('passwordStrength');
+            const strengthLabels = ['', 'Weak', 'Fair', 'Good', 'Strong', 'Very Strong'];
+            const strengthColors = ['', '#f44336', '#ff9800', '#ffc107', '#4caf50', '#2196f3'];
+
+            strengthEl.innerHTML = password.length > 0 ?
+                `<span style="color: ${strengthColors[strength]}">Strength: ${strengthLabels[strength]}</span>` : '';
+        });
+
+        // PAN Card uppercase
+        document.getElementById('panCard').addEventListener('input', function () {
+            this.value = this.value.toUpperCase();
+        });
+
+        // Registration form submission
+        document.getElementById('registerForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            const password = document.getElementById('password').value;
+            const confirmPassword = document.getElementById('confirmPassword').value;
+
+            // Validate password match
+            if (password !== confirmPassword) {
+                showAlert('Passwords do not match. Please check and try again.');
+                return;
+            }
+
+            // Validate password strength
+            if (password.length < 8 || !/[A-Z]/.test(password) ||
+                !/[a-z]/.test(password) || !/[0-9]/.test(password)) {
+                showAlert('Password does not meet the requirements.');
+                return;
+            }
+
+            const btn = document.querySelector('.auth-submit-btn');
+            const btnText = btn.querySelector('.btn-text');
+            const btnLoader = btn.querySelector('.btn-loader');
+
+            // Show loading
+            btnText.style.display = 'none';
+            btnLoader.style.display = 'inline';
+            btn.disabled = true;
+
+            const formData = {
+                firstName: document.getElementById('firstName').value,
+                lastName: document.getElementById('lastName').value,
+                mobile: document.getElementById('mobile').value,
+                panCard: document.getElementById('panCard').value,
+                email: document.getElementById('email').value,
+                password: password
+            };
+
+            try {
+                const response = await fetch('/api/auth/register', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(formData)
+                });
+
+                const data = await response.json();
+
+                if (data.success) {
+                    showAlert('Registration successful! Setting up your profile...', 'success');
+                    setTimeout(() => window.location.href = 'onboarding.html', 1500);
+                } else {
+                    showAlert(data.error || 'Registration failed. Please try again.');
+                }
+            } catch (error) {
+                showAlert('Connection error. Please try again later.');
+            } finally {
+                btnText.style.display = 'inline';
+                btnLoader.style.display = 'none';
+                btn.disabled = false;
+            }
+        });
+    </script>
+</body>
+
+</html>

@@ -7,6 +7,9 @@ from flask import Flask, jsonify, request, send_from_directory
 from flask_cors import CORS
 import os
 import sys
+import hashlib
+import secrets
+from datetime import datetime, timedelta
 
 # Add current directory to path for imports
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
@@ -18,8 +21,110 @@ from ml_models import (monte_carlo, black_scholes, black_litterman, create_portf
 from recommendation_engine import get_engine, RiskProfiler
 import numpy as np
 
+# MongoDB imports
+try:
+    from pymongo import MongoClient
+    from pymongo.errors import ConnectionFailure, DuplicateKeyError
+    MONGODB_AVAILABLE = True
+except ImportError:
+    MONGODB_AVAILABLE = False
+    print("Warning: pymongo not installed. User authentication will be disabled.")
+
 app = Flask(__name__, static_folder='../frontend', static_url_path='')
-CORS(app)
+CORS(app, supports_credentials=True)
+
+# MongoDB Connection
+MONGODB_URI = "mongodb+srv://vineetmandhalkar_db_user:CHfu7ImZVF2yyTnf@fimfp.ls5aqqk.mongodb.net/?appName=FIMFP"
+db = None
+users_collection = None
+sessions_collection = None
+
+if MONGODB_AVAILABLE:
+    try:
+        client = MongoClient(MONGODB_URI, serverSelectionTimeoutMS=5000)
+        client.admin.command('ping')
+        db = client['fimfp_db']
+        users_collection = db['users']
+        sessions_collection = db['sessions']
+        # Create unique index on email
+        users_collection.create_index('email', unique=True)
+        # Create index on token for fast lookup
+        sessions_collection.create_index('token', unique=True)
+        # Create TTL index - sessions expire after 24 hours
+        sessions_collection.create_index('createdAt', expireAfterSeconds=86400)
+        print("✅ MongoDB connected successfully!")
+    except Exception as e:
+        print(f"⚠️ MongoDB connection failed: {e}")
+        MONGODB_AVAILABLE = False
+
+
+# Password hashing utilities
+def hash_password(password):
+    """Hash password using SHA-256 with salt"""
+    salt = secrets.token_hex(16)
+    hashed = hashlib.sha256((password + salt).encode()).hexdigest()
+    return f"{salt}:{hashed}"
+
+
+def verify_password(password, stored_hash):
+    """Verify password against stored hash"""
+    try:
+        salt, hashed = stored_hash.split(':')
+        return hashlib.sha256((password + salt).encode()).hexdigest() == hashed
+    except:
+        return False
+
+
+def generate_token():
+    """Generate a simple session token"""
+    return secrets.token_urlsafe(32)
+
+
+def get_current_user():
+    """Get current user from session token"""
+    if not MONGODB_AVAILABLE:
+        return None
+
+    # Check Authorization header first
+    auth_header = request.headers.get('Authorization', '')
+    token = None
+
+    if auth_header.startswith('Bearer '):
+        token = auth_header[7:]
+    else:
+        # Check cookie
+        token = request.cookies.get('auth_token')
+
+    if not token:
+        return None
+
+    try:
+        session = sessions_collection.find_one({'token': token})
+        if session:
+            user = users_collection.find_one({'_id': session['userId']})
+            return user
+    except:
+        pass
+
+    return None
+
+
+# Public routes that don't require authentication
+PUBLIC_ROUTES = [
+    '/login', '/login.html', '/register', '/register.html',
+    '/terms', '/terms.html', '/privacy', '/privacy.html',
+    '/onboarding', '/onboarding.html',
+    '/api/auth/login', '/api/auth/register', '/api/auth/logout', '/api/health',
+    '/css/', '/js/', '/images/'
+]
+
+
+def is_public_route(path):
+    """Check if the route is public (no auth required)"""
+    for route in PUBLIC_ROUTES:
+        if path.startswith(route) or path == route:
+            return True
+    return False
 
 # Initialize components
 data_processor = get_processor()
@@ -31,10 +136,76 @@ data_processor.load_mutual_fund_data()
 
 # ============== Static File Routes ==============
 
+@app.after_request
+def add_header(response):
+    """Add headers to prevent caching during development"""
+    response.headers['Cache-Control'] = 'no-store, no-cache, must-revalidate, max-age=0'
+    response.headers['Pragma'] = 'no-cache'
+    response.headers['Expires'] = '0'
+    return response
+
+
+@app.before_request
+def check_authentication():
+    """Middleware to check if user is authenticated for protected routes"""
+    path = request.path
+
+    # Allow public routes without authentication
+    if is_public_route(path):
+        return None
+
+    # Check if user is authenticated
+    user = get_current_user()
+
+    if user is None:
+        # For API routes, return 401 JSON response
+        if path.startswith('/api/'):
+            return jsonify({
+                'success': False,
+                'error': 'Authentication required. Please login.',
+                'redirect': '/login'
+            }), 401
+
+        # For page requests, redirect to login
+        from flask import redirect
+        return redirect('/login')
+
+    # Store user in request context for later use
+    request.current_user = user
+    return None
+
 @app.route('/')
 def serve_frontend():
     """Serve the main frontend page"""
     return send_from_directory(app.static_folder, 'index.html')
+
+
+@app.route('/login')
+@app.route('/login.html')
+def serve_login():
+    """Serve the login page"""
+    return send_from_directory(app.static_folder, 'login.html')
+
+
+@app.route('/register')
+@app.route('/register.html')
+def serve_register():
+    """Serve the registration page"""
+    return send_from_directory(app.static_folder, 'register.html')
+
+
+@app.route('/terms')
+@app.route('/terms.html')
+def serve_terms():
+    """Serve the Terms of Service page"""
+    return send_from_directory(app.static_folder, 'terms.html')
+
+
+@app.route('/privacy')
+@app.route('/privacy.html')
+def serve_privacy():
+    """Serve the Privacy Policy page"""
+    return send_from_directory(app.static_folder, 'privacy.html')
 
 
 @app.route('/css/<path:filename>')
@@ -49,6 +220,18 @@ def serve_js(filename):
     return send_from_directory(os.path.join(app.static_folder, 'js'), filename)
 
 
+@app.route('/images/<path:filename>')
+def serve_images(filename):
+    """Serve image files"""
+    return send_from_directory(os.path.join(app.static_folder, 'images'), filename)
+
+
+@app.route('/pages/<path:filename>')
+def serve_pages(filename):
+    """Serve pages from the pages subdirectory"""
+    return send_from_directory(os.path.join(app.static_folder, 'pages'), filename)
+
+
 # ============== API Routes ==============
 
 @app.route('/api/health')
@@ -57,7 +240,205 @@ def health_check():
     return jsonify({
         'status': 'healthy',
         'service': 'FIMFP - Federal Indian Mutual Fund Portal',
-        'version': '1.0.0'
+        'version': '1.0.0',
+        'mongodb': 'connected' if MONGODB_AVAILABLE else 'unavailable'
+    })
+
+
+# -------------- Authentication Endpoints --------------
+
+@app.route('/api/auth/register', methods=['POST'])
+def register_user():
+    """Register a new user"""
+    if not MONGODB_AVAILABLE:
+        return jsonify({
+            'success': False,
+            'error': 'Database service unavailable. Please try again later.'
+        }), 503
+
+    data = request.get_json()
+    if not data:
+        return jsonify({'success': False, 'error': 'Request body required'}), 400
+
+    # Required fields
+    required = ['email', 'password', 'firstName', 'lastName', 'mobile']
+    for field in required:
+        if not data.get(field):
+            return jsonify({'success': False, 'error': f'{field} is required'}), 400
+
+    # Validate email format
+    email = data['email'].lower().strip()
+    if '@' not in email or '.' not in email:
+        return jsonify({'success': False, 'error': 'Invalid email format'}), 400
+
+    # Validate password strength
+    password = data['password']
+    if len(password) < 8:
+        return jsonify({'success': False, 'error': 'Password must be at least 8 characters'}), 400
+
+    try:
+        # Create user document
+        user_doc = {
+            'email': email,
+            'password': hash_password(password),
+            'firstName': data['firstName'].strip(),
+            'lastName': data['lastName'].strip(),
+            'mobile': data['mobile'].strip(),
+            'panCard': data.get('panCard', '').upper().strip(),
+            'createdAt': datetime.utcnow(),
+            'updatedAt': datetime.utcnow(),
+            'isActive': True,
+            'isVerified': False
+        }
+
+        # Insert into MongoDB
+        result = users_collection.insert_one(user_doc)
+
+        return jsonify({
+            'success': True,
+            'message': 'Registration successful! Please login to continue.',
+            'userId': str(result.inserted_id)
+        })
+
+    except DuplicateKeyError:
+        return jsonify({
+            'success': False,
+            'error': 'An account with this email already exists. Please login or use a different email.'
+        }), 409
+    except Exception as e:
+        print(f"Registration error: {e}")
+        return jsonify({
+            'success': False,
+            'error': 'Registration failed. Please try again later.'
+        }), 500
+
+
+@app.route('/api/auth/login', methods=['POST'])
+def login_user():
+    """Authenticate user and return token"""
+    if not MONGODB_AVAILABLE:
+        return jsonify({
+            'success': False,
+            'error': 'Database service unavailable. Please try again later.'
+        }), 503
+
+    data = request.get_json()
+    if not data:
+        return jsonify({'success': False, 'error': 'Request body required'}), 400
+
+    email = data.get('email', '').lower().strip()
+    password = data.get('password', '')
+
+    if not email or not password:
+        return jsonify({'success': False, 'error': 'Email and password are required'}), 400
+
+    try:
+        # Find user by email
+        user = users_collection.find_one({'email': email})
+
+        if not user:
+            return jsonify({'success': False, 'error': 'Invalid email or password'}), 401
+
+        # Verify password
+        if not verify_password(password, user['password']):
+            return jsonify({'success': False, 'error': 'Invalid email or password'}), 401
+
+        # Check if user is active
+        if not user.get('isActive', True):
+            return jsonify({'success': False, 'error': 'Account is deactivated. Contact support.'}), 403
+
+        # Generate session token
+        token = generate_token()
+
+        # Store session in MongoDB
+        sessions_collection.insert_one({
+            'token': token,
+            'userId': user['_id'],
+            'email': user['email'],
+            'createdAt': datetime.utcnow()
+        })
+
+        # Update last login
+        users_collection.update_one(
+            {'_id': user['_id']},
+            {'$set': {'lastLogin': datetime.utcnow()}}
+        )
+
+        # Create response with cookie
+        from flask import make_response
+        response = make_response(jsonify({
+            'success': True,
+            'message': 'Login successful!',
+            'token': token,
+            'user': {
+                'email': user['email'],
+                'firstName': user['firstName'],
+                'lastName': user['lastName'],
+                'fullName': f"{user['firstName']} {user['lastName']}"
+            }
+        }))
+
+        # Set auth cookie (expires in 24 hours)
+        response.set_cookie('auth_token', token, max_age=86400, httponly=True, samesite='Lax')
+
+        return response
+
+    except Exception as e:
+        print(f"Login error: {e}")
+        return jsonify({
+            'success': False,
+            'error': 'Login failed. Please try again later.'
+        }), 500
+
+
+@app.route('/api/auth/logout', methods=['POST'])
+def logout_user():
+    """Logout user and invalidate session"""
+    token = None
+
+    # Get token from header or cookie
+    auth_header = request.headers.get('Authorization', '')
+    if auth_header.startswith('Bearer '):
+        token = auth_header[7:]
+    else:
+        token = request.cookies.get('auth_token')
+
+    if token and MONGODB_AVAILABLE:
+        try:
+            # Delete session from MongoDB
+            sessions_collection.delete_one({'token': token})
+        except:
+            pass
+
+    # Create response and clear cookie
+    from flask import make_response
+    response = make_response(jsonify({
+        'success': True,
+        'message': 'Logged out successfully'
+    }))
+    response.set_cookie('auth_token', '', expires=0)
+
+    return response
+
+
+@app.route('/api/auth/me')
+def get_current_user_info():
+    """Get current authenticated user info"""
+    user = get_current_user()
+
+    if not user:
+        return jsonify({'success': False, 'error': 'Not authenticated'}), 401
+
+    return jsonify({
+        'success': True,
+        'user': {
+            'email': user['email'],
+            'firstName': user['firstName'],
+            'lastName': user['lastName'],
+            'fullName': f"{user['firstName']} {user['lastName']}",
+            'onboardingCompleted': user.get('onboardingCompleted', False),
+            'investmentProfile': user.get('investmentProfile', {})
+        }
     })
 
 
@@ -114,6 +495,30 @@ def get_fund(fund_id):
     return jsonify({
         'success': True,
         'data': stats
+    })
+
+
+@app.route('/api/fund/<int:fund_id>/history')
+def get_fund_history(fund_id):
+    """Get historical NAV data for charts with period filtering"""
+    period = request.args.get('period', '1Y').upper()
+
+    # Validate period
+    valid_periods = ['1M', '3M', '6M', '1Y', '3Y', '5Y', 'MAX']
+    if period not in valid_periods:
+        period = '1Y'
+
+    history = data_processor.get_historical_nav(fund_id, period)
+
+    if 'error' in history:
+        return jsonify({
+            'success': False,
+            'error': history['error']
+        }), 404
+
+    return jsonify({
+        'success': True,
+        'data': history
     })
 
 
@@ -279,6 +684,46 @@ def risk_analysis(fund_id):
 
 # -------------- Recommendation Endpoints --------------
 
+def parse_profile_value(value, value_type='general'):
+    """Convert string profile values to numeric equivalents"""
+    if value is None:
+        return None
+
+    # If already a number, return it
+    if isinstance(value, (int, float)):
+        return value
+
+    # Try to parse as number first
+    try:
+        return float(value)
+    except (ValueError, TypeError):
+        pass
+
+    # Convert string labels to numbers
+    value_str = str(value).lower().strip()
+
+    if value_type == 'income':
+        # Income in lakhs
+        mapping = {'low': 5, 'medium': 15, 'high': 30, 'very_high': 50}
+        return mapping.get(value_str, 10)
+    elif value_type == 'horizon':
+        # Years
+        mapping = {'short': 2, 'medium': 5, 'long': 8, 'very_long': 15}
+        return mapping.get(value_str, 5)
+    elif value_type == 'loss_tolerance':
+        # Scale 1-5
+        mapping = {'very_low': 1, 'low': 2, 'medium': 3, 'high': 4, 'very_high': 5}
+        return mapping.get(value_str, 3)
+    elif value_type == 'experience':
+        # Scale 1-5
+        mapping = {'none': 1, 'beginner': 2, 'intermediate': 3, 'advanced': 4, 'expert': 5}
+        return mapping.get(value_str, 3)
+    else:
+        # Default mapping
+        mapping = {'low': 2, 'medium': 5, 'high': 8}
+        return mapping.get(value_str, 5)
+
+
 @app.route('/api/recommend', methods=['GET', 'POST'])
 def get_recommendations():
     """Get AI-powered fund recommendations"""
@@ -287,20 +732,20 @@ def get_recommendations():
     else:
         data = request.args.to_dict()
 
-    # Parse risk profile parameters
+    # Parse risk profile parameters with string-to-number conversion
     risk_profile = None
     if any(k in data for k in ['age', 'income', 'horizon', 'loss_tolerance', 'experience']):
         risk_profile = RiskProfiler.calculate_risk_score(
-            age=int(data.get('age', 35)),
-            income=float(data.get('income', 10)),
-            investment_horizon=int(data.get('horizon', 5)),
-            loss_tolerance=int(data.get('loss_tolerance', 3)),
-            investment_experience=int(data.get('experience', 3))
+            age=int(parse_profile_value(data.get('age', 35)) or 35),
+            income=float(parse_profile_value(data.get('income', 10), 'income') or 10),
+            investment_horizon=int(parse_profile_value(data.get('horizon', 5), 'horizon') or 5),
+            loss_tolerance=int(parse_profile_value(data.get('loss_tolerance', 3), 'loss_tolerance') or 3),
+            investment_experience=int(parse_profile_value(data.get('experience', 3), 'experience') or 3)
         )
 
     # Get recommendations
     investment_amount = float(data.get('investment', 100000))
-    horizon = int(data.get('horizon', 5))
+    horizon = int(parse_profile_value(data.get('horizon', 5), 'horizon') or 5)
     categories = data.get('categories', '').split(',') if data.get('categories') else None
     top_n = int(data.get('top_n', 10))
 
@@ -710,6 +1155,197 @@ def complete_analysis(fund_id):
             'drawdown': drawdown
         }
     })
+
+
+# -------------- User Profile & Onboarding Endpoints --------------
+
+@app.route('/onboarding')
+@app.route('/onboarding.html')
+def serve_onboarding():
+    """Serve the onboarding wizard page"""
+    return send_from_directory(app.static_folder, 'onboarding.html')
+
+
+@app.route('/profile')
+@app.route('/profile.html')
+def serve_profile():
+    """Serve the user profile page"""
+    return send_from_directory(app.static_folder, 'profile.html')
+
+
+@app.route('/api/user/onboarding', methods=['POST'])
+def save_onboarding():
+    """Save user onboarding data (investment profile, broker, MF preferences)"""
+    if not MONGODB_AVAILABLE:
+        return jsonify({
+            'success': False,
+            'error': 'Database service unavailable'
+        }), 503
+
+    user = get_current_user()
+    if not user:
+        return jsonify({
+            'success': False,
+            'error': 'Authentication required'
+        }), 401
+
+    data = request.get_json()
+    if not data:
+        return jsonify({'success': False, 'error': 'Request body required'}), 400
+
+    try:
+        update_data = {
+            'updatedAt': datetime.utcnow()
+        }
+
+        # Investment profile
+        if 'investmentProfile' in data:
+            update_data['investmentProfile'] = {
+                'age': data['investmentProfile'].get('age'),
+                'annualIncome': data['investmentProfile'].get('annualIncome'),
+                'investmentExperience': data['investmentProfile'].get('investmentExperience', 'beginner'),
+                'riskTolerance': data['investmentProfile'].get('riskTolerance', 3)
+            }
+
+        # Broker information
+        if 'broker' in data:
+            update_data['broker'] = {
+                'name': data['broker'].get('name'),
+                'demat': data['broker'].get('demat')
+            }
+
+        # MF Preferences
+        if 'mfPreferences' in data:
+            update_data['mfPreferences'] = {
+                'investmentGoal': data['mfPreferences'].get('investmentGoal', 'wealth_creation'),
+                'preferredCategories': data['mfPreferences'].get('preferredCategories', []),
+                'investmentHorizon': data['mfPreferences'].get('investmentHorizon', 5),
+                'monthlySIPAmount': data['mfPreferences'].get('monthlySIPAmount', 5000)
+            }
+
+        # Mark onboarding as complete
+        if data.get('onboardingCompleted'):
+            update_data['onboardingCompleted'] = True
+
+        # Update user document
+        users_collection.update_one(
+            {'_id': user['_id']},
+            {'$set': update_data}
+        )
+
+        return jsonify({
+            'success': True,
+            'message': 'Profile updated successfully'
+        })
+
+    except Exception as e:
+        print(f"Onboarding save error: {e}")
+        return jsonify({
+            'success': False,
+            'error': 'Failed to save profile'
+        }), 500
+
+
+@app.route('/api/user/profile', methods=['GET'])
+def get_user_profile():
+    """Get user profile with all preferences"""
+    if not MONGODB_AVAILABLE:
+        return jsonify({
+            'success': False,
+            'error': 'Database service unavailable'
+        }), 503
+
+    user = get_current_user()
+    if not user:
+        return jsonify({
+            'success': False,
+            'error': 'Authentication required'
+        }), 401
+
+    # Build profile response (exclude sensitive data)
+    profile = {
+        'firstName': user.get('firstName', ''),
+        'lastName': user.get('lastName', ''),
+        'email': user.get('email', ''),
+        'mobile': user.get('mobile', ''),
+        'panCard': user.get('panCard', ''),
+        'createdAt': user.get('createdAt').isoformat() if user.get('createdAt') else None,
+        'investmentProfile': user.get('investmentProfile', {}),
+        'broker': user.get('broker', {}),
+        'mfPreferences': user.get('mfPreferences', {}),
+        'onboardingCompleted': user.get('onboardingCompleted', False)
+    }
+
+    return jsonify({
+        'success': True,
+        'data': profile
+    })
+
+
+@app.route('/api/user/profile', methods=['PUT'])
+def update_user_profile():
+    """Update user profile"""
+    if not MONGODB_AVAILABLE:
+        return jsonify({
+            'success': False,
+            'error': 'Database service unavailable'
+        }), 503
+
+    user = get_current_user()
+    if not user:
+        return jsonify({
+            'success': False,
+            'error': 'Authentication required'
+        }), 401
+
+    data = request.get_json()
+    if not data:
+        return jsonify({'success': False, 'error': 'Request body required'}), 400
+
+    try:
+        update_data = {
+            'updatedAt': datetime.utcnow()
+        }
+
+        # Personal fields (direct update)
+        allowed_fields = ['firstName', 'lastName', 'mobile', 'panCard']
+        for field in allowed_fields:
+            if field in data:
+                update_data[field] = data[field].strip() if isinstance(data[field], str) else data[field]
+
+        # Nested objects (merge with existing)
+        if 'investmentProfile' in data:
+            existing = user.get('investmentProfile', {})
+            existing.update(data['investmentProfile'])
+            update_data['investmentProfile'] = existing
+
+        if 'broker' in data:
+            existing = user.get('broker', {})
+            existing.update(data['broker'])
+            update_data['broker'] = existing
+
+        if 'mfPreferences' in data:
+            existing = user.get('mfPreferences', {})
+            existing.update(data['mfPreferences'])
+            update_data['mfPreferences'] = existing
+
+        # Update user document
+        users_collection.update_one(
+            {'_id': user['_id']},
+            {'$set': update_data}
+        )
+
+        return jsonify({
+            'success': True,
+            'message': 'Profile updated successfully'
+        })
+
+    except Exception as e:
+        print(f"Profile update error: {e}")
+        return jsonify({
+            'success': False,
+            'error': 'Failed to update profile'
+        }), 500
 
 
 if __name__ == '__main__':

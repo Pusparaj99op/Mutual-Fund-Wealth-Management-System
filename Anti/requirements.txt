@@ -1,0 +1,22 @@
+# FIMFP - Federal Indian Mutual Fund Portal
+# Python Dependencies
+
+# Web Framework
+Flask==2.3.3
+Flask-CORS==4.0.0
+Werkzeug==2.3.7
+
+# Data Processing
+pandas==2.0.3
+numpy==1.24.3
+
+# Machine Learning & Statistics
+scikit-learn==1.3.0
+scipy==1.11.2
+
+# Database
+pymongo==4.6.1
+
+# Additional utilities (if needed)
+python-dateutil==2.8.2
+

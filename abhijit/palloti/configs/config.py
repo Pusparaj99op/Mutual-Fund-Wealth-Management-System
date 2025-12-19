@@ -11,8 +11,8 @@ DATA_RAW_PATH = PROJECT_ROOT / "data" / "raw"
 DATA_PROCESSED_PATH = PROJECT_ROOT / "data" / "processed"
 MODELS_PATH = PROJECT_ROOT / "models"
 
-# Dataset paths
-DATASET_PATH = DATA_RAW_PATH / "MF_India_AI.json"
+# Dataset paths - Updated to use existing dataset
+DATASET_PATH = Path(__file__).parent.parent.parent.parent / "PS" / "dataset" / "MF_India_AI.json"
 
 # Model paths
 XGBOOST_MODEL_PATH = MODELS_PATH / "xgboost_returns.pkl"
@@ -63,9 +63,9 @@ MAX_RISK_TOLERANCE_MONTHS = {
 # Feature engineering
 FEATURE_COLUMNS = [
     'min_sip', 'min_lumpsum', 'expense_ratio', 'fund_size_cr',
-    'fund_age_years', 'risk_level', 'alpha', 'beta', 'sharpe_ratio',
-    'sortino_ratio', 'std_deviation', 'rating', 'return_1yr',
-    'return_3yr', 'return_5yr'
+    'fund_age_yr', 'risk_level', 'alpha', 'beta', 'sharpe',
+    'sortino', 'sd', 'rating', 'returns_1yr',
+    'returns_3yr', 'returns_5yr'
 ]
 
 CATEGORICAL_COLUMNS = ['amc_name', 'category', 'sub_category']

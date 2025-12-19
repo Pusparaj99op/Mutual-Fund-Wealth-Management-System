@@ -74,11 +74,11 @@ class RecommendationEngine:
             
             if xgb_model is None:
                 logger.warning("XGBoost model not found, using historical returns")
-                return funds_df['return_5yr'].values
+                return funds_df['returns_5yr'].values
             
             # Prepare features (simplified - using key metrics)
             features_for_prediction = funds_df[[
-                'expense_ratio', 'risk_level', 'alpha', 'sharpe_ratio', 'rating'
+                'expense_ratio', 'risk_level', 'alpha', 'sharpe', 'rating'
             ]].fillna(0).values
             
             # Predict
@@ -87,7 +87,7 @@ class RecommendationEngine:
         
         except Exception as e:
             logger.warning(f"Error in model prediction: {str(e)}. Using historical returns.")
-            return funds_df['return_5yr'].values
+            return funds_df['returns_5yr'].values
     
     def rank_funds(self, funds_df: pd.DataFrame, predicted_returns: np.ndarray) -> pd.DataFrame:
         """Rank funds using composite scoring"""
@@ -97,12 +97,12 @@ class RecommendationEngine:
         
         for idx, (_, fund) in enumerate(funds_copy.iterrows()):
             # Composite score calculation
-            predicted_return = predicted_returns[idx] if idx < len(predicted_returns) else fund['return_5yr']
+            predicted_return = predicted_returns[idx] if idx < len(predicted_returns) else fund['returns_5yr']
             
             # Component scores (each 0-100)
             rating_score = (fund['rating'] / 5.0) * 100
             return_score = min(max(predicted_return, 0), 50) / 50.0 * 100
-            sharpe_score = min(fund['sharpe_ratio'] / 3.0, 1.0) * 100
+            sharpe_score = min(fund['sharpe'] / 3.0, 1.0) * 100
             expense_score = (1 - min(fund['expense_ratio'] / 2.5, 1.0)) * 100
             risk_score = (1 - (fund['risk_level'] / 6.0)) * 100
             
@@ -187,8 +187,8 @@ class RecommendationEngine:
                 "risk_level": int(fund['risk_level']),
                 "recommendation_score": round(float(fund['recommendation_score']), 2),
                 "predicted_return_5yr": round(float(fund['predicted_return_5yr']), 2),
-                "historical_return_5yr": round(float(fund['return_5yr']), 2),
-                "sharpe_ratio": round(float(fund['sharpe_ratio']), 2),
+                "historical_return_5yr": round(float(fund['returns_5yr']), 2),
+                "sharpe_ratio": round(float(fund['sharpe']), 2),
                 "expense_ratio": round(float(fund['expense_ratio']), 2),
                 "min_sip": int(fund['min_sip']),
                 "min_lumpsum": int(fund['min_lumpsum']),
@@ -241,8 +241,8 @@ class SHAPExplainer:
         # Normalize features to 0-1
         features_impact = {
             "Rating": min(fund.get('rating', 3) / 5.0, 1.0) * 25,
-            "Sharpe Ratio": min(fund.get('sharpe_ratio', 1) / 3.0, 1.0) * 20,
-            "Return (5yr)": min(max(fund.get('return_5yr', 0), 0), 30) / 30.0 * 25,
+            "Sharpe Ratio": min(fund.get('sharpe', 1) / 3.0, 1.0) * 20,
+            "Return (5yr)": min(max(fund.get('returns_5yr', 0), 0), 30) / 30.0 * 25,
             "Expense Ratio": (1 - min(fund.get('expense_ratio', 1) / 2.5, 1.0)) * 15,
             "Risk Adjusted": (1 - (fund.get('risk_level', 3) / 6.0)) * 15
         }
