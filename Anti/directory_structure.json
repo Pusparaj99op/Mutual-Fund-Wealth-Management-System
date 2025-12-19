@@ -1,0 +1,467 @@
+{
+  "name": "Anti",
+  "path": "/home/pranay/Documents/GitHub/Mutual-Fund-Wealth-Management-System/Anti",
+  "type": "directory",
+  "linkTree": "Anti/",
+  "children": [
+    {
+      "name": "README.md",
+      "path": "Anti/README.md",
+      "type": "file",
+      "linkTree": "Anti/README.md"
+    },
+    {
+      "name": "codevian.md",
+      "path": "Anti/codevian.md",
+      "type": "file",
+      "linkTree": "Anti/codevian.md"
+    },
+    {
+      "name": "requirements.txt",
+      "path": "Anti/requirements.txt",
+      "type": "file",
+      "linkTree": "Anti/requirements.txt"
+    },
+    {
+      "name": "run.sh",
+      "path": "Anti/run.sh",
+      "type": "file",
+      "linkTree": "Anti/run.sh"
+    },
+    {
+      "name": "api",
+      "path": "Anti/api",
+      "type": "directory",
+      "linkTree": "Anti/api/",
+      "children": [
+        {
+          "name": "app.py",
+          "path": "Anti/api/app.py",
+          "type": "file",
+          "linkTree": "Anti/api/app.py"
+        },
+        {
+          "name": "data_processor.py",
+          "path": "Anti/api/data_processor.py",
+          "type": "file",
+          "linkTree": "Anti/api/data_processor.py"
+        },
+        {
+          "name": "ml_models.py",
+          "path": "Anti/api/ml_models.py",
+          "type": "file",
+          "linkTree": "Anti/api/ml_models.py"
+        },
+        {
+          "name": "mongodb.md",
+          "path": "Anti/api/mongodb.md",
+          "type": "file",
+          "linkTree": "Anti/api/mongodb.md"
+        },
+        {
+          "name": "recommendation_engine.py",
+          "path": "Anti/api/recommendation_engine.py",
+          "type": "file",
+          "linkTree": "Anti/api/recommendation_engine.py"
+        },
+        {
+          "name": "models",
+          "path": "Anti/api/models",
+          "type": "directory",
+          "linkTree": "Anti/api/models/",
+          "children": [
+            {
+              "name": "__init__.py",
+              "path": "Anti/api/models/__init__.py",
+              "type": "file",
+              "linkTree": "Anti/api/models/__init__.py"
+            },
+            {
+              "name": "__pycache__",
+              "path": "Anti/api/models/__pycache__",
+              "type": "directory",
+              "linkTree": "Anti/api/models/__pycache__/"
+            }
+          ]
+        },
+        {
+          "name": "services",
+          "path": "Anti/api/services",
+          "type": "directory",
+          "linkTree": "Anti/api/services/",
+          "children": [
+            {
+              "name": "__init__.py",
+              "path": "Anti/api/services/__init__.py",
+              "type": "file",
+              "linkTree": "Anti/api/services/__init__.py"
+            },
+            {
+              "name": "__pycache__",
+              "path": "Anti/api/services/__pycache__",
+              "type": "directory",
+              "linkTree": "Anti/api/services/__pycache__/"
+            }
+          ]
+        },
+        {
+          "name": "__pycache__",
+          "path": "Anti/api/__pycache__",
+          "type": "directory",
+          "linkTree": "Anti/api/__pycache__/"
+        }
+      ]
+    },
+    {
+      "name": "frontend",
+      "path": "Anti/frontend",
+      "type": "directory",
+      "linkTree": "Anti/frontend/",
+      "children": [
+        {
+          "name": "index.html",
+          "path": "Anti/frontend/index.html",
+          "type": "file",
+          "linkTree": "Anti/frontend/index.html"
+        },
+        {
+          "name": "login.html",
+          "path": "Anti/frontend/login.html",
+          "type": "file",
+          "linkTree": "Anti/frontend/login.html"
+        },
+        {
+          "name": "onboarding.html",
+          "path": "Anti/frontend/onboarding.html",
+          "type": "file",
+          "linkTree": "Anti/frontend/onboarding.html"
+        },
+        {
+          "name": "privacy.html",
+          "path": "Anti/frontend/privacy.html",
+          "type": "file",
+          "linkTree": "Anti/frontend/privacy.html"
+        },
+        {
+          "name": "profile.html",
+          "path": "Anti/frontend/profile.html",
+          "type": "file",
+          "linkTree": "Anti/frontend/profile.html"
+        },
+        {
+          "name": "register.html",
+          "path": "Anti/frontend/register.html",
+          "type": "file",
+          "linkTree": "Anti/frontend/register.html"
+        },
+        {
+          "name": "terms.html",
+          "path": "Anti/frontend/terms.html",
+          "type": "file",
+          "linkTree": "Anti/frontend/terms.html"
+        },
+        {
+          "name": "css",
+          "path": "Anti/frontend/css",
+          "type": "directory",
+          "linkTree": "Anti/frontend/css/",
+          "children": [
+            {
+              "name": "auth.css",
+              "path": "Anti/frontend/css/auth.css",
+              "type": "file",
+              "linkTree": "Anti/frontend/css/auth.css"
+            },
+            {
+              "name": "gov-style.css",
+              "path": "Anti/frontend/css/gov-style.css",
+              "type": "file",
+              "linkTree": "Anti/frontend/css/gov-style.css"
+            },
+            {
+              "name": "legal.css",
+              "path": "Anti/frontend/css/legal.css",
+              "type": "file",
+              "linkTree": "Anti/frontend/css/legal.css"
+            },
+            {
+              "name": "onboarding.css",
+              "path": "Anti/frontend/css/onboarding.css",
+              "type": "file",
+              "linkTree": "Anti/frontend/css/onboarding.css"
+            }
+          ]
+        },
+        {
+          "name": "images",
+          "path": "Anti/frontend/images",
+          "type": "directory",
+          "linkTree": "Anti/frontend/images/",
+          "children": [
+            {
+              "name": "Gemini_Generated_Image_defdaqdefdaqdefd.png",
+              "path": "Anti/frontend/images/Gemini_Generated_Image_defdaqdefdaqdefd.png",
+              "type": "file",
+              "linkTree": "Anti/frontend/images/Gemini_Generated_Image_defdaqdefdaqdefd.png"
+            },
+            {
+              "name": "Gemini_Generated_Image_ssdwu2ssdwu2ssdw.png",
+              "path": "Anti/frontend/images/Gemini_Generated_Image_ssdwu2ssdwu2ssdw.png",
+              "type": "file",
+              "linkTree": "Anti/frontend/images/Gemini_Generated_Image_ssdwu2ssdwu2ssdw.png"
+            },
+            {
+              "name": "SVPCET.jpeg",
+              "path": "Anti/frontend/images/SVPCET.jpeg",
+              "type": "file",
+              "linkTree": "Anti/frontend/images/SVPCET.jpeg"
+            },
+            {
+              "name": "SVPCET.png",
+              "path": "Anti/frontend/images/SVPCET.png",
+              "type": "file",
+              "linkTree": "Anti/frontend/images/SVPCET.png"
+            },
+            {
+              "name": "Shri Ashwini Vaishnaw.jpeg",
+              "path": "Anti/frontend/images/Shri Ashwini Vaishnaw.jpeg",
+              "type": "file",
+              "linkTree": "Anti/frontend/images/Shri Ashwini Vaishnaw.jpeg"
+            },
+            {
+              "name": "Shri Narendra Modi.jpeg",
+              "path": "Anti/frontend/images/Shri Narendra Modi.jpeg",
+              "type": "file",
+              "linkTree": "Anti/frontend/images/Shri Narendra Modi.jpeg"
+            },
+            {
+              "name": "backgraound.png",
+              "path": "Anti/frontend/images/backgraound.png",
+              "type": "file",
+              "linkTree": "Anti/frontend/images/backgraound.png"
+            },
+            {
+              "name": "broker",
+              "path": "Anti/frontend/images/broker",
+              "type": "directory",
+              "linkTree": "Anti/frontend/images/broker/",
+              "children": [
+                {
+                  "name": "GROWW.png",
+                  "path": "Anti/frontend/images/broker/GROWW.png",
+                  "type": "file",
+                  "linkTree": "Anti/frontend/images/broker/GROWW.png"
+                },
+                {
+                  "name": "SHAREKHAN.webp",
+                  "path": "Anti/frontend/images/broker/SHAREKHAN.webp",
+                  "type": "file",
+                  "linkTree": "Anti/frontend/images/broker/SHAREKHAN.webp"
+                },
+                {
+                  "name": "ZERODHA.jpeg",
+                  "path": "Anti/frontend/images/broker/ZERODHA.jpeg",
+                  "type": "file",
+                  "linkTree": "Anti/frontend/images/broker/ZERODHA.jpeg"
+                },
+                {
+                  "name": "angleone.png",
+                  "path": "Anti/frontend/images/broker/angleone.png",
+                  "type": "file",
+                  "linkTree": "Anti/frontend/images/broker/angleone.png"
+                },
+                {
+                  "name": "dhan.jpeg",
+                  "path": "Anti/frontend/images/broker/dhan.jpeg",
+                  "type": "file",
+                  "linkTree": "Anti/frontend/images/broker/dhan.jpeg"
+                },
+                {
+                  "name": "sharekhan2.jpeg",
+                  "path": "Anti/frontend/images/broker/sharekhan2.jpeg",
+                  "type": "file",
+                  "linkTree": "Anti/frontend/images/broker/sharekhan2.jpeg"
+                }
+              ]
+            },
+            {
+              "name": "home",
+              "path": "Anti/frontend/images/home",
+              "type": "directory",
+              "linkTree": "Anti/frontend/images/home/",
+              "children": [
+                {
+                  "name": "Black-Litterman.png",
+                  "path": "Anti/frontend/images/home/Black-Litterman.png",
+                  "type": "file",
+                  "linkTree": "Anti/frontend/images/home/Black-Litterman.png"
+                },
+                {
+                  "name": "Black-Scholes Model.jpeg",
+                  "path": "Anti/frontend/images/home/Black-Scholes Model.jpeg",
+                  "type": "file",
+                  "linkTree": "Anti/frontend/images/home/Black-Scholes Model.jpeg"
+                },
+                {
+                  "name": "ML Prediction Engine.png",
+                  "path": "Anti/frontend/images/home/ML Prediction Engine.png",
+                  "type": "file",
+                  "linkTree": "Anti/frontend/images/home/ML Prediction Engine.png"
+                },
+                {
+                  "name": "monte carlo.png",
+                  "path": "Anti/frontend/images/home/monte carlo.png",
+                  "type": "file",
+                  "linkTree": "Anti/frontend/images/home/monte carlo.png"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "js",
+          "path": "Anti/frontend/js",
+          "type": "directory",
+          "linkTree": "Anti/frontend/js/",
+          "children": [
+            {
+              "name": "app.js",
+              "path": "Anti/frontend/js/app.js",
+              "type": "file",
+              "linkTree": "Anti/frontend/js/app.js"
+            },
+            {
+              "name": "charts.js",
+              "path": "Anti/frontend/js/charts.js",
+              "type": "file",
+              "linkTree": "Anti/frontend/js/charts.js"
+            },
+            {
+              "name": "i18n.js",
+              "path": "Anti/frontend/js/i18n.js",
+              "type": "file",
+              "linkTree": "Anti/frontend/js/i18n.js"
+            },
+            {
+              "name": "page-common.js",
+              "path": "Anti/frontend/js/page-common.js",
+              "type": "file",
+              "linkTree": "Anti/frontend/js/page-common.js"
+            }
+          ]
+        },
+        {
+          "name": "pages",
+          "path": "Anti/frontend/pages",
+          "type": "directory",
+          "linkTree": "Anti/frontend/pages/",
+          "children": [
+            {
+              "name": "advanced-ai.html",
+              "path": "Anti/frontend/pages/advanced-ai.html",
+              "type": "file",
+              "linkTree": "Anti/frontend/pages/advanced-ai.html"
+            },
+            {
+              "name": "ai-analysis.html",
+              "path": "Anti/frontend/pages/ai-analysis.html",
+              "type": "file",
+              "linkTree": "Anti/frontend/pages/ai-analysis.html"
+            },
+            {
+              "name": "black-litterman.html",
+              "path": "Anti/frontend/pages/black-litterman.html",
+              "type": "file",
+              "linkTree": "Anti/frontend/pages/black-litterman.html"
+            },
+            {
+              "name": "black-scholes.html",
+              "path": "Anti/frontend/pages/black-scholes.html",
+              "type": "file",
+              "linkTree": "Anti/frontend/pages/black-scholes.html"
+            },
+            {
+              "name": "browse-funds.html",
+              "path": "Anti/frontend/pages/browse-funds.html",
+              "type": "file",
+              "linkTree": "Anti/frontend/pages/browse-funds.html"
+            },
+            {
+              "name": "compare.html",
+              "path": "Anti/frontend/pages/compare.html",
+              "type": "file",
+              "linkTree": "Anti/frontend/pages/compare.html"
+            },
+            {
+              "name": "dashboard.html",
+              "path": "Anti/frontend/pages/dashboard.html",
+              "type": "file",
+              "linkTree": "Anti/frontend/pages/dashboard.html"
+            },
+            {
+              "name": "ml-prediction.html",
+              "path": "Anti/frontend/pages/ml-prediction.html",
+              "type": "file",
+              "linkTree": "Anti/frontend/pages/ml-prediction.html"
+            },
+            {
+              "name": "monte-carlo.html",
+              "path": "Anti/frontend/pages/monte-carlo.html",
+              "type": "file",
+              "linkTree": "Anti/frontend/pages/monte-carlo.html"
+            },
+            {
+              "name": "my-portfolio.html",
+              "path": "Anti/frontend/pages/my-portfolio.html",
+              "type": "file",
+              "linkTree": "Anti/frontend/pages/my-portfolio.html"
+            },
+            {
+              "name": "portfolio.html",
+              "path": "Anti/frontend/pages/portfolio.html",
+              "type": "file",
+              "linkTree": "Anti/frontend/pages/portfolio.html"
+            },
+            {
+              "name": "recommendations.html",
+              "path": "Anti/frontend/pages/recommendations.html",
+              "type": "file",
+              "linkTree": "Anti/frontend/pages/recommendations.html"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "server",
+      "path": "Anti/server",
+      "type": "directory",
+      "linkTree": "Anti/server/",
+      "children": [
+        {
+          "name": "image.png",
+          "path": "Anti/server/image.png",
+          "type": "file",
+          "linkTree": "Anti/server/image.png"
+        }
+      ]
+    }
+  ],
+  "statistics": {
+    "totalFiles": 56,
+    "totalDirectories": 14,
+    "fileTypes": {
+      ".md": 3,
+      ".txt": 1,
+      ".sh": 1,
+      ".py": 6,
+      ".html": 19,
+      ".css": 4,
+      ".js": 4,
+      ".png": 12,
+      ".jpeg": 6,
+      ".webp": 1
+    }
+  },
+  "treeView": "Anti/\n├── README.md\n├── codevian.md\n├── requirements.txt\n├── run.sh\n├── api/\n│   ├── app.py\n│   ├── data_processor.py\n│   ├── ml_models.py\n│   ├── mongodb.md\n│   ├── recommendation_engine.py\n│   ├── models/\n│   │   └── __init__.py\n│   └── services/\n│       └── __init__.py\n├── frontend/\n│   ├── index.html\n│   ├── login.html\n│   ├── onboarding.html\n│   ├── privacy.html\n│   ├── profile.html\n│   ├── register.html\n│   ├── terms.html\n│   ├── css/\n│   │   ├── auth.css\n│   │   ├── gov-style.css\n│   │   ├── legal.css\n│   │   └── onboarding.css\n│   ├── images/\n│   │   ├── Gemini_Generated_Image_defdaqdefdaqdefd.png\n│   │   ├── Gemini_Generated_Image_ssdwu2ssdwu2ssdw.png\n│   │   ├── SVPCET.jpeg\n│   │   ├── SVPCET.png\n│   │   ├── Shri Ashwini Vaishnaw.jpeg\n│   │   ├── Shri Narendra Modi.jpeg\n│   │   ├── backgraound.png\n│   │   ├── broker/\n│   │   │   ├── GROWW.png\n│   │   │   ├── SHAREKHAN.webp\n│   │   │   ├── ZERODHA.jpeg\n│   │   │   ├── angleone.png\n│   │   │   ├── dhan.jpeg\n│   │   │   └── sharekhan2.jpeg\n│   │   └── home/\n│   │       ├── Black-Litterman.png\n│   │       ├── Black-Scholes Model.jpeg\n│   │       ├── ML Prediction Engine.png\n│   │       └── monte carlo.png\n│   ├── js/\n│   │   ├── app.js\n│   │   ├── charts.js\n│   │   ├── i18n.js\n│   │   └── page-common.js\n│   └── pages/\n│       ├── advanced-ai.html\n│       ├── ai-analysis.html\n│       ├── black-litterman.html\n│       ├── black-scholes.html\n│       ├── browse-funds.html\n│       ├── compare.html\n│       ├── dashboard.html\n│       ├── ml-prediction.html\n│       ├── monte-carlo.html\n│       ├── my-portfolio.html\n│       ├── portfolio.html\n│       └── recommendations.html\n└── server/\n    └── image.png"
+}
