@@ -435,7 +435,9 @@ def get_current_user_info():
             'email': user['email'],
             'firstName': user['firstName'],
             'lastName': user['lastName'],
-            'fullName': f"{user['firstName']} {user['lastName']}"
+            'fullName': f"{user['firstName']} {user['lastName']}",
+            'onboardingCompleted': user.get('onboardingCompleted', False),
+            'investmentProfile': user.get('investmentProfile', {})
         }
     })
 

@@ -304,7 +304,53 @@
     </footer>
     <script src="../js/page-common.js"></script>
     <script>
-        async function pageInit() { document.getElementById('profileForm').addEventListener('submit', async e => { e.preventDefault(); await getRecommendations() }) }
+        async function pageInit() {
+            document.getElementById('profileForm').addEventListener('submit', async e => {
+                e.preventDefault();
+                await getRecommendations();
+            });
+
+            // Auto-populate from saved profile
+            await loadUserProfile();
+        }
+
+        // Load user profile and auto-populate form
+        async function loadUserProfile() {
+            try {
+                const response = await window.pageCommon.apiGet('/api/user/profile');
+                if (response.success && response.data) {
+                    const profile = response.data;
+                    const inv = profile.investmentProfile || {};
+
+                    // Populate form fields if they exist
+                    if (inv.age) document.getElementById('age').value = inv.age;
+                    if (inv.annualIncome) document.getElementById('income').value = inv.annualIncome;
+                    if (inv.investmentHorizon) document.getElementById('horizon').value = inv.investmentHorizon;
+                    if (inv.lossTolerance) document.getElementById('lossTolerance').value = inv.lossTolerance;
+                    if (inv.investmentExperience) document.getElementById('experience').value = inv.investmentExperience;
+                    if (inv.investmentAmount) document.getElementById('investment').value = inv.investmentAmount;
+
+                    // Show notification if profile was loaded
+                    if (Object.keys(inv).length > 0) {
+                        showProfileLoadedNotice();
+                    }
+                }
+            } catch (e) {
+                console.log('Profile load failed:', e);
+            }
+        }
+
+        // Show profile loaded notice
+        function showProfileLoadedNotice() {
+            const form = document.getElementById('profileForm');
+            const notice = document.createElement('div');
+            notice.className = 'alert alert-success';
+            notice.style.cssText = 'margin-bottom:15px;padding:10px 15px;background:#f0fff4;border-left:4px solid var(--green);font-size:0.85rem;';
+            notice.innerHTML = '<img src="https://cdn-icons-png.flaticon.com/512/845/845646.png" style="width:14px;height:14px;vertical-align:middle;margin-right:8px">Profile data loaded from your saved preferences';
+            form.insertBefore(notice, form.firstChild);
+            setTimeout(() => notice.remove(), 5000);
+        }
+
         async function getRecommendations() {
             const d = { age: document.getElementById('age').value, income: document.getElementById('income').value, horizon: document.getElementById('horizon').value, loss_tolerance: document.getElementById('lossTolerance').value, experience: document.getElementById('experience').value, investment: document.getElementById('investment').value, top_n: 10 };
             document.getElementById('recommendationsContent').innerHTML = '<div class="loading"></div>';

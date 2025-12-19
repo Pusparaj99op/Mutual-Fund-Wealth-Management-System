@@ -89,51 +89,98 @@
             <!-- Step 1: Investment Profile -->
             <div class="wizard-step active" id="step1">
                 <div class="step-content">
-                    <h2 class="step-title">📊 Tell us about yourself</h2>
+                    <h2 class="step-title">
+                        <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt=""
+                            style="width: 24px; height: 24px; vertical-align: middle;">
+                        Tell us about yourself
+                    </h2>
                     <p class="step-subtitle">Help us understand your investment profile for personalized recommendations
                     </p>
 
                     <div class="form-section">
                         <div class="form-row">
                             <div class="form-group">
-                                <label for="age">Age / उम्र <span class="required">*</span></label>
-                                <input type="number" id="age" name="age" class="form-input" placeholder="Enter your age"
-                                    min="18" max="100" required>
+                                <label for="age">
+                                    <img src="https://cdn-icons-png.flaticon.com/512/1077/1077012.png" alt=""
+                                        style="width: 14px; height: 14px; vertical-align: middle; margin-right: 4px;">
+                                    Age (Years) <span class="required">*</span>
+                                </label>
+                                <input type="number" id="age" name="age" class="form-input" placeholder="e.g., 35"
+                                    min="18" max="100" value="35" required>
                             </div>
                             <div class="form-group">
-                                <label for="annualIncome">Annual Income / वार्षिक आय <span
-                                        class="required">*</span></label>
+                                <label for="annualIncome">
+                                    <img src="https://cdn-icons-png.flaticon.com/512/2489/2489756.png" alt=""
+                                        style="width: 14px; height: 14px; vertical-align: middle; margin-right: 4px;">
+                                    Annual Income (₹ Lakhs) <span class="required">*</span>
+                                </label>
                                 <select id="annualIncome" name="annualIncome" class="form-select" required>
                                     <option value="">Select income range</option>
-                                    <option value="300000">Below ₹3 Lakh</option>
-                                    <option value="500000">₹3 - 5 Lakh</option>
-                                    <option value="1000000">₹5 - 10 Lakh</option>
-                                    <option value="2000000">₹10 - 20 Lakh</option>
-                                    <option value="5000000">₹20 - 50 Lakh</option>
-                                    <option value="10000000">Above ₹50 Lakh</option>
+                                    <option value="3">Below ₹3 Lakh</option>
+                                    <option value="5">₹3 - 5 Lakh</option>
+                                    <option value="10" selected>₹5 - 10 Lakh</option>
+                                    <option value="20">₹10 - 20 Lakh</option>
+                                    <option value="50">₹20 - 50 Lakh</option>
+                                    <option value="100">Above ₹50 Lakh</option>
                                 </select>
                             </div>
                         </div>
 
                         <div class="form-row">
                             <div class="form-group">
-                                <label for="experience">Investment Experience / निवेश अनुभव</label>
-                                <select id="experience" name="experience" class="form-select">
-                                    <option value="beginner">Beginner (0-2 years)</option>
-                                    <option value="intermediate">Intermediate (2-5 years)</option>
-                                    <option value="expert">Expert (5+ years)</option>
+                                <label for="investmentHorizonProfile">
+                                    <img src="https://cdn-icons-png.flaticon.com/512/2693/2693507.png" alt=""
+                                        style="width: 14px; height: 14px; vertical-align: middle; margin-right: 4px;">
+                                    Investment Horizon
+                                </label>
+                                <select id="investmentHorizonProfile" name="investmentHorizonProfile"
+                                    class="form-select">
+                                    <option value="1">1 Year (Short Term)</option>
+                                    <option value="3">3 Years</option>
+                                    <option value="5" selected>5 Years (Medium Term)</option>
+                                    <option value="7">7 Years</option>
+                                    <option value="10">10+ Years (Long Term)</option>
                                 </select>
                             </div>
                             <div class="form-group">
-                                <label>Risk Tolerance / जोखिम सहनशीलता</label>
-                                <div class="risk-slider-container">
-                                    <input type="range" id="riskTolerance" name="riskTolerance" min="1" max="5"
-                                        value="3" class="risk-slider">
-                                    <div class="risk-labels">
-                                        <span>Conservative</span>
-                                        <span>Moderate</span>
-                                        <span>Aggressive</span>
-                                    </div>
+                                <label for="lossTolerance">
+                                    <img src="https://cdn-icons-png.flaticon.com/512/3655/3655585.png" alt=""
+                                        style="width: 14px; height: 14px; vertical-align: middle; margin-right: 4px;">
+                                    Loss Tolerance
+                                </label>
+                                <select id="lossTolerance" name="lossTolerance" class="form-select">
+                                    <option value="1">Very Low - Cannot tolerate any loss</option>
+                                    <option value="2">Low - Can tolerate up to 10% loss</option>
+                                    <option value="3" selected>Moderate - Can tolerate up to 20% loss</option>
+                                    <option value="4">High - Can tolerate up to 30% loss</option>
+                                    <option value="5">Very High - Can tolerate 30%+ loss</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="experience">
+                                    <img src="https://cdn-icons-png.flaticon.com/512/1995/1995562.png" alt=""
+                                        style="width: 14px; height: 14px; vertical-align: middle; margin-right: 4px;">
+                                    Investment Experience
+                                </label>
+                                <select id="experience" name="experience" class="form-select">
+                                    <option value="1">Beginner (0-2 years)</option>
+                                    <option value="3" selected>Intermediate (2-5 years)</option>
+                                    <option value="5">Expert (5+ years)</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="investmentAmount">
+                                    <img src="https://cdn-icons-png.flaticon.com/512/2150/2150150.png" alt=""
+                                        style="width: 14px; height: 14px; vertical-align: middle; margin-right: 4px;">
+                                    Investment Amount (₹)
+                                </label>
+                                <div class="input-with-prefix">
+                                    <span class="input-prefix">₹</span>
+                                    <input type="number" id="investmentAmount" name="investmentAmount"
+                                        class="form-input" placeholder="100000" min="1000" value="100000">
                                 </div>
                             </div>
                         </div>
@@ -454,10 +501,12 @@
         function collectStepData(stepNum) {
             if (stepNum === 1) {
                 onboardingData.investmentProfile = {
-                    age: document.getElementById('age').value || null,
-                    annualIncome: document.getElementById('annualIncome').value || null,
-                    investmentExperience: document.getElementById('experience').value,
-                    riskTolerance: parseInt(document.getElementById('riskTolerance').value)
+                    age: parseInt(document.getElementById('age').value) || 35,
+                    annualIncome: parseFloat(document.getElementById('annualIncome').value) || 10,
+                    investmentHorizon: parseInt(document.getElementById('investmentHorizonProfile').value) || 5,
+                    lossTolerance: parseInt(document.getElementById('lossTolerance').value) || 3,
+                    investmentExperience: parseInt(document.getElementById('experience').value) || 3,
+                    investmentAmount: parseInt(document.getElementById('investmentAmount').value) || 100000
                 };
             } else if (stepNum === 2) {
                 onboardingData.broker = {
@@ -533,7 +582,7 @@
         // Update summary on step 4
         function updateSummary() {
             const riskLabels = ['', 'Very Conservative', 'Conservative', 'Moderate', 'Aggressive', 'Very Aggressive'];
-            const riskLevel = onboardingData.investmentProfile.riskTolerance || 3;
+            const riskLevel = onboardingData.investmentProfile.lossTolerance || 3;
             document.getElementById('summaryRisk').textContent = riskLabels[riskLevel];
 
             const goalLabels = {
@@ -546,7 +595,7 @@
             const goal = onboardingData.mfPreferences.investmentGoal || 'wealth_creation';
             document.getElementById('summaryGoal').textContent = goalLabels[goal] || 'Wealth Creation';
 
-            const horizon = onboardingData.mfPreferences.investmentHorizon || 5;
+            const horizon = onboardingData.investmentProfile.investmentHorizon || onboardingData.mfPreferences.investmentHorizon || 5;
             document.getElementById('summaryHorizon').textContent = `${horizon} Year${horizon > 1 ? 's' : ''}`;
 
             const sip = onboardingData.mfPreferences.monthlySIPAmount || 5000;

@@ -25,6 +25,18 @@ async function checkAuthAndRedirect() {
         if (data.success && data.user) {
             currentUser = data.user;
             updateNavForLoggedInUser(data.user);
+
+            // Check if user needs to complete onboarding
+            // Skip redirect if already on onboarding page
+            const currentPath = window.location.pathname;
+            const isOnboardingPage = currentPath.includes('onboarding.html');
+
+            if (!data.user.onboardingCompleted && !isOnboardingPage) {
+                // Redirect to onboarding for first-time users
+                window.location.href = '/onboarding.html';
+                return false;
+            }
+
             return true;
         }
     } catch (error) {
