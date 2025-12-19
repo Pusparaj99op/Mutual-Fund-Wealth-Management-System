@@ -83,7 +83,7 @@ function updateNavForLoggedInUser(user) {
                         <img src="https://cdn-icons-png.flaticon.com/512/1828/1828765.png" alt="Dashboard">
                         Dashboard
                     </a>
-                    <a href="portfolio.html" class="nav-dropdown-item">
+                    <a href="my-portfolio.html" class="nav-dropdown-item">
                         <img src="https://cdn-icons-png.flaticon.com/512/2920/2920293.png" alt="Portfolio">
                         My Portfolio
                     </a>

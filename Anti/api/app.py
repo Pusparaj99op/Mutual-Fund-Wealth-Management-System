@@ -115,6 +115,7 @@ PUBLIC_ROUTES = [
     '/terms', '/terms.html', '/privacy', '/privacy.html',
     '/onboarding', '/onboarding.html',
     '/api/auth/login', '/api/auth/register', '/api/auth/logout', '/api/health',
+    '/api/analytics/summary', '/api/categories', '/api/top-funds',
     '/css/', '/js/', '/images/'
 ]
 
@@ -1345,6 +1346,85 @@ def update_user_profile():
         return jsonify({
             'success': False,
             'error': 'Failed to update profile'
+        }), 500
+
+
+# -------------- User Portfolio Endpoints --------------
+
+@app.route('/api/user/portfolio', methods=['GET'])
+def get_user_portfolio():
+    """Get user's saved portfolio (selected funds and brokers)"""
+    if not MONGODB_AVAILABLE:
+        return jsonify({
+            'success': False,
+            'error': 'Database service unavailable'
+        }), 503
+
+    user = get_current_user()
+    if not user:
+        return jsonify({
+            'success': False,
+            'error': 'Authentication required'
+        }), 401
+
+    portfolio = user.get('portfolio', {})
+
+    return jsonify({
+        'success': True,
+        'data': {
+            'selectedFundIds': portfolio.get('selectedFundIds', []),
+            'selectedBrokers': portfolio.get('selectedBrokers', []),
+            'lastUpdated': portfolio.get('lastUpdated').isoformat() if portfolio.get('lastUpdated') else None
+        }
+    })
+
+
+@app.route('/api/user/portfolio', methods=['POST'])
+def save_user_portfolio():
+    """Save user's portfolio selections (funds and brokers) to MongoDB"""
+    if not MONGODB_AVAILABLE:
+        return jsonify({
+            'success': False,
+            'error': 'Database service unavailable'
+        }), 503
+
+    user = get_current_user()
+    if not user:
+        return jsonify({
+            'success': False,
+            'error': 'Authentication required'
+        }), 401
+
+    data = request.get_json()
+    if not data:
+        return jsonify({'success': False, 'error': 'Request body required'}), 400
+
+    try:
+        portfolio_data = {
+            'portfolio': {
+                'selectedFundIds': data.get('selectedFundIds', []),
+                'selectedBrokers': data.get('selectedBrokers', []),
+                'lastUpdated': datetime.utcnow()
+            },
+            'updatedAt': datetime.utcnow()
+        }
+
+        # Update user document
+        users_collection.update_one(
+            {'_id': user['_id']},
+            {'$set': portfolio_data}
+        )
+
+        return jsonify({
+            'success': True,
+            'message': 'Portfolio saved successfully'
+        })
+
+    except Exception as e:
+        print(f"Portfolio save error: {e}")
+        return jsonify({
+            'success': False,
+            'error': 'Failed to save portfolio'
         }), 500
 
 
